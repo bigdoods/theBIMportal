@@ -1,0 +1,39 @@
+
+@media only screen and (min-width:768px) and (max-width:1023px){
+.dashboard_back_container .main{max-width:750px;}
+.dashboard_back_container .main .details_back .middle_back .logo_back_details .right_details{width:84%;}
+
+.dashboard_back_container .main .details_back .middle_back .dash_back_details .right_details_tab{width:84%;}
+}
+@media only screen and (min-width:480px) and (max-width:767px){
+.dashboard_back_container{width:100%; height:auto; margin:20px 0 0 0;}
+.dashboard_back_container .main{max-width:450px;}
+.dashboard_back_container .main .details_back .middle_back{ margin:-3px 0 0 0;}
+.dashboard_back_container .main .details_back .middle_back .form_back{width:86.27%;}
+.dashboard_back_container .main .details_back .middle_back .logo_back_details{width:86.27%;}
+.dashboard_back_container .main .shadow_back{ width:100%; background-size:100%; margin:-40px auto 0;}
+
+.dashboard_back_container .main .details_back .middle_back .logo_back_details .right_details{width:71%;}
+
+.dashboard_back_container .main .details_back .middle_back .dash_back_details .right_details_tab{width:71%;}
+}
+
+
+
+@media only screen and (min-width:320px) and (max-width:479px){
+.dashboard_back_container{width:100%; height:auto; margin:20px 0 0 0;}	
+.dashboard_back_container .main{max-width:300px;}
+.dashboard_back_container .main .details_back .middle_back{ margin:-6px 0 0 0;}
+.dashboard_back_container .main .details_back .middle_back .form_back{width:95.27%;}
+.dashboard_back_container .main .details_back .middle_back .strip_back{background-size:100%; width:100%;}
+
+.dashboard_back_container .main .details_back .middle_back .logo_back_details .logo{width:100%; margin:0 0 10px 0}
+.dashboard_back_container .main .details_back .middle_back .logo_back_details .right_details{width:100%;}
+.dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs{width:100%;}
+
+.dashboard_back_container .main .details_back .middle_back .dash_back_details .right_details_tab{width:100%; margin:20px 0 0 0;}
+
+.dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li span{ left:47%;}
+
+.dashboard_back_container .main .shadow_back{ width:100%; background-size:100%; margin:-28px auto 0;}
+}

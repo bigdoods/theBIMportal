@@ -1,0 +1,7 @@
+AuthName " statistics"
+AuthType Basic
+AuthUserFile /home/bimscript/domains/portal.bimscript.com/.stats-htpasswd
+require valid-user
+<Files .stats-htpasswd>
+deny from all
+</Files>
