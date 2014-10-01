@@ -11,7 +11,7 @@ class	Bim_Controller extends CI_Controller{
 	private $admin_private_pages = array('dashboard');
 	private $user_private_pages = array('dashboard', 'project');
 	public function __construct(){
-		parent:: __construct();		
+		parent::__construct();
 		
 		if(!session_id()){
 			session_start();
