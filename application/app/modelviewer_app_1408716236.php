@@ -130,6 +130,9 @@ class Modelviewer_App extends Bim_Appmodule{
 		 			<option value="<?php echo $model->id ?>" <?php echo ($model->id == $requested_model['model_id'] ? 'selected="selected"' : '') ?>><?php echo $model->name ?></option>
 		 		<?php } ?>
 	 		</select>
+
+	 		<button id="viewer-show">show all</button>
+	 		<button id="viewer-hide">hide selected</button>
 	 	</div>
 
 	 	<link href="<?php echo base_url('css/model_viewer.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
