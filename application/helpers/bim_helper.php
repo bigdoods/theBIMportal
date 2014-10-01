@@ -16,6 +16,23 @@ function v_dump($var,$end = 0,$option = 1){
 		exit(__FILE__ . __LINE__);
 }
 
+function debug(){
+	foreach((array) func_get_args() as $arg){
+		error_log('('. gettype($arg) .') '. print_r($arg, true));
+	}
+}
+
+function real_array_merge_recursive($arr1, $arr2){
+  foreach($arr2 as $key => $value){
+    if(array_key_exists($key, $arr1) && is_array($value))
+      $arr1[$key] = real_array_merge_recursive($arr1[$key], $arr2[$key]);
+    else
+      $arr1[$key] = $value;
+  }
+
+  return $arr1;
+}
+
 /**
  * Get radom passowrd
  */
