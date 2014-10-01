@@ -128,7 +128,7 @@ class Portal extends Bim_Controller {
 			}
 			
 		}else{
-			$data['error'][] = 'Username or password does not mathc';
+			$data['error'][] = 'Username or password does not match';
 		}
 		echo json_encode($data);
 	  }
@@ -232,7 +232,7 @@ class Portal extends Bim_Controller {
 		$this->load->model('Projects');
 		$data['project_details'] = $this->Projects->getAllProject( getActiveProject() ); 
 		$data['app_id'] = $app_id;
-		$all_apps  =$this->Apps->getAllApps(1);
+		$all_apps = $this->Apps->getAllApps(1);
 		$data['app_details'] = $all_apps;
 		$this->load->vars( $data );
 		$this->load->view('projectdashboard_');
