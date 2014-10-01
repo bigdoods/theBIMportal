@@ -70,7 +70,7 @@ class Timeline_App extends Bim_Appmodule{
 						 * Check user profile picture exists or not
 						 */						 
 						$user_details[0]['profilepic'] = $this->userprofilePic($user_details[0]['profilepic']);
-						$case_html = sprintf( $case_html, $user_details[0]['profilepic'], $user_details[0]['uname'], $project_details[0]['name']);
+						$case_html = sprintf( $case_html, $user_details[0]['profilepic'], @$user_details[0]['uname'], $project_details[0]['name']);
 						
 						$html.=$case_html;
 						break;
@@ -89,7 +89,7 @@ class Timeline_App extends Bim_Appmodule{
 						 * Check user profile picture exists or not
 						 */						 
 						$user_details[0]['profilepic'] = $this->userprofilePic($user_details[0]['profilepic']);
-						$case_html = sprintf( $case_html, $user_details[0]['profilepic'], $user_details[0]['uname'], $project_details[0]['name']);
+						$case_html = sprintf( $case_html, $user_details[0]['profilepic'], @$user_details[0]['uname'], $project_details[0]['name']);
 						
 						$html.=$case_html;
 						break;
