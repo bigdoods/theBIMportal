@@ -4,6 +4,17 @@
 	$apps_type = getAppType();
 ?>   
 <div class="trigger_for_480px_onwards"></div>
+    <div class="header-top">
+
+        <div class="main-logo">
+            <img src="<?php echo base_url('images/apps_logo.png')?>" alt="VolkerFitzpatrick - Experience Excellence" />
+        </div>
+        
+        <a class="blue-button action logout" href="<?php echo base_url('portal/logout')?>">Logout</a>
+
+        </div>
+
+    </div>
 	<div class="header_top_bdr"></div>
     <div class="back_container">
     	<div class="main">
@@ -22,17 +33,23 @@
 										$extension = pathinfo($app['appiconfilepath'], PATHINFO_EXTENSION);
 										$app['appiconfilepath'] = str_ireplace('.'.$extension, '_thumb.'.$extension, $app['appiconfilepath']);
 									}*/
+                                    if($id != '3') {
 							  ?>
-                        	<div class="app_back <?php echo $id ==  $app_id ? 'active':'';?>">
+                        	<div class="app-button blue-button <?php echo $id ==  $app_id ? 'active':'';?>">
                             	<a href="<?php echo base_url('portal/project/'.$id);?>">
                             	<div class="sub">
-                                	<img src="<?php echo base_url('upload/appicon/'.$app['appiconfilepath'])?>" alt="" />
+                                	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
                                     <div class="clear"></div>
-                                    <p><?php echo $app['name']?></p>
+                                    <div class="app-name">
+                                        <div><?php echo $app['name']?></div>
+                                    </div>
                                 </div>
                                 </a>
                             </div>
-                            <?php }?>
+                            <?php 
+                                }
+                            }
+                            ?>
                             
                         </div>
                     </div>
@@ -50,12 +67,14 @@
 										$app['appiconfilepath'] = str_ireplace('.'.$extension, '_thumb.'.$extension, $app['appiconfilepath']);
 									}*/
 							  ?>
-                        	<div class="app_back <?php echo $id ==  $app_id ? 'active':'';?>">
+                        	<div class="app-button blue-button <?php echo $id ==  $app_id ? 'active':'';?>">
                             	<a href="<?php echo base_url('portal/project/'.$id);?>">
                             	<div class="sub">
-                                	<img src="<?php echo base_url('upload/appicon/'.$app['appiconfilepath'])?>" alt="" />
+                                	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
                                     <div class="clear"></div>
-                                    <p><?php echo $app['name']?></p>
+                                    <div class="app-name">
+                                        <div><?php echo $app['name']?></div>
+                                    </div>
                                 </div>
                                 </a>
                             </div>
@@ -80,9 +99,11 @@
                         	<div class="app_back <?php echo $id ==  $app_id ? 'active':'';?>">
                             	<a href="<?php echo base_url('portal/project/'.$id);?>">
                             	<div class="sub">
-                                	<img src="<?php echo base_url('upload/appicon/'.$app['appiconfilepath'])?>" alt="" />
+                                	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
                                     <div class="clear"></div>
-                                    <p><?php echo $app['name']?></p>
+                                    <div class="app-name">
+                                        <div><?php echo $app['name']?></div>
+                                    </div>
                                 </div>
                                 </a>
                             </div>
@@ -96,13 +117,8 @@
             <div class="right">
                 	<div class="head">                    	
                         <div class="clear"></div>
-                        <div class="btm">
-                        	<div class="main_back">
-                            	<img src="<?php echo base_url('images/apps_logo.jpg')?>" class="logo" alt="" />
-                                <h1><?php echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
-                                <h2><a href="<?php echo base_url('portal/logout')?>">logout</a></h2>
-                            </div>
-                        </div>
+                        <a class="blue-button back-to-projects" href="<?php echo base_url('portal/dashboard');?>">&lt; Back to Projects</a>
+                        <h1 class="project-title"><?php echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
                     </div>
                     
                     <div class="clear"></div>
@@ -120,11 +136,7 @@
                     
                     
                     <div class="footer_back">
-                    	<div class="main_footer">
-                    		<h2 style="float:left;"><a href="<?php echo base_url('portal/project/9')?>">need help?</a></h2>
-                            <p style="margin:0 0 0 80px; padding:8px 0 0 0">Powered by <a href="">BIMscript Ltd © 2014,</a> all rights reserved</p>
-                            
-                        </div>
+                    	<a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>                          
                     </div>
                     
                 </div>
