@@ -39,11 +39,6 @@ img{border:none;}
 
 .back_container .main .left .portion .details .app_back:hover .sub{box-shadow: inset #697176 1px 0 5px;} 
 
-.back_container .main .left .portion .details .active{ background:#020202 !important; border:#131212 1px solid !important;  }
-
-.back_container .main .left .portion .details .active .sub{box-shadow: inset #80868a 1px 0 5px !important;}
-
-
 
 
 .content{margin:0; width:100%; height:100%; padding:0; overflow:auto;  }
