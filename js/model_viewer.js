@@ -16,6 +16,20 @@
 			});
 		}
 
+		// attach event to revision selector dropdown
+		var model_revision_selector = $('select#model-revision');
+		if(model_revision_selector.size() >0){
+			model_revision_selector.change(function(e){
+				var current_url = window.location.href;
+				current_url = current_url.replace(/revision=[^&]+/, '');
+
+				if(current_url.indexOf('?') <0)
+					current_url += '?';
+
+				window.location.href = current_url + 'revision='+$(this).val();
+			});
+		}
+
 		var show_button = $('#viewer-show');
 		if(show_button.size() >0){
 			show_button.click(function(e){
@@ -31,4 +45,8 @@
 				});
 			});
 		}
+
+		model_viewer.bind('viewer.contextmenu', function(event, selected) {
+		    
+		});
 	});
