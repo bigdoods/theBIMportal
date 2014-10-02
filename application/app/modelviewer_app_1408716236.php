@@ -19,7 +19,10 @@ class Modelviewer_App extends Bim_Appmodule{
 		$this->_me->load->config('bimsync');
 	}
 
-	/* net functions */
+	/* net functions
+		post_to and get_from are basic curl wrappers to set up for
+		two http request methods, mainly used for bimsync api interaction
+	*/
 	function post_to($url, $options=array(), &$ch=null){
 		if(is_null($ch))
 			$ch = curl_init();
@@ -32,6 +35,7 @@ class Modelviewer_App extends Bim_Appmodule{
 			CURLOPT_VERBOSE        => true
 */		);
 
+		// merge passed in curl params with defaults
 		curl_setopt_array($ch, real_array_merge_recursive(
 			$defaults,
 			$options
@@ -41,7 +45,6 @@ class Modelviewer_App extends Bim_Appmodule{
 
 		return $response;
 	}
-
 	function get_from($url, $options=array(), &$ch=null){
 		if(is_null($ch))
 			$ch = curl_init();
@@ -55,6 +58,7 @@ class Modelviewer_App extends Bim_Appmodule{
 			CURLOPT_VERBOSE        => true
 */		);
 
+		// merge passed in curl params with defaults
 		curl_setopt_array($ch, real_array_merge_recursive(
 			$defaults,
 			$options
@@ -78,6 +82,7 @@ class Modelviewer_App extends Bim_Appmodule{
 			$project[0]['bimsync_id']
 		);
 
+		// responses are always in json so request and decode
 		$response = json_decode($this->post_to($auth_url, array(
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token')),
 			CURLOPT_POSTFIELDS => (count($post_body) ==0 ? '' : json_encode($post_body))
@@ -94,6 +99,8 @@ class Modelviewer_App extends Bim_Appmodule{
 			$this->_me->config->item('bimsync_api_url_prefix'),
 			$project[0]['bimsync_id']
 		);
+
+		// responses are always in json so request and decode
 		$response = json_decode($this->get_from($auth_url, array(
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token'))
 		)));
@@ -111,6 +118,8 @@ class Modelviewer_App extends Bim_Appmodule{
 			$this->_me->config->item('bimsync_api_url_prefix'),
 			$model_id
 		);
+
+		// responses are always in json so request and decode
 		$response = json_decode($this->get_from($auth_url, array(
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token'))
 		)));
@@ -129,18 +138,27 @@ class Modelviewer_App extends Bim_Appmodule{
 		/**
 		 * Setup for bimsync api interaction
 		 */
+
+		// fetch model names and ids for select
 		$all_models = $this->bimsync_project_models();
 
+		// see if we have a model id parameter
+		// else default to the first one from bimsync
 		$requested_model = array();
 		if(strlen($this->_me->input->get('model')) >0)
 			$requested_model['model_id'] = $this->_me->input->get('model');
 		else
 			$requested_model['model_id'] = array_first($all_models)->id;
 
+		// use the revision query string parameter if present
 		if(strlen($this->_me->input->get('revision')) >0)
 			$requested_model['revision_id'] = $this->_me->input->get('revision');
 
+		// fetch all revisions for the current model
+		// to use in select
 		$model_revisions = $this->bimsync_model_revisions($requested_model['model_id']);
+
+		// authorisation is required each time a model viewed or switched
 		$project_auth_url = $this->project_viewer_url($requested_model);
 		
 	 	?>

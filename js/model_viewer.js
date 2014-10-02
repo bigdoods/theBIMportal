@@ -2,6 +2,7 @@
 
 		var model_viewer = $('#model-viewer');
 
+		// find a query string parameter (or add it) and change it's value
 		function update_url_param(url, name, value){
 			var url_parts = url.split('?'),
 				query_string_parts = url_parts[1].split('&'),
@@ -24,6 +25,9 @@
 			return url_parts.join('?');
 		}
 
+
+		// search the url for a query string parameter and set it to null
+		// then rebuild the url and return it
 		function remove_url_param(url, name){
 			var url_parts = url.split('?'),
 				query_string_parts = url_parts[1].split('&'),
@@ -60,6 +64,7 @@
 			});
 		}
 
+		// show all objects for the current model
 		var show_button = $('#viewer-show');
 		if(show_button.size() >0){
 			show_button.click(function(e){
@@ -67,6 +72,7 @@
 			});
 		}
 
+		// hide the currently selected object(s)
 		var hide_button = $('#viewer-hide');
 		if(hide_button.size() >0){
 			hide_button.click(function(e){
@@ -76,7 +82,8 @@
 			});
 		}
 
+		// listen for the right mouse button and load the info window for the object under the curser
 		model_viewer.bind('viewer.contextmenu', function(event, selected) {
-		    
+		    // load info
 		});
 	});
