@@ -2,17 +2,53 @@
 
 		var model_viewer = $('#model-viewer');
 
+		function update_url_param(url, name, value){
+			var url_parts = url.split('?'),
+				query_string_parts = url_parts[1].split('&'),
+				name_regexp = new RegExp('^'+name),
+				found = false;
+
+
+			$.each(query_string_parts, function(i,e){
+				if(name_regexp.test(e)){
+					query_string_parts[i] = name + '=' + value;
+					found=true;
+				}
+			});
+
+			if(!found)
+				query_string_parts.push(name + '=' + value);
+
+			url_parts[1] = query_string_parts.join('&');
+
+			return url_parts.join('?');
+		}
+
+		function remove_url_param(url, name){
+			var url_parts = url.split('?'),
+				query_string_parts = url_parts[1].split('&'),
+				name_regexp = new RegExp('^'+name);
+
+
+			$.each(query_string_parts, function(i,e){
+				if(name_regexp.test(e)){
+					query_string_parts[i] = null;
+				}
+			});
+
+			url_parts[1] = query_string_parts.join('&');
+
+			return url_parts.join('?');
+		}
+
 		// attach event to model selector dropdown
 		var project_model_selector = $('select#project-model');
 		if(project_model_selector.size() >0){
 			project_model_selector.change(function(e){
-				var current_url = window.location.href;
-				current_url = current_url.replace(/model=[^&]+/, '');
-
-				if(current_url.indexOf('?') <0)
-					current_url += '?';
-
-				window.location.href = current_url + 'model='+$(this).val();
+				var new_url = update_url_param(window.location.href, 'model', $(this).val());
+				new_url = remove_url_param(new_url, 'revision');
+				
+				window.location.href = new_url;
 			});
 		}
 
@@ -20,13 +56,7 @@
 		var model_revision_selector = $('select#model-revision');
 		if(model_revision_selector.size() >0){
 			model_revision_selector.change(function(e){
-				var current_url = window.location.href;
-				current_url = current_url.replace(/revision=[^&]+/, '');
-
-				if(current_url.indexOf('?') <0)
-					current_url += '?';
-
-				window.location.href = current_url + 'revision='+$(this).val();
+				window.location.href = update_url_param(window.location.href, 'revision', $(this).val());
 			});
 		}
 
