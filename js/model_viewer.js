@@ -5,7 +5,7 @@
 		// find a query string parameter (or add it) and change it's value
 		function update_url_param(url, name, value){
 			var url_parts = url.split('?'),
-				query_string_parts = url_parts[1].split('&'),
+				query_string_parts = (url_parts[1] != undefined ? url_parts[1].split('&') : []),
 				name_regexp = new RegExp('^'+name),
 				found = false;
 
@@ -30,7 +30,7 @@
 		// then rebuild the url and return it
 		function remove_url_param(url, name){
 			var url_parts = url.split('?'),
-				query_string_parts = url_parts[1].split('&'),
+				query_string_parts = (url_parts[1] != undefined ? url_parts[1].split('&') : []),
 				name_regexp = new RegExp('^'+name);
 
 
