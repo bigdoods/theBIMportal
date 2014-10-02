@@ -70,6 +70,38 @@ body {
     box-shadow: none;
 }
 
+.back_container .main .left .project-button {
+    position: relative;
+    width: 96%;
+    height: 78px;
+    float: left;
+    margin: 8px auto;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-shadow: 0px -1px 0px #348fdf;
+    -webkit-text-shadow: 0px -1px 0px #348fdf;
+    -moz-text-shadow: 0px -1px 0px #348fdf;
+}
+
+.back_container .main .left .project-button img {
+    float: left;
+    margin: 22px 15px;
+}
+
+.back_container .main .left .project-button .sub .project-name {
+    display: table;
+    float: left;
+    width: 110px;
+    height: 78px;
+    text-align: center;
+}
+
+.back_container .main .left .project-button .sub .project-name div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .back_container .main .left .app-button {
     position: relative;
     width: 78px;
@@ -88,8 +120,13 @@ body {
     margin-bottom: 16px;
 }
 
-.back_container .main .left .app-button a {
+.back_container .main .left .app-button a,
+.back_container .main .left .project-button a {
     color: #FFF;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
     text-decoration: none;
 }
 
@@ -173,19 +210,19 @@ body {
 }
 
 .back_container .main .apps_content_back {
-    width: auto;
+    width: 100%;
     height: 82%;
     margin: 0;
-    padding: 0 0 0 220px;
+    padding: 0;
     float: left;
     background: #fff;
 }
 
 .content2 {
     margin: 0;
-    width: 100%;
+    width: auto;
     height: 100%;
-    padding: 0;
+    padding: 0 0 0 220px;
     overflow: auto;
 }
 

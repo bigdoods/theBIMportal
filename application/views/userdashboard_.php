@@ -3,7 +3,18 @@
 	$this->load->view('common/user/header.php');
 ?>   
 <div class="trigger_for_480px_onwards"></div>
-	<div class="header_top_bdr"></div>
+	<div class="header-top">
+
+        <div class="main-logo">
+            <img src="<?php echo base_url('images/apps_logo.png')?>" alt="VolkerFitzpatrick - Experience Excellence" />
+        </div>
+        
+        <a class="blue-button action logout" href="<?php echo base_url('portal/logout')?>">Logout</a>
+
+        </div>
+
+    </div>
+    <div class="header_top_bdr"></div>
     <div class="back_container">
     	<div class="main">
         	<div class="left">
@@ -15,11 +26,13 @@
                         	 <?php 
 								foreach($project_details as $project){									
 							  ?>
-                        	<div class="app_back project_tile" id="project-<?php echo $project['id']?>">
+                        	<div class="project_tile project-button blue-button" id="project-<?php echo $project['id']?>">
                             	<a href="javascript:void(0);">
-                            	<div class="sub">                                	
-                                    <div class="clear"></div>
-                                    <p><?php echo $project['name']?></p>
+                            	<div class="sub">
+                                    <img src="<?php echo base_url('/images/project_tile_icon')?>.png" alt="" />                                	
+                                    <div class="project-name">
+                                        <div><?php echo $project['name']?></div>
+                                    </div>
                                 </div>
                                 </a>
                             </div>
@@ -32,17 +45,9 @@
             </div>
             
             <div class="right">
-                	<div class="head">                    	
+                	<div class="head">                     
                         <div class="clear"></div>
-                        <div class="btm">
-                        	<div class="main_back">
-                            	<img src="<?php echo base_url('images/apps_logo.jpg')?>" class="logo" alt="" />
-                                <h1><?php
-									if(isset($project_details[0]))
-									 echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
-                                <h2><a href="<?php echo base_url('portal/logout')?>">logout</a></h2>
-                            </div>
-                        </div>
+                        <h1 class="project-title">Overview</h1>
                     </div>
                     
                     <div class="clear"></div>
