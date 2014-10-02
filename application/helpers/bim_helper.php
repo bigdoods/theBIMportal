@@ -16,6 +16,14 @@ function v_dump($var,$end = 0,$option = 1){
 		exit(__FILE__ . __LINE__);
 }
 
+function array_first($array){
+	$array_clone = $array;
+	return reset($array_clone);
+}
+function array_last($array){
+	return reset(array_reverse($array, true));
+}
+
 function debug(){
 	foreach((array) func_get_args() as $arg){
 		error_log('('. gettype($arg) .') '. print_r($arg, true));

@@ -17,89 +17,9 @@ class Modelviewer_App extends Bim_Appmodule{
 		$this->_me->load->model('Docs');
 
 		$this->_me->load->config('bimsync');
+		$this->_me->load->helper('bimsync');
 	}
 
-	/* net functions */
-	function post_to($url, $options=array(), &$ch=null){
-		if(is_null($ch))
-			$ch = curl_init();
-		$defaults = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => true,
-			CURLOPT_RETURNTRANSFER => true,
-
-			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
-		);
-
-		curl_setopt_array($ch, real_array_merge_recursive(
-			$defaults,
-			$options
-		));
-
-		$response = curl_exec($ch);
-
-		return $response;
-	}
-
-	function get_from($url, $options=array(), &$ch=null){
-		if(is_null($ch))
-			$ch = curl_init();
-
-		$defaults = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => false,
-			CURLOPT_RETURNTRANSFER => true,
-
-			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
-		);
-
-		curl_setopt_array($ch, real_array_merge_recursive(
-			$defaults,
-			$options
-		));
-
-		$response = curl_exec($ch);
-
-		return $response;
-	}
-
-	private function project_viewer_url($model=null){
-		$project = $this->_me->Projects->getAllProject(getActiveProject());
-
-		$post_body = array();
-		if(! empty($model))
-			$post_body[] = $model;
-
-		$auth_url = sprintf(
-			'%s/viewer/access?project_id=%s',
-			$this->_me->config->item('bimsync_api_url_prefix'),
-			$project[0]['bimsync_id']
-		);
-
-		$response = json_decode($this->post_to($auth_url, array(
-			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token')),
-			CURLOPT_POSTFIELDS => (count($post_body) ==0 ? '' : json_encode($post_body))
-		)));
-
-		return $response->url;
-	}
-
-	private function bimsync_project_models(){
-		$project = $this->_me->Projects->getAllProject(getActiveProject());
-
-		$auth_url = sprintf(
-			'%s/models?project_id=%s',
-			$this->_me->config->item('bimsync_api_url_prefix'),
-			$project[0]['bimsync_id']
-		);
-		$response = json_decode($this->get_from($auth_url, array(
-			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token'))
-		)));
-
-		return (array) $response;
-	}
 
 	/**
 	 * The mandatory method
@@ -113,23 +33,43 @@ class Modelviewer_App extends Bim_Appmodule{
 		 * Setup for bimsync api interaction
 		 */
 
+		// fetch model names and ids for select
+		$all_models = bimsync_project_models();
+
+		// see if we have a model id parameter
+		// else default to the first one from bimsync
 		$requested_model = array();
 		if(strlen($this->_me->input->get('model')) >0)
 			$requested_model['model_id'] = $this->_me->input->get('model');
+		else
+			$requested_model['model_id'] = array_first($all_models)->id;
 
+		// use the revision query string parameter if present
 		if(strlen($this->_me->input->get('revision')) >0)
 			$requested_model['revision_id'] = $this->_me->input->get('revision');
 
-		$project_auth_url = $this->project_viewer_url($requested_model);
+		// fetch all revisions for the current model
+		// to use in select
+		$model_revisions = bimsync_model_revisions($requested_model['model_id']);
+
+		// authorisation is required each time a model viewed or switched
+		$project_auth_url = bimsync_project_viewer_url($requested_model);
 		
 	 	?>
 
 	 	<div id="viewer-control-wrapper">
 	 		<select name="project_model" id="project-model">
-	 			<?php foreach($this->bimsync_project_models() as $model){ ?>
-		 			<option value="<?php echo $model->id ?>" <?php echo ($model->id == $requested_model['model_id'] ? 'selected="selected"' : '') ?>><?php echo $model->name ?></option>
+	 			<?php foreach($all_models as $model){ ?>
+		 			<option value="<?php echo $model->id ?>" <?php echo ($model->id == @$requested_model['model_id'] ? 'selected="selected"' : '') ?>><?php echo $model->name ?></option>
 		 		<?php } ?>
 	 		</select>
+
+	 		<select name="model_revision" id="model-revision">
+	 			<?php foreach($model_revisions as $revision){ ?>
+		 			<option value="<?php echo $revision->id ?>" <?php echo ($revision->id == @$requested_model['revision_id'] ? 'selected="selected"' : '') ?>><?php echo date('d-m-Y H:i', substr($revision->timestamp, 0, -3)) ?> <?php echo $revision->comment ?></option>
+		 		<?php } ?>
+	 		</select>
+	 		<br />
 
 	 		<button id="viewer-show">show all</button>
 	 		<button id="viewer-hide">hide selected</button>
@@ -140,6 +80,7 @@ class Modelviewer_App extends Bim_Appmodule{
 
 	 	<script src="https://api.bimsync.com/1.0/js/viewer.js"></script>
 	 	<div id="model-viewer" data-viewer="webgl" data-url="<?php echo $project_auth_url ?>"></div>
+	 	
 	 	<?php
 	 }
 	 

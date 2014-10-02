@@ -15,6 +15,16 @@
             <div class="clear"></div>
             <textarea class="text_box_inner" name="embedcode"><?php echo $project_details['embedcode']?></textarea>           
             <div class="clear"></div>
+
+            <p>Bimsync Project :</p>
+            <div class="clear"></div>
+            <select name="bimsync_id">
+              <option value="" <?php echo (empty($project_details['bimsync_id']) ? 'selected="selected"' : '') ?>>None</option>
+              <?php foreach($bimsync_projects as $bimsync_project){debug($bimsync_project->id,$project_details['bimsync_id']); ?>
+                <option value="<?php echo $bimsync_project->id ?>" <?php echo ($bimsync_project->id == @$project_details['bimsync_id'] ? 'selected="selected"' : '') ?>><?php echo $bimsync_project->name ?></option>
+              <?php } ?>
+            </select>
+            <div class="clear"></div>
           </div>
           
           

@@ -26,11 +26,15 @@ class Admin extends Bim_Controller {
 		$this->load->model('Users');
 		$this->load->model('Projects');
 		$this->load->model('Apps');
+
+		$this->load->config('bimsync');
+		$this->load->helper('bimsync');
 	}
 	
 	public function dashboard( $tabid = 1 ){
 		$data['main'] = 'dashboard';
 		$data['tabid'] = $tabid;
+
 		$this->load->vars($data);
 		$this->load->view('admin');
 		
@@ -53,6 +57,7 @@ class Admin extends Bim_Controller {
 	public function getProjectDetails($tabid){			
 			$data['projectdetails'] = $this->Projects->getAllProject();
 			$data['tabid'] = $tabid;
+
 			$this->load->vars($data);
 			$this->load->view('admin/projectlist');
 	}
@@ -216,6 +221,9 @@ class Admin extends Bim_Controller {
 	 public function editProject($project_id = 0){
 		$project_details = $this->Projects->getAllProject( $project_id );
 		$data['project_details']  = $project_details[0];
+		$data['bimsync_projects'] = bimsync_projects();
+		debug($data['bimsync_projects']);
+
 		$this->load->vars( $data );
 		$this->load->view('admin/project_edit');
 	 }
