@@ -71,8 +71,8 @@ class Modelviewer_App extends Bim_Appmodule{
 	 		</select>
 	 		<br />
 
-	 		<button id="viewer-show">show all</button>
-	 		<button id="viewer-hide">hide selected</button>
+	 		<a href="#" id="viewer-show">show all</a>
+	 		<a href="#" id="viewer-hide">hide selected</a>
 	 	</div>
 
 	 	<link href="<?php echo base_url('css/model_viewer.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
