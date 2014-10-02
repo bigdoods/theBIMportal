@@ -58,6 +58,7 @@ class Projects extends Ci_Model {
 		$data['active']	 = $p['active'];
 		$data['name']	 = $p['name'];
 		$data['embedcode']	 = $p['embedcode'];
+		$data['bimsync_id']	 = @$p['bimsync_id'];
 		
 		$this->db->where('id', $project_id);
 		$this->db->update('projects', $data);

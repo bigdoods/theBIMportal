@@ -17,115 +17,9 @@ class Modelviewer_App extends Bim_Appmodule{
 		$this->_me->load->model('Docs');
 
 		$this->_me->load->config('bimsync');
+		$this->_me->load->helper('bimsync');
 	}
 
-	/* net functions
-		post_to and get_from are basic curl wrappers to set up for
-		two http request methods, mainly used for bimsync api interaction
-	*/
-	function post_to($url, $options=array(), &$ch=null){
-		if(is_null($ch))
-			$ch = curl_init();
-		$defaults = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => true,
-			CURLOPT_RETURNTRANSFER => true,
-
-/*			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
-*/		);
-
-		// merge passed in curl params with defaults
-		curl_setopt_array($ch, real_array_merge_recursive(
-			$defaults,
-			$options
-		));
-
-		$response = curl_exec($ch);
-
-		return $response;
-	}
-	function get_from($url, $options=array(), &$ch=null){
-		if(is_null($ch))
-			$ch = curl_init();
-
-		$defaults = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => false,
-			CURLOPT_RETURNTRANSFER => true,
-
-/*			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
-*/		);
-
-		// merge passed in curl params with defaults
-		curl_setopt_array($ch, real_array_merge_recursive(
-			$defaults,
-			$options
-		));
-
-		$response = curl_exec($ch);
-
-		return $response;
-	}
-
-	private function project_viewer_url($model=null){
-		$project = $this->_me->Projects->getAllProject(getActiveProject());
-
-		$post_body = array();
-		if(! empty($model))
-			$post_body[] = $model;
-
-		$auth_url = sprintf(
-			'%s/viewer/access?project_id=%s',
-			$this->_me->config->item('bimsync_api_url_prefix'),
-			$project[0]['bimsync_id']
-		);
-
-		// responses are always in json so request and decode
-		$response = json_decode($this->post_to($auth_url, array(
-			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token')),
-			CURLOPT_POSTFIELDS => (count($post_body) ==0 ? '' : json_encode($post_body))
-		)));
-
-		return $response->url;
-	}
-
-	private function bimsync_project_models(){
-		$project = $this->_me->Projects->getAllProject(getActiveProject());
-
-		$auth_url = sprintf(
-			'%s/models?project_id=%s',
-			$this->_me->config->item('bimsync_api_url_prefix'),
-			$project[0]['bimsync_id']
-		);
-
-		// responses are always in json so request and decode
-		$response = json_decode($this->get_from($auth_url, array(
-			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token'))
-		)));
-
-		return (array) $response;
-	}
-
-	private function bimsync_model_revisions($model_id=null){
-		// if we don't have a model yet, return an empty array
-		if(is_null($model_id))
-			return array();
-
-		$auth_url = sprintf(
-			'%s/revisions?model_id=%s',
-			$this->_me->config->item('bimsync_api_url_prefix'),
-			$model_id
-		);
-
-		// responses are always in json so request and decode
-		$response = json_decode($this->get_from($auth_url, array(
-			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $this->_me->config->item('bimsync_api_token'))
-		)));
-
-		return (array) $response;
-	}
 
 	/**
 	 * The mandatory method
@@ -140,7 +34,7 @@ class Modelviewer_App extends Bim_Appmodule{
 		 */
 
 		// fetch model names and ids for select
-		$all_models = $this->bimsync_project_models();
+		$all_models = bimsync_project_models();
 
 		// see if we have a model id parameter
 		// else default to the first one from bimsync
@@ -156,10 +50,10 @@ class Modelviewer_App extends Bim_Appmodule{
 
 		// fetch all revisions for the current model
 		// to use in select
-		$model_revisions = $this->bimsync_model_revisions($requested_model['model_id']);
+		$model_revisions = bimsync_model_revisions($requested_model['model_id']);
 
 		// authorisation is required each time a model viewed or switched
-		$project_auth_url = $this->project_viewer_url($requested_model);
+		$project_auth_url = bimsync_project_viewer_url($requested_model);
 		
 	 	?>
 
@@ -186,6 +80,7 @@ class Modelviewer_App extends Bim_Appmodule{
 
 	 	<script src="https://api.bimsync.com/1.0/js/viewer.js"></script>
 	 	<div id="model-viewer" data-viewer="webgl" data-url="<?php echo $project_auth_url ?>"></div>
+	 	
 	 	<?php
 	 }
 	 
