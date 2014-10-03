@@ -18,6 +18,7 @@ class Modelviewer_App extends Bim_Appmodule{
 
 		$this->_me->load->config('bimsync');
 		$this->_me->load->helper('bimsync');
+		$this->_me->load->helper('network');
 	}
 
 
@@ -29,6 +30,15 @@ class Modelviewer_App extends Bim_Appmodule{
 	 */
 	 
 	 public function init(){
+	 	$view = $this->_me->input->get('action');
+
+	 	if(empty($view) || !method_exists($this, $view))
+	 		$view = 'render_viewer';
+
+	 	call_user_func(array($this, $view));
+	 }
+	 
+	 public function render_viewer(){
 		/**
 		 * Setup for bimsync api interaction
 		 */
@@ -80,10 +90,12 @@ class Modelviewer_App extends Bim_Appmodule{
 
 	 	<script src="https://api.bimsync.com/1.0/js/viewer.js"></script>
 	 	<div id="model-viewer" data-viewer="webgl" data-url="<?php echo $project_auth_url ?>"></div>
-	 	
+
 	 	<?php
 	 }
-	 
 
+	 public function object_info(){
+	 	
+	 }
 }
 ?>
