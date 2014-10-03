@@ -64,10 +64,7 @@
                     
                     
                     <div class="footer_back">
-                    	<div class="main_footer">
-                    		<h2 style="float:left;"><a href="<?php echo base_url('portal/project/9')?>">need help?</a></h2>
-                            <p style="margin:0 0 0 80px; padding:8px 0 0 0">Powered by <a href="">BIMscript Ltd © 2014,</a> all rights reserved</p>
-                        </div>
+                        <a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>                          
                     </div>
                     
                 </div>
