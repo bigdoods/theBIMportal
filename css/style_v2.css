@@ -211,7 +211,7 @@ body {
 
 .back_container .main .apps_content_back {
     width: 100%;
-    height: 82%;
+    height: 100%;
     margin: 0;
     padding: 0;
     float: left;
@@ -244,7 +244,12 @@ body {
     background: #f2f5f8;
 }
 
+.back_container .main .apps_content_back .content_main ul.profile li:last-child {
+    margin: 0 0 190px 0;
+}
+
 .back_container .main .apps_content_back .content_main ul.profile li .image {
+    display: table;
     width: 112px;
     height: 112px;
     margin: 0;
@@ -253,7 +258,14 @@ body {
     text-align: center;
     background: #e5e8ec;
     border: 1px solid #d9dcdf;
-    border-radius: 6px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .image div {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .image img {
@@ -262,6 +274,9 @@ body {
     height: auto;
     max-width: 112px;
     margin: 0 auto;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .left_con_del {

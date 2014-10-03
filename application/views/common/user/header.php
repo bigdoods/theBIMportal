@@ -93,15 +93,15 @@ $(document).ready(function(){
 	});
 	}
 	
-	$(window).bind('resize', function(e)
-	{
-	  if (window.RT) clearTimeout(window.RT);
-	  window.RT = setTimeout(function()
-	  {
-	 $('body').css('visibility', 'hidden');
-		this.location.reload(false);
-	  }, 200);	
-	});
+	// $(window).bind('resize', function(e)
+	// {
+	//   if (window.RT) clearTimeout(window.RT);
+	//   window.RT = setTimeout(function()
+	//   {
+	//  $('body').css('visibility', 'hidden');
+	// 	this.location.reload(false);
+	//   }, 200);	
+	// });
 });
 
 </script>
