@@ -244,6 +244,34 @@ body {
     background: #f2f5f8;
 }
 
+.back_container .main .apps_content_back .content_main ul.profile li .image {
+    width: 112px;
+    height: 112px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    text-align: center;
+    background: #e5e8ec;
+    border: 1px solid #d9dcdf;
+    border-radius: 6px;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .image img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 112px;
+    margin: 0 auto;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .left_con_del {
+    width: 80%;
+    height: auto;
+    margin: 0 0 0 24px;
+    padding: 0;
+    float: left;
+}
+
 .mCustomScrollBox>.mCSB_scrollTools {
     width: 12px;
     height: 100%;
