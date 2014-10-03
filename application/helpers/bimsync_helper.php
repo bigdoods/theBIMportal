@@ -1,56 +1,5 @@
 <?php
 
-	/* net functions
-		post_to and get_from are basic curl wrappers to set up for
-		two http request methods, mainly used for bimsync api interaction
-	*/
-	function post_to($url, $options=array(), &$ch=null){
-		if(is_null($ch))
-			$ch = curl_init();
-
-		$defaults = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => true,
-			CURLOPT_RETURNTRANSFER => true,
-
-/*			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
-*/		);
-
-		// merge passed in curl params with defaults
-		curl_setopt_array($ch, real_array_merge_recursive(
-			$defaults,
-			$options
-		));
-
-		$response = curl_exec($ch);
-
-		return $response;
-	}
-	function get_from($url, $options=array(), &$ch=null){
-		if(is_null($ch))
-			$ch = curl_init();
-
-		$defaults = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => false,
-			CURLOPT_RETURNTRANSFER => true,
-
-/*			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
-*/		);
-
-		// merge passed in curl params with defaults
-		curl_setopt_array($ch, real_array_merge_recursive(
-			$defaults,
-			$options
-		));
-
-		$response = curl_exec($ch);
-
-		return $response;
-	}
-
 	function bimsync_project_viewer_url($model=null){
 		$CI =  &get_instance();
 
@@ -77,20 +26,47 @@
 	}
 
 	function bimsync_projects(){
-		debug('fetching bimsync_projects');
 		$CI =  &get_instance();
 
-		$auth_url = sprintf(
+		$api_url = sprintf(
 			'%s/projects',
 			$CI->config->item('bimsync_api_url_prefix')
 		);
 
 		// responses are always in json so request and decode
-		$response = json_decode(get_from($auth_url, array(
+		$response = json_decode(get_from($api_url, array(
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $CI->config->item('bimsync_api_token'))
 		)));
 
 		return (array) $response;
+	}
+
+	function bimsync_project_product($object_id, $format='json'){
+		$CI =  &get_instance();
+
+		// fetch project information for the current project
+		$project = $CI->Projects->getAllProject(getActiveProject());
+
+		$api_url = sprintf(
+			'%s/project/product?project_id=%s&object_id=%s',
+			$CI->config->item('bimsync_api_url_prefix'),
+			$project[0]['bimsync_id'],
+			$object_id
+		);
+
+		// responses are always in json so request and decode
+		$response = post_to($api_url, array(
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '. $CI->config->item('bimsync_api_token'),
+				'Accept: text/'.$format
+			),
+			CURLOPT_POSTFIELDS => ''
+		));
+
+		if($format == 'json')
+			$response = json_decode($response);
+
+		return $response;
 	}
 
 	function bimsync_project_models(){
@@ -99,14 +75,14 @@
 		// fetch project information for the current project
 		$project = $CI->Projects->getAllProject(getActiveProject());
 
-		$auth_url = sprintf(
+		$api_url = sprintf(
 			'%s/models?project_id=%s',
 			$CI->config->item('bimsync_api_url_prefix'),
 			$project[0]['bimsync_id']
 		);
 
 		// responses are always in json so request and decode
-		$response = json_decode(get_from($auth_url, array(
+		$response = json_decode(get_from($api_url, array(
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $CI->config->item('bimsync_api_token'))
 		)));
 
@@ -120,14 +96,14 @@
 		if(is_null($model_id))
 			return array();
 
-		$auth_url = sprintf(
+		$api_url = sprintf(
 			'%s/revisions?model_id=%s',
 			$CI->config->item('bimsync_api_url_prefix'),
 			$model_id
 		);
 
 		// responses are always in json so request and decode
-		$response = json_decode(get_from($auth_url, array(
+		$response = json_decode(get_from($api_url, array(
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $CI->config->item('bimsync_api_token'))
 		)));
 

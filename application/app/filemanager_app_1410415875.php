@@ -2,12 +2,22 @@
 class filemanager_app extends Bim_Appmodule{
 	private $_db;
 	public $class_css = 'content_main_tickets';
+
+	protected $previewable_file_extensions = array();
+
 	//public $class_css = 'facebook_messaing_2';
 	public function __construct(){
 		parent::start();
 		$this->_me->load->model('Projects');
 		$this->_me->load->model('Docs');
 		$this->_db = $this->_me->db;
+
+		$this->previewable_file_extensions = array(
+			'pdf', 'svg', 'emf', 'wmf', 'dwg', 'dxf', 'dwf', 'hpgl', 'plt', 'cgm',
+			'tep', 'stp', 'iges', 'igs', 'brep', 'stl', 'sat', 'png', 'bmp', 'jpg',
+			'gif', 'tiff', 'tga', 'cal', '7z', 'rar', 'cab', 'zip', 'bzip', 'tar'
+		);
+		$this->_me->load->helper('network');
 	}
 	/**
 	 * This function print the required script
@@ -93,15 +103,16 @@ class filemanager_app extends Bim_Appmodule{
 		}
 			//break;
 	}
-	/**
-	 * The funciton which will be triggered 
-	 */
-	public function init(){
+
+	public function file_list(){
+		global $app_id;
+
 		$this->printStyle(array(1));
 		$this->printScript(array(1,2));
 		$id = $this->_me->input->get('id');
 		$doc_details = $this->_me->Docs->getDocDetails($id);
 		?>
+
         <ul class="tickets">
                 <li>
                 	<div class="row-fluid">
@@ -137,30 +148,44 @@ class filemanager_app extends Bim_Appmodule{
                                 </thead>
                                 <tbody>
                                     <?php foreach($doc_details as $file):
-									//++ The file size
-									$file_size = filesize($file['path']);
-									if($file_size){
-										$file_size = (float)$file_size/1024;
-										$file_size = number_format($file_size, 2).'Kb';
+                                    if(file_exists($file['path'])){
+										//++ The file size
+										$file_size = filesize($file['path']);
+										if($file_size){
+											$file_size = (float)$file_size/1024;
+											$file_size = number_format($file_size, 2).'Kb';
+										}else{
+											$file_size = '-';
+										}
+										// + file moidifed time
+										$file_modifed_time = filemtime($file['path']);
+										if(!$file_modifed_time){
+											$file_modifed_time = '';
+										}else{
+											$file_modifed_time = date('H:i', $file_modifed_time).' on ' .date('d-m-Y', $file_modifed_time);
+										}
+
+										$file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
 									}else{
 										$file_size = '-';
-									}
-									// + file moidifed time
-									$file_modifed_time = filemtime($file['path']);
-									if(!$file_modifed_time){
 										$file_modifed_time = '';
-									}else{
-										$file_modifed_time = date('H:i', $file_modifed_time).' on ' .date('d-m-Y', $file_modifed_time);
+										$file_extension = '';
 									}
+
 									?><tr>
                                    		<td><?php echo pathinfo($file['name'], PATHINFO_FILENAME)?></td>
-                                        <td><?php echo '.'.pathinfo($file['name'], PATHINFO_EXTENSION)?></td>
+                                        <td><?php echo $file_extension ?></td>
                                         <td><?php echo $file['doctypename']?></td>
                                         <td><p><img src="<?php echo base_url($file['path'])?>" alt="No preview" width="100" height="100" onError="javascript:$(this).closest('p').html('No preview')"></p></td>
                                         <td><?php echo $file_size;?></td>
                                         <td><?php echo $file_modifed_time;?></td>
                                         <td><?php echo $file['details']?></td>
-                                        <td class="small"><a href="<?php echo base_url('admin/download/'.$file['id'])?>" target="_blank">Download</a></td>
+                                        <td class="small">
+                                        	<a href="<?php echo base_url('admin/download/'.$file['id'])?>" target="_blank">Download</a>
+                                        	<?php if(in_array($file_extension, $this->previewable_file_extensions)){ ?>
+                                        		<a href="<?php echo base_url('portal/project/'. $app_id .'?action=file_preview&id='.$file['id'])?>" target="_blank">Preview</a>
+                                        	<?php } ?>
+                                        </td>
                                         <td class="small"><a class="for_admin_ajax" href="<?php echo getCurrentUserRole() == 1 ? base_url('admin/invoke/5/').'?a=ticket_app&f=ticketDetails&id='.$file['ticket_id'] : base_url('portal/project/7?f=ticketDetails&id='.$file['ticket_id'])?>"><?php echo $file['represent_id'];?></a></td>
                                         <?php
                                         	if(getCurrentUserRole() == 1):
@@ -185,7 +210,45 @@ class filemanager_app extends Bim_Appmodule{
 
 			</ul>
         <?php
+	}
+
+	private function preview_proxy(){
+		$url = $this->_me->input->get('url');
+
+		//$response = get_from('http://sharecad.org/cadframe/load?url='. $url);
+		$response = get_from('https://sharecad.org/cadframe/load?url=http://www.cadsofttools.com/dwgviewer/floorplan.dwg');
 		
+		$response = preg_replace('/(src|href)\=\"\//', '\1="https://sharecad.org/', $response);
+		//$response = str_replace('<div class="powered"><a id="shareCad" href="#" target="_blank" style="color: gray;">ShareCAD.org</a></div>', '<div class="powered" style="display:none"><a id="shareCad" href="#" target="_blank" style="color: gray;">ShareCAD.org</a></div><div class="powered"><a id="bimscript" href="http://bimscript.org" target="_blank" style="color: gray;">BIMscript.com</a></div>', $response);
+		$response = str_replace('<div style="position: absolute; z-index: 1000; left: 8px; top: 46px"><span class="lt"><a id="cadEditorX" href="http://cadsofttools.com/products/abviewer/" target="_blank" style="color: black;">ABViewer</a></span></div>', '', $response);
+		
+		ob_clean();
+		echo $response;
+		ob_flush();
+		exit;
+	}
+
+	private function file_preview(){
+		global $app_id;
+
+		$id = $this->_me->input->get('id');
+		$doc_details = $this->_me->Docs->getDocDetails($id);
+		debug($doc_details);
+		?>
+		<iframe id="file-preview" src="/portal/project/<?php echo $app_id ?>?action=preview_proxy&url=<?php echo base_url($doc_details[0]['path']) ?>" scrolling="no" width="1000px" height="1000px"></iframe>
+		<?php
+	}
+
+	/**
+	 * The funciton which will be triggered 
+	 */
+	public function init(){
+	 	$view = $this->_me->input->get('action');
+
+	 	if(empty($view) || !method_exists($this, $view))
+	 		$view = 'file_list';
+
+	 	call_user_func(array($this, $view));
 	}
 	
 	/**

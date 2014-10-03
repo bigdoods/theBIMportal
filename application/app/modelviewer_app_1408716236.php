@@ -18,6 +18,7 @@ class Modelviewer_App extends Bim_Appmodule{
 
 		$this->_me->load->config('bimsync');
 		$this->_me->load->helper('bimsync');
+		$this->_me->load->helper('network');
 	}
 
 
@@ -29,6 +30,15 @@ class Modelviewer_App extends Bim_Appmodule{
 	 */
 	 
 	 public function init(){
+	 	$view = $this->_me->input->get('action');
+
+	 	if(empty($view) || !method_exists($this, $view))
+	 		$view = 'render_viewer';
+
+	 	call_user_func(array($this, $view));
+	 }
+	 
+	 public function render_viewer(){
 		/**
 		 * Setup for bimsync api interaction
 		 */
@@ -71,19 +81,32 @@ class Modelviewer_App extends Bim_Appmodule{
 	 		</select>
 	 		<br />
 
-	 		<button id="viewer-show">show all</button>
-	 		<button id="viewer-hide">hide selected</button>
+	 		<a href="#" id="viewer-show">show all</a>
+	 		<a href="#" id="viewer-hide">hide selected</a>
 	 	</div>
+
+	 	<div id="viewer-info-box"></div>
 
 	 	<link href="<?php echo base_url('css/model_viewer.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 	 	<script type="text/javascript" src="<?php echo base_url('js/model_viewer.js?v=').filemtime('js/model_viewer.js')?>"></script>
 
 	 	<script src="https://api.bimsync.com/1.0/js/viewer.js"></script>
 	 	<div id="model-viewer" data-viewer="webgl" data-url="<?php echo $project_auth_url ?>"></div>
-	 	
+
 	 	<?php
 	 }
-	 
 
+	 public function object_info(){
+	 	$object_id = $this->_me->input->get('object');
+		$info_html = bimsync_project_product($object_id, 'html');
+		
+		// remove some html
+		$info_html = preg_replace('/<\!DOCTYPE html><title>.*<\/title>/i', '', $info_html);
+
+		ob_clean();
+		echo $info_html;
+		ob_flush();
+		exit;
+	 }
 }
 ?>
