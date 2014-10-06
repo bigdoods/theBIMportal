@@ -13,8 +13,8 @@
 			CURLOPT_POST => true,
 			CURLOPT_RETURNTRANSFER => true,
 
-			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
-			CURLOPT_VERBOSE        => true
+/*			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
+			CURLOPT_VERBOSE        => true*/
 		);
 
 		// merge passed in curl params with defaults
@@ -36,9 +36,9 @@
 			CURLOPT_POST => false,
 			CURLOPT_RETURNTRANSFER => true,
 
-			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
+/*			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
 			CURLOPT_VERBOSE        => true
-		);
+*/		);
 
 		// merge passed in curl params with defaults
 		curl_setopt_array($ch, real_array_merge_recursive(
