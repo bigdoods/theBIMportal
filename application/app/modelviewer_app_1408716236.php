@@ -97,14 +97,21 @@ class Modelviewer_App extends Bim_Appmodule{
 	 }
 
 	 public function object_info(){
-	 	$object_id = $this->_me->input->get('object');
-		$info_html = bimsync_project_product($object_id, 'html');
-		
-		// remove some html
-		$info_html = preg_replace('/<\!DOCTYPE html><title>.*<\/title>/i', '', $info_html);
+	 	$object_ids = explode(',', $this->_me->input->get('object'));
+
+	 	if(!is_array($object_ids))
+	 		$object_ids = array($object_ids);
+
+	 	$info_html = array();
+	 	foreach($object_ids as $object_id){
+			$object_info_html = bimsync_project_product($object_id, 'html');
+			
+			// remove some html
+			$info_html[] = preg_replace('/<\!DOCTYPE html><title>.*<\/title>/i', '', $object_info_html);
+		}
 
 		ob_clean();
-		echo $info_html;
+		echo implode('<hr />', $info_html);
 		ob_flush();
 		exit;
 	 }

@@ -83,8 +83,23 @@
 		}
 
 		// listen for the right mouse button and load the info window for the object under the curser
-		model_viewer.bind('viewer.contextmenu', function(event, selected){
+/*		model_viewer.bind('viewer.contextmenu', function(event, selected){
 			if(selected != undefined){
+				var current_url = window.location.href;
+				current_url = update_url_param(current_url, 'action', 'object_info');
+				current_url = update_url_param(current_url, 'object', selected);
+				
+			    // load info
+			    $('#viewer-info-box').html('<h4>Loading</h4>');
+			    $('#viewer-info-box').load(current_url);
+			    $('#viewer-info-box').show();
+			}else{
+				$('#viewer-info-box').hide();
+			}
+		});*/
+
+		model_viewer.bind('viewer.select', function(event, selected){
+			if(selected != undefined && selected.length >0){
 				var current_url = window.location.href;
 				current_url = update_url_param(current_url, 'action', 'object_info');
 				current_url = update_url_param(current_url, 'object', selected);
