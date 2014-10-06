@@ -47,6 +47,7 @@ class Portal extends Bim_Controller {
 		 $p['role'] = 2; // user
 		 $p['password'] = md5($p['password']);
 		 $p['joiningdate'] = time();
+		 $p['uname'] = '';
 		 $this->db->insert('users', $p);
 		 $user_id = $this->db->insert_id();
 		 /**
@@ -84,11 +85,11 @@ class Portal extends Bim_Controller {
 	 public function do_login(){
 	 	$p = $this->input->post();
 		$this->db->where(array(
-			'binary(uname)' => $p['uname'],
+			'binary(email)' => $p['email'],
 			'binary(password)' => md5($p['password'])
 		));
 		
-		$this->db->select('id,status,role,name,uname,email,phone,profilepic');
+		$this->db->select('id,status,role,name,email,phone,profilepic');
 		$q = $this->db->get('users');
 		$data = array();
 		$data['response'] = array();

@@ -13,7 +13,7 @@
                     <h1 style="visibility:hidden;" class="reg_success">Registration successfull.Please check your eamil</h1>
                     <div class="form_back">
                     	<div class="details">
-                            	<input type="text" class="text_box1" placeholder="USER NAME" data-validation-engine="validate[required,ajax[checkemail]]" name="uname" id="uname"/>
+                            	<input type="text" class="text_box1" placeholder="EMAIL ADDRESS" data-validation-engine="validate[required,custom[email]]" name="email" id="email"/>
                                 <input type="password" class="text_box2" placeholder="PASSWORD" name="password" id="password" data-validation-engine="validate[required]"/>           
                                 <input type="password" class="text_box2" placeholder="CONFIRM PASSWORD" id="cpassword" data-validation-engine="validate[required,equals[password]]"/>           
                                 <input type="text" class="text_box2" placeholder="NAME" data-validation-engine="validate[required]" name="name" id="name" />
@@ -32,8 +32,8 @@
                                    <option>DISCIPLINE 7</option>
                                    <option>DISCIPLINE 8</option>-->
                               	</select>
-                                <input type="text" class="text_box4" placeholder="EMAIL ADDRESS" data-validation-engine="validate[required,custom[email]]" name="email" id="email"/>
-                                <input type="text" class="text_box5" placeholder="MOBILE NO" data-validation-engine="validate[required,custom[phone]]" name="phone" id="phone"/>
+                                
+                                <input type="text" class="text_box4" placeholder="MOBILE NO" data-validation-engine="validate[required,custom[phone]]" name="phone" id="phone"/>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -61,7 +61,7 @@
                     <h1 style="visibility:hidden;" class="log_error">Registration successfull.Please check your eamil</h1>
                     <div class="form_back">
                     	<div class="details">
-                            	<input type="text" class="text_box1" placeholder="USER NAME" name="uname" id="uname" data-validation-engine="validate[required]"/>
+                            	<input type="text" class="text_box1" placeholder="EMAIL ADDRESS" data-validation-engine="validate[required,custom[email]]" name="email" id="email"/>
                                 <input type="password" class="text_box2" placeholder="PASSWORD" name="password" id="password" data-validation-engine="validate[required]"/>                                
                         </div>
                         <div class="clear"></div>
