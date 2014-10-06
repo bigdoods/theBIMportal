@@ -84,7 +84,9 @@ class	Fileupload_app extends Bim_Appmodule{
 			$document_type = $row['name'];
 		 }
 	 ?>
-     <input type="text" name="details" value="" class="text_area_for_upper_ul"placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
+     <input type="text" name="details" value="" class="text_area_for_upper_ul" placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
+     <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yy" />
+
      <ul class="upload_file2 dragdrop">
     	<li>
         	
@@ -105,7 +107,7 @@ class	Fileupload_app extends Bim_Appmodule{
 				$('#file,.dragdrop').html5Uploader({
 						name: 'foo',
 						zoo:'sd',
-						postUrl : "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>",
+						postUrl : "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type ?>",
 						
 						onClientLoad: function(){
 							dom.overlay(1);
@@ -142,7 +144,7 @@ class	Fileupload_app extends Bim_Appmodule{
 							$('.percent-val').remove();
 						},
 						dynamicUrl: function(){
-							return "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val()
+							return "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val() + "&date="+ $('input[name=document_date]').val()
 						}
 						
 					 })
@@ -213,7 +215,12 @@ class	Fileupload_app extends Bim_Appmodule{
 					 if(!$details){
 					 	$details = '';
 					 }
-					 $sql = sprintf( " INSERT INTO uploaddoc (`name`, `path`, `userid`, `projectid`, `doctypeid`, `status`, `uploadtime`, `details`) VALUES ('%s', '%s', %s, %s, %s, %s, %s, '%s')" , $_FILES['foo']['name'], $_file_new_name, getCurrentuserId(), getActiveProject(), abs($type), 1,  time(), $details );
+					$doc_date = preg_replace('/[^0-9\-\/\\ ]/i', '', $this->_me->input->get('date'));
+					$doc_date = strtotime(preg_replace('@(\d{2})/(\d{2})/(\d{2,4})@i', '$2/$1/$2', $doc_date));
+					if($doc_date === false)
+						$doc_date = time();
+
+					$sql = sprintf("INSERT INTO uploaddoc (`name`, `path`, `userid`, `projectid`, `doctypeid`, `status`, `uploadtime`, `details`, `document_date`) VALUES ('%s', '%s', %s, %s, %s, %s, %s, '%s', '%s')" , $_FILES['foo']['name'], $_file_new_name, getCurrentuserId(), getActiveProject(), abs($type), 1,  time(), $details, date('Y-m-d', $doc_date));
 					$this->_me->db->query( $sql );
 					if(  $file_id= $this->_me->db->insert_id() ){
 						$this->sendNotificationToadmin( $file_id, $res );
