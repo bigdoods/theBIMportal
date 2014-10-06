@@ -179,8 +179,8 @@ class Portal extends Bim_Controller {
 					$config['source_image'] = $upload_dir. $new_name;
 					$config['create_thumb'] = TRUE;
 					$config['maintain_ratio'] = TRUE;
-					$config['width'] = 175;
-					$config['height'] = 131;					
+					$config['width'] = 112;
+					$config['height'] = 112;					
 					$this->Users->updateProfilePic(getCurrentuserId().'_'.time().'~!~'.$name.'~!~_thumb.'.$extension);
 					$this->load->library('image_lib', $config);
 				

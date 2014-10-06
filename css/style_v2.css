@@ -211,7 +211,7 @@ body {
 
 .back_container .main .apps_content_back {
     width: 100%;
-    height: 82%;
+    height: 100%;
     margin: 0;
     padding: 0;
     float: left;
@@ -234,6 +234,7 @@ body {
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li {
+    position: relative;
     width: 98%;
     height: auto;
     margin: 0 0 20px 0;
@@ -244,7 +245,12 @@ body {
     background: #f2f5f8;
 }
 
+.back_container .main .apps_content_back .content_main ul.profile li:last-child {
+    margin: 0 0 190px 0;
+}
+
 .back_container .main .apps_content_back .content_main ul.profile li .image {
+    display: table;
     width: 112px;
     height: 112px;
     margin: 0;
@@ -253,7 +259,14 @@ body {
     text-align: center;
     background: #e5e8ec;
     border: 1px solid #d9dcdf;
-    border-radius: 6px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .image div {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .image img {
@@ -262,14 +275,61 @@ body {
     height: auto;
     max-width: 112px;
     margin: 0 auto;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .left_con_del {
-    width: 80%;
+    width: 60%;
     height: auto;
     margin: 0 0 0 24px;
     padding: 0;
     float: left;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .left_con_del h2 {
+    margin: 12px 0 0 0;
+    padding: 0;
+    float: left;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    color: #383737;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .left_con_del p {
+    margin: 4px 0 8px 0;
+    padding: 0;
+    float: none;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #666;
+    font-size: 14px;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li span {
+    display: block;
+    margin: 30px 0 0 0;
+    padding: 0;
+    float: none;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #b4bbc2;
+    font-size: 14px;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .actions {
+    position: absolute;
+    right: 1%;
+    top: 60px;
+}
+
+.back_container .main .apps_content_back .content_main ul.profile li .actions a {
+    float: left;
+    padding: 0 15px;
+    margin-left: 10px;
 }
 
 .mCustomScrollBox>.mCSB_scrollTools {
