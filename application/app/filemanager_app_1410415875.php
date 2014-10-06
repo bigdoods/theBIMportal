@@ -128,6 +128,7 @@ class filemanager_app extends Bim_Appmodule{
                                			<tr>
                                    		<td>File Name</td>
                                         <td>File Extension</td>
+                                        <td>Group</td>
                                         <td>Type</td>
                                         <td>Preview</td>
                                         <td>Size</td>
@@ -175,6 +176,7 @@ class filemanager_app extends Bim_Appmodule{
 									?><tr>
                                    		<td><?php echo pathinfo($file['name'], PATHINFO_FILENAME)?></td>
                                         <td><?php echo $file_extension ?></td>
+                                        <td><?php echo $file['parent_doctypename']?></td>
                                         <td><?php echo $file['doctypename']?></td>
                                         <td><p><img src="<?php echo base_url($file['path'])?>" alt="No preview" width="100" height="100" onError="javascript:$(this).closest('p').html('No preview')"></p></td>
                                         <td><?php echo $file_size;?></td>
@@ -258,55 +260,73 @@ class filemanager_app extends Bim_Appmodule{
 	 
 	 public function adminInit(){?>
     	<div class="content_main">
-                            	<ul class="request_file">
-                                	<li>
-                            			<div class="portion">
-                                        	<h2>File Upload</h2>
-                                            <div class="clear"></div>
-                                            <p>please enter details below :</p>
-                                            <div class="clear"></div>
-                                           	<form action="#" method="post"validate="validate">
-                                                <input type="text" class="text_file" placeholder="Comments" data-validation-engine="validate[required]" style="resize:none;" name="comment"/>
-                                                <div class="clear"></div>
-                                                <select class="drop" data-validation-engine="validate[required]" name="project">
-                                                	<option value=""> Select your project</option>
-                                                    <?php 
-													// Get all projects
-													$projects  =$this->_me->Projects->getAllProject();
-													if($projects){
-														foreach($projects as $project){
+        	<ul class="request_file">
+            	<li>
+        			<div class="portion">
+                    	<h2>File Upload</h2>
+                        <div class="clear"></div>
+                        <p>please enter details below :</p>
+                        <div class="clear"></div>
+                       	<form action="#" method="post"validate="validate">
+                            <input type="text" class="text_file" placeholder="Comments" data-validation-engine="validate[required]" style="resize:none;" name="comment"/>
+                            <div class="clear"></div>
+                            <select class="drop" data-validation-engine="validate[required]" name="project">
+                            	<option value=""> Select your project</option>
+                                <?php 
+								// Get all projects
+								$projects  =$this->_me->Projects->getAllProject();
+								if($projects){
+									foreach($projects as $project){
 
-															echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
-														}
-													}
-													?>
-                                                </select>
-                                                <div class="clear"></div>
-                                                <?php
-                                                    	$doc_details = $this->_me->Projects->getDoctypeDetails(  );
-														
-													?>
-                                                <select class="drop" data-validation-engine="validate[required]"  name="documetntype">
-                                                	<option value=""> Select your file type</option>
-                                                    <?php
-                                                    	$doc_details = $this->_me->Projects->getDoctypeDetails( $type );
-														if($doc_details){
-															foreach($doc_details as $doc){
-																echo '<option value="'.$doc['id'].'">'.$doc['name'].'</option>';
-															}
-														}
-													?>
-                                                </select>
-                                                <div class="clear"></div>
-                                                <input type="file" style="color:#fff; margin:10px 0 0 0;" data-validation-engine="validate[required]" id="file"/>
-                                                <div class="clear"></div>
-                                                <!--<input type="submit" class="submit" value="submit" />-->
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
-                                        
-                            </div>
+										echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
+									}
+								}
+								?>
+                            </select>
+                            <div class="clear"></div>
+                            <?php
+                                	$doc_details = $this->_me->Projects->getDoctypeDetails(  );
+									
+								?>
+                            <select class="drop" data-validation-engine="validate[required]"  name="documetntype">
+                            	<option value=""> Select your file type</option>
+                                <?php
+
+                                	// structure all doctypes by their parent_id
+                                	$document_type_heirarchy = array();
+                                	foreach($doc_details as $doc_detail){
+                                		if(! isset($document_type_heirarchy[$doc_detail['parent_id']]))
+                                			$document_type_heirarchy[$doc_detail['parent_id']] = array();
+
+                                		$document_type_heirarchy[$doc_detail['parent_id']][] = $doc_detail;
+                                	}
+
+                                	// loop through only two levels of structure
+                                	// this can be made recursive in future to handle many levels
+									foreach($document_type_heirarchy[0] as $doc){
+										if(isset($document_type_heirarchy[$doc['id']])){
+											echo '<optgroup label="'. $doc['name'] .'">';
+											foreach($document_type_heirarchy[$doc['id']] as $child_type){
+												echo '<option value="'.$child_type['id'].'">'.$child_type['name'].'</option>';
+											}
+
+											echo '</optgroup>';
+										}else{
+											echo '<option value="'.$doc['id'].'">'.$doc['name'].'</option>';
+										}
+									}
+								?>
+                            </select>
+                            <div class="clear"></div>
+                            <input type="file" style="color:#fff; margin:10px 0 0 0;" data-validation-engine="validate[required]" id="file"/>
+                            <div class="clear"></div>
+                            <!--<input type="submit" class="submit" value="submit" />-->
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
      	<script type="text/javascript">
 			var binded = false;
         	$(function(){

@@ -27,18 +27,43 @@ class	Fileupload_app extends Bim_Appmodule{
 	 */
 	 
 	 public function init(){
-		$r = $this->_me->db->query("SELECT * FROM doctype where is_active=1 order by `order` ASC");
+		$r = $this->_me->db->query("SELECT * FROM doctype WHERE is_active=1 AND parent_id=0 ORDER BY `order` ASC");
 		echo '<ul class="upload_file">';
 		 if($r->num_rows())	{ 
 		 	foreach($r->result_array() as $row):
 			?>
-			 <li>
-                                    	<a href="<?php echo $this->_base_uri.'?f=upload&type='.$row['id']?>">
-                                            <img src="<?php echo base_url('images/file.png')?>" alt="" />
-                                            <div class="clear"></div>
-                                            <h2><?php echo $row['name'];?></h2>
-                                        </a>
-                                    </li>
+			<li>
+            	<a href="<?php echo $this->_base_uri.'?f=file_type&type='.$row['id']?>">
+                    <img src="<?php echo base_url('images/file.png')?>" alt="" />
+                    <div class="clear"></div>
+                    <h2><?php echo $row['name'];?></h2>
+                </a>
+            </li>
+			<?php
+			endforeach;
+		 }
+	 ?>
+    
+	 
+	 <?php
+	 }
+
+	 public function file_type(){
+	 	$type_id = $this->_me->input->get('type');
+	 	$parent = $this->_me->db->query('SELECT * FROM doctype WHERE is_active=1 AND id='. intval($type_id) .' LIMIT 1');
+		$r = $this->_me->db->query('SELECT * FROM doctype WHERE is_active=1 AND parent_id='. intval($type_id) .' ORDER BY `order` ASC');
+
+		echo '<a href="'. $this->_base_uri .'">Back</a><ul class="upload_file">';
+		 if($r->num_rows())	{ 
+		 	foreach($r->result_array() as $row):
+			?>
+			<li>
+            	<a href="<?php echo $this->_base_uri.'?f=upload&type='. $type_id .'&group='. $row['id'] ?>">
+                    <img src="<?php echo base_url('images/file.png')?>" alt="" />
+                    <div class="clear"></div>
+                    <h2><?php echo $row['name'];?></h2>
+                </a>
+            </li>
 			<?php
 			endforeach;
 		 }
@@ -59,18 +84,20 @@ class	Fileupload_app extends Bim_Appmodule{
 			$document_type = $row['name'];
 		 }
 	 ?>
-     <input type="text" name="details" value="" class="text_area_for_upper_ul"placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
+     <input type="text" name="details" value="" class="text_area_for_upper_ul" placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
+     <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yy" />
+
      <ul class="upload_file2 dragdrop">
-                                	<li>
-                                    	
-                                    	<input type="file" style="height:0px;width:0px;" id="file"/>
-                    					<input type="hidden" style="color:#fff;" id="fileval"/>
-                            			<img src="<?php echo base_url('images').'/drag.png'?>" alt="" onclick="$('#file').click();"/>
-                                        <div class="clear"></div>
-                                        <h2>drag and drop</h2>
-                                        <div class="clear"></div>
-                                        <p><?php echo $document_type?></p>
-                                    </li>
+    	<li>
+        	
+        	<input type="file" style="height:0px;width:0px;" id="file"/>
+			<input type="hidden" style="color:#fff;" id="fileval"/>
+			<img src="<?php echo base_url('images').'/drag.png'?>" alt="" onclick="$('#file').click();"/>
+            <div class="clear"></div>
+            <h2>drag and drop</h2>
+            <div class="clear"></div>
+            <p><?php echo $document_type?></p>
+        </li>
     </ul>
      	<script type="text/javascript">
 		var obj = {url:"<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val()}
@@ -80,7 +107,7 @@ class	Fileupload_app extends Bim_Appmodule{
 				$('#file,.dragdrop').html5Uploader({
 						name: 'foo',
 						zoo:'sd',
-						postUrl : "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>",
+						postUrl : "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type ?>",
 						
 						onClientLoad: function(){
 							dom.overlay(1);
@@ -117,7 +144,7 @@ class	Fileupload_app extends Bim_Appmodule{
 							$('.percent-val').remove();
 						},
 						dynamicUrl: function(){
-							return "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val()
+							return "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val() + "&date="+ $('input[name=document_date]').val()
 						}
 						
 					 })
@@ -188,7 +215,12 @@ class	Fileupload_app extends Bim_Appmodule{
 					 if(!$details){
 					 	$details = '';
 					 }
-					 $sql = sprintf( " INSERT INTO uploaddoc (`name`, `path`, `userid`, `projectid`, `doctypeid`, `status`, `uploadtime`, `details`) VALUES ('%s', '%s', %s, %s, %s, %s, %s, '%s')" , $_FILES['foo']['name'], $_file_new_name, getCurrentuserId(), getActiveProject(), abs($type), 1,  time(), $details );
+					$doc_date = preg_replace('/[^0-9\-\/\\ ]/i', '', $this->_me->input->get('date'));
+					$doc_date = strtotime(preg_replace('@(\d{2})/(\d{2})/(\d{2,4})@i', '$2/$1/$2', $doc_date));
+					if($doc_date === false)
+						$doc_date = time();
+
+					$sql = sprintf("INSERT INTO uploaddoc (`name`, `path`, `userid`, `projectid`, `doctypeid`, `status`, `uploadtime`, `details`, `document_date`) VALUES ('%s', '%s', %s, %s, %s, %s, %s, '%s', '%s')" , $_FILES['foo']['name'], $_file_new_name, getCurrentuserId(), getActiveProject(), abs($type), 1,  time(), $details, date('Y-m-d', $doc_date));
 					$this->_me->db->query( $sql );
 					if(  $file_id= $this->_me->db->insert_id() ){
 						$this->sendNotificationToadmin( $file_id, $res );
