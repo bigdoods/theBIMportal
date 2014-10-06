@@ -8,12 +8,13 @@ class Docs extends Ci_Model {
 		
 		$data = array();
 		$this->db->where('b.id = a.userid');	
-		$this->db->where('a.doctypeid = d.id');	
+		$this->db->where('a.doctypeid = d.id');
+		$this->db->where('d.parent_id =0 OR d.parent_id = e.id');
 		$this->db->where('a.projectid = c.id');
 		$this->db->group_by('a.projectid, a.id'); 				
 		$this->db->order_by('a.id DESC');
-		$this->db->from('uploaddoc a, users b, projects c ,doctype d');
-		$this->db->select('a.*,b.name as uname, c.name as pname, d.name as doctypename');
+		$this->db->from('uploaddoc a, users b, projects c , doctype d, doctype e');
+		$this->db->select('a.*,b.name as uname, c.name as pname, d.name as doctypename, e.name as parent_doctypename');
 		if(getCurrentProjectContext())
 			$this->db->where('c.id IN ('. implode(',' , getCurrentProjectContext()) .')');$result = $this->db->get();
 		if($result->num_rows()){			
