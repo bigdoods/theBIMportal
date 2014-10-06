@@ -17,9 +17,28 @@
 	/**
 	 * The entry method
 	 */
-	function  init(){
-		$r = $this->_me->db->query("SELECT * FROM doctype where is_active=1 order by `order` ASC");
+	function init(){
+		$r = $this->_me->db->query("SELECT * FROM doctype where is_active=1 AND parent_id=0 ORDER BY `order` ASC");
 		echo '<ul class="upload_file">';
+		 if($r->num_rows())	{ 
+		 	foreach($r->result_array() as $row):
+			?>
+			 <li>
+                                    	<a href="<?php echo $this->_base_uri.'?f=pickType&type='.$row['id']?>">
+                                            <img src="<?php echo base_url('images/file.png')?>" alt="" />
+                                            <div class="clear"></div>
+                                            <h2><?php echo $row['name'];?></h2>
+                                        </a>
+                                    </li>
+			<?php
+			endforeach;
+		 }
+	 }
+
+	 function pickType(){
+	 	$group_id = intval($this->_me->input->get('type'));
+		$r = $this->_me->db->query("SELECT * FROM doctype where is_active=1 AND parent_id=". $group_id ." ORDER BY `order` ASC");
+		echo '<a href="'. $this->_base_uri .'">Back</a><ul class="upload_file">';
 		 if($r->num_rows())	{ 
 		 	foreach($r->result_array() as $row):
 			?>
@@ -33,11 +52,11 @@
 			<?php
 			endforeach;
 		 }
-	 ?>
-    
-	 
-	 <?php
+
 	 }
+
+
+
 	 /**
 	  Success function to didplay a message
 	  */
