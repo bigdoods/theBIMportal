@@ -105,7 +105,11 @@ class Timeline_App extends Bim_Appmodule{
 					case 3:
 						$case_html = $this->caseHtml( $row['case_id']);
 						$case_paramters_arr = json_decode($row['related_id'], true);						
-						$file_details = $this->_me->Docs->getDocDetails($case_paramters_arr['file_id']);						
+						$file_details = $this->_me->Docs->getDocDetails($case_paramters_arr['file_id']);
+						
+						if(count($file_details) ==0)
+							continue;
+
 						$user_details = $this->_me->Users->getNewUsers( $file_details[0]['userid'] );						
 						$project_details = $this->_me->Projects->getAllProject( $file_details[0]['projectid'] );
 						//v_dump($user_details);
