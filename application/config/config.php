@@ -16,7 +16,9 @@
 */
 //echo '<pre>';
 //var_dump($_SERVER);exit;
-if($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1' || $_SERVER['SERVER_NAME'] == '192.168.10.103'){
+if($_SERVER['SERVER_NAME'] == 'bimscript.localhost'){
+	$config['base_url']	= 'http://bimscript.localhost/';
+}else if($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1' || $_SERVER['SERVER_NAME'] == '192.168.10.103'){
 	$config['base_url']	= 'http://192.168.10.103/bim/';
 }
 else{

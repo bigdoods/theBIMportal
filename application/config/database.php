@@ -47,7 +47,12 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-if($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '192.168.10.103' || $_SERVER['SERVER_NAME'] == '127.0.0.1'){
+if($_SERVER['SERVER_NAME'] == 'bimscript.localhost'){
+	$db['default']['hostname'] = 'localhost';
+	$db['default']['username'] = 'username';
+	$db['default']['password'] = 'password';
+	$db['default']['database'] = 'bimscript';
+}else if($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '192.168.10.103' || $_SERVER['SERVER_NAME'] == '127.0.0.1'){
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = '';

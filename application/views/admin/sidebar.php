@@ -16,7 +16,5 @@
       <li class="<?php echo ($tabid == 9) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/invoke/?a=filemanager_app&f=adminInit')?>"><a href="#tab9">File Upload<span class="notification displaynone">12</span></a></li>
       <li class="<?php echo ($tabid == 10) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/messages/10')?>"><a href="#tab10">Messages <span class="notification displaynone">12</span></a></li>
       <li class="<?php echo ($tabid == 11) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/delete/11')?>"><a href="#tab11">Delete<span class="notification displaynone">12</span></a></li>
-      
-      <li class="<?php echo ($tabid == 13) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/test/13')?>"><a href="#tab13">Test<span class="notification displaynone">12</span></a></li>
     
 </ul>

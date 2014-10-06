@@ -797,7 +797,7 @@ chatApp.prototype.save = function(){
   /**
    * Adding event source
    */
-   var source = new EventSource(app_url+'&f=eventsource');
+/*   var source = new EventSource(app_url+'&f=eventsource');
   
     source.addEventListener('message', function(e){
 		
@@ -838,11 +838,11 @@ chatApp.prototype.save = function(){
 							}
 							obj.moveScrollerDown();
 						});
-						/**
+*/						/**
 						 * If the hidden array is empty then open the 
 						 * Chat window force fully
 						 */
-
+/*
 						if(obj.status == 0 && chat_app_obj.activeChatBoxObjArr.length < 3){
 							obj.parent_rel_dom.click();
 						}
@@ -852,7 +852,7 @@ chatApp.prototype.save = function(){
 		})
 	}
 
-   }, false);
+   }, false);*/
    
    
    
