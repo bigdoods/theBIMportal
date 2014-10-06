@@ -221,7 +221,7 @@ class Timeline_App extends Bim_Appmodule{
 	  * Get profile picture path
 	  */
 	 private function userprofilePic( $file = ''){
-	 	$file = $file  ? str_replace('~.','~_thumb', $file ) : 'smile_pic.jpg';
+	 	$file = $file  ? str_replace('~.','~_thumb', $file ) : 'default_profile_pic.png';
 		$file = base_url('upload/profilepic/'.$file);
 		return $file;
 	 }
