@@ -416,19 +416,19 @@ chatApp.prototype.save = function(){
   * Save status
   */
  chatBox.prototype.save = function(e){
-	 //return;
-	 var obj = null;
-	if(this instanceof chatBox) {
-		obj = this;
-	}else{
-		obj = e.data;
-	}
-	
-	sessionStorage.setItem(obj.ss_status, obj.status);
-	sessionStorage.setItem(obj.ss_content, obj.dom.find('.ch_content_whole').html());
-	sessionStorage.setItem(obj.ss_last_loaded, obj.last_loaded);
-	sessionStorage.setItem(obj.ss_no_more_message, obj.no_more_message);
-	
+	try{
+		var obj = null;
+		if(this instanceof chatBox){
+			obj = this;
+		}else{
+			obj = e.data;
+		}
+
+		sessionStorage.setItem(obj.ss_status, obj.status);
+		sessionStorage.setItem(obj.ss_content, obj.dom.find('.ch_content_whole').html());
+		sessionStorage.setItem(obj.ss_last_loaded, obj.last_loaded);
+		sessionStorage.setItem(obj.ss_no_more_message, obj.no_more_message);
+	}catch(e){}	
 	//;
 	//;
  }
@@ -842,7 +842,7 @@ chatApp.prototype.save = function(){
 						 * If the hidden array is empty then open the 
 						 * Chat window force fully
 						 */
-						
+
 						if(obj.status == 0 && chat_app_obj.activeChatBoxObjArr.length < 3){
 							obj.parent_rel_dom.click();
 						}
