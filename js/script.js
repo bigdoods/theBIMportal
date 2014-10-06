@@ -37,7 +37,7 @@
 			},
 			success:function(r, status, xhr, frm){
 				var response_arr = r.split('~!~');
-				$('.reg_success').html(response_arr[0]).css({'visibility': 'visible'});
+				$('.reg_success').html(response_arr[0]).css({'display': 'block'});
 				if(response_arr[1] == 1){
 					frm.resetForm();
 				}

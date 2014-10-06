@@ -51,7 +51,7 @@ class Timeline_App extends Bim_Appmodule{
 				 */
 				$tags = array();
 				$tags['notif_id'] = $row['id'];
-				$tags['datetime'] = date('d-m-Y H:i', $row['date_time']);
+                $tags['datetime'] = date('jS F Y - h:ia', $row['date_time']);
 				$tags['pid'] = $row['project_id'];
 				switch( $row['case_id'] ){
 					/**
