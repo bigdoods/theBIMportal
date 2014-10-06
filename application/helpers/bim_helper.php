@@ -238,7 +238,7 @@ function unsetActiveProject(){
    * Get the option for decisipline
    */
   function getDicisiplineOption($option = 'html', $selected=''){
-		$array = array('enginner', 'planner', 'designer', 'architect', 'other') ;
+		$array = array('engineer', 'planner', 'designer', 'architect', 'other') ;
 		if($option !== 'html')	return $array;
 		
 		$html = '';

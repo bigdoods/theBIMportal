@@ -65,7 +65,7 @@ class Account_app extends Bim_Appmodule{
 		$user_details = $this->_me->Users->getNewUsers($this->_userid);
 		$u_detail = $user_details[0];
 		if($u_detail['profilepic'] == '')	{
-			$u_detail['profilepic'] = 'default_profile_pic.png';
+			$u_detail['profilepic'] = 'smile_pic.jpg';
 		}
 		//v_dump($u_detail);
 		?>

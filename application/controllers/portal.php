@@ -179,8 +179,8 @@ class Portal extends Bim_Controller {
 					$config['source_image'] = $upload_dir. $new_name;
 					$config['create_thumb'] = TRUE;
 					$config['maintain_ratio'] = TRUE;
-					$config['width'] = 112;
-					$config['height'] = 112;					
+					$config['width'] = 175;
+					$config['height'] = 131;					
 					$this->Users->updateProfilePic(getCurrentuserId().'_'.time().'~!~'.$name.'~!~_thumb.'.$extension);
 					$this->load->library('image_lib', $config);
 				
@@ -230,7 +230,11 @@ class Portal extends Bim_Controller {
 		 * Get project title
 		 */
 		$this->load->model('Projects');
-		$data['project_details'] = $this->Projects->getAllProject( getActiveProject() ); 
+		$data['project_details'] = $this->Projects->getAllProject( getActiveProject() );
+		if(getActiveProject() == -1){
+			redirect($_SESSION['userdata']['dsahboard']);
+			exit;
+		}
 		$data['app_id'] = $app_id;
 		$all_apps = $this->Apps->getAllApps(1);
 		$data['app_details'] = $all_apps;

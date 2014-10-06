@@ -19,6 +19,10 @@
 			$('.project_create').fadeIn('slow');
 			$.fn.bindValidation();
 	  });
+
+	  $(document).on('change', '#selected-project-id', function(){
+
+	  });
 	  
 	  /**
 	   * Sbmit project creaztion  through ajax
@@ -107,6 +111,61 @@
 			
 		return false;
 		});
+
+
+	   /**
+	    * Update team details
+		*/
+		$(document).on('submit', 'form[name=team_edit]', function(){
+			var frm = $(this);
+			$.ajax({
+				url : frm.attr('action'),
+				type: frm.attr('method'),
+				data: frm.serialize(),
+				beforeSend: function(){
+					frm.overlay(1);
+					frm.overlay("Please wait");
+				},
+				success: function(){
+					frm.overlay('Successfully updated');
+					forceLoad = true;
+					//$('li.active').click();
+				},	
+				error: function(){
+					frm.overlay("Internal server error, please try again later");					
+				},
+				complete: function(){
+					frm.overlay(0,-1);
+				}
+			})
+			
+		return false;
+		});
+
+		$(document).on('change', '#selected-project-id', function(){
+			var dom = $('.right_details_tab');
+
+			$.ajax({
+				url: base_path + 'admin/getTeamDetails/12?project_id=' + $(this).val(),
+				beforeSend:function(){
+					dom.overlay(1);
+					dom.overlay("Please wait");
+				},
+				success:function(r, status, jqXHR){
+					dom.overlay("prcessing complete");
+					dom.html(r);
+				},
+				error:function( jqXHR,  textStatus, errorThrown){
+					dom.overlay("Some error occured, please try after sometime");
+				},
+				complete:function(jqXHR, textStatus){
+					dom.overlay(0,-1);
+					$.fn.bindValidation();
+				}
+			});
+
+		});
+
 	  /**
 	   * user edit
 	   */
@@ -250,7 +309,9 @@
 		 * Adjus the admin panel li height
 		 */
 		 $('.right_details_tab').bind('DOMNodeInserted DOMNodeRemoved', function(event) {
-			if (event.type == 'DOMNodeInserted') {
+            
+			setTimeout(function(){
+				if (event.type == 'DOMNodeInserted') {
 				$('ul.details').each(function(){
 					var max_height = 0;
 					$('li', $(this)).each(function(){
@@ -260,9 +321,9 @@
 						$(this).css('height', max_height+'px');
 					});
 				})
-			} else {
-				
-			}
+			 }
+			},3000);
+			 
 		 });
 		 /**
 		  * Message history 
@@ -406,7 +467,116 @@
 	  	return false;
 	  });
 	 
+	 
+	 // + link for issue edit
+	 $(document).on('click','.issue_edit_link', function(){
+		var t = $(this);
+		var dom = $(this);
+		var issue_id = t.attr('id').replace('issue_edit-','');
+		$.ajax({
+			url : base_path+'admin/invoke?a=issueviewer_app&f=displayEditForm&id='+issue_id,
+			beforeSend:function(){
+				dom.overlay(1);
+				dom.overlay("Please wait");
+			},
+			success:function(r){
+				$('.tab_content_detila_back').html(r);
+			},
+			error:function(){},
+			complete:function(){}
+		});
+	 });
+	 
+	  // + submit the create issue form
+					 $(document).on('submit', '#create_new_issue', function(){
+						 var t = $(this);
+						 var dom = $(this);
+						 $.ajax({
+						 	url : base_path+'admin/invoke?a=issueviewer_app&f=createIssue',
+							data : t.serialize(),
+							type: 'post',
+							beforeSend: function(){
+								dom.overlay(1);
+								dom.overlay("Please wait");
+							},
+							success: function(r){
+								if(r==1){
+									$('li.posrel.active').click();
+								}
+							},
+							error: function(){},
+							complete: function(){
+								dom.overlay(0, -1);
+							}
+						 });
+					 	return false;
+					 });
+	// + document update issue
+	$(document).on('submit', '#edit_issue', function(){
+						var t = $(this);
+						 var dom = $(this);
+						 $.ajax({
+						 	url : base_path+'admin/invoke?a=issueviewer_app&f=updateIssue',
+							data : t.serialize(),
+							type: 'post',
+							beforeSend: function(){
+								dom.overlay(1);
+								dom.overlay("Please wait");
+							},
+							success: function(r){
+								if(r==1){
+									$('li.posrel.active').click();
+								}
+							},
+							error: function(){},
+							complete: function(){
+								dom.overlay(0, -1);
+							}
+						 });
+					 	return false;
+	});
+	 
 	});
 	
 
 })(jQuery)
+// + issue upload
+function bindHtmlUploaderIssue(){
+		$('#file_issue').html5Uploader({
+						name: 'foo',
+						
+						postUrl : base_path+'admin/invoke?a=issueviewer_app&f=upload&old_file=',
+						
+						onClientLoad: function(){
+							$('.universal_form_back').overlay(1);
+							$('.universal_form_back').overlay("Please wait while we uploading");
+						},
+						onClientError: function(){
+									$('.universal_form_back').overlay("Browser fails to read the file");
+									$('.universal_form_back').overlay(0,-1);
+								},
+								onServerError:function(){
+									$('.universal_form_back').overlay("File upload fails,please try again");
+									$('.universal_form_back').overlay(0,-1);
+								},
+						onServerProgress :function(e){},
+						onSuccess:function(e, file, response){														
+							$('.universal_form_back').overlay("Upload complete");
+							var res = JSON.parse(response);
+							if(res.error.length == 0){
+								var res_details = res.data.split('~!~');
+								$('#path').val(res_details[0]);
+								$('#original_filename').val(res_details[1]);
+							}else{
+								$('.universal_form_back').overlay(res.error[0]);
+								 $('#file_issue').val('');
+							}
+							$('.universal_form_back').overlay(0, -1);
+						},
+						dynamicUrl: function(){
+							return base_path+'admin/invoke?a=issueviewer_app&f=upload&old_file='+$('[name=path]').val();
+						}
+						
+					 }).addClass('alreadybinded');
+	 }
+	 

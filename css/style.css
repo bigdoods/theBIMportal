@@ -39,6 +39,11 @@ img{border:none;}
 
 .back_container .main .left .portion .details .app_back:hover .sub{box-shadow: inset #697176 1px 0 5px;} 
 
+.back_container .main .left .portion .details .active{ background:#020202 !important; border:#131212 1px solid !important;  }
+
+.back_container .main .left .portion .details .active .sub{box-shadow: inset #80868a 1px 0 5px !important;}
+
+
 
 
 .content{margin:0; width:100%; height:100%; padding:0; overflow:auto;  }
@@ -910,6 +915,97 @@ background: -o-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* 
 background: -ms-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
 background: linear-gradient(to bottom, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */ float:left;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***30.09.10****/
+
+/**issue**/
+.new_apps_back_container{width:100%; height:auto; margin:20px 0 0 0; padding:0; float:left;}
+
+.new_apps_back_container .new_details_apps{width:100%; height:auto; margin:0; padding:0; float:left;}
+
+.new_apps_back_container .new_details_apps li{width:100%; height:auto; margin:0 0 20px 0; padding:0 0 20px 0; float:left; border-bottom:#000 1px solid; list-style:none}
+
+.new_apps_back_container .new_details_apps li .portion{width:90%; height:auto; margin:0 auto; padding:0;}
+
+.new_apps_back_container .new_details_apps li .portion .left_image{width:28%; height:auto; margin:0; padding:0; float:left;}
+
+.new_apps_back_container .new_details_apps li .portion .left_image .image{width:100%; height:auto; display:block;}
+
+.new_apps_back_container .new_details_apps li .portion .right_image{width:70%; height:auto; margin:0; padding:0; float:right; position:relative;}
+
+.new_apps_back_container .new_details_apps li .portion .right_image h2{ font-family:"Open Sans"; color:#000; font-size:20px; text-transform:capitalize; margin:0 0 15px 0; padding:0; float:left; font-weight: normal; width:50%; }
+
+.new_apps_back_container .new_details_apps li .portion .right_image h4{ font-family:"Open Sans"; color:#000; font-size:14px; text-transform:capitalize; margin:0; padding:0; float:left; font-weight: normal; position:absolute; top:0; right:0;  }
+
+
+
+.new_apps_back_container .new_details_apps li .portion .right_image h3{ font-family:"Open Sans"; color:#000; font-size:16px; text-transform:capitalize; margin:0 0 8px 0; padding:0; float:left; font-weight: normal; }
+
+.new_apps_back_container .new_details_apps li .portion .right_image mark{ margin:0 0 0 20px; padding:0; background:#2486dc;}
+.new_apps_back_container .new_details_apps li .portion .right_image mark a{background:#2486dc; text-align:center; margin:0; padding:10px;color:#fff; font-size:16px; border-radius:5px; text-decoration:none }
+/**issue**/
+
+/***30.09.10****/
+
+
+
+/***30.09.10****/
+
+/**project team**/
+
+.project_team_back_container{width:100%; height:auto; margin:20px 0 0 0; padding:0 0 10px 0; float:left; border:#2486dc 1px solid; overflow:hidden;}
+
+.project_team_back_container h5{ width:100%; height:35px; line-height:35px; margin:0; padding:0 0 0 20px; font-family:"Open Sans"; color:#fff; font-size:18px; text-transform:capitalize; float:left; background:#2486dc;}
+
+.project_team_back_container .search_back{float:right; width:24%; margin:0 0 20px 0;}
+
+.project_team_back_container .search_back h6{font-family:"Open Sans"; color:#000; font-size:15px; text-transform:capitalize; margin:6px 0 0 0; padding:0; float:left; font-weight: normal; text-transform:capitalize;}
+
+.project_team_back_container .search_back .text_box5{width:68%; height:30px; margin:0 0 8px 0; padding:0 0 0 10px; float:right; font-family:Roboto; color:#ccc; font-size:14px; border-radius:5px; outline-style:none; border:#2486dc 1px solid;}
+
+.project_team_back_container .main_project{width:92%; height:auto; margin:20px auto 0; padding:0;}
+
+.project_team_back_container .main_project .details_new_project{width:95%; height:auto; margin:0 auto; padding:0; }
+
+.project_team_back_container .main_project .details_new_project li{ width:30%; height:auto; margin:0 10px 40px 0; padding:0; float:left; list-style:none; }
+
+.project_team_back_container .main_project .details_new_project li .left_pro{margin:0 15px 0 0; padding:0; width:25%; float: left;}
+
+.project_team_back_container .main_project .details_new_project li .left_pro .image{width:100%; height:auto; display:block;}
+
+.project_team_back_container .main_project .details_new_project li .right_pro{margin:0; padding:0; width:68%; float: left;}
+
+.project_team_back_container .main_project .details_new_project li .right_pro h2{font-family:"Open Sans"; color:#000; font-size:15px; text-transform:capitalize; margin:0 0 8px 0; padding:0; float:left; font-weight: normal; text-transform:capitalize;}
+
+.project_team_back_container .main_project .details_new_project li .right_pro .text{width:78%; height:30px; margin:0 0 8px 0; padding:0 0 0 10px; float:left; font-family:Roboto; color:#ccc; font-size:14px; border-radius:5px; outline-style:none; border:#000 1px solid;}
+
+.project_team_back_container .main_project .details_new_project li .right_pro .text2{width:82%; height:30px; margin:0 0 8px 0; padding:0 0 0 10px; float:left; font-family:Roboto; color:#ccc; font-size:14px; border-radius:5px; outline-style:none; border:#000 1px solid;}
+
+/***30.09.10****/
+
+/**project team**/
+
+
 
 #file-preview{
 	width:100%;

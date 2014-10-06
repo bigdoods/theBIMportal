@@ -25,6 +25,7 @@ class Admin extends Bim_Controller {
 		parent::__construct();
 		$this->load->model('Users');
 		$this->load->model('Projects');
+		$this->load->model('Team_members');
 		$this->load->model('Apps');
 
 		$this->load->config('bimsync');
@@ -60,6 +61,37 @@ class Admin extends Bim_Controller {
 
 			$this->load->vars($data);
 			$this->load->view('admin/projectlist');
+	}
+
+
+	public function getTeamDetails($tabid){			
+			$data['projectdetails'] = $this->Projects->getAllProject();
+			$data['teamdetails'] = null;
+			$data['project_id'] = intval($this->input->get('project_id'));
+			if($data['project_id'] == 0)
+				$data['project_id'] = $data['projectdetails'][0]['id'];
+
+			$data['teamdetails'] = $this->Team_members->getProjectMembers($data['project_id']);
+			$data['designations'] = $this->Team_members->designations();
+
+			$data['tabid'] = $tabid;
+
+			$this->load->vars($data);
+			$this->load->view('admin/teamlist');
+	}
+
+	public function saveTeam(){
+		$team_data = $this->input->post('team');
+
+		foreach($team_data as $team_member_data){
+			if(!empty($team_member_data['id'])){
+				$this->Team_members->update($team_member_data);
+			}else{
+				$team_member_data['id'] = $this->Team_members->create($team_member_data);
+			}
+
+			$this->Team_members->link_project_and_team_member($this->input->post('project_id'), $team_member_data['id']);
+		}
 	}
 	
 	/**
@@ -211,7 +243,27 @@ class Admin extends Bim_Controller {
 	 * Show the all aps
 	 */
 	public function createApp(){
-		echo $this->Apps->create();
+		$app_id =  $this->Apps->create();
+		if($app_id){
+			$app_details = $this->Apps->getAllApps(1, $app_id);
+			if($app_details){
+				$class_name = $app_details[$app_id]['classname'];
+				if(class_exists($class_name)){
+					$obj = new $class_name();
+					// + install feature exists
+					if(is_callable(array($obj, 'install'))){
+						$error = $obj->install();
+						if(!empty($error)){
+							// + delete the app
+							$this->db->wehere('id', $app_id);
+							$this->db->delete('apps');
+							echo 0;exit;
+						}
+					}
+				}
+			}
+		}
+		echo $app_id;
 		exit;
 	}
 	
@@ -525,5 +577,15 @@ class Admin extends Bim_Controller {
 	   		$this->db->where('projectid IN ('.$pids_str.')');
 			$this->db->delete('uploaddoc');
 	   }
+	   
+	   /**
+	    * A function for test new pages
+		* at admin panel
+		*/
+		public function test( $tabid = 0 ){
+			$data['tabid'] = $tabid;
+			$this->load->vars($data);
+			$this->load->view('admin/test');
+		}	
 	
 }

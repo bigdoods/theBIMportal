@@ -51,7 +51,7 @@ class Timeline_App extends Bim_Appmodule{
 				 */
 				$tags = array();
 				$tags['notif_id'] = $row['id'];
-				$tags['datetime'] = date('jS F Y - h:ia', $row['date_time']);
+				$tags['datetime'] = date('d-m-Y H:i', $row['date_time']);
 				$tags['pid'] = $row['project_id'];
 				switch( $row['case_id'] ){
 					/**
@@ -63,7 +63,13 @@ class Timeline_App extends Bim_Appmodule{
 						$case_html = $this->caseHtml( $row['case_id']);
 						$case_paramters_arr = json_decode($row['related_id'], true);
 						
-						$user_details = $this->_me->Users->getNewUsers( $case_paramters_arr['uid'] );						
+						$user_details = $this->_me->Users->getNewUsers( $case_paramters_arr['uid'] );
+						// + if the user is not any more then also delete this notification
+						if(!$user_details){
+							$this->_db->where('id', $row['id']);
+							$this->_db->delete('notifications');
+							continue;
+						}
 						$project_details = $this->_me->Projects->getAllProject( $case_paramters_arr['p_id'] );
 
 						/**
@@ -147,6 +153,24 @@ class Timeline_App extends Bim_Appmodule{
 						$html.=$case_html;
 						}
 						break;
+					case 5:
+						$case_html = $this->caseHtml( $row['case_id']);
+						$case_paramters_arr = json_decode($row['related_id'], true);
+						$issue_app = new issueviewer_app();
+						$issue_details = $issue_app->getAllIssueDetails($case_paramters_arr['issue_id']);
+						if($issue_details){
+							$issue_details = $issue_details[0];
+							$user_details = $this->_me->Users->getNewUsers( $issue_details['userid'] );
+							$user_details[0]['profilepic'] = $this->userprofilePic($user_details[0]['profilepic']);
+							$case_html = sprintf( $case_html, $user_details[0]['profilepic'], $user_details[0]['uname'], date('H:i',$issue_details['time']),date('d-m-Y',$issue_details['time']), base_url($issue_app->issue_image_thumb.'/'.$issue_details['path']) );
+						
+						/**
+						 get the ticket link
+						 */
+						$tags['ticketlink'] = $this->ticketLink( $row, $case_paramters_arr);
+						$html.=$case_html;
+						}
+						break;
 				}
 				$html = $this->parse($html, $tags);
 			}
@@ -179,6 +203,15 @@ class Timeline_App extends Bim_Appmodule{
 					$id = $row['id'];
 				}
 				break;
+			case 5:
+				$this->_db->where('ticket_for',3);
+				$this->_db->where('itemid', $parameters['issue_id']);
+				$q = $this->_db->get('ticket');
+				if($q->num_rows()){
+					$row = $q->row_array();
+					$id = $row['id'];
+				}
+				break;
 		}
 		$ticket_link = /*$this->_base_uri.*/ base_url('portal/project/7?f=ticketDetails&id='.$id);
 	 	return $ticket_link;
@@ -188,7 +221,7 @@ class Timeline_App extends Bim_Appmodule{
 	  * Get profile picture path
 	  */
 	 private function userprofilePic( $file = ''){
-	 	$file = $file  ? str_replace('~.','~_thumb', $file ) : 'default_profile_pic.png';
+	 	$file = $file  ? str_replace('~.','~_thumb', $file ) : 'smile_pic.jpg';
 		$file = base_url('upload/profilepic/'.$file);
 		return $file;
 	 }

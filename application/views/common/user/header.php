@@ -5,7 +5,7 @@
 <title><?php echo $this->config->item('default_title')?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
 <link href="<?php echo base_url('css/validationengine.css') ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/jquery.qtip.min.css') ?>" rel="stylesheet" type="text/css">
 <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
@@ -14,7 +14,6 @@
 <link href="<?php echo base_url('css/responsive.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/common.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/style_v2.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
-
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery-latest.min.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/Selectyze.jquery.js')?>"></script>
@@ -93,15 +92,15 @@ $(document).ready(function(){
 	});
 	}
 	
-	// $(window).bind('resize', function(e)
-	// {
-	//   if (window.RT) clearTimeout(window.RT);
-	//   window.RT = setTimeout(function()
-	//   {
-	//  $('body').css('visibility', 'hidden');
-	// 	this.location.reload(false);
-	//   }, 200);	
-	// });
+	$(window).bind('resize', function(e)
+	{
+	  if (window.RT) clearTimeout(window.RT);
+	  window.RT = setTimeout(function()
+	  {
+	 $('body').css('visibility', 'hidden');
+		this.location.reload(false);
+	  }, 200);	
+	});
 });
 
 </script>
