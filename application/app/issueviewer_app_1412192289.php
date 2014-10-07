@@ -95,6 +95,14 @@ class issueviewer_app extends Bim_Appmodule{
                 </script>
 				<?php 
 				break;
+				
+				case 3:
+				?>
+				<script type="text/javascript">
+				addLightBoxOnDynamicElement();
+				</script>
+				<?php
+				break;
 			}
 		}
 		
@@ -148,7 +156,7 @@ class issueviewer_app extends Bim_Appmodule{
                                     <div class="tab_content_detila_back list">
                                             	<ul class="head">
                                                 	<li class="big"><p>Project</p></li>
-                                                    <li class="big"><p>  Date  </p></li>
+                                                    <li class="big"><p>Date</p></li>
                                                     <li class="big" style="width:24%"><p>Image</p></li>
                                                     <li class="big"><p>Discussion</p></li>
                                                     <li class="small" style="width:21%"><p>Details</p></li>
@@ -159,7 +167,7 @@ class issueviewer_app extends Bim_Appmodule{
 													<ul class="details" rel="issue-<?php echo $issue['id']?>">
                                                 	<li class="big"><p><?php echo ucfirst($issue['pname'])?></p></li>
                                                     <li class="big"><p><?php echo date('H:i',$issue['time']) .' on '. date('d-m-Y', $issue['time'])?></p></li>
-                                                    <li class="big"  style="width:24%"><p><IMG src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" /></p></li>
+                                                    <li class="big"  style="width:24%"><p><a class="vlightbox1 vlightbox1_new" href="<?php echo base_url($this->issue_image_original.'/'.$issue['path'])?>"><IMG src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" /></a></p></li>
                                                     <li class="big"><p><mark>
 								<a href="<?php echo isset($issue['ticket_id']) ? base_url('admin/viewticket/5?a=issueviewer_app&f=ticketDetails&id='.$issue['ticket_id']) : 'javascript:void(0);'?>" class="for_admin_ajax">view tickets</a>
 							</mark></p></li>
@@ -222,6 +230,7 @@ class issueviewer_app extends Bim_Appmodule{
                                          
 </div>
 		<?php
+		$this->printScript(array(3));
 	}
 	
 	public function init($issie_details = array()){
@@ -234,7 +243,7 @@ class issueviewer_app extends Bim_Appmodule{
 				?>
 				<li>
                 	<div class="portion">
-                    	<div class="left_image"><img src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" class="image" alt="" /></div>
+                    	<div class="left_image"><a class="vlightbox1 vlightbox1_new" href="<?php echo base_url($this->issue_image_original.'/'. $issue['path'])?>"><img src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" class="image" alt="" /></a></div>
                         <div class="right_image">
                         	<h4><?php echo date('H:i', $issue['time']).' on '. date('d-m-Y', $issue['time']);?>
 							<mark>
@@ -256,6 +265,7 @@ class issueviewer_app extends Bim_Appmodule{
             </ul>
         </div>
 		<?php
+		$this->printScript(array(3));
 	}
 	
 	public function getProjectDetails(){
