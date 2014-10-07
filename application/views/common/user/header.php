@@ -107,3 +107,5 @@ $(document).ready(function(){
 </head>
 
 <body draggable="false">
+
+	<?php $this->load->view('common/incompatible-browser.php'); ?>
