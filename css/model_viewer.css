@@ -28,7 +28,19 @@
 	float:left;
 }
 
-
+#component-list{
+	display:none;
+	position:absolute;
+	top:55px;
+	left:0;
+	border-bottom:#dcdcdc 1px solid;
+	border-left:#dcdcdc 1px solid;
+	padding:0px 20px;
+	max-width:25%;
+	table-layout:fixed;
+	max-height:80%;
+	overflow-y:scroll;
+}
 #viewer-info-box{
 	display:none;
 	position:absolute;

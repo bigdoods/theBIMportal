@@ -69,6 +69,31 @@
 		return $response;
 	}
 
+	function bimsync_project_products(){
+		$CI =  &get_instance();
+
+		// fetch project information for the current project
+		$project = $CI->Projects->getAllProject(getActiveProject());
+
+		$api_url = sprintf(
+			'%s/project/products?project_id=%s',
+			$CI->config->item('bimsync_api_url_prefix'),
+			$project[0]['bimsync_id']
+		);
+
+		// responses are always in json so request and decode
+		$response = post_to($api_url, array(
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '. $CI->config->item('bimsync_api_token')
+			),
+			CURLOPT_POSTFIELDS => ''
+		));
+
+		$response = json_decode($response);
+
+		return $response;
+	}
+
 	function bimsync_project_models(){
 		$CI =  &get_instance();
 
