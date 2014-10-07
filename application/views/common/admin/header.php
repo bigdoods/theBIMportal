@@ -42,3 +42,4 @@
 <script type="text/javascript" src="<?php echo base_url('js/admin-script.js?v=').filemtime('js/admin-script.js')?>"></script>
 </head>
 <body>
+	<?php $this->load->view('common/incompatible-browser.php'); ?>
