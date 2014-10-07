@@ -87,7 +87,7 @@ body {
     text-align: center;
     text-transform: none;
     text-shadow: none;
-    margin: 0;
+    margin: 0 0 30px 0;
     padding: 0;
 }
 
@@ -419,6 +419,8 @@ body {
     float: left;
     text-align: center;
     background: #e5e8ec;
+    background-repeat: no-repeat;
+    background-size: cover;
     border: 1px solid #d9dcdf;
     border-radius: 4px;
     -webkit-border-radius: 4px;
