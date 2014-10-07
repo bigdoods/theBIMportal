@@ -86,6 +86,7 @@ class Modelviewer_App extends Bim_Appmodule{
 	 	</div>
 
 	 	<div id="viewer-info-box"></div>
+	 	<div id="component-list"></div>
 
 	 	<link href="<?php echo base_url('css/model_viewer.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 	 	<script type="text/javascript" src="<?php echo base_url('js/model_viewer.js?v=').filemtime('js/model_viewer.js')?>"></script>
@@ -115,5 +116,38 @@ class Modelviewer_App extends Bim_Appmodule{
 		ob_flush();
 		exit;
 	 }
+
+	public function component_tree_html($tree, $frag){
+		$html = '<ul>';
+		foreach($frag as $product){
+			$title = $product->name;
+			if(empty($title) || $title == 'Undefined')
+				$title = $product->type;
+			
+			$html .= '<li><a href="#" data-object-id="'. $product->objectId .'">'. $title .'</a>';
+			if(isset($tree[$product->objectId]))
+				$html .= $this->component_tree_html($tree, $tree[$product->objectId]);
+			$html .= '</li>';
+		}
+
+		return $html .'</ul>';
+	}
+	public function component_tree(){
+		$products = bimsync_project_products();
+		$product_hierarchy = array();
+
+		foreach($products as $product){
+			if(! isset($product_hierarchy[$product->parent]))
+				$product_hierarchy[$product->parent] = array();
+			$product_hierarchy[$product->parent][] = $product;
+		}
+
+		$html = $this->component_tree_html($product_hierarchy, $product_hierarchy[0]);
+
+		ob_clean();
+		echo $html;
+		ob_flush();
+		exit;
+	}
 }
 ?>
