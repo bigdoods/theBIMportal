@@ -103,7 +103,9 @@
 				var current_url = window.location.href;
 				current_url = update_url_param(current_url, 'action', 'object_info');
 				current_url = update_url_param(current_url, 'object', selected);
-				
+
+				//$('#component-list a[data-object-id='+ selected.shift() +']');
+			    
 			    // load info
 			    $('#viewer-info-box').html('<h4>Loading</h4>');
 			    $('#viewer-info-box').load(current_url);
@@ -112,4 +114,19 @@
 				$('#viewer-info-box').hide();
 			}
 		});
+
+		var current_url = window.location.href;
+		current_url = update_url_param(current_url, 'action', 'component_tree');
+		
+	    // load info
+	    $('#component-list').html('<h4>Loading</h4>');
+	    $('#component-list').load(current_url);
+	    $('#component-list').show();
+
+	    $('#component-list').on('click', 'a', function(e){
+	    	e.preventDefault();
+	    	console.log($(this).attr('data-object-id'));
+	    	model_viewer.viewer('select', $(this).attr('data-object-id'));
+	    	return false;
+	    });
 	});

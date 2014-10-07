@@ -58,7 +58,7 @@
 
 
 	 /**
-	  Success function to didplay a message
+	  Success function to display a message
 	  */
 	 public function success(){
 	 	$rid= $this->_me->input->get('rid');
@@ -66,7 +66,7 @@
 		$request_details = $this->getRequestDetails();
 		if($request_details){
 			?>
-            <P>Your request has been successfully submitted.And webmaster is also notified.We will contact you soon.</P>
+            <P>Thanks for your request. It is being processed and a support ticket has been opened. We will respond as soon as possible.</P>
             <?php
 		}
 	 }
@@ -82,7 +82,7 @@
                             			<div class="portion">
                                         	<h2>File Requested</h2>
                                             <div class="clear"></div>
-                                            <p>please enter detsils below :</p>
+                                            <p>please enter the details of the request below :</p>
                                             <div class="clear"></div>
                                            	<form action="?f=submitRequest" method="post" validate="validate">
                                             <input type="hidden" name="type" value="<?php echo $type?>">
@@ -172,14 +172,14 @@
 	 
 	 
 	 /**
-	  * Create tixket for file reuested
+	  * Create ticket for file requested
 	  */
 	 private function createTciket(){
 	 	
 		$request_details = $this->getRequestDetails( );
 		if($request_details){
 			/**
-			 * Create aticket as the user has been created a ticket for
+			 * Create a ticket as the user has been created a ticket for
 			 * a file request for a project
 			 */
 			 

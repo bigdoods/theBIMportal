@@ -29,3 +29,7 @@ INSERT INTO `doctype` VALUES (20,'Track','Concept',1,10,2);
 INSERT INTO `doctype` VALUES (21,'Gannt Chart','Gannt Chart',1,1,3);
 INSERT INTO `doctype` VALUES (22,'Quantity Takoff','Quantity Takeoff',1,1,4);
 INSERT INTO `doctype` VALUES (23,'Other','Other',1,1,5);
+
+INSERT INTO `doctype` VALUES (24,'Plan','Plan',1,6,1);
+INSERT INTO `doctype` VALUES (25,'Electrification & Plant, Environmental','Electrification & Plant, Environmental',1,11,2);
+

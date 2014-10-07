@@ -45,8 +45,8 @@ $.extend( $.fn.dataTableExt.oPagination, {
 
 			$(nPaging).addClass('pagination').append(
 				'<ul>'+
-					'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
-					'<li class="next disabled"><a href="#">'+oLang.sNext+' &rarr; </a></li>'+
+					'<li class="prev disabled"><a href="#" class="blue-button">'+oLang.sPrevious+'</a></li>'+
+					'<li class="next disabled"><a href="#" class="blue-button">'+oLang.sNext+'</a></li>'+
 				'</ul>'
 			);
 			var els = $('a', nPaging);
@@ -81,8 +81,8 @@ $.extend( $.fn.dataTableExt.oPagination, {
 
 				// Add the new list items and their event handlers
 				for ( j=iStart ; j<=iEnd ; j++ ) {
-					sClass = (j==oPaging.iPage+1) ? 'class="active"' : '';
-					$('<li '+sClass+'><a href="#">'+j+'</a></li>')
+					sClass = (j==oPaging.iPage+1) ? ' active' : '';
+					$('<li class="page-num'+sClass+'"><a href="#">'+j+'</a></li>')
 						.insertBefore( $('li:last', an[i])[0] )
 						.bind('click', function (e) {
 							e.preventDefault();

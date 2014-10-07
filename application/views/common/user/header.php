@@ -27,6 +27,7 @@
 <script type="text/javascript" src="<?php echo base_url('js/jquery.qtip-1.0.0-rc3.min.js')?>"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 <script src="<?php echo base_url('js/visuallightbox.js')?>" type="text/javascript"></script>
+<script src="<?php echo base_url('js/vlbdata1.js')?>" type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.multiple.select.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/peerJs.js?v=').filemtime('js/peerJs.js')?>"></script>
 
@@ -92,7 +93,7 @@ $(document).ready(function(){
 	});
 	}
 	
-/*	$(window).bind('resize', function(e)
+	$(window).bind('resize', function(e)
 	{
 	  if (window.RT) clearTimeout(window.RT);
 	  window.RT = setTimeout(function()
@@ -100,7 +101,7 @@ $(document).ready(function(){
 	 $('body').css('visibility', 'hidden');
 		this.location.reload(false);
 	  }, 200);	
-	});*/
+	});
 });
 
 </script>

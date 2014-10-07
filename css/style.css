@@ -947,7 +947,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 
 .new_apps_back_container .new_details_apps li .portion{width:90%; height:auto; margin:0 auto; padding:0;}
 
-.new_apps_back_container .new_details_apps li .portion .left_image{width:28%; height:auto; margin:0; padding:0; float:left;}
+.new_apps_back_container .new_details_apps li .portion .left_image{width:137px; height:auto; margin:0; padding:0; float:left;}
 
 .new_apps_back_container .new_details_apps li .portion .left_image .image{width:100%; height:auto; display:block;}
 

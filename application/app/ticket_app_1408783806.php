@@ -120,44 +120,37 @@
                 <li>
                 	<div class="row-fluid">
                         <!-- block -->
-                        <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Tickets details</div>
-                            </div>
-                            <div class="block-content collapse in">
-                          		<div class="span12">
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered display" id="ticket_details">
-                                	<thead>
-                               			<tr>
-                                   		<td>Ticket-id</td>
-                                        <td>Type</td>
-                                        <td>Creaton on</td>
-                                        <td>Created by</td>
-                                        <td>Project</td>
-                                        <td>Comment</td>
-                                        <td>Present status</td>
-                                        <td>View details</td>
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($data as $ticket):
-									?><tr>
-                                   		<td><?php echo $ticket['represent_id']?></td>
-                                        <td><?php echo $ticket['ticket_for']?></td>
-                                        <td><?php echo date('H:i', $ticket['time']);echo ' on '.date('d-m-Y', $ticket['time'])?></td>
-                                        <td><?php echo $ticket['uname']?></td>
-                                        <td><?php echo $ticket['pname']?></td>
-                                        <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $ticket['comment']?></td>
-                                        <td><?php echo $ticket['ticketmessage']?></td>                                       
-                                        <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax">View</a></td></tr>
-                                    <?php
-											endforeach;
-									?>                                   
-                                </tbody>
-                                </table>
-                                </div>  
-                            </div>
-                        </div>
+                  		<div class="span12">
+                        <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
+                        	<thead>
+                       			<tr>
+                           		<td>Ticket ID</td>
+                                <td>Type</td>
+                                <td>Created On</td>
+                                <td>Created By</td>
+                                <td>Project</td>
+                                <td>Comment</td>
+                                <td>Status</td>
+                                <td>Details</td>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($data as $ticket):
+							?><tr>
+                           		<td><?php echo $ticket['represent_id']?></td>
+                                <td><?php echo $ticket['ticket_for']?></td>
+                                <td><?php echo date('H:i', $ticket['time']);echo ' on '.date('d-m-Y', $ticket['time'])?></td>
+                                <td><?php echo $ticket['uname']?></td>
+                                <td><?php echo $ticket['pname']?></td>
+                                <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $ticket['comment']?></td>
+                                <td><?php echo $ticket['ticketmessage']?></td>                                       
+                                <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
+                            <?php
+									endforeach;
+							?>                                   
+                        </tbody>
+                        </table>
+                        </div>  
                     </div>
                             
                 </li>

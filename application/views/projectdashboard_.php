@@ -96,7 +96,7 @@
 										$app['appiconfilepath'] = str_ireplace('.'.$extension, '_thumb.'.$extension, $app['appiconfilepath']);
 									}*/
 							  ?>
-                        	<div class="app_back <?php echo $id ==  $app_id ? 'active':'';?>">
+                        	<div class="app-button blue-button <?php echo $id ==  $app_id ? 'active':'';?>">
                             	<a href="<?php echo base_url('portal/project/'.$id);?>">
                             	<div class="sub">
                                 	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
