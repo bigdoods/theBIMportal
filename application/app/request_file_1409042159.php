@@ -66,7 +66,7 @@
 		$request_details = $this->getRequestDetails();
 		if($request_details){
 			?>
-            <P>Thanks for your request. It is being processed and a support ticket has been opened. The webmaster has been notified and will respond as soon as possible.</P>
+            <P>Thanks for your request. It is being processed and a support ticket has been opened. We will respond as soon as possible.</P>
             <?php
 		}
 	 }
