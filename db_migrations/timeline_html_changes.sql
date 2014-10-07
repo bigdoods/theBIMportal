@@ -1,4 +1,4 @@
-UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
+UPDATE  `case` SET  `text` =  '<li data-notif="[+notif_id+]">
 
   <div class="image"><div><img src="%1$s" alt="" /></div></div>                                     
   <div class="left_con_del">
@@ -13,7 +13,7 @@ UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
   </div>
                                         
 </li>' WHERE  `case`.`id` =3;
-UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
+UPDATE  `case` SET  `text` =  '<li data-notif="[+notif_id+]">
   <div class="image"><div><img src="%1$s" alt="" /></div></div>
   <div class="left_con_del">
     <h2>%2$s</h2>
@@ -22,7 +22,7 @@ UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
     <span class="date">[+datetime+]</span>
   </div>
 </li>' WHERE  `case`.`id` =2;
-UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
+UPDATE  `case` SET  `text` =  '<li data-notif="[+notif_id+]">
   <div class="image"><div><img src="%1$s" alt="" /></div></div>
   <div class="left_con_del">
     <h2>%2$s</h2>
@@ -31,7 +31,7 @@ UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
     <span class="date">[+datetime+]</span>
   </div>
 </li>' WHERE  `case`.`id` =1;
-UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
+UPDATE  `case` SET  `text` =  '<li data-notif="[+notif_id+]">
   <div class="image"><div><img src="%1$s" alt="" /></div></div>
   <div class="left_con_del">
     <h2>%2$s</h2>
@@ -43,7 +43,7 @@ UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
     </div>
   </div>
 </li>' WHERE  `case`.`id` =4;
-UPDATE  `portal_bimscript`.`case` SET  `text` =  '<li data-notif="[+notif_id+]">
+UPDATE  `case` SET  `text` =  '<li data-notif="[+notif_id+]">
   <div class="image" style="background-image: url(%5$s);"></div>
   <div class="left_con_del">
     <h2>%2$s</h2>
