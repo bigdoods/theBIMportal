@@ -124,13 +124,26 @@
                     <div class="clear"></div>
                     
                     <div class="apps_content_back">
-                    	<div id="content_2" class="content2">
+                    	<div id="content_2" class="content2<?php if($app_id == 1) { echo ' timeline'; }?>">
                         <?php global $app;?>
                         	<div class="<?php echo property_exists ($app , 'class_css') ? $app->class_css: 'content_main' ;?>">
                             	<?php load_app_content();
 								?>       
                             </div>
                         </div>
+                        <?php if($app_id == 1) { ?>
+                            <div id="timeline-sidebar">
+                                <div id="weather" class="widget">
+                                    <img src="<?php echo base_url('images/weather-widget-placeholder.jpg'); ?>">
+                                </div>
+                                <div id="map" class="widget">
+                                    <img src="<?php echo base_url('images/map-widget-placeholder.jpg'); ?>">
+                                </div>
+                                <div id="notes" class="widget">
+                                    <img src="<?php echo base_url('images/notes-widget-placeholder.jpg'); ?>">
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     
                     

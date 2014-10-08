@@ -46,6 +46,17 @@
 			});
 		});
 	</script>
+	<script type="text/javascript">
+		$(window).load(function(){
+			var timelinewidth = $('body').innerWidth() - 467;
+			$("#content_2.timeline").css('width', timelinewidth);
+		});
+		$(window).bind('resize', function(e)
+		{
+			var timelinewidth = $('body').innerWidth() - 467;
+			$("#content_2.timeline").css('width', timelinewidth);
+		});
+	</script>
     <script type="text/javascript">
 		(function($){
 			$(window).load(function(){
@@ -58,6 +69,19 @@
 			
 			$(window).load(function(){
 				$("#content_2").mCustomScrollbar({
+					scrollButtons:{
+						enable:true
+					}
+				}).hover(function(){
+					$('.mCSB_dragger_bar').css({visiblity:'visible'})
+				},function(){
+				//$('.mCSB_dragger_bar').css({visiblity:'hidden'})	
+				}
+				)
+			});
+
+			$(window).load(function(){
+				$("#timeline-sidebar").mCustomScrollbar({
 					scrollButtons:{
 						enable:true
 					}

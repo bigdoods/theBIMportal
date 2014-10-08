@@ -219,10 +219,6 @@ body {
     z-index: 2;
 }
 
-.back_container .main .left .portion:last-child {
-    margin-bottom: 90px;
-}
-
 .back_container .main .left .portion h2 {
     width: 100%;
     height: 30px;
@@ -402,6 +398,10 @@ APP STYLES
     overflow: auto;
 }
 
+.content2.timeline {
+    width: auto;
+}
+
 .back_container .main .apps_content_back .content_main {
     width: 97%;
     height: auto;
@@ -410,6 +410,14 @@ APP STYLES
 }
 
 /* TIMELINE APP */
+
+.back_container .main .apps_content_back .content_main ul.profile {
+    width: 99%;
+    height: auto;
+    margin: 20px 0 0 0;
+    padding: 0;
+    float: left;
+}
 
 .back_container .main .apps_content_back .content_main ul.profile li {
     position: relative;
@@ -421,10 +429,6 @@ APP STYLES
     border: 1px solid #e7e7e7;
     list-style: none;
     background: #f2f5f8;
-}
-
-.back_container .main .apps_content_back .content_main ul.profile li:last-child {
-    margin: 0 0 190px 0;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .image {
@@ -510,6 +514,24 @@ APP STYLES
     float: left;
     padding: 0 15px;
     margin-left: 10px;
+}
+
+#timeline-sidebar {
+    position: fixed;
+    right: 0;
+    top: 117px;
+    width: 246px;
+    height: 100%;
+    background: #FFF;
+    border-left: 1px solid #dcdcdc;
+    overflow: auto;
+}
+
+#timeline-sidebar .widget {
+    float: right;
+    width: 94%;
+    margin: 10px 3%;
+    overflow: hidden;
 }
 
 /* TICKETS APP */
@@ -643,14 +665,6 @@ APP STYLES
     padding: 0 10px;
 }
 
-.dash_4_back_container {
-    width: 100%;
-    height: auto;
-    margin: 0 0 200px 0;
-    padding: 0;
-    float: left;
-}
-
 .dash_4_back_container .details {
     width: 100%;
     height: auto;
@@ -689,6 +703,7 @@ APP STYLES
 .dash_4_back_container .details li p.small,
 .dash_4_back_container .details li p {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    color: #535353;
 }
 
 .dash_4_back_container .details li {
@@ -744,6 +759,15 @@ APP STYLES
 }
 
 /* SCROLLBAR */
+
+#content_1 .mCSB_container {
+    padding-bottom: 100px;
+}
+
+#content_2 .mCSB_container,
+#timeline-sidebar .mCSB_container {
+    padding-bottom: 200px;
+}
 
 .mCustomScrollBox>.mCSB_scrollTools {
     width: 12px;

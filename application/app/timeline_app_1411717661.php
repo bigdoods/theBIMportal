@@ -25,12 +25,13 @@ class Timeline_App extends Bim_Appmodule{
 	 */
 	 
 	 public function init(){
-		//echo "I am under development";
+
 		/**
 		 * Get all notification for my projects
 		 */
 		
 	 	echo '<ul class="profile">'.$this->feedDetails().'</ul>';
+
 	 }
 	 
 	 /**
