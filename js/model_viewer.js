@@ -68,7 +68,9 @@
 		var show_button = $('#viewer-show');
 		if(show_button.size() >0){
 			show_button.click(function(e){
+				e.preventDefault();
 				model_viewer.viewer('showall');
+				return false;
 			});
 		}
 
@@ -76,9 +78,11 @@
 		var hide_button = $('#viewer-hide');
 		if(hide_button.size() >0){
 			hide_button.click(function(e){
+				e.preventDefault();
 				model_viewer.viewer('eachselected', function(id){
 					$(this).viewer('hide', id);
 				});
+				return false;
 			});
 		}
 
@@ -125,7 +129,6 @@
 
 	    $('#component-list').on('click', 'a', function(e){
 	    	e.preventDefault();
-	    	console.log($(this).attr('data-object-id'));
 	    	model_viewer.viewer('select', $(this).attr('data-object-id'));
 	    	return false;
 	    });
