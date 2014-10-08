@@ -58,7 +58,7 @@ class	Fileupload_app extends Bim_Appmodule{
 		 	foreach($r->result_array() as $row):
 			?>
 			<li>
-            	<a href="<?php echo $this->_base_uri.'?f=upload&type='. $type_id .'&group='. $row['id'] ?>">
+            	<a href="<?php echo $this->_base_uri.'?f=upload&type='. $row['id'] ?>">
                     <img src="<?php echo base_url('images/file.png')?>" alt="" />
                     <div class="clear"></div>
                     <h2><?php echo $row['name'];?></h2>
