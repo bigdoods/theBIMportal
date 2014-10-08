@@ -11,7 +11,6 @@ class Project_Team_App extends Bim_Appmodule{
 		parent::start();
 
 		$this->_me->load->model('Projects');
-		$this->_me->load->model('Team_members');
 	}
 	
 	/**
@@ -22,34 +21,59 @@ class Project_Team_App extends Bim_Appmodule{
 	 */
 	 
 	public function init(){
-		?>
-		<?php
+		$this->team_list();
 	}
 
 
 	public function adminInit(){
-		$this->team_list();
 	}
 
 	public function team_list(){
-		$project_id = $this->_me->input->get('project_id');
-		$project_team_members = $this->_me->Team_members->getProjectMembers($project_id);
-		
-		foreach($project_team_members as $project_team_member){
-		?>
-			<div>
-				<?php echo $project_team_member ?>
-			</div>
-		<?php
-		}
-
+		$project_team_members = $this->_me->Projects->getAssignedUsers(getActiveProject());
+		debug($project_team_members);
 		?>
 
-			<div>
-				<?php echo $project_team_member ?>
-			</div>
+		<div class="project_team_back_container">
+        	<h5>project team</h5>
+        	<div class="clear"></div>
+        	<div class="main_project">
+            	<div class="search_back">
+                	<h6>search :</h6>
+                   <input type="text" class="text_box5" placeholder="Type name" />
+                </div>
+                <div class="clear"></div>
+            	<ul class="details_new_project">
+            		<?php foreach($project_team_members as $project_team_member){?>
+	                	<li>
+	                		<div class="left_pro"><img src="<?php echo base_url() ?>/upload/profilepic/<?php echo (!empty($project_team_member['profilepic']) ? $project_team_member['profilepic'] : 'default_profile_pic.png') ?>" class="image" alt="" /></div>
+	                        <div class="right_pro">
+	                        	<h2>Name :</h2>
+	                            <p><?php echo ucwords($project_team_member['name']) ?></p>
 
-		<?php
+	                            <h2>Phone :</h2>
+	                            <p><?php echo $project_team_member['phone'] ?></p>
+
+	                            <h2>Email :</h2>
+	                            <p><?php echo $project_team_member['email'] ?></p>
+
+	                            <h2>Joining Date :</h2>
+	                            <p><?php echo date('d-m-Y', $project_team_member['joiningdate']) ?></p>
+
+	                            <h2>Activation Date :</h2>
+	                            <p><?php echo date('d-m-Y', $project_team_member['activationdate']) ?></p>
+
+	                            <h2>Company :</h2>
+	                            <p><?php echo ucwords($project_team_member['company']) ?></p>
+
+	                            <h2>Designation :</h2>
+	                            <p><?php echo ucwords($project_team_member['discipline']) ?></p>
+	                        </div>
+	                    </li>
+					<?php } ?>
+                </ul>
+            </div>
+        </div>
+<?php
 	}
 }
 ?>

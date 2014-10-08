@@ -21,6 +21,31 @@ class Projects extends Ci_Model {
 		return $data;
 		
 	}
+
+
+	/**
+	 * Get the projects name and id 
+	 * of the projects in which the user is assigned		
+	 */
+	 
+	public function getAssignedUsers($projectid){
+		$this->db->where('a.projectid = '. intval($projectid));
+		$this->db->select('b.*');
+		$this->db->from('user_assigned_projects a');
+		$this->db->join('users b', 'a.userid = b.id');
+		$q = $this->db->get();		
+		$data = array();
+		if($q->num_rows()){
+			foreach($q->result_array() as $row ){
+				$data[$row['id']] = $row;
+			}
+			return $data;
+		}else{
+			return false;
+		}
+	}
+
+
 	
 	function create(){
 		

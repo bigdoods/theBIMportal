@@ -62,37 +62,6 @@ class Admin extends Bim_Controller {
 			$this->load->vars($data);
 			$this->load->view('admin/projectlist');
 	}
-
-
-	public function getTeamDetails($tabid){			
-			$data['projectdetails'] = $this->Projects->getAllProject();
-			$data['teamdetails'] = null;
-			$data['project_id'] = intval($this->input->get('project_id'));
-			if($data['project_id'] == 0)
-				$data['project_id'] = $data['projectdetails'][0]['id'];
-
-			$data['teamdetails'] = $this->Team_members->getProjectMembers($data['project_id']);
-			$data['designations'] = $this->Team_members->designations();
-
-			$data['tabid'] = $tabid;
-
-			$this->load->vars($data);
-			$this->load->view('admin/teamlist');
-	}
-
-	public function saveTeam(){
-		$team_data = $this->input->post('team');
-
-		foreach($team_data as $team_member_data){
-			if(!empty($team_member_data['id'])){
-				$this->Team_members->update($team_member_data);
-			}else{
-				$team_member_data['id'] = $this->Team_members->create($team_member_data);
-			}
-
-			$this->Team_members->link_project_and_team_member($this->input->post('project_id'), $team_member_data['id']);
-		}
-	}
 	
 	/**
 	 * Insert projects into table
