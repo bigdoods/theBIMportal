@@ -371,7 +371,7 @@ $config['proxy_ips'] = '';
  */
 $config['default_title'] = 'BIM PORTAL';
 
-/**
+/*
  Default app to load
  */
  $config['default_app_id'] = '1';
@@ -383,7 +383,7 @@ $config['requestemail'] = 'robbgosset+portalrequest@bimscript.com';
  * Email configuration
  */
  $config['email_config']=array(
- 	'protocol' => 'smtp',
+ 	'protocol' => 'sendmail'/*,
 	'smtp_host'=> 'smtp.gmail.com',
 	'smtp_port' => 587,
 	'smtp_user' => 'webmaster@bimscript.com',
@@ -392,7 +392,7 @@ $config['requestemail'] = 'robbgosset+portalrequest@bimscript.com';
 	'wordwrap' => TRUE,
 	'mailtype' => 'html',
 	'crlf' => "\r\n",
-	'newline' => "\n"
+	'newline' => "\n" */
 	);
  /**
   * Ftp server info for file suploaded
