@@ -44,11 +44,20 @@ class Admin extends Bim_Controller {
 	 * display the tab content of
 	 * The new user tab
 	 */
-	public function getNewUserDetails($tabid){		
+	public function getNewUserDetails($tabid){
+		$data = array();
+		$data['project_id'] = $this->input->get('project_id');
+
+		$data['tabid'] = $tabid;
+		$data['projectdetails'] = $this->Projects->getAllProject();
+
+		if(!empty($data['project_id'])){
+			$data['userdetaiils'] = $this->Projects->getAssignedUsers($data['project_id']);
+		}else{
 			$data['userdetaiils'] = $this->Users->getNewUsers();
-			$data['tabid'] = $tabid;
-			$this->load->vars($data);
-			$this->load->view('admin/newusers');
+		}
+		$this->load->vars($data);
+		$this->load->view('admin/newusers');
 	}
 	
 	/**

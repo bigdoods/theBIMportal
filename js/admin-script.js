@@ -112,41 +112,11 @@
 		return false;
 		});
 
-
-	   /**
-	    * Update team details
-		*/
-		$(document).on('submit', 'form[name=team_edit]', function(){
-			var frm = $(this);
-			$.ajax({
-				url : frm.attr('action'),
-				type: frm.attr('method'),
-				data: frm.serialize(),
-				beforeSend: function(){
-					frm.overlay(1);
-					frm.overlay("Please wait");
-				},
-				success: function(){
-					frm.overlay('Successfully updated');
-					forceLoad = true;
-					//$('li.active').click();
-				},	
-				error: function(){
-					frm.overlay("Internal server error, please try again later");					
-				},
-				complete: function(){
-					frm.overlay(0,-1);
-				}
-			})
-			
-		return false;
-		});
-
 		$(document).on('change', '#selected-project-id', function(){
 			var dom = $('.right_details_tab');
 
 			$.ajax({
-				url: base_path + 'admin/getTeamDetails/12?project_id=' + $(this).val(),
+				url: base_path + 'admin/getNewUserDetails/1?project_id=' + $(this).val(),
 				beforeSend:function(){
 					dom.overlay(1);
 					dom.overlay("Please wait");
