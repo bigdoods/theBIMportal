@@ -19,7 +19,7 @@ class Apps extends Ci_Model {
 		if( $app_id ){
 			$this->db->where('id', $app_id);
 		}
-		$this->db->order_by('order ASC, id ASC');
+		$this->db->order_by('type ASC, order ASC, id ASC');
 		$q = $this->db->get('apps');
 		$data = array();
 		if($q->num_rows()){

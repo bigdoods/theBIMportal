@@ -1,7 +1,23 @@
 <?php
 	ob_start();
 	$this->load->view('common/user/header.php');
+    $app_hierarchy = array();
 	$apps_type = getAppType();
+
+    foreach($app_details as $app){
+        if($app['name'] == 'Back to')
+            continue;
+
+        if(! isset($app_hierarchy[$app['type']]))
+            $app_hierarchy[$app['type']] = array();
+
+        if(! isset($app_hierarchy[$app['type']]['apps']))
+            $app_hierarchy[$app['type']]['apps'] = array();
+
+        $app_hierarchy[$app['type']]['name'] = $apps_type[$app['type']];
+        $app_hierarchy[$app['type']]['apps'][] = $app;
+    }
+
 ?>   
 <div class="trigger_for_480px_onwards"></div>
     <div class="header-top">
@@ -19,98 +35,32 @@
     <div class="back_container">
     	<div class="main">
         	<div class="left">
-	             <div id="content_1" class="content">                 
-                 	<div class="portion">
-                    	<h2><?php echo $apps_type[0]?></h2>
-                        <div class="clear"></div>
-                        <div class="details">
-                        	 <?php 
-								foreach($app_details as $id => $app){
-									if( $app['type'] !== '0'){
-										continue;
-									}
-									/*if($app['appiconfilepath']){
-										$extension = pathinfo($app['appiconfilepath'], PATHINFO_EXTENSION);
-										$app['appiconfilepath'] = str_ireplace('.'.$extension, '_thumb.'.$extension, $app['appiconfilepath']);
-									}*/
-                                    if($id != '3') {
-							  ?>
-                        	<div class="app-button blue-button <?php echo $id ==  $app_id ? 'active':'';?>">
-                            	<a href="<?php echo base_url('portal/project/'.$id);?>">
-                            	<div class="sub">
-                                	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
+	             <div id="content_1" class="content">
+                    <?php foreach($app_hierarchy as $app_type){
+                            if(count($app_type['apps']) >0){ ?>
+                             	<div class="portion">
+                                	<h2><?php echo $app_type['name'] ?></h2>
                                     <div class="clear"></div>
-                                    <div class="app-name">
-                                        <div><?php echo $app['name']?></div>
+                                    <div class="details">
+                                    	 <?php 
+            								foreach($app_type['apps'] as $app){  ?>
+                                                	<div class="app-button blue-button <?php echo ($app['id'] ==  $app_id ? 'active':'');?>">
+                                                    	<a href="<?php echo base_url('portal/project/'. $app['id']);?>">
+                                                    	<div class="sub">
+                                                        	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
+                                                            <div class="clear"></div>
+                                                            <div class="app-name">
+                                                                <div><?php echo $app['name']?></div>
+                                                            </div>
+                                                        </div>
+                                                        </a>
+                                                    </div>
+                                        <?php 
+                                            } ?>
                                     </div>
                                 </div>
-                                </a>
-                            </div>
-                            <?php 
-                                }
-                            }
-                            ?>
-                            
-                        </div>
-                    </div>
-                    <div class="portion">
-                    	<h2><?php echo $apps_type[1]?></h2>
-                        <div class="clear"></div>
-                        <div class="details">
-                        	 <?php 
-								foreach($app_details as $id => $app){
-									if( $app['type'] != 1){
-										continue;
-									}
-									/*if($app['appiconfilepath']){
-										$extension = pathinfo($app['appiconfilepath'], PATHINFO_EXTENSION);
-										$app['appiconfilepath'] = str_ireplace('.'.$extension, '_thumb.'.$extension, $app['appiconfilepath']);
-									}*/
-							  ?>
-                        	<div class="app-button blue-button <?php echo $id ==  $app_id ? 'active':'';?>">
-                            	<a href="<?php echo base_url('portal/project/'.$id);?>">
-                            	<div class="sub">
-                                	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
-                                    <div class="clear"></div>
-                                    <div class="app-name">
-                                        <div><?php echo $app['name']?></div>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                             <?php }?>
-                            
-                        </div>
-                    </div>
-                    <div class="portion">
-                    	<h2><?php echo $apps_type[2]?></h2>
-                        <div class="clear"></div>
-                        <div class="details">
-                        	 <?php 
-								foreach($app_details as $id => $app){
-									if( $app['type'] != 2){
-										continue;
-									}
-									/*if($app['appiconfilepath']){
-										$extension = pathinfo($app['appiconfilepath'], PATHINFO_EXTENSION);
-										$app['appiconfilepath'] = str_ireplace('.'.$extension, '_thumb.'.$extension, $app['appiconfilepath']);
-									}*/
-							  ?>
-                        	<div class="app-button blue-button <?php echo $id ==  $app_id ? 'active':'';?>">
-                            	<a href="<?php echo base_url('portal/project/'.$id);?>">
-                            	<div class="sub">
-                                	<img src="<?php echo base_url('upload/appicon/'.$app['classname'])?>.png" alt="" />
-                                    <div class="clear"></div>
-                                    <div class="app-name">
-                                        <div><?php echo $app['name']?></div>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                             <?php }?>
-                            
-                        </div>
-                    </div>
+                    <?php   }
+                          } ?>
                  </div>
             </div>
             
@@ -139,7 +89,7 @@
                     	<a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>                          
                     </div>
                     
-                </div>
+            </div>
         </div>
     </div>
 <?php
