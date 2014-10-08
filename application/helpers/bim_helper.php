@@ -64,7 +64,7 @@ function sendMail($to, $subject, $message){
     $config =$CI->config->item('email_config');
       $CI->load->library('email', $config);
       $CI->email->set_newline("\r\n");
-      $CI->email->from('pritam@aqualeafitsol.com'); // change it to yours
+      $CI->email->from($CI->config->item('from_email')); // change it to yours
       $CI->email->to( $to );// change it to yours
       $CI->email->subject( $subject );
       $CI->email->message($message);

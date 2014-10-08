@@ -1682,7 +1682,7 @@ class CI_Email {
 		$ssl = NULL;
 		if ($this->smtp_crypto == 'ssl')
 			$ssl = 'ssl://';
-		$this->_smtp_connect = fsockopen($ssl.$this->smtp_host,
+		$this->_smtp_connect = @fsockopen($ssl.$this->smtp_host,
 										$this->smtp_port,
 										$errno,
 										$errstr,
@@ -1843,7 +1843,7 @@ class CI_Email {
 	 */
 	protected function _send_data($data)
 	{
-		if ( ! fwrite($this->_smtp_connect, $data . $this->newline))
+		if ( ! @fwrite($this->_smtp_connect, $data . $this->newline))
 		{
 			$this->_set_error_message('lang:email_smtp_data_failure', $data);
 			return FALSE;

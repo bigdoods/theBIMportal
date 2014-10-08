@@ -132,6 +132,7 @@ class filemanager_app extends Bim_Appmodule{
                                         <td>Type</td>
                                         <td>Preview</td>
                                         <td>Size</td>
+                                        <td>Document Date</td>
                                         <td>Date Modified</td>
                                         <td>Details</td>
                                         <td>Download</td>
@@ -163,7 +164,7 @@ class filemanager_app extends Bim_Appmodule{
 										if(!$file_modifed_time){
 											$file_modifed_time = '';
 										}else{
-											$file_modifed_time = date('H:i', $file_modifed_time).' on ' .date('d-m-Y', $file_modifed_time);
+											$file_modifed_time = date('H:i \o\n d-m-Y', $file_modifed_time);
 										}
 
 										$file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -173,6 +174,14 @@ class filemanager_app extends Bim_Appmodule{
 										$file_extension = '';
 									}
 
+									$document_time = strtotime($file['document_date']);
+									if(!$document_time){
+										$document_time = '';
+									}else{
+										$document_time = date('d-m-Y', $document_time);
+									}
+
+
 									?><tr>
                                    		<td><?php echo pathinfo($file['name'], PATHINFO_FILENAME)?></td>
                                         <td><?php echo $file_extension ?></td>
@@ -180,6 +189,7 @@ class filemanager_app extends Bim_Appmodule{
                                         <td><?php echo $file['doctypename']?></td>
                                         <td><p><img src="<?php echo base_url($file['path'])?>" alt="No preview" width="100" height="100" onError="javascript:$(this).closest('p').html('No preview')"></p></td>
                                         <td><?php echo $file_size;?></td>
+                                        <td><?php echo $document_time;?></td>
                                         <td><?php echo $file_modifed_time;?></td>
                                         <td><?php echo $file['details']?></td>
                                         <td class="small">
