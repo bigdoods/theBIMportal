@@ -59,8 +59,8 @@ if($_SERVER['SERVER_NAME'] == 'bimscript.localhost'){
 	$db['default']['database'] = 'bim';
 }else{
 	$db['default']['hostname'] = 'localhost';
-	$db['default']['username'] = 'sqluser.portal-b';
-	$db['default']['password'] = 'KE,1y{9\';%=X!0K';
+	$db['default']['username'] = 'portaldbuser.por';
+	$db['default']['password'] = 'pU^ND+4Yr:U5qow';
 	$db['default']['database'] = 'portal_bimscript';
 }
 
