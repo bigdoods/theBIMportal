@@ -29,8 +29,8 @@
 					jQuery('#ticket_details').dataTable();
 					$('.qtip_comment').qtip({
 								 position: {
-										  my: 'top left',  // Position my top left...
-										  at: 'bottom right',
+										  my: 'top middle',  // Position my top left...
+										  at: 'bottom middle',
 								   }
 					});	
 				/**
@@ -267,26 +267,30 @@
 			$this->printScript(array(1));
 		?>
 		<div class="dash_4_back_container">
+                                <a href="<?php echo base_url('portal/project/7');?>" class="blue-button" id="back-to-ticket-list">&lt; Back to Ticket List</a>
       						 	 <div class="clear"></div>
-       							<h3>Ticket Description</h3>
+       							<h3 class="sub-heading">Ticket Description</h3>
                                 <ul class="details">
                                 <li>
-                                   		<h3 class="small">Ticket-id</h3>
+                                   		<h3 class="small">Ticket ID</h3>
                                         <h3 class="small">Type</h3>
-                                        <h3>Creaton on</h3>
-                                        <h3 class="small">Created by</h3>
+                                        <h3>Created On</h3>
+                                        <h3 class="small">Created By</h3>
                                         <h3>Project</h3>
                                         <h3>Comment</h3>
-                                        <h3>Present status</h3>                                       
+                                        <h3>status</h3>                                       
                                        </li>
                                     <?php foreach($details as $ticket):
+
+                                        $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
+
 									?><li>
                                    		<p class="small"><?php echo $ticket['represent_id']?></p>
                                         <p class="small"><?php echo $ticket['ticket_for']?></p>
                                         <p><?php echo date('H:i', $ticket['time']).' on ';echo date('d-m-Y', $ticket['time'])?></p>
                                         <p class="small"><?php echo $ticket['uname']?></p>
                                         <p><?php echo $ticket['pname']?></p>
-                                        <p class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $ticket['comment']?></p>
+                                        <p class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></p>
                                         <p><?php echo $ticket['ticketmessage']?></p>                                       
                                         </li>
                                     <?php
@@ -294,24 +298,27 @@
 									?>                                   
                                 </ul>
 					<div class="clear"></div>
-       				<h3>Ticket log</h3>
+       				<h3 class="sub-heading">Ticket log</h3>
                     <ul class="details log_details">
                                 <li class="log_details_header">
-                                   		<h3>Log-id</h3>
-                                        <h3>Last modified</h3>
-                                        <h3 class="small">Modified by</h3>
+                                   		<h3>Log ID</h3>
+                                        <h3>Last Modified</h3>
+                                        <h3 class="small">Modified By</h3>
                                         <h3 class="small">Status</h3>
                                         <h3>Comment</h3>                                        
                                        </li>
                                     <?php 
 											foreach($details as $ticket):
 												foreach($ticket['logdetails'] as $log):
+
+                                                    $short_log_comment = strlen($log['comment']) > 60 ? substr($log['comment'], 0, 60)."..." : $log['comment'];
+
 									?>             <li>
 													<p><?php echo $log['represent_id']?></p>
 													<p><?php echo date('H:i', $log['modify_time']).' on ';echo date('d-m-Y', $log['modify_time'])?></p>
 													<p class="small"><?php echo $log['uname']?></p>
 													<p class="small"><?php echo $log['status']?></p>
-													<p class="qtip_comment_not" title="<?php echo $log['comment'] ? $log['comment'] : '' ?>"><?php /*echo substr($log['comment'], 0, 50)*/echo $log['comment'];?></p>											
+													<p class="qtip_comment" title="<?php echo $log['comment'] ? $log['comment'] : '' ?>"><?php echo $short_log_comment;?></p>											
 												  </li>
 									<?php
 												endforeach;
@@ -320,13 +327,13 @@
                                 </ul>
                     <div class="clear"></div>
                     <?php if($details[0]['created_by'] == getCurrentUserId() || getCurrentUserRole() == 1 || $details[0]['user_type'] == 1){?>
-       				<h3>Modify ticket</h3>
+       				<h3 class="sub-heading">Modify ticket</h3>
                    
                     <form action="" id="ticket_modify_form">
                     	<div class="form_reupdate_back" style="width:27%;">
                         					<p>Status :</p>
                                             <div class="clear"></div>
-                                        	<select class="text_box2" name="status" >
+                                        	<select class="form-input" name="status" >
                                             <?php
                                             	$status_all = $this->getAllPossibleTicketStatus($details[0]['ticket_for_id'], $details[0]['ticket_status_id']);
 												foreach($status_all as $status_option){
@@ -337,10 +344,10 @@
                                             <div class="clear"></div>
                                             <p>Comment :</p>
                                             <div class="clear"></div>
-                                            <textarea name="comment" class="text_box3"></textarea>
+                                            <textarea name="comment" class="form-input textarea"></textarea>
                                             <div class="clear"></div>
                                             <input type="hidden" name="ticketid" value="<?php echo $details[0]['id'];?>">  
-                                            <input type="submit" class="sub_rep" value="submit" />
+                                            <input type="submit" class="blue-button action" value="submit" />
                         
                                         	
                                         </div>
