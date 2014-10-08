@@ -255,9 +255,10 @@ class Admin extends Bim_Controller {
 						$error = $obj->install();
 						if(!empty($error)){
 							// + delete the app
-							$this->db->wehere('id', $app_id);
+							$this->db->where('id', $app_id);
 							$this->db->delete('apps');
-							echo 0;exit;
+							echo 0;
+							exit;
 						}
 					}
 				}
@@ -298,22 +299,23 @@ class Admin extends Bim_Controller {
 		/**
 		 * Update the file code
 		 */
-		 $p = $this->input->post();
+/*		 $p = $this->input->post();
 		 $project_code = $this->input->post( 'project_code' );
 		 $app_code = html_entity_decode( $project_code, ENT_NOQUOTES, "UTF-8" );
+*/
 		 /**
 		 * app file name
 		 */
 		 /**
 		  Old ap details = 
 		  */
-		  $old_appFile = $this->Apps->getAllApps(1, $this->input->post('app_id'));
+/*		  $old_appFile = $this->Apps->getAllApps(1, $this->input->post('app_id'));
 		  if( ! empty( $old_appFile ) ){
 			$app_details = array_shift( $old_appFile);
 			$arr['appfilepath'] = $app_details['appfilepath'];
 			$app_file = APPPATH .'app/'. $arr['appfilepath'];
 		 	file_put_contents( $app_file, $app_code);	 
-		  }
+		  }*/
 		 $this->Apps->update();
 	}
 	
