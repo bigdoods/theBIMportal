@@ -13,7 +13,7 @@ class	Fileupload_app extends Bim_Appmodule{
 	 */
 	private $_file_details = array();
 	private $_file_id = 0;
-	private $_allowed_extension =array('pdf', 'csv', 'xml', 'dwg', 'dxf', 'obj', 'dgn', 'acis', 'jpg', 'jpeg',  '.fbx', 'ifc', 'bcf','jpg', 'png');
+	private $_allowed_extension =array('pdf', 'csv', 'xml', 'dwg', 'dxf', 'obj', 'dgn', 'acis', 'jpg', 'jpeg',  'fbx', 'ifc', 'bcf', 'png');
 	public function __construct(){
 		parent::start();
 		$this->_me->load->model('Projects');

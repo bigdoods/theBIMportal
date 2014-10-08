@@ -44,11 +44,20 @@ class Admin extends Bim_Controller {
 	 * display the tab content of
 	 * The new user tab
 	 */
-	public function getNewUserDetails($tabid){		
+	public function getNewUserDetails($tabid){
+		$data = array();
+		$data['project_id'] = $this->input->get('project_id');
+
+		$data['tabid'] = $tabid;
+		$data['projectdetails'] = $this->Projects->getAllProject();
+
+		if(!empty($data['project_id'])){
+			$data['userdetaiils'] = $this->Projects->getAssignedUsers($data['project_id']);
+		}else{
 			$data['userdetaiils'] = $this->Users->getNewUsers();
-			$data['tabid'] = $tabid;
-			$this->load->vars($data);
-			$this->load->view('admin/newusers');
+		}
+		$this->load->vars($data);
+		$this->load->view('admin/newusers');
 	}
 	
 	/**
@@ -61,37 +70,6 @@ class Admin extends Bim_Controller {
 
 			$this->load->vars($data);
 			$this->load->view('admin/projectlist');
-	}
-
-
-	public function getTeamDetails($tabid){			
-			$data['projectdetails'] = $this->Projects->getAllProject();
-			$data['teamdetails'] = null;
-			$data['project_id'] = intval($this->input->get('project_id'));
-			if($data['project_id'] == 0)
-				$data['project_id'] = $data['projectdetails'][0]['id'];
-
-			$data['teamdetails'] = $this->Team_members->getProjectMembers($data['project_id']);
-			$data['designations'] = $this->Team_members->designations();
-
-			$data['tabid'] = $tabid;
-
-			$this->load->vars($data);
-			$this->load->view('admin/teamlist');
-	}
-
-	public function saveTeam(){
-		$team_data = $this->input->post('team');
-
-		foreach($team_data as $team_member_data){
-			if(!empty($team_member_data['id'])){
-				$this->Team_members->update($team_member_data);
-			}else{
-				$team_member_data['id'] = $this->Team_members->create($team_member_data);
-			}
-
-			$this->Team_members->link_project_and_team_member($this->input->post('project_id'), $team_member_data['id']);
-		}
 	}
 	
 	/**
@@ -255,9 +233,10 @@ class Admin extends Bim_Controller {
 						$error = $obj->install();
 						if(!empty($error)){
 							// + delete the app
-							$this->db->wehere('id', $app_id);
+							$this->db->where('id', $app_id);
 							$this->db->delete('apps');
-							echo 0;exit;
+							echo 0;
+							exit;
 						}
 					}
 				}
@@ -298,22 +277,23 @@ class Admin extends Bim_Controller {
 		/**
 		 * Update the file code
 		 */
-		 $p = $this->input->post();
+/*		 $p = $this->input->post();
 		 $project_code = $this->input->post( 'project_code' );
 		 $app_code = html_entity_decode( $project_code, ENT_NOQUOTES, "UTF-8" );
+*/
 		 /**
 		 * app file name
 		 */
 		 /**
 		  Old ap details = 
 		  */
-		  $old_appFile = $this->Apps->getAllApps(1, $this->input->post('app_id'));
+/*		  $old_appFile = $this->Apps->getAllApps(1, $this->input->post('app_id'));
 		  if( ! empty( $old_appFile ) ){
 			$app_details = array_shift( $old_appFile);
 			$arr['appfilepath'] = $app_details['appfilepath'];
 			$app_file = APPPATH .'app/'. $arr['appfilepath'];
 		 	file_put_contents( $app_file, $app_code);	 
-		  }
+		  }*/
 		 $this->Apps->update();
 	}
 	
@@ -337,7 +317,29 @@ class Admin extends Bim_Controller {
 	 */
 	public function download( $file_id ){
 		$this->load->model('Docs');
-		$data['doc_details'] = $this->Docs->getDocDetails( $file_id );
+		$file = array_first($this->Docs->getDocDetails($file_id));
+		$data['doc_details'] = $file;
+
+		$this->db->insert('ticket', array(
+			'itemid' => $file['id'],
+			'time' => time(),
+			'created_by' => getCurrentuserId(),
+			'user_type' => getCurrentUserRole(),
+			'ticket_for' => 4,
+			'project_id' => getActiveProject()
+		));
+
+		$ticket_id = $this->db->insert_id();
+		$this->db->insert('ticket_log', array(
+			'ticket_id' => $ticket_id,
+			'modifier_id' => getCurrentuserId(),
+			'ticket_status_id' => 12,
+			'modifier_role' => getCurrentUserRole(),
+			'modify_time' => time(),
+			'log_status' => 1,
+			'comment' => 'Downloaded file '. $file['name']
+		));
+
 		$this->load->vars( $data );
 		if($data['doc_details']){
 			$this->load->view('admin/downloadodc');

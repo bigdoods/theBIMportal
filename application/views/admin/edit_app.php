@@ -37,7 +37,7 @@
 	 $app_code = file_get_contents( APPPATH .'app/'.$appdetails['appfilepath']);
 	 $app_code = htmlentities($app_code, ENT_NOQUOTES); 
 	?>
-      <textarea id="app_code" rows="40" cols="90" name="project_code"><?php echo $app_code;?></textarea>
+      <textarea id="app_code" disabled="disabled" rows="40" cols="90" name="project_code"><?php echo $app_code;?></textarea>
   <p class="label">App file</p>
     <div class="clear"></div>
     <input type="file" class="text_box_inner"  name="filename" id="filename" data-validation-engine="validate[required]"/><span style="margin-left:20x">Existing file name : <?php echo $appdetails['appfilepath']?></span>

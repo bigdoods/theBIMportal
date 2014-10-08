@@ -2,7 +2,6 @@
 <ul class="tabs">	
     <li class="<?php echo ($tabid == 1) ? 'active': '' ?> posrel userlist" data-url="<?php echo base_url('admin/getNewUserDetails/1')?>"><a href="#tab1">Users<span class="notification displaynone">12</span></a></li>
      <li class="<?php echo ($tabid == 2) ? 'active': '' ?> posrel projectlist" data-url="<?php echo base_url('admin/getProjectDetails/2')?>"><a href="#tab2">Projects<span class="notification displaynone">12</span></a></li>
-     <li class="<?php echo ($tabid == 14) ? 'active': '' ?> posrel teamlist" data-url="<?php echo base_url('admin/getTeamDetails/14')?>"><a href="#tab14">Project Team<span class="notification displaynone">14</span></a></li>
      <li class="<?php echo ($tabid == 3) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/applist/3')?>"><a href="#tab3">Apps<span class="notification displaynone">12</span></a></li>
       <!--<li class="<?php echo ($tabid == 4) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/uploadedoc/4')?>"><a href="#tab4">Files<span class="notification displaynone">12</span></a></li>-->
       <li class="<?php echo ($tabid == 4) ? 'active': '' ?> posrel appList" data-url="<?php echo base_url('admin/invoke/?a=filemanager_app&f=init')?>"><a href="#tab4">File Manager<span class="notification displaynone">12</span></a></li>
