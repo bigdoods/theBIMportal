@@ -136,13 +136,16 @@
                         </thead>
                         <tbody>
                             <?php foreach($data as $ticket):
+
+                                $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
+
 							?><tr>
                            		<td><?php echo $ticket['represent_id']?></td>
                                 <td><?php echo $ticket['ticket_for']?></td>
                                 <td><?php echo date('H:i', $ticket['time']);echo ' on '.date('d-m-Y', $ticket['time'])?></td>
                                 <td><?php echo $ticket['uname']?></td>
                                 <td><?php echo $ticket['pname']?></td>
-                                <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $ticket['comment']?></td>
+                                <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
                                 <td><?php echo $ticket['ticketmessage']?></td>                                       
                                 <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
                             <?php
