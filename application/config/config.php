@@ -377,6 +377,7 @@ $config['default_title'] = 'BIM PORTAL';
  $config['default_app_id'] = '1';
 
 $config['admin_email'] = 'webmaster@bimscript.com';
+$config['from_email'] = 'noreply@bimscript.com';
 $config['feedbackemail'] = 'portalfeedback@bimscript.com';
 $config['requestemail'] = 'robbgosset+portalrequest@bimscript.com';
 /**
