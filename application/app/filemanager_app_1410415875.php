@@ -117,105 +117,98 @@ class filemanager_app extends Bim_Appmodule{
                 <li>
                 	<div class="row-fluid">
                         <!-- block -->
-                        <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">File details</div>
-                            </div>
-                            <div class="block-content collapse in">
-                          		<div class="span12">
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered display" id="ticket_details">
-                                	<thead>
-                               			<tr>
-                                   		<td>File Name</td>
-                                        <td>File Extension</td>
-                                        <td>Group</td>
-                                        <td>Type</td>
-                                        <td>Preview</td>
-                                        <td>Size</td>
-                                        <td>Document Date</td>
-                                        <td>Date Modified</td>
-                                        <td>Details</td>
-                                        <td>Download</td>
-                                        <td>View Ticket</td>
-                                        <?php
-                                        	if(getCurrentUserRole() == 1):
-										?>
-											<td>Delete</td>
-										<?php
-											endif;
-											
-										?>
-                                       
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($doc_details as $file):
-                                    if(file_exists($file['path'])){
-										//++ The file size
-										$file_size = filesize($file['path']);
-										if($file_size){
-											$file_size = (float)$file_size/1024;
-											$file_size = number_format($file_size, 2).'Kb';
-										}else{
-											$file_size = '-';
-										}
-										// + file moidifed time
-										$file_modifed_time = filemtime($file['path']);
-										if(!$file_modifed_time){
-											$file_modifed_time = '';
-										}else{
-											$file_modifed_time = date('H:i \o\n d-m-Y', $file_modifed_time);
-										}
+                  		<div class="span12">
+                        <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
+                        	<thead>
+                       			<tr>
+                           		<td>File Name</td>
+                                <td>File Extension</td>
+                                <td>Group</td>
+                                <td>Type</td>
+                                <td>Preview</td>
+                                <td>Size</td>
+                                <td>Document Date</td>
+                                <td>Date Modified</td>
+                                <td>Details</td>
+                                <td>Download</td>
+                                <td>View Ticket</td>
+                                <?php
+                                	if(getCurrentUserRole() == 1):
+								?>
+									<td>Delete</td>
+								<?php
+									endif;
+									
+								?>
+                               
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($doc_details as $file):
+                            if(file_exists($file['path'])){
+								//++ The file size
+								$file_size = filesize($file['path']);
+								if($file_size){
+									$file_size = (float)$file_size/1024;
+									$file_size = number_format($file_size, 2).'Kb';
+								}else{
+									$file_size = '-';
+								}
+								// + file moidifed time
+								$file_modifed_time = filemtime($file['path']);
+								if(!$file_modifed_time){
+									$file_modifed_time = '';
+								}else{
+									$file_modifed_time = date('H:i \o\n d-m-Y', $file_modifed_time);
+								}
 
-										$file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-									}else{
-										$file_size = '-';
-										$file_modifed_time = '';
-										$file_extension = '';
-									}
+								$file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+							}else{
+								$file_size = '-';
+								$file_modifed_time = '';
+								$file_extension = '';
+							}
 
-									$document_time = strtotime($file['document_date']);
-									if(!$document_time){
-										$document_time = '';
-									}else{
-										$document_time = date('d-m-Y', $document_time);
-									}
+							$document_time = strtotime($file['document_date']);
+							if(!$document_time){
+								$document_time = '';
+							}else{
+								$document_time = date('d-m-Y', $document_time);
+							}
 
 
-									?><tr>
-                                   		<td><?php echo pathinfo($file['name'], PATHINFO_FILENAME)?></td>
-                                        <td><?php echo $file_extension ?></td>
-                                        <td><?php echo $file['parent_doctypename']?></td>
-                                        <td><?php echo $file['doctypename']?></td>
-                                        <td><p><img src="<?php echo base_url($file['path'])?>" alt="No preview" width="100" height="100" onError="javascript:$(this).closest('p').html('No preview')"></p></td>
-                                        <td><?php echo $file_size;?></td>
-                                        <td><?php echo $document_time;?></td>
-                                        <td><?php echo $file_modifed_time;?></td>
-                                        <td><?php echo $file['details']?></td>
-                                        <td class="small">
-                                        	<a href="<?php echo base_url('admin/download/'.$file['id'])?>" target="_blank">Download</a>
-                                        	<?php if(in_array($file_extension, $this->previewable_file_extensions)){ ?>
-                                        		<a href="<?php echo base_url('portal/project/'. $app_id .'?action=file_preview&id='.$file['id'])?>" target="_blank">Preview</a>
-                                        	<?php } ?>
-                                        </td>
-                                        <td class="small"><a class="for_admin_ajax" href="<?php echo getCurrentUserRole() == 1 ? base_url('admin/invoke/5/').'?a=ticket_app&f=ticketDetails&id='.$file['ticket_id'] : base_url('portal/project/7?f=ticketDetails&id='.$file['ticket_id'])?>"><?php echo $file['represent_id'];?></a></td>
-                                        <?php
-                                        	if(getCurrentUserRole() == 1):
-										?>
-											<td><a href="javascript:void(0)" class="delete_file" data-file_id="<?php echo $file['id']?>">Delete</a></td>
-										<?php
-											endif;
-											
-										?>
-                                        </tr>
-                                    <?php
-											endforeach;
-									?>                                   
-                                </tbody>
-                                </table>
-                                </div>  
-                            </div>
-                        </div>
+							?><tr>
+                           		<td><?php echo pathinfo($file['name'], PATHINFO_FILENAME)?></td>
+                                <td><?php echo $file_extension ?></td>
+                                <td><?php echo $file['parent_doctypename']?></td>
+                                <td><?php echo $file['doctypename']?></td>
+                                <td><p><img src="<?php echo base_url($file['path'])?>" alt="No preview" width="100" height="100" onError="javascript:$(this).closest('p').html('No preview')"></p></td>
+                                <td><?php echo $file_size;?></td>
+                                <td><?php echo $document_time;?></td>
+                                <td><?php echo $file_modifed_time;?></td>
+                                <td><?php echo $file['details']?></td>
+                                <td class="small">
+                                	<a href="<?php echo base_url('admin/download/'.$file['id'])?>" target="_blank" class="blue-button action">Download</a>
+                                	<?php if(in_array($file_extension, $this->previewable_file_extensions)){ ?>
+                                		<a href="<?php echo base_url('portal/project/'. $app_id .'?action=file_preview&id='.$file['id'])?>" target="_blank" class="blue-button action">Preview</a>
+                                	<?php } ?>
+                                </td>
+                                <td class="small"><a class="for_admin_ajax blue-button action" href="<?php echo getCurrentUserRole() == 1 ? base_url('admin/invoke/5/').'?a=ticket_app&f=ticketDetails&id='.$file['ticket_id'] : base_url('portal/project/7?f=ticketDetails&id='.$file['ticket_id'])?>">View</a></td>
+                                <?php
+                                	if(getCurrentUserRole() == 1):
+								?>
+									<td><a href="javascript:void(0)" class="delete_file" data-file_id="<?php echo $file['id']?>">Delete</a></td>
+								<?php
+									endif;
+									
+								?>
+                                </tr>
+                            <?php
+									endforeach;
+							?>                                   
+                        </tbody>
+                        </table>
+                        </div>  
                     </div>
                             
                 </li>
