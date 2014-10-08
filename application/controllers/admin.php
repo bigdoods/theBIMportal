@@ -339,7 +339,29 @@ class Admin extends Bim_Controller {
 	 */
 	public function download( $file_id ){
 		$this->load->model('Docs');
-		$data['doc_details'] = $this->Docs->getDocDetails( $file_id );
+		$file = array_first($this->Docs->getDocDetails($file_id));
+		$data['doc_details'] = $file;
+
+		$this->db->insert('ticket', array(
+			'itemid' => $file['id'],
+			'time' => time(),
+			'created_by' => getCurrentuserId(),
+			'user_type' => getCurrentUserRole(),
+			'ticket_for' => 4,
+			'project_id' => getActiveProject()
+		));
+
+		$ticket_id = $this->db->insert_id();
+		$this->db->insert('ticket_log', array(
+			'ticket_id' => $ticket_id,
+			'modifier_id' => getCurrentuserId(),
+			'ticket_status_id' => 12,
+			'modifier_role' => getCurrentUserRole(),
+			'modify_time' => time(),
+			'log_status' => 1,
+			'comment' => 'Downloaded file '. $file['name']
+		));
+
 		$this->load->vars( $data );
 		if($data['doc_details']){
 			$this->load->view('admin/downloadodc');
