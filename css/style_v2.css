@@ -971,6 +971,7 @@ table.table-grey thead .sorting {
     font-weight: 600;
     font-size: 16px;
     border-bottom: 3px solid #c4cfdb;
+    line-height: 20px;
 
     background: url('../images/sort_both.png') no-repeat center right #f0f0f0;
     background: url('../images/sort_both.png') no-repeat center right, -moz-linear-gradient(top,  #f0f0f0 0%, #e1e1e1 100%);
@@ -984,10 +985,12 @@ table.table-grey thead .sorting {
 
 table.table-grey thead td.sorting_asc {
     background: url('../images/sort_asc.png') #f2f5f8 no-repeat center right;
+    line-height: 20px;
 }
 
 table.table-grey thead td.sorting_desc {
     background: url('../images/sort_desc.png') #f2f5f8 no-repeat center right;
+    line-height: 20px;
 }
 
 table.table-grey td {
@@ -997,7 +1000,7 @@ table.table-grey td {
     text-align: center;
     color: #535353;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 22px;
     vertical-align: middle;
 }
 
