@@ -8,7 +8,7 @@
  	/**
 	 * The entry point of the app
 	 */
-	private $_suported_type = array('jpg', 'jpeg', 'png', 'tif', 'gif');
+	private $_suported_type = array('jpg', 'jpeg', 'png', 'tif', 'gif', 'img', 'bmp');
 	public function __construct(){
 		parent::start();
 		$this->_db = $this->_me->db;// this is codeigniter db
@@ -69,7 +69,7 @@
 								$('.dragdrop').overlay(1);
 								$('.dragdrop').overlay(response.error[0]);
 							}else{
-					var html = '<li><a class="vlightbox1 vlightbox1_new" href="../../upload/site_photograph/original/'+response.data+'" title="site photography"><img src="../../upload/site_photograph/thumb/'+response.data+'" alt="Site images"/><div class="clear"></div><h2>Just now</h2></a></li>';
+					var html = '<li><a class="vlightbox1 vlightbox1_new" href="<?php echo base_url() ?>/upload/site_photograph/original/'+response.data+'" title="site photography"><img src="<?php echo base_url() ?>/upload/site_photograph/thumb/'+response.data+'" alt="Site images"/><div class="clear"></div><h2>Just now</h2></a></li>';
 						var dom = $(html).fadeOut();						
 //						$('.dragdrop').insertBefore(dom);
 						dom.insertBefore('.dragdrop');
@@ -116,7 +116,7 @@
 	public function uploadPicture(){
 		$response = array('data'=>'', 'error' => array());
 		if($_FILES['foo']['error'] === 0){
-			$extension = pathinfo( $_FILES['foo']['name'], PATHINFO_EXTENSION);
+			$extension = strtolower(pathinfo( $_FILES['foo']['name'], PATHINFO_EXTENSION));
 			$name = pathinfo( $_FILES['foo']['name'], PATHINFO_FILENAME);
 			if( in_array( $extension, $this->_suported_type) !== false){
 				#+ upload file to the upload folder
