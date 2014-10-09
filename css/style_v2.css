@@ -157,7 +157,6 @@ body {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     padding: 0 16px;
     cursor: pointer;
-    height: auto;
 }
 
 .register_back_container .grey-button.registration,
