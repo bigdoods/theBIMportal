@@ -953,6 +953,48 @@ APP STYLES
     border: none;
 }
 
+/* ACCOUNT APP */
+
+.form_reupdate_back.account-update {
+    width: 100%;
+    max-width: 460px;
+    margin: 20px auto;
+    float: none;
+}
+
+.form_reupdate_back .reupdate_left {
+    width: 20%;
+    max-width: 58px;
+    height: auto;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.form_reupdate_back.account-update .update-pic-message {
+    display: block;
+    float: left;
+    color: #535353;
+    font-size: 12px;
+    line-height: 46px;
+}
+
+.form_reupdate_back .reupdate_right {
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+form#account_update .form-input {
+    width: 97%;
+}
+
+form#account_update hr {
+    height: 1px;
+    border: 0;
+    background: #CCC;
+}
+
 /* QTIPS */
 
 .qtip {
@@ -1147,11 +1189,12 @@ input.blue-button.action {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4e4', endColorstr='#f8f8f8',GradientType=0 );
 }
 
-.form-input {
+input.form-input,
+select.form-input {
     height: 28px;
     line-height: 28px;
     margin: 8px auto;
-    padding: 0 8px;
+    padding: 0 0 0 8px;
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     color: #8e8e8e;
     font-size: 13px;
@@ -1175,11 +1218,18 @@ input.blue-button.action {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#f8f8f8',GradientType=0 );
 }
 
-.form-input.textarea {
+textarea.form-input.textarea {
     min-height: 80px;
     min-width: 300px;
     line-height: 18px;
     padding: 8px 8px;
+}
+
+input.form-input.greyed,
+select.form-input.greyed,
+textarea.form-input.greyed {
+    color: #CCC;
+    border: 1px solid #EDEDED;
 }
 
 .submitprocess {

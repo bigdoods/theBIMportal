@@ -329,7 +329,6 @@ class Messaging_app extends Bim_Appmodule{
 	 
 	 ?>
      <ul class="face">
-        <h2 class="app-title">Messaging</h2>
                                 	<li>
                             			<div class="form_back_container">
                                                 <div class="facebook_form">
@@ -399,7 +398,7 @@ class Messaging_app extends Bim_Appmodule{
                                                             	<input type="hidden" name="sender" value="<?php echo getCurrentUserid();?>">
                                                                 <input type="hidden" name="receiver" value="<?php echo $id?>">
                                                                 <input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']?>">				
-                                                                <textarea class="text_area_box" name="message"></textarea>
+                                                                <textarea class="text_area_box" name="message" placeholder="Type your message here..."></textarea>
                                                                 <input type="submit" class="submit blue-button action" value="post" />
                                                                 </form>
                                                                 <div class="clear"></div>
