@@ -117,7 +117,7 @@ $(document).ready(function(){
 	});
 	}
 	
-	$(window).bind('resize', function(e)
+	/*$(window).bind('resize', function(e)
 	{
 	  if (window.RT) clearTimeout(window.RT);
 	  window.RT = setTimeout(function()
@@ -125,7 +125,7 @@ $(document).ready(function(){
 	 $('body').css('visibility', 'hidden');
 		this.location.reload(false);
 	  }, 200);	
-	});
+	});*/
 });
 
 </script>
