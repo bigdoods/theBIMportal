@@ -329,12 +329,13 @@ class Messaging_app extends Bim_Appmodule{
 	 
 	 ?>
      <ul class="face">
+        <h2 class="app-title">Messaging</h2>
                                 	<li>
                             			<div class="form_back_container">
                                                 <div class="facebook_form">
                                                         <div class="facebook_left">
                                                             <div class="search_box">
-                                                                <input type="text" class="text_box_face ch_user_search" />
+                                                                <input type="text" class="form-input ch_user_search" />
                                                                 <input type="submit" class="search" value="" />
                                                             </div>
                                                             <div class="clear"></div>
@@ -399,9 +400,7 @@ class Messaging_app extends Bim_Appmodule{
                                                                 <input type="hidden" name="receiver" value="<?php echo $id?>">
                                                                 <input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']?>">				
                                                                 <textarea class="text_area_box" name="message"></textarea>
-                                                                <div class="clear"></div>
-                                                               
-                                                                <input type="submit" class="submit" value="post" />
+                                                                <input type="submit" class="submit blue-button action" value="post" />
                                                                 </form>
                                                                 <div class="clear"></div>
                                                             </div>

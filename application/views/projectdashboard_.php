@@ -68,6 +68,7 @@
                 	<div class="head">                    	
                         <div class="clear"></div>
                         <a class="blue-button back-to-projects" href="<?php echo base_url('portal/dashboard');?>">&lt; Back to Projects</a>
+                        <h2 class="app-title"><?php echo getAppName($app_id); ?></h2>
                         <h1 class="project-title"><?php echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
                     </div>
                     
@@ -78,7 +79,7 @@
                         <?php global $app;?>
                         	<div class="<?php echo property_exists ($app , 'class_css') ? $app->class_css: 'content_main' ;?>">
                             	<?php load_app_content();
-								?>       
+								?>
                             </div>
                         </div>
                         <?php if($app_id == 1) { ?>

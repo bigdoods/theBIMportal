@@ -103,6 +103,16 @@ function load_app(){
 	}	
 }
 
+function getAppName($app_id) {
+
+    $CI = get_instance();
+    
+    $app_name = $CI->Apps->getAppNameById($app_id);
+
+    return $app_name;
+
+}
+
 /**
  * This is a test function 
  * To test the helper is accessible from 

@@ -115,6 +115,25 @@ class Apps extends Ci_Model {
 		}
 	  	return $data;
 	  }
+
+	  function getAppNameById($app_id){
+		$data = array();
+	  	if($app_id){			
+			$this->db->where('id', $app_id);
+			$this->db->limit(1, 0);
+			$q = $this->db->get('apps');
+			if($q->num_rows()){
+				$data = $q->row_array();
+			}
+			
+		} else {
+			$app_name = '';
+		}
+
+		$app_name = $data['name'];
+
+	  	return $app_name;
+	  }
 }
 
 /* End of file welcome.php */
