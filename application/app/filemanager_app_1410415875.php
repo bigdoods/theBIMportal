@@ -217,22 +217,6 @@ class filemanager_app extends Bim_Appmodule{
         <?php
 	}
 
-	private function preview_proxy(){
-		$url = $this->_me->input->get('url');
-
-		//$response = get_from('http://sharecad.org/cadframe/load?url='. $url);
-		$response = get_from('https://sharecad.org/cadframe/load?url=http://www.cadsofttools.com/dwgviewer/floorplan.dwg');
-		
-		$response = preg_replace('/(src|href)\=\"\//', '\1="https://sharecad.org/', $response);
-		//$response = str_replace('<div class="powered"><a id="shareCad" href="#" target="_blank" style="color: gray;">ShareCAD.org</a></div>', '<div class="powered" style="display:none"><a id="shareCad" href="#" target="_blank" style="color: gray;">ShareCAD.org</a></div><div class="powered"><a id="bimscript" href="http://bimscript.org" target="_blank" style="color: gray;">BIMscript.com</a></div>', $response);
-		$response = str_replace('<div style="position: absolute; z-index: 1000; left: 8px; top: 46px"><span class="lt"><a id="cadEditorX" href="http://cadsofttools.com/products/abviewer/" target="_blank" style="color: black;">ABViewer</a></span></div>', '', $response);
-		
-		ob_clean();
-		echo $response;
-		ob_flush();
-		exit;
-	}
-
 	private function file_preview(){
 		global $app_id;
 
@@ -240,7 +224,8 @@ class filemanager_app extends Bim_Appmodule{
 		$doc_details = $this->_me->Docs->getDocDetails($id);
 		debug($doc_details);
 		?>
-		<iframe id="file-preview" src="/portal/project/<?php echo $app_id ?>?action=preview_proxy&url=<?php echo base_url($doc_details[0]['path']) ?>" scrolling="no" width="1000px" height="1000px"></iframe>
+		<link href="<?php echo base_url('css/file_preview.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
+		<iframe id="file-preview" src="http://dev1.bimscript.com/Default.aspx?url=&url=<?php echo base_url($doc_details[0]['path']) ?>" scrolling="no" width="1000px" height="1000px"></iframe>
 		<?php
 	}
 
