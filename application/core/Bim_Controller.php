@@ -48,7 +48,7 @@ class	Bim_Controller extends CI_Controller{
 		if(in_array($page,$this->admin_private_pages ) && @getCurrentUserRole() != 1 && $controller == 'admin'){
 			$this->load->view('adminUnauthorized');
 			exit;
-		}elseif(in_array($page,$this->user_private_pages ) && @getCurrentUserRole() != 2 && $controller == 'portal'){
+		}elseif(in_array($page,$this->user_private_pages ) && !in_array(@getCurrentUserRole(), array(1,2)) && $controller == 'portal'){
 			$this->load->view('userUnauthorized');
 			exit;
 		}

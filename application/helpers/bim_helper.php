@@ -160,8 +160,9 @@ function __autoload( $clas_name = ''){
  */
  
 function getActiveProject(){
+	return (int) isset($_COOKIE['actp']) ? $_COOKIE['actp'] : -1;
 	
-	switch( getCurrentUserRole() ){
+/*	switch( getCurrentUserRole() ){
 		case 1:
 			return (int) Admin::getActiveProject();
 			break;
@@ -169,6 +170,7 @@ function getActiveProject(){
 			return (int) isset($_COOKIE['actp']) ? $_COOKIE['actp'] : -1;
 			break;
 	}
+*/
 }
  
  /**
@@ -220,7 +222,7 @@ function unsetActiveProject(){
   * defaut array(1-)
   */
   function getCurrentProjectContext(){
-  	if(getCurrentUserRole() == 1){// t he user is admin
+/*  	if(getCurrentUserRole() == 1){// t he user is admin
 		if(Admin::getActiveProject()){// the project context is set by code for a page load
 			return array(Admin::getActiveProject());
 		}else{
@@ -242,6 +244,17 @@ function unsetActiveProject(){
 			}
 	
 	}
+*/
+
+	global $app;
+	if($app){
+		return $app->getProjectContext();
+	}else if(getActiveProject() !== -1){
+		return array(getActiveProject());
+	}else{
+		return array();
+	}
+
   }
   
   /**

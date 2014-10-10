@@ -206,7 +206,7 @@ class Portal extends Bim_Controller {
 	 * if yes then assign and save into cookie
 	 */
 	 public function selcetProject($pid){
-			if(! $this->Users->checkProjectAccess( $pid, getCurrentuserId() )){
+			if(getCurrentUserRole() !=1 && ! $this->Users->checkProjectAccess( $pid, getCurrentuserId() )){
 				echo -1;
 			}else{				
 				setcookie('actp' , $pid, time()+2592000, '/');
