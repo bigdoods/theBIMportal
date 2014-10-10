@@ -1,4 +1,11 @@
-#file-preview, .mCSB_container, .content_main_tickets{
-	width:100% !important;
+.mCSB_container{
+	height:83% !important;
+}
+
+#file-preview, .content_main_tickets{
+	width:99% !important;
 	height:100% !important;
+}
+#file-preview{
+	border:none;
 }

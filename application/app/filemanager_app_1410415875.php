@@ -225,7 +225,7 @@ class filemanager_app extends Bim_Appmodule{
 		debug($doc_details);
 		?>
 		<link href="<?php echo base_url('css/file_preview.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
-		<iframe id="file-preview" src="http://dev1.bimscript.com/Default.aspx?url=&url=<?php echo base_url($doc_details[0]['path']) ?>" scrolling="no" width="1000px" height="1000px"></iframe>
+		<iframe id="file-preview" src="http://dev1.bimscript.com/Default.aspx?url=<?php echo urlencode(base_url($doc_details[0]['path'])) ?>" scrolling="no" width="1000px" height="1000px"></iframe>
 		<?php
 	}
 
