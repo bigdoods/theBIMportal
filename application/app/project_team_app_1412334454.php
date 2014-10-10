@@ -56,16 +56,10 @@ class Project_Team_App extends Bim_Appmodule{
 	                            <h2>Email :</h2>
 	                            <p><?php echo $project_team_member['email'] ?></p>
 
-	                            <h2>Joining Date :</h2>
-	                            <p><?php echo date('d-m-Y', $project_team_member['joiningdate']) ?></p>
-
-	                            <h2>Activation Date :</h2>
-	                            <p><?php echo date('d-m-Y', $project_team_member['activationdate']) ?></p>
-
 	                            <h2>Company :</h2>
 	                            <p><?php echo ucwords($project_team_member['company']) ?></p>
 
-	                            <h2>Designation :</h2>
+	                            <h2>Discipline :</h2>
 	                            <p><?php echo ucwords($project_team_member['discipline']) ?></p>
 	                        </div>
 	                    </li>
