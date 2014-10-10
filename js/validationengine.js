@@ -104,6 +104,7 @@
 		validate: function() {
 			var element = $(this);
 			var valid = null;
+			var form = element;
 
 			if (element.is("form") || element.hasClass("validationEngineContainer")) {
 				if (element.hasClass('validating')) {
@@ -129,7 +130,7 @@
 				element.removeClass('validating');
 			} else {
 				// field validation
-				var form = element.closest('form, .validationEngineContainer'),
+				form = element.closest('form, .validationEngineContainer'),
 					options = (form.data('jqv')) ? form.data('jqv') : $.validationEngine.defaults,
 					valid = methods._validateField(element, options);
 
