@@ -30,6 +30,7 @@ class Admin extends Bim_Controller {
 
 		$this->load->config('bimsync');
 		$this->load->helper('bimsync');
+		$this->load->helper('network');
 	}
 	
 	public function dashboard( $tabid = 1 ){
