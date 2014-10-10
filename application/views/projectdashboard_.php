@@ -85,7 +85,10 @@
                         <?php if($app_id == 1) { ?>
                             <div id="timeline-sidebar">
                                 <div id="weather" class="widget">
-                                    <img src="<?php echo base_url('images/weather-widget-placeholder.jpg'); ?>">
+                                    <!-- <img src="<?php echo base_url('images/weather-widget-placeholder.jpg'); ?>"> -->
+                                    <!-- <div id="cont_Mjk5MXwxfDN8NHwzfEZGRkZGRnwxfDY2NjY2NnxDfDF8bXBo"><div class="weather-link" id="spa_Mjk5MXwxfDN8NHwzfEZGRkZGRnwxfDY2NjY2NnxDfDF8bXBo"><a id="a_Mjk5MXwxfDN8NHwzfEZGRkZGRnwxfDY2NjY2NnxDfDF8bXBo" rel="nofollow" href="http://www.weather-wherever.co.uk/united-kingdom/bristol_v2991/" target="_blank" style="color:#333;text-decoration:none;">Bristol Weather forecast</a> © weather-wherever.co.uk</div><script type="text/javascript" src="http://widget.weather-wherever.co.uk/js/Mjk5MXwxfDN8NHwzfEZGRkZGRnwxfDY2NjY2NnxDfDF8bXBo"></script></div> -->
+
+<iframe id="NjY1NnwxfDN8MXwzfEZGRkZGRnwxfEZGRkZGRnxDfDF8bXBo" src="http://widget.weather-wherever.co.uk/NjY1NnwxfDN8MXwzfEZGRkZGRnwxfEZGRkZGRnxDfDF8bXBo/" frameborder="0" scrolling="no" name="frame" height="194" width="241" style="-moz-border-radius: 7px;border-radius: 7px;"></iframe>
                                 </div>
                                 <div id="map" class="widget">
                                     <!-- <img src="<?php echo base_url('images/map-widget-placeholder.jpg'); ?>"> -->

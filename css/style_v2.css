@@ -533,6 +533,16 @@ APP STYLES
     overflow: hidden;
 }
 
+#timeline-sidebar #weather .weather-link{
+    display:none !important;
+}
+#timeline-sidebar #weather iframe,
+#timeline-sidebar #map img{
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+
 /* TICKETS APP */
 
 .back_container .main .apps_content_back .content_main_tickets {
@@ -1311,3 +1321,4 @@ h3.sub-heading {
     color: #535353;
     font-weight: 400;
 }
+
