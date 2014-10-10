@@ -66,7 +66,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2193db', end
 
 .chat_back_container2 .portion_chat .chat_details_back2{ width:99.33333%; height:400px; background:#fff !important; border-left:#ccc 1px solid; border-right:#ccc 1px solid; position:relative; }
 
-.chat_back_container2 .portion_chat .chat_details_back2 .bottom_details2{ width:96.66666%; height:23px; margin:0; padding:0 0 0 10px; float:none; position: absolute; bottom:0;  border:none; border-top:#ccc 1px solid; font-family:Arial, Helvetica, sans-serif; color:#999; font-size:12px; font-weight:normal; outline-style:none;}
+.chat_back_container2 .portion_chat .chat_details_back2 .bottom_details2{ width:96.66666%; height:23px; min-height: 0; min-width: 0; margin:0; padding:0 0 0 10px; float:none; position: absolute; bottom:0;  border:none; border-top:#ccc 1px solid; font-family:Arial, Helvetica, sans-serif; color:#999; font-size:12px; font-weight:normal; outline-style:none;}
 
 .chat_back_container2 .portion_chat .chat_details_back2 .chat_details_inner2{width:100%;  height:256px; position:relative; top:10px; overflow-y:scroll; overflow-x: hidden; }
 
