@@ -11,7 +11,7 @@
             <input type="text" name="name" class="text_box_inner" value="<?php echo $project_details['name']?>" data-validation-engine="validate[required]">
             <div class="clear"></div>
             
-            <p>Embed Code :</p>
+            <p>Location :</p>
             <div class="clear"></div>
             <textarea class="text_box_inner" name="embedcode"><?php echo $project_details['embedcode']?></textarea>           
             <div class="clear"></div>
