@@ -270,8 +270,10 @@ class filemanager_app extends Bim_Appmodule{
                         <div class="clear"></div>
                         <p>please enter details below :</p>
                         <div class="clear"></div>
-                       	<form action="#" method="post"validate="validate">
+                       	<form action="#" method="post" validate="validate">
                             <input type="text" class="text_file" placeholder="Comments" data-validation-engine="validate[required]" style="resize:none;" name="comment"/>
+                            <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yy" data-validation-engine="validate[required,custom[dateFormat]]" />
+
                             <div class="clear"></div>
                             <select class="drop" data-validation-engine="validate[required]" name="project">
                             	<option value=""> Select your project</option>
@@ -334,7 +336,7 @@ class filemanager_app extends Bim_Appmodule{
 			var binded = false;
         	$(function(){
 				var dom = $('#file').closest('ul.request_file');
-				// + prevent uploading files with out selecting project or type
+/*				// + prevent uploading files with out selecting project or type
 				$(document).on('click','#file', function(e){
 					var status = true;
 					var message = "";					
@@ -359,18 +361,20 @@ class filemanager_app extends Bim_Appmodule{
 						
 					}
 					return status;
-				});
+				});*/
 				
 				
 				$('#file').html5Uploader({
 						name: 'foo',
 						zoo:'sd',
-						postUrl : "<?php echo $this->_base_uri;?>?a=filemanager_app&f=upload_file&type="+$('[name=documetntype]').val()+"&pid="+$('[name=project]').val()+"&details="+$('[name=comment]').val(),
-						
+						postUrl : false,
+
+						validate:function(){
+							return $('#file').closest('form').validationEngine('validate');
+						},						
 						onClientLoad: function(e){
 							dom.overlay(1);
 						},
-						
 						onClientError: function(){
 							dom.overlay("Browser fails to read the file");
 							dom.overlay(0,-1);
@@ -396,7 +400,7 @@ class filemanager_app extends Bim_Appmodule{
 							
 						},
 						dynamicUrl: function(){
-							return "<?php echo $this->_base_uri;?>?a=filemanager_app&f=upload_file&type="+$('[name=documetntype]').val()+"&pid="+$('[name=project]').val()+"&details="+$('[name=comment]').val();
+							return "<?php echo $this->_base_uri;?>?a=filemanager_app&f=upload_file&type="+$('[name=documetntype]').val()+"&pid="+$('[name=project]').val()+"&details="+$('[name=comment]').val() + "&date="+ $('input[name=document_date]').val();
 						}
 						
 					 });	
