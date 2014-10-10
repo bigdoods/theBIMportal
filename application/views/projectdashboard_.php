@@ -88,7 +88,9 @@
                                     <img src="<?php echo base_url('images/weather-widget-placeholder.jpg'); ?>">
                                 </div>
                                 <div id="map" class="widget">
-                                    <img src="<?php echo base_url('images/map-widget-placeholder.jpg'); ?>">
+                                    <!-- <img src="<?php echo base_url('images/map-widget-placeholder.jpg'); ?>"> -->
+                                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php echo rawurlencode($project_details[0]['embedcode']) ?>&zoom=14&size=241x194">
+
                                 </div>
                                 <div id="notes" class="widget">
                                     <img src="<?php echo base_url('images/notes-widget-placeholder.jpg'); ?>">
