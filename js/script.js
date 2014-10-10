@@ -178,7 +178,7 @@
 				 }
 				});
 		  	//return false;
-		  })
+		  });
 		/**
 		 * it is used to 
 		 */
