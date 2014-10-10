@@ -16,9 +16,9 @@
                 <li><p>Company</p></li>
                 <li><p>Discipline</p></li>
                 <li><p>Phone</p></li>
-                <li><p>Join-date</p></li>
-                <li><p>Activation-date</p></li>
-                <li class="small"><p>on</p></li>
+                <li><p>Join Date</p></li>
+                <li><p>Activation Date</p></li>
+                <li class="small"><p>Active?</p></li>
                 <li class="small"><p>View</p></li>
             </ul>
             <?php if($userdetaiils){
@@ -33,7 +33,7 @@
                         <li><p><?php echo date('H:i', $user['joiningdate']).' on ';echo date('m-d-Y', $user['joiningdate']);?></p></li>
                         <li><p><?php echo $user['activationdate'] ? date('H:i', $user['activationdate']).' on '.date('m-d-Y', $user['activationdate']) : '-' ?></p></li>
                         <li class="small"><input type="checkbox" class="check_box" <?php echo ($user['status'] >= 3) ? 'checked="checked"' : '';?> disabled="disabled"/></li>
-                        <li class="small userdetails"><p><a href="javascript:void(0);">Details</a></p></li>
+                        <li class="small userdetails"><p><a href="javascript:void(0);" class="blue-button action">Details</a></p></li>
                     </ul>
     		<?php 
     			     }

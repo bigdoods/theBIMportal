@@ -98,35 +98,8 @@ img{ border:none;}
 
 .dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li span{background:url(../images/arrow_site.png) no-repeat; width:16px; height:10px; position:absolute; left:42%; bottom:-6px; position:absolute;}
 
-.dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li a{width:100%; height:40px; margin:0; padding:0; display:block; line-height:40px; font-family:"Open Sans"; color:#fff; font-size:14px; text-transform:capitalize; text-align:center; outline-style:none; text-decoration:none; border-radius:4px; background: rgb(69,72,77); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */ }
-
-.dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li a:hover{background: rgb(73,227,245); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(73,227,245,1) 0%, rgba(49,181,225,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,227,245,1)), color-stop(100%,rgba(49,181,225,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49e3f5', endColorstr='#31b5e1',GradientType=0 ); /* IE6-9 */}
 
 .dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li:last-child{margin:0;}
-
-
-.dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li.active a{background: rgb(73,227,245); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(73,227,245,1) 0%, rgba(49,181,225,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,227,245,1)), color-stop(100%,rgba(49,181,225,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom, rgba(73,227,245,1) 0%,rgba(49,181,225,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49e3f5', endColorstr='#31b5e1',GradientType=0 ); /* IE6-9 */}
 
 
 .dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li:hover a span{background:url(../images/arrow_sitehover.png) no-repeat;}
@@ -141,28 +114,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49e3f5', end
 
 .tab_content_detila_back{width:100%; height:auto; margin:0; padding:0; float:left;}
 
-.tab_content_detila_back ul.head{ width:100%; height:auto; margin:0; padding:0; float:left; border:#000 1px solid;  background:#eee;}
 
 .tab_content_detila_back ul.head li{width:9.3%; height:40px;  margin:0; padding:0; list-style:none; border-right:#000 1px solid; float:left; text-align:center; line-height:40px; font-family:"Open Sans"; color:#666; font-size:12px; text-transform:capitalize;}
 
-.tab_content_detila_back ul.head li.big{width:17%; height:40px;  margin:0; padding:0; list-style:none; border-right:#000 1px solid; float:left; text-align:center; line-height:40px; font-family:"Open Sans"; color:#666; font-size:12px; text-transform:capitalize;}
-.tab_content_detila_back ul.head li.small{width:5%; height:40px;  margin:0; padding:0; list-style:none; border-right:#000 1px solid; float:left; text-align:center; line-height:40px; font-family:"Open Sans"; color:#666; font-size:12px; text-transform:capitalize;}
 
 .tab_content_detila_back ul.details{ width:100%; height:auto; margin:0; padding:0; float:left; border:#000 1px solid; border-top:none;  background:#eee;}
-
-.tab_content_detila_back ul.details li{width:9.3%; height:auto;  margin:0; padding:0; list-style:none; border-right:#000 1px solid; float:left; text-align:center;  }
-.tab_content_detila_back ul.details li.big{width:17%; height:auto;  margin:0; padding:0; list-style:none; border-right:#000 1px solid; float:left; text-align:center; text-transform:none; }
-.tab_content_detila_back ul.details li.small{width:5%; height:auto;  margin:0; padding:0; list-style:none; border-right:#000 1px solid; float:left; text-align:center;  }
-
-.tab_content_detila_back ul.head li p{ font-family:"Open Sans"; font-weight:bold; color:#666; font-size:12px; text-transform:capitalize; margin:0; padding:0; text-align:center; line-height:40px;}
-.tab_content_detila_back ul.details li p{ font-family:"Open Sans"; color:#666; font-size:12px; text-transform:capitalize; margin:10px 0 0 0; padding:0; text-align:center; line-height:20px;}
-.tab_content_detila_back ul.details li.big p{ font-family:"Open Sans"; color:#666; font-size:12px; text-transform:none; margin:10px 0 0 0; padding:0; text-align:center; line-height:20px;}
 
 .tab_content_detila_back ul.head li:last-child{ border:none; }
 
 .tab_content_detila_back ul.details li:last-child{ border:none; }
 
-.tab_content_detila_back ul.details li .check_box{display:inline-block; margin:10px 0 0 0;}
 
 /*================================DASHBOARD PART END=================================================*/
 
@@ -183,8 +144,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49e3f5', end
 .universal_form_back{width:30%; height:auto; margin:0; padding:0; float:left;}
 
 h4{ font-family:"Open Sans"; color:#000; font-size:16px; text-transform:uppercase; margin:0 0 10px 0; padding:0; font-weight:normal;}
-
-.universal_form_back .text_box_inner{ width:92%; height:35px; border:#666 1px solid; margin:0 0 10px 0; padding:0 0 0 15px; font-family:Roboto; color:#666; font-size:14ppx; outline-style:none; float:left; border-radius:5px; box-shadow:#666 0 3px 0;}
 
 .sub_it_back{ margin:0; padding:0 25px; height:35px; font-family:"Open Sans"; color:#fff; font-size:14px; text-transform:uppercase; text-align:center; border-radius:5px; border-radius:5px; cursor:pointer; border:none; outline-style:none; background: rgb(69,72,77); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
@@ -219,8 +178,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49e3f5', end
 
 .dash_4_back_container .details li{width:100%; height:auto; margin:0; padding:0; float:left; list-style:none; border-bottom: rgba(0, 0, 0, 0.2) 1px solid;}
 
-.dash_4_back_container .details li h3{width:16.66666%; height:auto; margin:0; padding:0; float:left; background:#26ade5; height:40px; line-height:40px; text-align:center; font-family:Calibri; color:#fff; font-weight:normal; font-size:16px; text-transform:capitalize;}
-.dash_4_back_container .details li h3.small{width:10%; height:auto; margin:0; padding:0; float:left; background:#26ade5; height:40px; line-height:40px; text-align:center; font-family:Calibri; color:#fff; font-weight:normal; font-size:16px; text-transform:capitalize;}
+.dash_4_back_container .details li h3{width:16.66666%; height:auto; margin:0; padding:0; float:left; height:40px; line-height:40px; text-align:center; font-family:Calibri; color:#fff; font-weight:normal; font-size:16px; text-transform:capitalize;}
+.dash_4_back_container .details li h3.small{width:10%; height:auto; margin:0; padding:0; float:left; height:40px; line-height:40px; text-align:center; font-family:Calibri; color:#fff; font-weight:normal; font-size:16px; text-transform:capitalize;}
 
 .dash_4_back_container .details li p{margin:0; float:left; width:16.66666%; padding:0; text-align:center; /*height:30px;*/ height:auto; line-height:30px; text-align:center; font-family: Calibri; color:#000; text-transform:capitalize; font-size:14px;}
 .dash_4_back_container .details li p.small{margin:0; float:left; width:10%; padding:0; text-align:center; height:30px; line-height:30px; text-align:center; font-family: Calibri; color:#000; text-transform:capitalize; font-size:14px;}
@@ -753,9 +712,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 	
 	.form_back_container .facebook_form .facebook_left ul.left_face{width:100%; height:auto; margin:0; padding:0; float:left; height:auto; }
 	.content3{margin:0; width:100%; height:334px; padding:0; overflow:auto;  }
-	
-	.form_back_container .facebook_form .facebook_left ul.left_face li{width:93.27731%; height:auto; margin:0 0 5px 0 !important; padding:6px 10px !important; float:left; background:#318cc7; list-style:none; box-shadow:#18608f 0 3px 0; cursor:pointer; }
-	
+		
 	.form_back_container .facebook_form .facebook_left ul.left_face li .image_back{ margin:0 0 0 0; padding:0; float:left; width:50px; height:50px;}
 	
 	.form_back_container .facebook_form .facebook_left ul.left_face li .image_back img{width:100%; height:100%; display:block;}
@@ -788,7 +745,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 	
 	.form_back_container .facebook_form .facebook_right ul.right_face li .details_face_right h2{ font-family:Calibri; color:#2c3e50; font-size:16px; margin:0; padding:0; float:left; font-weight:normal;}
 	
-	.form_back_container .facebook_form .facebook_right ul.right_face li .details_face_right p{ font-family: Roboto; color:#000; font-size:12px; margin:5px 0 0 0 !important; text-align:left !important; padding:0; float:left; font-weight:normal; width:90%;}
+	.form_back_container .facebook_form .facebook_right ul.right_face li .details_face_right p{ font-size:12px; margin:5px 0 0 0 !important; text-align:left !important; padding:0; float:left; font-weight:normal; width:90%;}
 	
 	.form_back_container .facebook_form .facebook_right ul.right_face li .details_face_right h3{ font-family:Calibri; color:#000; font-size:14px; margin:0 0 0 0; padding:0;  font-weight:normal; position:absolute; top:0; right:30px;}
 	
@@ -809,7 +766,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 
 
 
-.drop_admin{width:278px; height:30px; background:#fff; border:none; outline-style:none; font-family:"Times New Roman", Times, serif; color:#000; padding:0 0 0 10px;  margin:0 auto;}
+.drop_admin{width:278px; outline-style:none;}
 
 
 

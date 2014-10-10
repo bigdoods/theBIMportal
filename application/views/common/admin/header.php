@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Oswald:400,700,300|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
 <link href="<?php echo base_url('css/validationengine.css') ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/multiple-select.css') ?>" rel="stylesheet" type="text/css">
@@ -13,6 +14,7 @@
 <link href="<?php echo base_url('css/admin-style.css') ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/admin-responsive.css') ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/common.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url('css/admin-style_v2.css') ?>" rel="stylesheet" type="text/css">
 
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery-latest.min.js')?>"></script>
