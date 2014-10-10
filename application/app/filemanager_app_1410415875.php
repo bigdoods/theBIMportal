@@ -222,11 +222,18 @@ class filemanager_app extends Bim_Appmodule{
 
 		$id = $this->_me->input->get('id');
 		$doc_details = $this->_me->Docs->getDocDetails($id);
-		debug($doc_details);
+		ob_clean();
 		?>
-		<link href="<?php echo base_url('css/file_preview.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
-		<iframe id="file-preview" src="http://dev1.bimscript.com/Default.aspx?url=<?php echo urlencode(base_url($doc_details[0]['path'])) ?>" scrolling="no" width="1000px" height="1000px"></iframe>
+		<html>
+			<head>
+				<link href="<?php echo base_url('css/file_preview.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
+			</head>
+			<body>
+				<iframe id="file-preview" src="http://dev1.bimscript.com/Default.aspx?url=<?php echo urlencode(base_url($doc_details[0]['path'])) ?>" scrolling="no"></iframe>
+			</body>
+		</html>
 		<?php
+		exit;
 	}
 
 	/**

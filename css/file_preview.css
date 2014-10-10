@@ -1,11 +1,5 @@
-.mCSB_container{
-	height:83% !important;
-}
-
-#file-preview, .content_main_tickets{
-	width:99% !important;
-	height:100% !important;
-}
 #file-preview{
+	height:100%;
+	width:100%;
 	border:none;
 }
