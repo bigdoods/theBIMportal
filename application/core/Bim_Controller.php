@@ -61,7 +61,13 @@ class	Bim_Controller extends CI_Controller{
 	 */
 	 
 	  public function invoke(){
+	  	$this->load->model('Apps');
 	 	$app = $this->input->get('a');
+
+	 	global $app_id;
+	 	$app_data = $this->Apps->getAppByClassname($app);
+	 	$app_id = @$app_data['id'];
+
 		$app_method = $this->input->get('f');
 		$tab_id = $this->input->get('t');
 		if(class_exists($app)){
