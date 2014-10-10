@@ -4,7 +4,7 @@
  * The application when ever a controller will load
  * The BIM controller wil be default loaded
  */
-class	Fileupload_app extends Bim_Appmodule{
+class Fileupload_app extends Bim_Appmodule{
 	
 	/**
 	 * The default constructor
@@ -84,73 +84,82 @@ class	Fileupload_app extends Bim_Appmodule{
 			$document_type = $row['name'];
 		 }
 	 ?>
-     <input type="text" name="details" value="" class="text_area_for_upper_ul" placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
-     <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yy" />
+	 <form action="#" validate="validate" method="POST">
+	     <input type="text" name="details" value="" class="text_area_for_upper_ul" placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
+	     <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yy" data-validation-engine="validate[required,custom[dateFormat]]" />
 
-     <ul class="upload_file2 dragdrop">
-    	<li>
-        	
-        	<input type="file" style="height:0px;width:0px;" id="file"/>
-			<input type="hidden" style="color:#fff;" id="fileval"/>
-			<img src="<?php echo base_url('images').'/drag.png'?>" alt="" onclick="$('#file').click();"/>
-            <div class="clear"></div>
-            <h2>drag and drop</h2>
-            <div class="clear"></div>
-            <p><?php echo $document_type?></p>
-        </li>
-    </ul>
-     	<script type="text/javascript">
-		var obj = {url:"<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val()}
-        	$(function(){
-				$('[name=details]').focus();
-				var dom = $('#file').closest('ul.dragdrop');
-				$('#file,.dragdrop').html5Uploader({
-						name: 'foo',
-						zoo:'sd',
-						postUrl : "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type ?>",
-						
-						onClientLoad: function(){
-							dom.overlay(1);
-							$('.cp-bar-value').css({width: '0%',background:'#ae0000'}).html(' ');
-							$('.cp-bar').append('<div class="cp-percent"/>');
-							$('.cp-percent').append('<div class="percent-val"/>');
-							$('.cp-percent').css({'color':'#fff' ,'position': 'absolute', 'top':'0px', 'width': '100%', 'z-index':'100'});
-							$('.percent-val').css({'line-height': '26px', 'text-align':'center'});
-						},
-						onClientError: function(){
-							dom.overlay("Browser fails to read the file");
-							dom.overlay(0,-1);
-						},
-						onServerError:function(){
-							dom.overlay("File upload fails,please try again");
-							dom.overlay(0,-1);
-						},
-						onServerProgress :function(e){
-							var pp=Math.round(e.loaded/e.total*100);
-							$('.cp-bar-value').css('width',pp+'%');
-							$('.percent-val').html(pp+'%');
-						},
-						onSuccess:function(e, file, response){
-							dom.overlay("Upload complete");
-							var res = JSON.parse(response);
-							if(res.error.length == 0){
-								dom.overlay(res.data);
-							}else{
-								dom.overlay(res.error[0]);
-								$('#file').val('');
+	     <ul class="upload_file2 dragdrop">
+	    	<li>
+	        	
+	        	<input type="file" style="height:0px;width:0px;" id="file"/>
+				<input type="hidden" style="color:#fff;" id="fileval"/>
+				<img src="<?php echo base_url('images').'/drag.png'?>" alt="" onclick="$('#file').click();"/>
+	            <div class="clear"></div>
+	            <h2>drag and drop</h2>
+	            <div class="clear"></div>
+	            <p><?php echo $document_type?></p>
+	        </li>
+	    </ul>
+	     	<script type="text/javascript">
+			var obj = {url:"<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+ $('[name=details]').val()}
+	        	$(function(){
+					$('[name=details]').focus();
+					var dom = $('#file').closest('ul.dragdrop');
+					$('#file,.dragdrop').html5Uploader({
+							name: 'foo',
+							zoo:'sd',
+							postUrl : false,
+							validate: function(){
+								return $('#file').closest('form').validationEngine('validate');
+							},
+							onClientLoad: function(){
+								dom.overlay(1);
+								$('.cp-bar-value').css({width: '0%',background:'#ae0000'}).html(' ');
+								$('.cp-bar').append('<div class="cp-percent"/>');
+								$('.cp-percent').append('<div class="percent-val"/>');
+								$('.cp-percent').css({'color':'#fff' ,'position': 'absolute', 'top':'0px', 'width': '100%', 'z-index':'100'});
+								$('.percent-val').css({'line-height': '26px', 'text-align':'center'});
+							},
+							onClientError: function(){
+								dom.overlay("Browser failed to read the file");
+								dom.overlay(0,-1);
+							},
+							onServerError:function(){
+								console.log('onServerError', $('.submitprocess'));
+								dom.overlay("File upload fails, please try again");
+								dom.overlay(0,-1);
+							},
+							onServerAbort:function(){
+								console.log('onServerAbort', $('.submitprocess'));
+								dom.overlay("File upload fails, please try again");
+								dom.overlay(0,-1);
+							},
+							onServerProgress :function(e){
+								var pp=Math.round(e.loaded/e.total*100);
+								$('.cp-bar-value').css('width',pp+'%');
+								$('.percent-val').html(pp+'%');
+							},
+							onSuccess:function(e, file, response){
+								dom.overlay("Upload complete");
+								var res = JSON.parse(response);
+								if(res.error.length == 0){
+									dom.overlay(res.data);
+								}else{
+									dom.overlay(res.error[0]);
+									$('#file').val('');
+								}
+								dom.overlay(0, -1);
+								$('.cp-percent').remove();
+								$('.percent-val').remove();
+							},
+							dynamicUrl: function(){
+								return "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val() + "&date="+ $('input[name=document_date]').val();
 							}
-							dom.overlay(0, -1);
-							$('.cp-percent').remove();
-							$('.percent-val').remove();
-						},
-						dynamicUrl: function(){
-							return "<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+$('[name=details]').val() + "&date="+ $('input[name=document_date]').val()
-						}
-						
-					 })
-			});
-        </script>
-	 	
+							
+						 })
+				});
+	        </script>
+		</form>	 	
 	 <?php
      }
 	
