@@ -6,7 +6,7 @@
             <p>Name</p>
           </li>
           <li class="big"  style="width:50%">
-            <p>Embed Code</p>
+            <p>Location</p>
           </li>
           <li class="big">
             <p>Action</p>
