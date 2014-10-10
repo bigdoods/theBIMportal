@@ -250,6 +250,41 @@ class Portal extends Bim_Controller {
 	public function updateProfile(){
 		echo $this->Users->updateProfile($this->input->post());
 	}
+
+	public function fetch_note(){
+		$this->load->model('Note');
+
+		$query = $this->db
+			->where(array('user_id' => getCurrentuserId()))
+			->limit(1)
+			->get('notes');
+
+		$note = array_first($query->result('Note'));
+		debug($note);
+
+		ob_clean();
+		echo json_encode($note);
+	}
+	public function save_note(){
+		$this->load->model('Note');
+		$user_id = getCurrentuserId();
+		$note_body = htmlentities($this->input->post('note_body'));
+
+		if($this->db->from('notes')->limit(1)->where(array('user_id' => $user_id))->count_all_results() >0){
+			$query = $this->db
+				->limit(1)
+				->where(array('user_id' => $user_id))
+				->update('notes', array('body' => $note_body));
+		}else{
+			$query = $this->db
+				->insert('notes', array('user_id' => $user_id, 'body' => $note_body));
+
+		}
+		ob_clean();
+		exit;
+	}
+
+
 }
 
 /* End of file welcome.php */

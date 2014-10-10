@@ -182,6 +182,14 @@
 		/**
 		 * it is used to 
 		 */
+
+		$.getJSON(base_path+'portal/fetch_note/', function(data){
+			$('#note').val(data.body);
+		});
+		$(document).on('change', '#note', function(){
+			$.post(base_path+'portal/save_note/',{'note_body':$(this).val()});
+		});
+
 	});
 	
 })(jQuery)
