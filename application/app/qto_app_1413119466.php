@@ -60,8 +60,17 @@ class QTO_App extends Bim_Appmodule{
 				$xml_path = $revisions[0]['path'];
 			}
 
+			// Load XML through cURL
+			$url = base_url($xml_path);
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_URL, $url);    // get the url contents
+
+			$data = curl_exec($ch); // execute curl request
+			curl_close($ch);
+
 			// Load QTO XML file using $xml_path
-			$xml = simplexml_load_file(base_url($xml_path));
+			$xml = simplexml_load_string($data);
 			
 		 	?>
 
