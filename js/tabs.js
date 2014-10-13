@@ -33,7 +33,7 @@ $(document).ready(function() {
 					dom.html(r);
 				},
 				error:function( jqXHR,  textStatus, errorThrown){
-					dom.overlay("Some error occured, please try after sometime");
+					dom.overlay("An error occured, please try after sometime");
 				},
 				complete:function(jqXHR, textStatus){
 					dom.overlay(0,-1);

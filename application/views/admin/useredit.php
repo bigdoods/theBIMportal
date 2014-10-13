@@ -44,7 +44,7 @@
 				frm.overlay(0);
 			},
 			error:function(){
-				frm.overlay('Some error occured, please try again');
+				frm.overlay('An error occured, please try again');
 				frm.overlay(0);
 			}
 		 })

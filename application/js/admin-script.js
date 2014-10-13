@@ -159,7 +159,7 @@
 					$('li.active').click();
 				},
 				error: function(){
-					frm.overlay("Some error occured, Please try after some time");
+					frm.overlay("An error occured, Please try after some time");
 				},
 				complete: function(){
 					frm.overlay(0, -1);

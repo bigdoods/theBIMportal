@@ -126,7 +126,7 @@
 					dom.html(r);
 				},
 				error:function( jqXHR,  textStatus, errorThrown){
-					dom.overlay("Some error occured, please try after sometime");
+					dom.overlay("An error occured, please try after sometime");
 				},
 				complete:function(jqXHR, textStatus){
 					dom.overlay(0,-1);
@@ -188,7 +188,7 @@
 					$('li.active').click();
 				},
 				error: function(){
-					frm.overlay("Some error occured, Please try after some time");
+					frm.overlay("An error occured, Please try after some time");
 				},
 				complete: function(){
 					frm.overlay(0, -1);
@@ -329,7 +329,7 @@
 							}
 						},
 						error: function(){
-							dom.overlay("Some error occured, please try after some time");
+							dom.overlay("An error occured, please try after some time");
 						},
 						complete:function(){
 							dom.overlay(0,-1);

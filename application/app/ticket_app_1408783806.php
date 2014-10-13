@@ -55,7 +55,7 @@
 								}
 							},
 							error: function(){
-								dom.overlay("some error occured, please try again");
+								dom.overlay("An error occured, please try again");
 							},
 							complete: function(){
 								dom.overlay(0,-1);

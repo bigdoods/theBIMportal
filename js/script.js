@@ -44,7 +44,7 @@
 				frm.overlay(0);
 			},
 			error:function(){
-				frm.overlay('Some error occured, please try again');
+				frm.overlay('An error occured, please try again');
 				frm.overlay(0);
 			}
 		 })
@@ -72,7 +72,7 @@
 				}
 			},
 			error:function(obj,errorName,errorDetails, frm){
-				frm.overlay('Some error occured, please try again');
+				frm.overlay('An error occured, please try again');
 				frm.overlay(0,-1);
 			},			
 		 })
@@ -102,7 +102,7 @@
 				}
 			},
 			error:function(obj,errorName,errorDetails, frm){
-				frm.overlay('Some error occured, please try again');
+				frm.overlay('An error occured, please try again');
 				frm.overlay(0,-1);
 			},			
 		 }).on('focus', function(){ $('.forgotpass_error').css('visibility', 'hidden')});
@@ -129,7 +129,7 @@
 				}
 			},
 			error:function(obj,errorName,errorDetails, frm){
-				frm.overlay('Some error occured, please try again');
+				frm.overlay('An error occured, please try again');
 				frm.overlay(0,-1);
 			},			
 		 });
