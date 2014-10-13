@@ -238,7 +238,7 @@ class Messaging_app extends Bim_Appmodule{
                 <span class="ch_new_msg_count"></span>
                 <div class="clear"></div>
                 <div class="chat_details_back2 ch_details">
-                	<textarea class="bottom_details2 ch_send_content" placeholder="Type Here"  multiline="true" style="resize:none;z-index:100;"></textarea>
+                	<textarea class="bottom_details2 ch_send_content" placeholder="Enter your message..."  multiline="true" style="resize:none;z-index:100;"></textarea>
                 	<!--<input type="textarea" class="bottom_details2 ch_send_content" placeholder="Type Here"  multiline="true"/>-->
                     <div class="chat_details_inner2 ch_details_inner">
                     <div class="chat_back_input ch_content_whole">                    	
