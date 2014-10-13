@@ -34,7 +34,92 @@ class Portal extends Bim_Controller {
 		$this->load->vars($data);
 		$this->load->view('user');		
 	}
+	/**
+	 * controller function for forgotpassword
+	 */
+	 public function forgotpass(){
+	 	$p = $this->input->post();
+		$where = "email = '".$p['uname']."'";		
+		$this->db->where($where);
+		$user = $this->db->get('users');
+		$response = array('data'=>array(),'error'=>array());
+		if($user->num_rows()){
+			$user_details = $user->row_array();
+
+			$random_numer = md5(uniqid(mt_rand().time().$user_details['id'], true));
+			$link = base_url().'portal/changepass/'.$random_numer;
+			// + send email
+			$body  = '<p>Hi! '.$user_details['name'].'<br/> Someone has requested to chage the password of your <strong>BIMSCRIPT</strong> account. If it was you then <a href="'.$link.'">click here</a> to reset your password. If it was not you, then please ignore this email.</p>
+			<p>
+			If you can\'t view the link you can directly copy and paste it in the browser. Here is your link:
+			'.$link.';
+			</p>
+			';
+			$subject = 'BIMSCRIPT: password change request';
+			$mailSend = sendMail($user_details['email'],$subject, $body);
+			if($mailSend){
+				$this->db->where(array('id' => $user_details['id']))->update('users', array(
+					'password_reset' => $random_numer
+				));
+			}else{
+				error_log('Error sending password reset email.');
+			}
+		}
+
+		$response['data'] = "Your password request has been sent. Please check your email";
+		echo json_encode($response);
+	 }
+	 
+	/**
+	 * function to display the form of change passweord
+	 */
+	function changepass($random_number){
+		// + check the id and random match with any request
+		$data = array();
+		$request_details = $this->db
+			->where('password_reset', $random_number)
+			->get('users');
+		if($request_details->num_rows()){
+			$data['userdetails'] = $request_details->row_array();
+		}else{
+			redirect('/portal/login');
+		}
+		$data['main'] = 'changepass';
+		$this->load->vars($data);
+		$this->load->view('user');
+	}
 	
+	/**
+	 * save the new password
+	 */
+	function dochange(){
+		$response = array('data'=>array(),'error'=>array());
+		$p = $this->input->post();
+		$request_id = intval($p['requestid']);
+		$new_pass = @$p['password'];
+		// + get the request details
+		$q = $this->db
+			->where('id', $request_id)
+			->get('users');
+		if($q->num_rows()){
+			$user_details  = $q->row_array();
+			$old_pass = $user_details['password'];
+			$this->db
+				->where('id', $user_details['id'])
+				->update('users', array('password_reset' => ''));
+			// +change the user table
+			$data = array(
+				'password' => md5($new_pass)
+			);
+			$this->db
+				->where('id', $user_details['id'])
+				->update('users', $data);
+			$response['data'] = base_url();
+		}else{
+			$response['error'][] = 'Not a valid request';
+		}
+		echo json_encode($response);
+	}
 	/**
 	 * Make the registration
 	 */

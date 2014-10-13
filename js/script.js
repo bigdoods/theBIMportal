@@ -81,6 +81,59 @@
 		 } );
 		 
 		 /**
+		  * Forgot password		 
+		  */
+		  $('form.forgotpass_form').ajaxForm({
+			url : 'portal/forgotpass/',
+			'type': 'post',
+			'dataType': 'json',
+			beforeSubmit:function(arr, frm){
+				frm.overlay(1);
+				frm.overlay('Please wait');
+			},
+			success:function(r, status, xhr, frm){
+				if( ! $.isEmptyObject(r.error)){
+					frm.overlay(r.error[0]);
+					frm.overlay(0, -1);
+					$('.forgotpass_error').html(r.error[0]).css('visibility', 'visible');
+				}else{
+					$('.forgotpass_error').html(r.data).css('visibility', 'visible');
+					frm.overlay(0, -1);
+				}
+			},
+			error:function(obj,errorName,errorDetails, frm){
+				frm.overlay('Some error occured, please try again');
+				frm.overlay(0,-1);
+			},			
+		 }).on('focus', function(){ $('.forgotpass_error').css('visibility', 'hidden')});
+		
+		  $('form.changepass_form').ajaxForm({
+			url : base_path+'portal/dochange/',
+			'type': 'post',
+			'dataType': 'json',
+			beforeSubmit:function(arr, frm){
+				frm.overlay(1);
+				frm.overlay('Please wait');
+			},
+			success:function(r, status, xhr, frm){
+				if( ! $.isEmptyObject(r.error)){
+					frm.overlay(r.error[0]);
+					frm.overlay(0, -1);
+					$('.log_error').html(r.error[0]).css('visibility', 'visible');
+				}else{
+					$('.log_error').html("DONE! Please wait while we redirecting").css('visibility', 'visible');
+					frm.overlay(0, -1);
+					setTimeout(function(){
+						window.location.href = r.data;
+					});
+				}
+			},
+			error:function(obj,errorName,errorDetails, frm){
+				frm.overlay('Some error occured, please try again');
+				frm.overlay(0,-1);
+			},			
+		 });
+		 /**
 		  * Upload profile pic
 		  */
 		 

@@ -42,7 +42,7 @@ function real_array_merge_recursive($arr1, $arr2){
 }
 
 /**
- * Get radom passowrd
+ * Get radom password
  */
 function getRandomPass(){
     $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789~!@#$%^&*()_-=+";
