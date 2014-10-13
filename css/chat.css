@@ -138,7 +138,7 @@
 .chat_back_container .chat_details_back .chat_back .content_chat .online .online_back .red {
     width: 9px;
     height: 9px;
-    background: #e90e41;
+    background: #E43939;
     float: right;
     border-radius: 100%;
     position: absolute;
@@ -274,7 +274,7 @@
 .chat_back_container2 .portion_chat .chat_header .red {
     width: 9px;
     height: 9px;
-    background: #e90e41;
+    background: #E43939;
     float: right;
     border-radius: 100%;
     position: absolute;
@@ -420,6 +420,7 @@
 .chat_back_container2 .portion_chat .chat_details_back2 .chat_back_input .own h2 {
     margin: 0;
     padding: 6px 10px;
+    min-height: 7px;
     border-radius: 3px;
     float: right;
     color: #5B5B5B;

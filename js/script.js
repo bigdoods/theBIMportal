@@ -95,9 +95,9 @@
 				if( ! $.isEmptyObject(r.error)){
 					frm.overlay(r.error[0]);
 					frm.overlay(0, -1);
-					$('.forgotpass_error').html(r.error[0]).css('visibility', 'visible');
+					$('.forgotpass_error').html(r.error[0]).css('display', 'block');
 				}else{
-					$('.forgotpass_error').html(r.data).css('visibility', 'visible');
+					$('.forgotpass_error').html(r.data).css('display', 'block');
 					frm.overlay(0, -1);
 				}
 			},
@@ -119,7 +119,7 @@
 				if( ! $.isEmptyObject(r.error)){
 					frm.overlay(r.error[0]);
 					frm.overlay(0, -1);
-					$('.log_error').html(r.error[0]).css('visibility', 'visible');
+					$('.log_error').html(r.error[0]).css('visibility', 'block');
 				}else{
 					$('.log_error').html("DONE! Please wait while we redirecting").css('visibility', 'visible');
 					frm.overlay(0, -1);

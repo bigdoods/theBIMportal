@@ -861,12 +861,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5cbde6', end
 
 .register_back_container .main .details_back .middle_back .sub_details{width:61.26984%; height:auto; margin:30px auto 0; padding:0; }
 
-.register_back_container .main .details_back .middle_back .submit{margin:0; padding:0 62px 0 20px; float:left; background:#1cd5ac url(../images/log_arrow.png) no-repeat 90px center; border-radius:3px; height:48px; line-height:48px; font-family:Oswald; color:#fff; font-size:17px; text-align:left; text-transform:uppercase; border:none; outline-style:none; cursor:pointer; box-shadow:#0faa88 0 5px 0;}
-
-.register_back_container .main .details_back .middle_back p{ font-family:"PT Sans"; color:#fff; text-transform:uppercase; margin:0; padding:0; float:right; font-size:12px; line-height:48px;}
-
-.register_back_container .main .details_back .middle_back p a{ color:#fff; text-decoration:none;}
-
+.register_back_container .main .details_back .middle_back p{ color:#fff; text-transform:uppercase; margin:0; padding:0; float:right; font-size:12px; line-height:48px;}
 
 
 

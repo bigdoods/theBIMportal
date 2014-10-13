@@ -48,6 +48,7 @@ body {
 .register_back_container .main .details_back {
     width: 100%;
     max-width: 342px;
+    min-height: 350px;
     float: none;
     margin: 0 auto;
 }
@@ -104,6 +105,10 @@ body {
     border-radius: 0;
 }
 
+.register_back_container .main .details_back.forgotpass .middle_back .sub_details {
+    margin: 0 auto 50px auto;
+}
+
 .register_back_container .main .details_back .middle_back .form_back .details {
     width: 100%;
     height: auto;
@@ -157,6 +162,10 @@ body {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     padding: 0 16px;
     cursor: pointer;
+}
+
+.register_back_container .main .details_back.forgotpass input[type=submit] {
+    margin: 0 auto 40px auto;
 }
 
 .register_back_container .grey-button.registration,

@@ -9,7 +9,7 @@
                 <div class="middle_back">
                     <div class="clear"></div>
                     <div class="clear"></div>
-                    <h1 style="display: none;" class="reg_success">Registration successfull.Please check your eamil</h1>
+                    <h1 style="display: none;" class="reg_success">Registration successful. Please check your email.</h1>
                     <div class="form_back">
                     	<div class="details">
                             	<input type="text" placeholder="Email Address" data-validation-engine="validate[required,custom[email]]" name="email" id="email"/>
@@ -41,7 +41,6 @@
                     <div class="sub_details">
                     <a href="javascript:void(0)" class="login toggle grey-button">Login</a>
                     <p><input type="submit" class="blue-button action register" value="Register" /></p>
-					<p><a href="javascript:void(0)" class="forgotpass toggle" style="margin-left:20px;">Forgot password</a></p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -74,32 +73,29 @@
                 </form>
             </div>
 			 <div class="details_back forgotpass"  style="display:none;">
+                <h1>Forgot Password</h1>
 				<form action="#" method="post" validate="validate" class="forgotpass_form">
-				<div class="top_back"></div>
 				<div class="middle_back">
-					<div class="strip_back"></div>
 					<div class="clear"></div>
-					<div class="profile_pic_back"></div>
 					<div class="clear"></div>
-					<h1>FORGOT PASSWORD</h1>
-					<div class="clear"></div>
-					<h1 style="visibility:hidden;" class="forgotpass_error">Registration successfull.Please check your eamil</h1>
+					<h1 style="display: none;" class="forgotpass_error">Please check your email.</h1>
+                    <h1>Enter your email below to retrieve your password.</h1>
 					<div class="form_back">
 						<div class="details">
-						        <input type="text" class="text_box1" placeholder="Email" name="uname" id="uname" data-validation-engine="validate[required]"/>
-						                               
+						        <input type="text" placeholder="Email Address" name="uname" id="uname" data-validation-engine="validate[required]"/>
 						</div>
 						<div class="clear"></div>
 					</div>
 					<div class=" clear"></div>
 					<div class="sub_details">
-					<input type="submit" class="submit" value="Send" />
-					<p><a href="javascript:void(0);" class="login toggle">Login</a> <a href="javascript:void(0)" class="registration toggle" style="margin-left:20px;">Rregister</a></p>
+    					<input type="submit" class="submit blue-button action" value="Send" />
+                        <a href="javascript:void(0);" class="login toggle grey-button">Login</a>
+    					<p>
+                            <a href="javascript:void(0)" class="registration toggle grey-button" style="margin-left:20px;">Register</a>
+                        </p>
 					</div>
 				</div>
-				<div class="btm_back"></div>
 				<div class="clear"></div>
-				<div class="shadow_back"></div>
 				</form>
 			</div>
         </div>
