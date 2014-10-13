@@ -1022,6 +1022,13 @@ form#account_update hr {
     background: #CCC;
 }
 
+/* QUANTITY TAKEOFF APP */
+
+a#expand-list,
+a#collapse-list {
+    cursor: pointer;
+}
+
 /* QTIPS */
 
 .qtip {

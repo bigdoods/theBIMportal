@@ -14,7 +14,7 @@
                                                 	<li><p><?php echo ucfirst($apps['name'])?></p></li>
                                                     <li class="big"><p><?php echo $apps['description']?></p></li>
                                                     <li><p><input type="checkbox" name="active" disabled="disabled" <?php echo $apps['is_active'] == 1 ? 'checked="checked"' : ''?>></p></li>
-                                                    <li><p><a class="edit-app" href="javascript:void(0);">Edit</a></p></li>                                                   
+                                                    <li><p><a class="edit-app blue-button action" href="javascript:void(0);">Edit</a></p></li>                                                   
                                                 </ul>
 													
 												

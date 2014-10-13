@@ -39,7 +39,7 @@ body {
 
 .dashboard_back_container .main .details_back {
     width: 100%;
-    min-height: 630px;
+    min-height: 0;
     margin: 77px 0 0 0;
     padding: 0;
     float: left;
@@ -73,6 +73,7 @@ body {
     margin: 0;
     padding: 1%;
     background: #F8F8F8;
+    overflow-y: scroll;
 }
 
 .dashboard_back_container .main .details_back .middle_back .dash_back_details .right_details_tab {
