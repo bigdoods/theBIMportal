@@ -1,0 +1,55 @@
+/* CSS Document */
+
+.mCSB_container, .content_main{
+	width:100% !important;
+	height:100% !important;
+}
+
+	.sample_header input, .sample_header span, .sample_header strong{
+			vertical-align: middle;
+		}
+		#filter_days, #filter_hours{
+			display: inline-block;
+		}
+		.sample_header input{
+			margin: 0 0 0 6px;
+		}
+		.sample_header label span{
+			padding-right: 4px;
+		}
+		.sample_header label{
+			cursor:pointer;
+		}
+
+		.project{
+			background:#3C9445;
+			border-color: #3C9445;
+		}
+		.project .gantt_task_progress{
+			background:#65C16F;
+			box-shadow: none;
+			border:none;
+		}
+
+		.weekend{ background: #f4f7f4 !important;}
+		.gantt_selected .weekend{
+			background:#FFF3A1 !important;
+		}
+		.gantt_task_line.project{
+			background-image: none;
+		}
+		
+		.controls_bar{
+			border-top:1px solid #bababa;
+			border-bottom:1px solid #bababa;
+			clear:both;
+			margin-top:90px;
+			height:28px;
+			background:#f1f1f1;
+			color:#494949;
+			font-family:Arial, sans-serif;
+			font-size:13px;
+			padding-left:10px;
+			line-height:25px
+		}
+
