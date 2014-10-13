@@ -63,6 +63,9 @@
 								
 							}
 						},
+						dynamicUrl: function(){
+							return '<?php echo base_url('admin/invoke/?a=render_app&f=uploadPicture');?>'+'&pid='+$('#project_selected').val();
+						},
 						onClientError: function(){
 							$('.dragdrop').overlay("Browser fails to read the file");
 							$('.dragdrop').overlay(0,-1);
@@ -82,7 +85,7 @@
 								var html = '<li><a class="vlightbox1 vlightbox1_new" href="'+base_url+'upload/site_renders/original/'+response.data+'" title="site photography"><img src="'+base_url+'upload/site_renders/thumb/'+response.data+'" alt="Site images"/><div class="clear"></div><h2 rel="download" data-renderid="<?php echo base_url('admin/invoke?a=render_app&f=renderDownlod&id=')?>'+response.id+'">Just now</h2></a></li>';
 						var dom = $(html).fadeOut();						
 //						$('.dragdrop').insertBefore(dom);
-						dom.insertBefore('.dragdrop');
+						dom.insertAfter('.dragdrop');
 						dom.fadeIn('slow');
 						addLightBoxOnDynamicElement();
 							}
@@ -109,6 +112,22 @@
         </script>
 		<ul class="site_photo_graph">
            <?php
+		   if(getCurrentUserRole() == 1){
+			  $all_projects =  $this->_me->Projects->getAllProject();
+		   ?>     <li class="dragdrop" style="position:relative;">
+                            			<img src="<?php echo base_url()?>/images/upload.jpg" alt="" onclick="$('#file').click();"/>
+                                        <div class="clear"></div>
+                                        <input type="file" style="height:0px;width:0px;" id="file"/>
+                                        <div class="loader" style="display:none;position:absolute;top:23px;left:23px;width:80%;margin:0 auto;"><img src="<?php echo base_url();?>upload/site_renders/ajax-loader.gif" alt="rahul yadav" /></div>
+                                        <select name="project" class="text_box" id="project_selected">
+                                        	<?php foreach($all_projects as $project){
+												echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
+											}?>
+                                        </select>
+                                        <h2>Upload here</h2>
+                                    </li>   
+		   <?php
+		   }
 		   		foreach($site_photographs as $photo){
 					?>
                     <li>
@@ -120,17 +139,6 @@
                    </li>
 					
 					<?php
-				}
-				if(getCurrentUserRole() == 1){
-		   ?>     <li class="dragdrop">
-                            			<img src="<?php echo base_url()?>/images/upload.jpg" alt="" onclick="$('#file').click();"/>
-                                        <div class="clear"></div>
-                                        <input type="file" style="height:0px;width:0px;" id="file"/>
-                                        <div class="loader" style="display:none;"><img src="<?php echo base_url();?>upload/site_renders/ajax-loader.gif" alt="rahul yadav" /></div>
-                                        <h2>Upload here</h2>
-                                    </li>       
-              
-		<?php
 				}
 				echo ' </ul>';
 		?>
@@ -179,10 +187,10 @@
 						'path' => $new_name,
 						'original_name' =>$_FILES['foo']['name']
 						);
-						foreach($this->_project_id_arr as $pid){
-							$data['project_id'] = $pid;
+						
+							$data['project_id'] = $this->_me->input->get('pid');
 							$this->_db->insert('site_renders' , $data);
-						}
+						
 				$response['id'] = $this->_db->insert_id();
 				
 						
