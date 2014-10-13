@@ -38,26 +38,22 @@ class QTO_App extends Bim_Appmodule{
 		 * Setup for bimsync api interaction
 		 */
 
-		// Get current project ID
-		$current_project = $this->_me->Users->getCurrentProjects();
-
 		// Get Quantity Takeoff XML files for current project
-		$revisions = $this->_me->Docs->getQTODocDetails($current_project[0]);
+		$revisions = $this->_me->Docs->getQTODocDetails(getActiveProject());
+		$xml_path = @$revisions[0]['path'];
+		$revision_id = $this->_me->input->get('revision_id');
 
 		// Check that revisions exist
 		if(count($revisions)) {
 
 			// If revision date has been set from drop down, set $xml_path
-			if(isset($_GET['revision_id'])) {
+			if(!empty($revision_id)) {
 				foreach($revisions as $revision) {
-					if($_GET['revision_id'] == $revision['id']) {
+					if($revision_id == $revision['id']) {
 						$xml_path = $revision['path'];
+						break;
 					}
 				}
-			}
-			// else select latest revision by default
-			else {
-				$xml_path = $revisions[0]['path'];
 			}
 
 			// Load QTO XML file using $xml_path
@@ -77,7 +73,7 @@ class QTO_App extends Bim_Appmodule{
 		 					$revision_date = date('jS F Y - h:ia', $revision['date']);
 
 		 					// select current revision in drop down
-		 					if(isset($_GET['revision_id']) && $_GET['revision_id'] == $revision['id']) {
+		 					if($revision_id == $revision['id']) {
 		 						$selected = ' selected';
 		 					} else {
 		 						$selected = '';
@@ -98,7 +94,7 @@ class QTO_App extends Bim_Appmodule{
 			 	<script type="text/javascript" src="<?php echo base_url('js/TreeListFilter.js'); ?>"></script>
 			 	<script type="text/javascript">
 				    $(function() {
-				    	$('head').append('<link rel="stylesheet" href="<?php echo base_url(); ?>css/FileTreeView.css" />');
+				    	$('head').append('<link rel="stylesheet" href="<?php echo base_url('css/FileTreeView.css'); ?>" />');
 				        $('#qto-list').fileTreeView('#expand-list', '#collapse-list', 'folder');
 				        $('#filter-list').treeListFilter('#qto-list', 200);
 				    });
