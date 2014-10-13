@@ -48,12 +48,12 @@
 	</script>
 	<script type="text/javascript">
 		$(window).load(function(){
-			var timelinewidth = $('body').innerWidth() - 467;
+			var timelinewidth = $('body').innerWidth() - 487;
 			$("#content_2.timeline").css('width', timelinewidth);
 		});
 		$(window).bind('resize', function(e)
 		{
-			var timelinewidth = $('body').innerWidth() - 467;
+			var timelinewidth = $('body').innerWidth() - 487;
 			$("#content_2.timeline").css('width', timelinewidth);
 		});
 	</script>

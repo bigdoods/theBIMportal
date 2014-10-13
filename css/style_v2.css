@@ -432,8 +432,8 @@ APP STYLES
 
 .back_container .main .apps_content_back .content_main ul.profile li .image {
     display: table;
-    width: 112px;
-    height: 112px;
+    width: 81px;
+    height: 81px;
     margin: 0;
     padding: 0;
     float: left;
@@ -456,7 +456,8 @@ APP STYLES
     display: block;
     width: auto;
     height: auto;
-    max-width: 112px;
+    max-width: 81px;
+    max-height: 81px;
     margin: 0 auto;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -472,7 +473,7 @@ APP STYLES
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .left_con_del h2 {
-    margin: 12px 0 0 0;
+    margin: 0;
     padding: 0;
     float: left;
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
@@ -494,19 +495,21 @@ APP STYLES
 
 .back_container .main .apps_content_back .content_main ul.profile li span {
     display: block;
-    margin: 30px 0 0 0;
+    position: absolute;
+    top: 5px;
+    right: 8px;
     padding: 0;
     float: none;
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     font-weight: 300;
     color: #b4bbc2;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .actions {
     position: absolute;
-    right: 1%;
-    top: 60px;
+    bottom: 8px;
+    right: 8px;
 }
 
 .back_container .main .apps_content_back .content_main ul.profile li .actions a {
@@ -519,7 +522,7 @@ APP STYLES
     position: fixed;
     right: 0;
     top: 117px;
-    width: 246px;
+    width: 266px;
     height: 100%;
     background: #FFF;
     border-left: 1px solid #dcdcdc;
@@ -542,10 +545,12 @@ APP STYLES
     border-radius: 7px;
 }
 #timeline-sidebar #notes{
-    background-image:url(/images/notes-widget-background.jpg);
-    padding-top:30px;
-    height: 228px;
-    width: 221px;
+    background-image: url(../images/notes-widget-background.jpg);
+    padding-top: 30px;
+    height: 203px;
+    width: 220px;
+    margin: 10px auto;
+    float: none;
 }
 #timeline-sidebar #notes textarea{
     background:transparent;
@@ -554,6 +559,7 @@ APP STYLES
     width:100%;
     -moz-appearance:none;
     outline:0px none transparent;
+    box-shadow: none;
 }
 
 #timeline-sidebar #notes textarea:focus{
