@@ -42,7 +42,24 @@ class Gantt_chart_app extends Bim_Appmodule{
 	}
 
 	public function chart_render(){
-		$gantt_file = APPPATH.'upload_doc/2/21/test_file1_1_1413198397.csv';
+
+		// Get Quantity Takeoff XML files for current project
+		$revisions = $this->_me->Docs->getGanttDocDetails(getActiveProject());
+		$xml_path = @$revisions[0]['path'];
+		$revision_id = $this->_me->input->get('revision_id');
+		
+		// Check that revisions exist
+		if(count($revisions) >0 && !empty($revision_id)) {
+			// If revision date has been set from drop down, set $xml_path
+			foreach($revisions as $revision) {
+				if($revision_id == $revision['id']) {
+					$xml_path = $revision['path'];
+					break;
+				}
+			}
+		}
+
+		$gantt_file = dirname(BASEPATH) . '/' . $xml_path;
 
 		//do all pre-processing here
 		$error_msg = 'Unknown';
@@ -245,6 +262,31 @@ class Gantt_chart_app extends Bim_Appmodule{
 			<script type="text/javascript" src="<?php echo base_url('js/gantt_chart.js?v=').filemtime('js/model_viewer.js')?>"></script>
 
 			<div class='sample_header' style="height:120px;background-color:#3D3D3D;border-bottom:5px solid #828282; overflow:hidden;">
+		 		<form action="" method="GET">
+		 			<select name="revision_id" class="form-input" style="float: left;">
+		 				<?php
+
+		 				// populate revisions drop down
+		 				foreach($revisions as $revision){
+
+		 					$revision_date = date('jS F Y - h:ia', $revision['date']);
+
+		 					// select current revision in drop down
+		 					if($revision_id == $revision['id']) {
+		 						$selected = ' selected';
+		 					} else {
+		 						$selected = '';
+		 					}
+
+		 					echo '<option '.$selected.' value="'.$revision["id"].'">'.$revision_date.'</option>';
+
+		 				}
+
+		 				?>
+		 			</select>
+		 			<input type="submit" value="Select Revision" class="blue-button action" style="float: left; margin: 6px 0 0 6px" />
+		 		</form>
+
 				<div class='controls_bar'>
 					<strong> Zooming: &nbsp; </strong>
 					<label>

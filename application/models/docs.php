@@ -41,7 +41,32 @@ class Docs extends Ci_Model {
 
 		$data = array();
 		$this->db->where('doctypeid = 22');	
-		$this->db->where('projectid', $projectid);	
+		$this->db->where('projectid', intval($projectid));	
+		$this->db->order_by('uploadtime DESC');
+		$this->db->from('uploaddoc');
+
+		$result = $this->db->get();
+		if($result->num_rows()){			
+				foreach($result->result_array() as $key => $row){
+
+					$data[$key]['id'] = $row['id'];
+					$data[$key]['date'] = $row['uploadtime'];
+					$data[$key]['path'] = $row['path'];
+
+				}
+			
+			return $data;
+		}else{
+			return $data;
+		}
+
+	}
+
+	public function getGanttDocDetails($projectid){
+
+		$data = array();
+		$this->db->where('doctypeid = 21');	
+		$this->db->where('projectid', intval($projectid));	
 		$this->db->order_by('uploadtime DESC');
 		$this->db->from('uploaddoc');
 
