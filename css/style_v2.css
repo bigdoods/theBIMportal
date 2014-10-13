@@ -533,6 +533,33 @@ APP STYLES
     overflow: hidden;
 }
 
+#timeline-sidebar #weather .weather-link{
+    display:none !important;
+}
+#timeline-sidebar #weather iframe,
+#timeline-sidebar #map img{
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+#timeline-sidebar #notes{
+    background-image:url(/images/notes-widget-background.jpg);
+    padding-top:30px;
+    height: 228px;
+    width: 221px;
+}
+#timeline-sidebar #notes textarea{
+    background:transparent;
+    border:none;
+    height:100%;
+    width:100%;
+    -moz-appearance:none;
+    outline:0px none transparent;
+}
+
+#timeline-sidebar #notes textarea:focus{
+    outline: 0;
+}
+
 /* TICKETS APP */
 
 .back_container .main .apps_content_back .content_main_tickets {
@@ -1318,3 +1345,4 @@ h3.sub-heading {
     color: #535353;
     font-weight: 400;
 }
+
