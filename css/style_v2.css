@@ -456,7 +456,8 @@ APP STYLES
     display: block;
     width: auto;
     height: auto;
-    max-width: 112px;
+    max-width: 81px;
+    max-height: 81px;
     margin: 0 auto;
     border-radius: 4px;
     -webkit-border-radius: 4px;
