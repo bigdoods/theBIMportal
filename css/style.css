@@ -1001,3 +1001,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 	width:100%;
 	height:100%;
 }
+
+#forgot-password{
+	text-align:right;
+	margin-top:5px;
+}
+#forgot-password a{
+	font-size:12px;
+	font-weight:600;
+	color:#949494;
+	text-decoration:none;
+}
