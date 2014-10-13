@@ -14,8 +14,6 @@ class QTO_App extends Bim_Appmodule{
 		$this->_db = $this->_me->db;// this is codeigniter db
 		$this->_me->load->model('Users');
 		$this->_me->load->model('Docs');
-
-		$this->_me->load->helper('network');
 	}
 
 
@@ -61,19 +59,6 @@ class QTO_App extends Bim_Appmodule{
 			else {
 				$xml_path = $revisions[0]['path'];
 			}
-
-			// Load XML through cURL
-			// $url = base_url($xml_path);
-			// $ch = curl_init();
-			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			// curl_setopt($ch, CURLOPT_HEADER, 0);
-			// curl_setopt($ch, CURLOPT_URL, $url);    // get the url contents
-
-			// $data = curl_exec($ch); // execute curl request
-			// curl_close($ch);
-
-			// $data = get_from(base_url($xml_path));
-			// $data = get_from('http://portal.bimscript.com/application/upload_doc/3/22/train_station_catalogue_1_1413188399.xml');
 
 			// Load QTO XML file using $xml_path
 			$xml = simplexml_load_file($xml_path);
