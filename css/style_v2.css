@@ -1106,15 +1106,23 @@ a#collapse-list {
 
 /* REQUEST A FILE APP */
 
+.back_container .main .apps_content_back .content_main ul.upload_file {
+    width: 100%;
+    max-width: 740px;
+    height: auto;
+    margin: 20px auto 20px auto;
+    padding: 0;
+}
+
 .back_container .main .apps_content_back .content_main ul.upload_file .back-link {
     width: 60px;
     margin: 0 0 10px 0;
 }
 
 .back_container .main .apps_content_back .content_main ul.upload_file li {
-    width: 16%;
+    width: 29%;
     height: 204px;
-    margin: 0 2% 1% 0;
+    margin: 0 2% 2% 0;
     padding: 0 1%;
     float: left;
     list-style: none;
@@ -1124,10 +1132,6 @@ a#collapse-list {
 
 .back_container .main .apps_content_back .content_main ul.upload_file li:hover {
     background: #608DAC;
-}
-
-.back_container .main .apps_content_back .content_main ul.upload_file li:nth-child(6) {
-    margin: 0 0 1% 0;
 }
 
 .back_container .main .apps_content_back .content_main ul.upload_file li h2 {
@@ -1254,17 +1258,27 @@ a#collapse-list {
 /* SITE IMAGES APP */
 
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li {
-    width: 18%;
+    width: 10%;
     height: auto;
-    margin: 0 2% 20px 0;
+    margin: 0 5% 20px 0;
     padding: 0 0 0 0;
     float: left;
     list-style: none;
     cursor: pointer;
 }
 
+.back_container .main .apps_content_back .content_main ul.site_photo_graph li img {
+    width: 95.09803%;
+    height: auto;
+    max-height: 100px;
+    display: block;
+    border: 5px solid #fff;
+    border-radius: 2px;
+    box-shadow: 1px 0 8px #ccc !important;
+}
+
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li.dragdrop {
-    width: 14.5%;
+    width: 10%;
 }
 
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li.dragdrop img {
@@ -1276,7 +1290,7 @@ a#collapse-list {
     padding: 0;
     color: #333;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: capitalize;
     text-align: center;
 }
