@@ -420,9 +420,9 @@ APP STYLES
 /* TIMELINE APP */
 
 .back_container .main .apps_content_back .content_main ul.profile {
-    width: 96%;
+    width: 90%;
     height: auto;
-    margin: 20px 0 0 1.5%;
+    margin: 20px 0 0 4%;
     padding: 0;
     float: left;
 }
@@ -531,7 +531,7 @@ APP STYLES
     position: fixed;
     right: 0;
     top: 117px;
-    width: 266px;
+    width: 290px;
     height: 100%;
     background: #FFF;
     border-left: 1px solid #dcdcdc;
@@ -539,9 +539,8 @@ APP STYLES
 }
 
 #timeline-sidebar .widget {
-    float: right;
-    width: 94%;
-    margin: 10px 3%;
+    width: 241px;
+    margin: 10px auto;
     overflow: hidden;
 }
 
