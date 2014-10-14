@@ -237,24 +237,22 @@ class issueviewer_app extends Bim_Appmodule{
 	$issue_details = $this->getAllIssueDetails();	
 		?>
 		<div class="new_apps_back_container">
-        	<ul class="new_details_apps">
+        	<ul class="issue-list">
 				<?php if($issue_details):
 					foreach($issue_details as $issue):
 				?>
 				<li>
                 	<div class="portion">
-                    	<div class="left_image"><a class="vlightbox1 vlightbox1_new" href="<?php echo base_url($this->issue_image_original.'/'. $issue['path'])?>"><img src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" class="image" alt="" /></a></div>
-                        <div class="right_image">
-                        	<h4><?php echo date('H:i', $issue['time']).' on '. date('d-m-Y', $issue['time']);?>
-							<mark>
-								<a href="<?php echo isset($issue['ticket_id']) ? base_url('portal/project/7?&f=ticketDetails&id='.$issue['ticket_id']) : 'javascript:void(0);'?>">view tickets</a>
-							</mark>
-							</h4>
+                    	<div class="image-thumb"><a class="vlightbox1 vlightbox1_new" href="<?php echo base_url($this->issue_image_original.'/'. $issue['path'])?>"><img src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" class="image" alt="" /></a></div>
+                        <div class="issue-details">
+                        	<span class="issue-date"><?php echo date('jS F Y - H:i', $issue['time']);?></span>
                         	<h2><?php echo $issue['name']?></h2>
                             <div class="clear"></div>
-                            <h3><?php echo $issue['description']?></h3>
+                            <p><?php echo $issue['description']?></p>
+                            <a class="blue-button action" href="<?php echo isset($issue['ticket_id']) ? base_url('portal/project/7?&f=ticketDetails&id='.$issue['ticket_id']) : 'javascript:void(0);'?>">View Tickets</a>
                         </div>
                     </div>
+                    <br class="clear">
                 </li>
 				<?php
 					endforeach;

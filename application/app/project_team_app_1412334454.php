@@ -34,12 +34,9 @@ class Project_Team_App extends Bim_Appmodule{
 		?>
 
 		<div class="project_team_back_container">
-        	<h5>project team</h5>
-        	<div class="clear"></div>
         	<div class="main_project">
             	<div class="search_back">
-                	<h6>search :</h6>
-                   <input type="text" class="text_box5" placeholder="Type name" />
+                   <input type="text" class="form-input" placeholder="Filter..." />
                 </div>
                 <div class="clear"></div>
             	<ul class="details_new_project">
@@ -47,19 +44,18 @@ class Project_Team_App extends Bim_Appmodule{
 	                	<li>
 	                		<div class="left_pro"><img src="<?php echo base_url() ?>/upload/profilepic/<?php echo (!empty($project_team_member['profilepic']) ? $project_team_member['profilepic'] : 'default_profile_pic.png') ?>" class="image" alt="" /></div>
 	                        <div class="right_pro">
-	                        	<h2>Name :</h2>
-	                            <p><?php echo ucwords($project_team_member['name']) ?></p>
+	                            <p class="member-name"><?php echo ucwords($project_team_member['name']) ?></p>
 
-	                            <h2>Phone :</h2>
+	                            <h2>Phone</h2>
 	                            <p><?php echo $project_team_member['phone'] ?></p>
 
-	                            <h2>Email :</h2>
+	                            <h2>Email</h2>
 	                            <p><?php echo $project_team_member['email'] ?></p>
 
-	                            <h2>Company :</h2>
+	                            <h2>Company</h2>
 	                            <p><?php echo ucwords($project_team_member['company']) ?></p>
 
-	                            <h2>Discipline :</h2>
+	                            <h2>Discipline</h2>
 	                            <p><?php echo ucwords($project_team_member['discipline']) ?></p>
 	                        </div>
 	                    </li>

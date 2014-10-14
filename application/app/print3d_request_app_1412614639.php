@@ -29,9 +29,9 @@
                                             <p>Please enter details about the 3D print you would like to request.</p>
                                             <div class="clear"></div>
                                            	<form name="request" action="?f=sendRequest" validate="validate" method="post">
-                                            	<textarea class="text_area" data-validation-engine="validate[required]" name="comment"></textarea>
+                                            	<textarea class="form-input textarea" data-validation-engine="validate[required]" name="comment"></textarea>
                                                 <div class="clear"></div>
-                                                <input type="submit" class="submit" value="submit" />
+                                                <input type="submit" class="blue-button action" value="submit" />
                                             </form>
                                         </div>
                                     </li>

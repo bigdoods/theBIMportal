@@ -91,7 +91,7 @@
                     <li>
                             			<a class="vlightbox1" href="../../upload/site_photograph/original/<?php echo $photo['path']?>" title="<?php echo $photo['original_name']?>"><img src="../../upload/site_photograph/thumb/<?php echo $photo['path']?>" alt="<?php echo $photo['original_name']?>" />
                                             <div class="clear"></div>
-                                            <h2>At <?php echo date('H:i' , $photo['upload_date']).' on '; echo date('d-m-Y', $photo['upload_date'])?></h2>
+                                            <h2><?php echo date('jS F Y - H:i' , $photo['upload_date']); ?></h2>
                                         </a>
                                         
                    </li>
@@ -102,8 +102,8 @@
                             			<img src="<?php echo base_url()?>/images/upload.jpg" alt="" onclick="$('#file').click();"/>
                                         <input type="file" style="height:0px;width:0px;" id="file"/>
                                         <div class="clear"></div>
-                                        <div class="loader" style="display:none;"><img src="../../upload/site_photograph/ajax-loader.gif" alt="rahul yadav" /></div>
-                                        <h2>Upload here</h2>
+                                        <div class="loader" style="display:none;"><img src="../../upload/site_photograph/ajax-loader.gif" /></div>
+                                        <h2>Upload Image</h2>
                                     </li>       
                </ul>
 		<?php

@@ -124,7 +124,7 @@
 												echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
 											}?>
                                         </select>
-                                        <h2>Upload here</h2>
+                                        <h2>Upload Render</h2>
                                     </li>   
 		   <?php
 		   }
@@ -133,7 +133,7 @@
                     <li>
                             			<a class="vlightbox1" href="<?php echo base_url();?>upload/site_renders/original/<?php echo $photo['path']?>" title="<?php echo $photo['original_name']?>"><img src="<?php echo base_url();?>upload/site_renders/thumb/<?php echo $photo['path']?>" alt="<?php echo $photo['original_name']?>" />
                                             <div class="clear"></div>
-                                            <h2  rel="download" data-renderid="<?php echo base_url('admin/invoke?a=render_app&f=renderDownlod&id='.$photo['id'])?>">At <?php echo date('H:i' , $photo['upload_date']).' on ';echo date('d-m-Y', $photo['upload_date'])?></h2>
+                                            <h2  rel="download" data-renderid="<?php echo base_url('admin/invoke?a=render_app&f=renderDownlod&id='.$photo['id'])?>"><?php echo date('jS F Y - H:i' , $photo['upload_date']); ?></h2>
                                         </a>
                                         
                    </li>
