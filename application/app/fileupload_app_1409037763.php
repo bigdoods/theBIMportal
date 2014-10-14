@@ -53,7 +53,7 @@ class Fileupload_app extends Bim_Appmodule{
 	 	$parent = $this->_me->db->query('SELECT * FROM doctype WHERE is_active=1 AND id='. intval($type_id) .' LIMIT 1');
 		$r = $this->_me->db->query('SELECT * FROM doctype WHERE is_active=1 AND parent_id='. intval($type_id) .' ORDER BY `order` ASC');
 
-		echo '<a href="'. $this->_base_uri .'">Back</a><ul class="upload_file">';
+		echo '<ul class="upload_file"><a href="'. $this->_base_uri .'" class="blue-button action back-link">&lt; Back</a>';
 		 if($r->num_rows())	{ 
 		 	foreach($r->result_array() as $row):
 			?>
@@ -84,22 +84,26 @@ class Fileupload_app extends Bim_Appmodule{
 			$document_type = $row['name'];
 		 }
 	 ?>
-	 <form action="#" validate="validate" method="POST">
-	     <input type="text" name="details" value="" class="text_area_for_upper_ul" placeholder="Please write some details,before uploading file" style="width:300px;height:80px;">
-	     <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yy" data-validation-engine="validate[required,custom[dateFormat]]" />
+	 <ul id="upload-file" class="request_file">
+	 	<li>
+		 	<div class="portion">
+		 		<h2>Upload File</h2>
+			 <form action="#" validate="validate" method="POST">
+			     <input type="text" name="details" value="" class="text_area_for_upper_ul form-input" placeholder="Please write some details, before uploading the file...">
+			     <input type="text" name="document_date" value="" class="form-input" placeholder="Date on document  dd/mm/yy" data-validation-engine="validate[required,custom[dateFormat]]" />
 
-	     <ul class="upload_file2 dragdrop">
-	    	<li>
-	        	
-	        	<input type="file" style="height:0px;width:0px;" id="file"/>
-				<input type="hidden" style="color:#fff;" id="fileval"/>
-				<img src="<?php echo base_url('images').'/drag.png'?>" alt="" onclick="$('#file').click();"/>
-	            <div class="clear"></div>
-	            <h2>drag and drop</h2>
-	            <div class="clear"></div>
-	            <p><?php echo $document_type?></p>
-	        </li>
-	    </ul>
+			     <ul class="upload_file2 dragdrop">
+			    	<li>
+			        	<input type="file" style="height:0px;width:0px;" id="file"/>
+						<input type="hidden" style="color:#fff;" id="fileval"/>
+						<img src="<?php echo base_url('images').'/drag.png'?>" alt="" onclick="$('#file').click();"/>
+			            <div class="clear"></div>
+			            <h3>Drag and Drop</h3>
+			            <p>or click to upload...</p>
+			            <div class="clear"></div>
+			            <p>(<?php echo $document_type?>)</p>
+			        </li>
+			    </ul>
 	     	<script type="text/javascript">
 			var obj = {url:"<?php echo $this->_base_uri;?>?f=upload_file&type=<?php echo $type?>&details="+ $('[name=details]').val()}
 	        	$(function(){
@@ -159,7 +163,11 @@ class Fileupload_app extends Bim_Appmodule{
 						 })
 				});
 	        </script>
-		</form>	 	
+
+				</form>	
+			</div>
+		</li>
+	</ul>	
 	 <?php
      }
 	

@@ -68,18 +68,17 @@ class Modelviewer_App extends Bim_Appmodule{
 	 	?>
 
 	 	<div id="viewer-control-wrapper">
-	 		<select name="project_model" id="project-model">
+	 		<select name="project_model" id="project-model" class="form-input">
 	 			<?php foreach($all_models as $model){ ?>
 		 			<option value="<?php echo $model->id ?>" <?php echo ($model->id == @$requested_model['model_id'] ? 'selected="selected"' : '') ?>><?php echo $model->name ?></option>
 		 		<?php } ?>
 	 		</select>
 
-	 		<select name="model_revision" id="model-revision">
+	 		<select name="model_revision" id="model-revision" class="form-input">
 	 			<?php foreach($model_revisions as $revision){ ?>
 		 			<option value="<?php echo $revision->id ?>" <?php echo ($revision->id == @$requested_model['revision_id'] ? 'selected="selected"' : '') ?>><?php echo date('d-m-Y H:i', substr($revision->timestamp, 0, -3)) ?> <?php echo $revision->comment ?></option>
 		 		<?php } ?>
 	 		</select>
-	 		<br />
 
 	 		<a href="#" id="viewer-show">show all</a>
 	 		<a href="#" id="viewer-hide">hide selected</a>

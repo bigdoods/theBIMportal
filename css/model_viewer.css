@@ -1,6 +1,6 @@
-#model-viewer, .mCSB_container, .content_main{
-	width:100% !important;
-	height:100% !important;
+#model-viewer{
+	width:100%;
+	height:100%;
 }
 .apps_content_back{width:100% !important;}
 .content2{padding-left:5px;margin-left:220px}
@@ -8,17 +8,22 @@
 	.content2{margin-left:25px;}
 }
 
+#viewer-control-wrapper select {
+	float: left;
+	margin-right: 10px;
+}
+
 #viewer-show{
-	background:transparent url(/images/eye_show.png) no-repeat left top;
+	background:transparent url(../images/eye_show.png) no-repeat center;
 	width:32px;
 	height:32px;
-	padding:10px;
+	padding: 5px 10px;
 }
 #viewer-hide{
-	background:transparent url(/images/eye_hide.png) no-repeat left top;
+	background:transparent url(../images/eye_hide.png) no-repeat center;
 	width:32px;
 	height:32px;
-	padding:10px;
+	padding: 5px 10px;
 }
 
 #viewer-show, #viewer-hide{
@@ -31,16 +36,41 @@
 #component-list{
 	display:none;
 	position:absolute;
-	top:55px;
+	top: 45px;
 	left:0;
-	border-bottom:#dcdcdc 1px solid;
-	border-left:#dcdcdc 1px solid;
-	padding:0px 20px;
+	border-top: #dcdcdc 1px solid;
+	padding: 0;
 	max-width:25%;
 	table-layout:fixed;
 	max-height:80%;
 	overflow-y:scroll;
+	background: rgba(255, 255, 255, 0.6);
 }
+
+#component-list ul {
+	margin: 0;
+	padding-left: 15px;
+	padding-top: 4px;
+	border-left: 1px solid #DFDFDF;
+	list-style: none;
+}
+
+#component-list ul:first-child {
+	padding-left: 0;
+	padding-top: 0;
+	border-left: 0;
+}
+
+#component-list a {
+	color: #373737;
+	text-decoration: none;
+}
+
+#component-list a:hover {
+	color: #616161;
+	text-decoration: underline;
+}
+
 #viewer-info-box{
 	display:none;
 	position:absolute;
@@ -48,11 +78,13 @@
 	right:0;
 	border-bottom:#dcdcdc 1px solid;
 	border-left:#dcdcdc 1px solid;
-	padding:20px;
-	max-width:25%;
-	table-layout:fixed;
-	max-height:80%;
-	overflow-y:scroll;
+	padding: 7px 14px;
+	max-width: 25%;
+	table-layout: fixed;
+	max-height: 80%;
+	overflow-y: scroll;
+	overflow-x: scroll;
+	background: rgba(255, 255, 255, 0.6);
 }
 
 #viewer-info-box td{
@@ -61,4 +93,25 @@
 
 #viewer-info-box h1{
 	margin-top:0;
+	font-size: 20px;
+	border-bottom: 1px solid #CCC;
+}
+
+#viewer-info-box h2 {
+	font-size: 16px;
+	margin: 8px 0;
+}
+
+#viewer-info-box ul {
+	padding-left: 14px;
+	border-left: 1px solid #AAA;
+	list-style: none;
+}
+
+#viewer-info-box table {
+	font-size: 13px;
+}
+
+#viewer-info-box table tr td:first-child {
+	font-weight: bold;
 }

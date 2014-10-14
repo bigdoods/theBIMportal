@@ -38,7 +38,7 @@
 	 function pickType(){
 	 	$group_id = intval($this->_me->input->get('type'));
 		$r = $this->_me->db->query("SELECT * FROM doctype where is_active=1 AND parent_id=". $group_id ." ORDER BY `order` ASC");
-		echo '<a href="'. $this->_base_uri .'">Back</a><ul class="upload_file">';
+		echo '<ul class="upload_file"><a href="'. $this->_base_uri .'" class="blue-button action back-link">&lt; Back</a>';
 		 if($r->num_rows())	{ 
 		 	foreach($r->result_array() as $row):
 			?>
@@ -66,7 +66,7 @@
 		$request_details = $this->getRequestDetails();
 		if($request_details){
 			?>
-            <P>Thanks for your request. It is being processed and a support ticket has been opened. We will respond as soon as possible.</P>
+            <p class="thankyou">Thanks for your request. It is being processed and a support ticket has been opened. We will respond as soon as possible.</p>
             <?php
 		}
 	 }
@@ -80,22 +80,22 @@
         
         <ul class="request_file"><li>
                             			<div class="portion">
-                                        	<h2>File Requested</h2>
+                                        	<h2>File Request</h2>
                                             <div class="clear"></div>
-                                            <p>please enter the details of the request below :</p>
+                                            <p>Please enter the details of the request below:</p>
                                             <div class="clear"></div>
                                            	<form action="?f=submitRequest" method="post" validate="validate">
                                             <input type="hidden" name="type" value="<?php echo $type?>">
-                                            	<textarea class="text_area" name="description"></textarea>
+                                            	<textarea class="form-input" name="description"></textarea>
                                                 <div class="clear"></div>
-                                                <select class="drop" name="extension" data-validation-engine="validate[required]">
+                                                <select class="form-input" name="extension" data-validation-engine="validate[required]">
                                                 	<option value=""> Select your file type</option>
                             						<?php foreach( $this->_allowed_extension as $id =>$ext){
 														echo '<option value="'.$id.'">'.$ext.'</option>';
 													}?>
                                                 </select>
                                                 <div class="clear"></div>
-                                                <input type="submit" class="submit" value="submit" />
+                                                <input type="submit" class="blue-button action" value="submit" />
                                             </form>
                                         </div>
                                     </li>

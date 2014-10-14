@@ -29,9 +29,9 @@
                                             <p>Please send us your comments, suggestions, complaints or queries in the form below</p>
                                             <div class="clear"></div>
                                            	<form name="feedback" action="?f=sendFeedback" validate="validate" method="post">
-                                            	<textarea class="text_area" data-validation-engine="validate[required]" name="comment"></textarea>
+                                            	<textarea class="form-input textarea" data-validation-engine="validate[required]" name="comment"></textarea>
                                                 <div class="clear"></div>
-                                                <input type="submit" class="submit" value="submit" />
+                                                <input type="submit" class="blue-button action" value="submit" />
                                             </form>
                                         </div>
                                     </li>
@@ -56,9 +56,7 @@
 				$this->sendEmailToRespective( $id );
 			}
 			?>
-				<div>
-                	<span>SENT!</span>
-                    <br/>
+				<div class="thankyou">
                     <p>Thank you for your feedback. We will endeavour to respond as soon as possible.</p>
                 </div>
 			<?php

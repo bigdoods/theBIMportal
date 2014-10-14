@@ -226,15 +226,11 @@ img{border:none;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file{width:100%; height:auto; margin:20px 0 0 0; padding:0; float:left;}
 
-.back_container .main .apps_content_back .content_main ul.upload_file li{width:23.28767%; height:204px; margin:0 20px 20px 0; padding:0 0 0 0; float:left; list-style:none; background:#4b5155; cursor:pointer;}
-
 .back_container .main .apps_content_back .content_main ul.upload_file li h2{ margin:18px 0 0 0; padding:0;  font-family: "Open Sans"; color:#f8f7f7; font-weight: 300; font-size:18px; text-transform:capitalize; text-align:center;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file li h2 a{ text-decoration:none; color:#f8f7f7;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file li img{display:block; margin:55px auto 0;}
-
-.back_container .main .apps_content_back .content_main ul.upload_file li:nth-child(4n+4){margin:0 0 20px 0;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file li a{ text-decoration:none; color:#f8f7f7;}
 
@@ -259,8 +255,6 @@ img{border:none;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file2{width:100%; height:auto; margin:0 0 0 0; padding:0; float:left; text-align:center;}
 
-.back_container .main .apps_content_back .content_main ul.upload_file2 li{width:23.28767%; height:204px; margin:0 0 0 0; padding:0 0 0 0; display:inline-block;  list-style:none; background:#4b5155; cursor:pointer;}
-
 .back_container .main .apps_content_back .content_main ul.upload_file2 li h2{ margin:18px 0 0 0; padding:0;  font-family: "Open Sans"; color:#f8f7f7; font-weight: 300; font-size:18px; text-transform:capitalize; text-align:center;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file2 li p{ margin:10px 0 0 0; padding:0; font-family: Roboto; font-weight:300; color:#fff;ont-size:16px; text-align:center; text-transform:capitalize; }
@@ -274,16 +268,6 @@ img{border:none;}
 
 
 .back_container .main .apps_content_back .content_main ul.request_file{width:100%; height:auto; margin:136px 0 0 0; padding:0; float:left; text-align:center;}
-
-.back_container .main .apps_content_back .content_main ul.request_file li{width:47%; height:auto; margin:0 0 0 0; padding:0 0 0 0; display:inline-block;  list-style:none;}
-
-.back_container .main .apps_content_back .content_main ul.request_file li .portion{width:92%; height:auto;  background:#4b5155; float:left; margin:0; padding:20px }
-
-.back_container .main .apps_content_back .content_main ul.request_file li .portion h2{margin:0 0 0 0; padding:0;  font-family: "Open Sans"; color:#fff; font-weight: bold; font-size:22px; text-transform:capitalize; text-align:left; }
-
-.back_container .main .apps_content_back .content_main ul.request_file li .portion p{ margin:10px 0 0 0; padding:0; font-family: Roboto; font-weight:300; color:#fff;ont-size:16px; text-align:left; text-transform:capitalize; }
-
-.back_container .main .apps_content_back .content_main ul.request_file li .text_area{width:95%; height:90px; margin:10px 0 0 0; padding:20px 0 0 20px; background:#fff; resize:vertical; outline-style:none; font-family:Roboto; color:#666; font-size:14px; float:left; border:none;}
 
 .back_container .main .apps_content_back .content_main ul.request_file li .text_area:focus{ outline-style:dotted; }
 
@@ -866,9 +850,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5cbde6', end
 
 
 
-
-
-.text_area_for_upper_ul{width:21%; height:30px; margin:110px auto 1px; padding:0 10px; background:#4b5155 !important; outline-style:none; font-family:Roboto; color:#fff !important; font-size:12px;  border:none !important; display:block; text-align:center;}
 
 
 
