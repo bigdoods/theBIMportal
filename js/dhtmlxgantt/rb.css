@@ -1,6 +1,6 @@
 /* CSS Document */
 
-.mCSB_container, .content_main{
+.content_2 .mCSB_container, .content_main{
 	width:100% !important;
 	height:100% !important;
 }
@@ -43,7 +43,7 @@
 			border-top:1px solid #bababa;
 			border-bottom:1px solid #bababa;
 			clear:both;
-			margin-top:90px;
+			margin-top:40px;
 			height:28px;
 			background:#f1f1f1;
 			color:#494949;
