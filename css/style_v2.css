@@ -39,6 +39,34 @@ body {
     background: url('../images/top-header-bg.jpg');
 }
 
+/* BREADCRUMBS */
+
+p.breadcrumbs {
+    line-height: 39px;
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+p.breadcrumbs a {
+    color: #2c2c2c;
+    font-size: 12px;
+    text-decoration: none;
+    float: left;
+}
+
+p.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+p.breadcrumbs .breadcrumb-arrow {
+    display: block;
+    float: left;
+    text-indent: -999px;
+    width: 30px;
+    height: 41px;
+    background: url('../images/breadcrumb-arrow.png') no-repeat center;
+}
+
 /* LOGIN PAGE */
 
 .register_back_container .logo {
@@ -1365,6 +1393,13 @@ a#collapse-list {
     color: #000;
     border-bottom: 1px solid #CCC;
     margin-top: 0;
+}
+
+/* GANTT CHART */
+
+.gantt_hor_scroll {
+    position: fixed;
+    bottom: 50px;
 }
     
 /* QTIPS */

@@ -68,7 +68,7 @@
                 	<div class="head">                    	
                         <div class="clear"></div>
                         <a class="blue-button back-to-projects" href="<?php echo base_url('portal/dashboard');?>">&lt; Back to Projects</a>
-                        <h2 class="app-title"><?php echo getAppName($app_id); ?></h2>
+                        <?php echo displayBreadcrumbs($app_id); ?>
                         <h1 class="project-title"><?php echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
                     </div>
                     
