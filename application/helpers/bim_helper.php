@@ -130,11 +130,15 @@ function displayBreadcrumbs($app_id) {
     $project_details = $CI->Projects->getAllProject(getActiveProject());
     $project_name = $project_details[0]['name'];
 
-    $app_name = getAppName($app_id);
+    if($app_id == 1) {
+        $app_name = 'Latest Activity';
+    } else {
+        $app_name = getAppName($app_id);
+    }
 
     $arrow = '<span class="breadcrumb-arrow">&gt;</span>';
 
-    $html = '<p class="breadcrumbs"><a href="'.base_url().'">Project List</a>';
+    $html = '<p class="breadcrumbs"><a href="'.base_url().'">Projects</a>';
 
     $html .= $arrow . '<a href="'.base_url('portal/project/').'">' . $project_name . '</a>';
 
