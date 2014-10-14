@@ -1401,6 +1401,10 @@ a#collapse-list {
     position: fixed;
     bottom: 50px;
 }
+
+.controls_bar {
+    margin-top: 40px;
+}
     
 /* QTIPS */
 
