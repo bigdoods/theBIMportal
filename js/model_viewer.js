@@ -132,4 +132,22 @@
 	    	model_viewer.viewer('select', $(this).attr('data-object-id'));
 	    	return false;
 	    });
+
+	    // get height of window minus header and footer
+	    var infoBoxHeight = $(window).height() - 168;
+	    var componentListHeight = infoBoxHeight - 43;
+
+	    //apply to info box and component list
+	    $("#viewer-info-box").css('height', infoBoxHeight);
+		$("#component-list").css('height', componentListHeight);
+
+	    $(window).bind('resize', function(e)
+		{
+			infoBoxHeight = $(window).height() - 168;
+			componentListHeight = infoBoxHeight - 43;
+			$("#viewer-info-box").css('height', displayHeight);
+			$("#component-list").css('height', componentListHeight);
+		});
+
+
 	});
