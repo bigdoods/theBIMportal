@@ -137,17 +137,29 @@
 	    var infoBoxHeight = $(window).height() - 168;
 	    var componentListHeight = infoBoxHeight - 43;
 
-	    //apply to info box and component list
+	    // get width of window minus app menu
+	    var modelViewerWidth = $('body').innerWidth() - 220;
+
+	    //apply to info box, component list and model viewer
 	    $("#viewer-info-box").css('height', infoBoxHeight);
 		$("#component-list").css('height', componentListHeight);
+		model_viewer.css('height', componentListHeight);
+		model_viewer.css('width', modelViewerWidth);
 
+		// update values on window resize
 	    $(window).bind('resize', function(e)
 		{
 			infoBoxHeight = $(window).height() - 168;
 			componentListHeight = infoBoxHeight - 43;
-			$("#viewer-info-box").css('height', displayHeight);
+			modelViewerWidth = $('body').innerWidth() - 220;
+
+			$("#viewer-info-box").css('height', infoBoxHeight);
 			$("#component-list").css('height', componentListHeight);
+			model_viewer.css('height', componentListHeight);
+			model_viewer.css('width', modelViewerWidth);
 		});
+
+
 
 
 	});
