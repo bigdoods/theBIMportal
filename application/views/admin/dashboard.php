@@ -3,6 +3,7 @@
             <div class="top-header">
                 <p class="welcome-message"><?php echo "Welcome, &nbsp;". $_SESSION['userdata']['name']?></p>
                 <a href="<?php echo base_url('admin/logout')?>"><button class="blue-button action logout">Logout</button></a>
+                <a href="<?php echo base_url('portal/dashboard')?>"><button class="blue-button action portal">Portal</button></a>
             </div>
         	<div class="details_back">
             	

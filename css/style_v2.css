@@ -28,7 +28,8 @@ body {
     margin-top: 13px;
 }
 
-.header-top .logout {
+.header-top .logout,
+.header-top .admin {
     float: right;
     width: 86px;
     margin: 14px 14px 0 0;

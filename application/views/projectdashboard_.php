@@ -27,6 +27,9 @@
         </div>
         
         <a class="blue-button action logout" href="<?php echo base_url('portal/logout')?>">Logout</a>
+        <?php if(getCurrentUserRole() == 1){ ?>
+            <a href="<?php echo base_url('admin/dashboard')?>"><button class="blue-button action admin">Admin</button></a>
+        <?php } ?>
 
         </div>
 

@@ -31,7 +31,8 @@ body {
     margin-left: 10px;
 }
 
-.top-header .logout.blue-button {
+.top-header .logout.blue-button,
+.top-header .portal.blue-button {
     margin: 9px 10px 0 0;
     float: right;
     line-height: 0;
