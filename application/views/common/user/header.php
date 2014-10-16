@@ -14,6 +14,7 @@
 <link href="<?php echo base_url('css/responsive.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/common.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/style_v2.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 1240px)" href="<?php echo base_url('css/1240.css').'?v='.rand() ?>" />
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery-latest.min.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/Selectyze.jquery.js')?>"></script>
@@ -30,6 +31,7 @@
 <script src="<?php echo base_url('js/vlbdata1.js')?>" type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.multiple.select.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/peerJs.js?v=').filemtime('js/peerJs.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/responsive-controller.js?v=').filemtime('js/responsive-controller.js')?>"></script>
 
 <script type="text/javascript">
 	var base_path = '<?php echo base_url();?>';
