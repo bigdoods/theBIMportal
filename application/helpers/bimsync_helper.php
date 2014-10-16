@@ -69,29 +69,41 @@
 		return $response;
 	}
 
-	function bimsync_project_products(){
+	function bimsync_model_structure($model_id){
 		$CI =  &get_instance();
 
-		// fetch project information for the current project
-		$project = $CI->Projects->getAllProject(getActiveProject());
+		$response_array = array();
+		$response_json = null;
+		$response = null;
+		$per_page=1000;
+		$page=1;
 
-		$api_url = sprintf(
-			'%s/project/products?project_id=%s',
-			$CI->config->item('bimsync_api_url_prefix'),
-			$project[0]['bimsync_id']
-		);
+		while( (is_null($response_json) || $response_json != '[]') && (is_null($response) || count($response) < $per_page)){
+			$api_url = sprintf(
+				'%s/revision/structure?model_id=%s&page=%d&per_page=%d',
+				$CI->config->item('bimsync_api_url_prefix'),
+				$model_id,
+				$page,
+				$per_page
+			);
 
-		// responses are always in json so request and decode
-		$response = post_to($api_url, array(
-			CURLOPT_HTTPHEADER => array(
-				'Authorization: Bearer '. $CI->config->item('bimsync_api_token')
-			),
-			CURLOPT_POSTFIELDS => ''
-		));
+			// responses are always in json so request and decode
+			$response_json = get_from($api_url, array(
+				CURLOPT_HTTPHEADER => array(
+					'Authorization: Bearer '. $CI->config->item('bimsync_api_token')
+				)
+			));
 
-		$response = json_decode($response);
+			$response = json_decode($response_json);
+			foreach($response as $element){
+				$response_array[] = $element;
+			}
 
-		return $response;
+			$page++;
+		}
+		
+
+		return $response_array;
 	}
 
 	function bimsync_project_models(){
@@ -134,6 +146,49 @@
 
 		return (array) $response;
 	}
+
+	function bimsync_revision_products($model_id, $revision_id){
+		$CI =  &get_instance();
+
+		// if we don't have a model yet, return an empty array
+		if(is_null($model_id))
+			return array();
+
+		$response_array = array();
+		$response_json = null;
+		$response = null;
+		$per_page=1000;
+		$page=1;
+
+		while( (is_null($response_json) || $response_json != '[]') && (is_null($response) || count($response) < $per_page)){
+
+			$api_url = sprintf(
+				'%s/revision/products?model_id=%s&revision_id=%d&page=%d&per_page=%d',
+				$CI->config->item('bimsync_api_url_prefix'),
+				$model_id,
+				$revision_id,
+				$page,
+				$per_page
+			);
+
+			// responses are always in json so request and decode
+			$response_json = post_to($api_url, array(
+				CURLOPT_HTTPHEADER => array('Authorization: Bearer '. $CI->config->item('bimsync_api_token')),
+				CURLOPT_POSTFIELDS => ''
+			));
+
+			$response = json_decode($response_json);
+			foreach($response as $element){
+				$response_array[] = $element;
+			}
+
+			$page++;
+		}
+		
+
+		return $response_array;
+	}
+
 
 
 ?>

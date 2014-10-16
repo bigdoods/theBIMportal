@@ -118,30 +118,44 @@ class Modelviewer_App extends Bim_Appmodule{
 
 	public function component_tree_html($tree, $frag){
 		$html = '<ul>';
-		foreach($frag as $product){
-			$title = $product->name;
+		foreach($frag as $object){
+			$title = $object->name;
+			$type = preg_replace('/^ifc/i', '', $object->type);
+			$type = trim(preg_replace('/([A-Z])/', ' \1', $type));
 			if(empty($title) || $title == 'Undefined')
-				$title = $product->type;
+				$title = $type;
 			
-			$html .= '<li><a href="#" data-object-id="'. $product->objectId .'">'. $title .'</a>';
-			if(isset($tree[$product->objectId]))
-				$html .= $this->component_tree_html($tree, $tree[$product->objectId]);
+			$html .= '<li data-object-id="'. $object->objectId .'" data-object-type="'. $object->type .'"><a href="#" title="'. $object->description .' ('. $type .')">'. $title .'</a>';
+			if(isset($tree[$object->objectId]))
+				$html .= $this->component_tree_html($tree, $tree[$object->objectId]);
 			$html .= '</li>';
 		}
 
 		return $html .'</ul>';
 	}
 	public function component_tree(){
-		$products = bimsync_project_products();
-		$product_hierarchy = array();
+		$objects = bimsync_model_structure($this->_me->input->get('model'));
 
-		foreach($products as $product){
-			if(! isset($product_hierarchy[$product->parent]))
-				$product_hierarchy[$product->parent] = array();
-			$product_hierarchy[$product->parent][] = $product;
+		$product_details = bimsync_revision_products($this->_me->input->get('model'), $this->_me->input->get('revision'));
+
+		$product_id_map = array();
+		foreach($product_details as $product_detail){
+			$product_id_map[$product_detail->objectId] = $product_detail;
 		}
 
-		$html = $this->component_tree_html($product_hierarchy, $product_hierarchy[0]);
+		$object_hierarchy = array();
+		foreach($objects as $object){
+			if(! isset($object_hierarchy[$object->parent]))
+				$object_hierarchy[$object->parent] = array();
+
+			$object->name = $product_id_map[$object->objectId]->name;
+			$object->description = $product_id_map[$object->objectId]->description;
+			$object->type = $product_id_map[$object->objectId]->type;
+
+			$object_hierarchy[$object->parent][] = $object;
+		}
+
+		$html = $this->component_tree_html($object_hierarchy, $object_hierarchy[0]);
 
 		ob_clean();
 		echo $html;

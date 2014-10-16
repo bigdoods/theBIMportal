@@ -121,6 +121,8 @@
 
 		var current_url = window.location.href;
 		current_url = update_url_param(current_url, 'action', 'component_tree');
+		current_url = update_url_param(current_url, 'model', project_model_selector.val());
+		current_url = update_url_param(current_url, 'revision', model_revision_selector.val());
 		
 	    // load info
 	    $('#component-list').html('<h4>Loading</h4>');
