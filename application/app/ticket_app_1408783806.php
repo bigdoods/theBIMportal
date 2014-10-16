@@ -126,31 +126,28 @@
                        			<tr>
                            		<td>Ticket ID</td>
                                 <td>Type</td>
-                                <td>Created On</td>
-                                <td>Created By</td>
+                                <td>Author</td>
                                 <td>Project</td>
+                                <td>Editor</td>
                                 <td>Comment</td>
                                 <td>Status</td>
                                 <td>Details</td>
                                 </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($data as $ticket):
+                            <?php foreach($data as $ticket){
 
                                 $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
-
 							?><tr>
                            		<td><?php echo $ticket['represent_id']?></td>
-                                <td><?php echo $ticket['ticket_for']?></td>
-                                <td><?php echo date('H:i', $ticket['time']);echo ' on '.date('d-m-Y', $ticket['time'])?></td>
-                                <td><?php echo $ticket['uname']?></td>
+                                <td><?php echo $ticket['ticket_for'] ?></td>
+                                <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
                                 <td><?php echo $ticket['pname']?></td>
+                                <td><?php echo $ticket['modified_name']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['modify_time']) ?></td>
                                 <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
                                 <td><?php echo $ticket['ticketmessage']?></td>                                       
                                 <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
-                            <?php
-									endforeach;
-							?>                                   
+                            <?php } ?>                                   
                         </tbody>
                         </table>
                         </div>  
@@ -168,12 +165,13 @@
 	 */
 	public function getAllRelatedTicketDetails( $ticket_id = 0){
 				$data = array();
-				$this->_me->db->select('a.*, b.ticket_for as ticket_for,b.id as ticket_for_id, c.name as uname, d.name as pname,f.name as ticketmessage,f.id as ticket_status_id,comment,modify_time');
+				$this->_me->db->select('a.*, b.ticket_for as ticket_for,b.id as ticket_for_id,b.is_file AS is_file, c.name as uname, d.name as pname,f.name as ticketmessage,f.id as ticket_status_id,comment,modify_time,g.name AS modified_name');
 				$this->_me->db->from('ticket a');
 				$this->_me->db->join('ticket_for b', 'a.ticket_for = b.id');
 				$this->_me->db->join('ticket_log e1', 'e1.ticket_id = a.id');
-				$this->_me->db->join('(SELECT MAX(id) as id FROM ticket_log as e2 group by e2.ticket_id) as last', 'e1.id = last.id');
+				$this->_me->db->join('(SELECT MAX(id) AS id, modifier_id FROM ticket_log AS e2 GROUP BY e2.ticket_id) AS last', 'e1.id = last.id');
 				$this->_me->db->join('users c', 'a.created_by = c.id');
+				$this->_me->db->join('users g', 'last.modifier_id = g.id');
 				$this->_me->db->join('projects d', 'a.project_id = d.id');
 				$this->_me->db->join('ticket_status f', 'f.id = e1.ticket_status_id');
 
@@ -261,42 +259,53 @@
 	 /**
 	  * Display the log details of the ticket
 	  */
-	 function displayTicketLog( $details ){
+	 function displayTicketLog($details){
 		if(isCurrentUserAdmin() == 1) // this function is called from ajax so need to call output staert
 			$this->outputStart();
 			$this->printScript(array(1));
+
+		$this->_me->load->model('Docs');
 		?>
 		<div class="dash_4_back_container">
                                 <a href="<?php echo base_url('portal/project/7');?>" class="blue-button" id="back-to-ticket-list">&lt; Back to Ticket List</a>
       						 	 <div class="clear"></div>
        							<h3 class="sub-heading">Ticket Description</h3>
-                                <ul class="details">
-                                <li>
-                                   		<h3 class="small">Ticket ID</h3>
-                                        <h3 class="small">Type</h3>
-                                        <h3>Created On</h3>
-                                        <h3 class="small">Created By</h3>
-                                        <h3>Project</h3>
-                                        <h3>Comment</h3>
-                                        <h3>status</h3>                                       
-                                       </li>
-                                    <?php foreach($details as $ticket):
-
+                                <table class="details" cellspacing="0" cellpadding="0">
+	                                <thead>
+	                               		<th class="small">Ticket ID</th>
+	                                    <th class="small">Type</th>
+	                                    <th class="small">Author</th>
+	                                    <th>Project</th>
+	                                    <th>Comment</th>
+	                                    <?php if($details[0]['is_file']){ ?>
+		                                    	<th>File</th>
+		                                <?php } ?>
+	                                    <th>status</th>
+	                                </thead>
+	                                <tbody>
+                                    <?php foreach($details as $ticket){
                                         $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
-
-									?><li>
-                                   		<p class="small"><?php echo $ticket['represent_id']?></p>
-                                        <p class="small"><?php echo $ticket['ticket_for']?></p>
-                                        <p><?php echo date('H:i', $ticket['time']).' on ';echo date('d-m-Y', $ticket['time'])?></p>
-                                        <p class="small"><?php echo $ticket['uname']?></p>
-                                        <p><?php echo $ticket['pname']?></p>
-                                        <p class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></p>
-                                        <p><?php echo $ticket['ticketmessage']?></p>                                       
-                                        </li>
-                                    <?php
-											endforeach;
-									?>                                   
-                                </ul>
+                                        
+                                        if($ticket['is_file'])
+	                                        $file = array_first($this->_me->Docs->getDocDetails($details[0]['itemid'])); ?>
+										<tr>
+	                                   		<td class="small"><?php echo $ticket['represent_id']?></td>
+	                                        <td class="small"><?php echo $ticket['ticket_for']?></td>
+	                                        <td class="small"><?php echo $ticket['uname'] ?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
+	                                        <td><?php echo $ticket['pname']?></td>
+	                                        <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
+	                                        <?php if($ticket['is_file']){ ?>
+	                                        	<td>
+	                                        		<?php if(!empty($file)){ ?>
+	                                        			<a href="<?php echo $file['path'] ?>"><?php echo $file['name'] ?></a>
+	                                        		<?php } ?>
+	                                        	</td>
+	                                        <?php } ?>
+	                                        <td><?php echo $ticket['ticketmessage']?></td>                                       
+                                        </tr>
+                                    <?php } ?>                                   
+                                	</tbody>
+                            	</table>
 					<div class="clear"></div>
        				<h3 class="sub-heading">Ticket log</h3>
                     <ul class="details log_details">
