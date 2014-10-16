@@ -458,53 +458,60 @@
 	 });
 	 
 	  // + submit the create issue form
-					 $(document).on('submit', '#create_new_issue', function(){
-						 var t = $(this);
-						 var dom = $(this);
-						 $.ajax({
-						 	url : base_path+'admin/invoke?a=issueviewer_app&f=createIssue',
-							data : t.serialize(),
-							type: 'post',
-							beforeSend: function(){
-								dom.overlay(1);
-								dom.overlay("Please wait");
-							},
-							success: function(r){
-								if(r==1){
-									$('li.posrel.active').click();
+		 $(document).on('submit', '#create_new_issue', function(){
+			 var t = $(this);
+			 var dom = $(this);
+			 $.ajax({
+			 	url : base_path+'admin/invoke?a=issueviewer_app&f=createIssue',
+				data : t.serialize(),
+				type: 'post',
+				beforeSend: function(){
+					dom.overlay(1);
+					dom.overlay("Please wait");
+				},
+				success: function(r){
+					if(r==1){
+						$('li.posrel.active').click();
+					}
+				},
+				error: function(){},
+				complete: function(){
+					dom.overlay(0, -1);
+				}
+			 });
+		 	return false;
+		 });
+
+		// + document update issue
+		$(document).on('submit', '#edit_issue', function(){
+							var t = $(this);
+							 var dom = $(this);
+							 $.ajax({
+							 	url : base_path+'admin/invoke?a=issueviewer_app&f=updateIssue',
+								data : t.serialize(),
+								type: 'post',
+								beforeSend: function(){
+									dom.overlay(1);
+									dom.overlay("Please wait");
+								},
+								success: function(r){
+									if(r==1){
+										$('li.posrel.active').click();
+									}
+								},
+								error: function(){},
+								complete: function(){
+									dom.overlay(0, -1);
 								}
-							},
-							error: function(){},
-							complete: function(){
-								dom.overlay(0, -1);
-							}
-						 });
-					 	return false;
-					 });
-	// + document update issue
-	$(document).on('submit', '#edit_issue', function(){
-						var t = $(this);
-						 var dom = $(this);
-						 $.ajax({
-						 	url : base_path+'admin/invoke?a=issueviewer_app&f=updateIssue',
-							data : t.serialize(),
-							type: 'post',
-							beforeSend: function(){
-								dom.overlay(1);
-								dom.overlay("Please wait");
-							},
-							success: function(r){
-								if(r==1){
-									$('li.posrel.active').click();
-								}
-							},
-							error: function(){},
-							complete: function(){
-								dom.overlay(0, -1);
-							}
-						 });
-					 	return false;
-	});
+							 });
+						 	return false;
+		});
+/*
+		$(document).on('load', 'table.dataTable th[data-default-sort]', function(e){
+			console.log($(this).attr('data-default-sort'), $(this).hasClass('sorting_desc'));
+			if($(this).attr('data-default-sort') == 'desc' && !$(this).hasClass('sorting_desc'))
+				$(this).trigger('click');
+		});*/
 	 
 	});
 	

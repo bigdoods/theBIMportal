@@ -65,7 +65,7 @@ class filemanager_app extends Bim_Appmodule{
 											window.location.href = base_path+'admin/dashboard/4';
 										}
 									}else{
-										dom.overlay("Some error ocured, please try after some time");
+										dom.overlay("An error occured, please try after some time");
 									}
 									console.log(r);
 								},

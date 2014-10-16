@@ -290,7 +290,7 @@ class Portal extends Bim_Controller {
 	 * Check the project can be assigned to the user
 	 * if yes then assign and save into cookie
 	 */
-	 public function selcetProject($pid){
+	 public function selectProject($pid){
 			if(getCurrentUserRole() !=1 && ! $this->Users->checkProjectAccess( $pid, getCurrentuserId() )){
 				echo -1;
 			}else{				

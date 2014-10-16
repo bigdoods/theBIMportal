@@ -176,7 +176,7 @@
 				var dom = $('.details_back');
 			 	var pid = $(this).attr('id').replace('project-', '');
 				$.ajax({
-					url : base_path + 'portal/selcetProject/'+pid,
+					url : base_path + 'portal/selectProject/'+pid,
 					beforeSend:function(){
 						
 						dom.overlay("Please wait");
@@ -185,7 +185,7 @@
 						if(r !== '-1'){
 							window.location.href = r;
 						}else{
-							dom.overlay("Some error ocured, please try after some time");
+							dom.overlay("An error occured, please try after some time");
 						}
 					},
 					error:function(){},
@@ -197,7 +197,7 @@
 	/**
 	 Scroll on hover	 
 	 */		 
-	 		var timeOut = null;
+	 	var timeOut = null;
 		 $('.arrow1').hover( function(){
 			 timeOut = setInterval(function(){
 			 	$('a.next').click();
@@ -221,7 +221,7 @@
 		  $(document).on('click', '.set_project', function(){
 			  var pid = $(this).attr('id').replace('pid-','');
 				$.ajax({
-				 url : base_path+'portal/selcetProject/'+pid,
+				 url : base_path+'portal/selectProject/'+pid,
 				 async:false,
 				 beforeSend: function(){
 				 	

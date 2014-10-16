@@ -24,7 +24,7 @@
 		/**
 		 * The ioverlay alert funciton
 		 */
-		 $.fn.overlay=function(flag,islow,duration){
+	$.fn.overlay=function(flag,islow,duration){
 		var t=$(this);
 		if(t.find('.submitprocess').length==0 && flag==1){	
 			t.prepend('<div class="submitprocess">Please wait while processing</div>');
