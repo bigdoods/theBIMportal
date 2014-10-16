@@ -25,9 +25,18 @@
                 <script src="<?php echo base_url();?>/js/jquery.dataTables.min.js"></script>
        			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>              
 				<script>
-                $(function(){					
+                    
+                    var tableHeight = $(window).height() - 340;
+
+                    $(window).bind('resize', function(e) {
+                        tableHeight = $(window).height() - 340;
+                        $('.dataTables_scrollBody').css('height', tableHeight);
+                    });
+
+                $(function(){		
+
 					jQuery('#ticket_details').dataTable({
-                        scrollY: 300
+                        scrollY: tableHeight
                     });
 					$('.qtip_comment').qtip({
 								 position: {
@@ -272,17 +281,19 @@
                                 <a href="<?php echo base_url('portal/project/7');?>" class="blue-button" id="back-to-ticket-list">&lt; Back to Ticket List</a>
       						 	 <div class="clear"></div>
        							<h3 class="sub-heading">Ticket Description</h3>
-                                <table class="details" cellspacing="0" cellpadding="0">
+                                <table class="details table-grey" cellspacing="0" cellpadding="0">
 	                                <thead>
-	                               		<th class="small">Ticket ID</th>
-	                                    <th class="small">Type</th>
-	                                    <th class="small">Author</th>
-	                                    <th>Project</th>
-	                                    <th>Comment</th>
-	                                    <?php if($details[0]['is_file']){ ?>
-		                                    	<th>File</th>
-		                                <?php } ?>
-	                                    <th>status</th>
+                                        <tr>
+    	                               		<td class="small">Ticket ID</td>
+    	                                    <td class="small">Type</td>
+    	                                    <td class="small">Author</td>
+    	                                    <td>Project</td>
+    	                                    <td>Comment</td>
+    	                                    <?php if($details[0]['is_file']){ ?>
+    		                                    	<td>File</td>
+    		                                <?php } ?>
+    	                                    <td>status</td>
+                                        </tr>
 	                                </thead>
 	                                <tbody>
                                     <?php foreach($details as $ticket){

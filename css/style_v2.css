@@ -675,7 +675,7 @@ APP STYLES
     -moz-box-shadow: none;
 }
 
-.tickets table {
+.tickets .dataTables_scrollHead table {
     margin: 9px 0 0 0;
 }
 
@@ -1131,6 +1131,12 @@ a#collapse-list {
 
 .thankyou {
     color: #535353;
+}
+
+/* FILE MANAGER APP */
+
+#preview-button {
+    margin-top: 3px;
 }
 
 /* REQUEST A FILE APP */
@@ -1676,6 +1682,23 @@ table.table-grey thead .sorting {
     background: url('../images/sort_both.png') no-repeat center right, -o-linear-gradient(top,  #f0f0f0 0%,#e1e1e1 100%);
     background: url('../images/sort_both.png') no-repeat center right, -ms-linear-gradient(top,  #f0f0f0 0%,#e1e1e1 100%);
     background: url('../images/sort_both.png') no-repeat center right, linear-gradient(to bottom,  #f0f0f0 0%,#e1e1e1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e1e1e1',GradientType=0 );
+}
+
+table.table-grey.details thead td {
+    color: #535353;
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: 3px solid #c4cfdb;
+    line-height: 20px;
+
+    background: #f0f0f0;
+    background: -moz-linear-gradient(top,  #f0f0f0 0%, #e1e1e1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f0f0), color-stop(100%,#e1e1e1));
+    background: -webkit-linear-gradient(top,  #f0f0f0 0%,#e1e1e1 100%);
+    background: -o-linear-gradient(top,  #f0f0f0 0%,#e1e1e1 100%);
+    background: -ms-linear-gradient(top,  #f0f0f0 0%,#e1e1e1 100%);
+    background: linear-gradient(to bottom,  #f0f0f0 0%,#e1e1e1 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e1e1e1',GradientType=0 );
 }
 
