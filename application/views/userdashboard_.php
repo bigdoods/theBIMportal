@@ -2,12 +2,9 @@
 	ob_start();
 	$this->load->view('common/user/header.php');
 ?>   
-<div class="trigger_for_480px_onwards"></div>
 	<div class="header-top">
 
-        <div class="main-logo">
-            <img src="<?php echo base_url('images/apps_logo.png')?>" alt="VolkerFitzpatrick - Experience Excellence" />
-        </div>
+        <div class="main-logo"></div>
 
         <a class="blue-button action logout" href="<?php echo base_url('portal/logout')?>">Logout</a>
         <?php if(isCurrentUserAdmin()){ ?>
@@ -20,6 +17,7 @@
     <div class="header_top_bdr"></div>
     <div class="back_container">
     	<div class="main">
+            <div class="menu-trigger"></div>
         	<div class="left">
 	             <div id="content_1" class="content">                 
                  	<div class="portion">

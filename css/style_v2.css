@@ -20,8 +20,10 @@ body {
 
 .header-top .main-logo {
     float: left;
+    width: 423px;
     height: 100%;
     margin-left: 16px;
+    background: url('../images/apps_logo.png') no-repeat center;
 }
 
 .header-top .main-logo img {

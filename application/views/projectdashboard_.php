@@ -21,9 +21,7 @@
 ?>   
     <div class="header-top">
 
-        <div class="main-logo">
-            <img src="<?php echo base_url('images/apps_logo.png')?>" alt="VolkerFitzpatrick - Experience Excellence" />
-        </div>
+        <div class="main-logo"></div>
         
         <a class="blue-button action logout" href="<?php echo base_url('portal/logout')?>">Logout</a>
         <?php if(isCurrentUserAdmin()){ ?>

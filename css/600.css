@@ -1,0 +1,14 @@
+.header-top .main-logo {
+    width: 200px;
+    margin-left: 16px;
+    background: url('../images/apps_logo_small.png') no-repeat center;
+}
+
+p.breadcrumbs {
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+.back_container .main .right .head .project-title {
+    display: none;
+}

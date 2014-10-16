@@ -27,4 +27,9 @@
 
 .menu-trigger.toggle-close {
     left: 220px;
+    background: url(../images/close.png) no-repeat center center #009EE0;
+}
+
+.menu-trigger.toggle-close:hover {
+    background: url(../images/close.png) no-repeat center center #12B2F5;
 }

@@ -15,6 +15,7 @@
 <link href="<?php echo base_url('css/common.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/style_v2.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" media="only screen and (max-width: 1240px)" href="<?php echo base_url('css/1240.css').'?v='.rand() ?>" />
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 600px)" href="<?php echo base_url('css/600.css').'?v='.rand() ?>" />
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery-latest.min.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/Selectyze.jquery.js')?>"></script>
@@ -50,14 +51,28 @@
 	</script>
 	<script type="text/javascript">
 		$(window).load(function(){
-			var timelinewidth = $('body').innerWidth() - 510;
-			$("#content_2.timeline").css('width', timelinewidth);
+
+			if($('body').innerWidth() > 1240) {
+				var timelinewidth = $('body').innerWidth() - 510;
+				$("#content_2.timeline").css('width', timelinewidth);
+			} else {
+				var timelinewidth = $('body').innerWidth() - 290;
+				$("#content_2.timeline").css('width', timelinewidth);
+			}
+
 		});
+
 		$(window).bind('resize', function(e)
 		{
-			var timelinewidth = $('body').innerWidth() - 510;
-			$("#content_2.timeline").css('width', timelinewidth);
+			if($('body').innerWidth() > 1240) {
+				var timelinewidth = $('body').innerWidth() - 510;
+				$("#content_2.timeline").css('width', timelinewidth);
+			} else {
+				var timelinewidth = $('body').innerWidth() - 290;
+				$("#content_2.timeline").css('width', timelinewidth);
+			}
 		});
+
 	</script>
     <script type="text/javascript">
 		(function($){
@@ -98,26 +113,6 @@
 	</script>
     <script type="text/javascript">
 $(document).ready(function(){
-	if(window.matchMedia("(max-width: 1023px)").matches){
-
-		  $(".trigger_for_480px_onwards").click(function(){
-			  
-			$(".left").animate({
-				left:0
-			},500);
-  
-	}); 
-
-	$(':not(.left)').click(function(){
-			
-		if($(".left").css('left') == '0px'){
-			$(".left").animate({
-					left:-400
-			},200);
-					
-		}
-	});
-	}
 	
 	/*$(window).bind('resize', function(e)
 	{

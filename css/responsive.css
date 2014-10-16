@@ -67,7 +67,6 @@
 
 @media only screen and (min-width:768px) and (max-width:1023px){
 .back_container .main{width:100%;}
-.back_container .main .left{width:36.042%;  z-index:100000000000000000000000000000000000000000000000000; left:-500px;}
 .trigger_for_480px_onwards{width:25px; height:100%; position:fixed; margin:0; padding:0; float:left; background: url(../images/list.png) no-repeat center center rgba(31 , 79 , 215 , .6); display:block; left:0; top:0; z-index:10000; cursor:pointer;}
 /*.content{height:1009px;}*/
 .back_container .main .right{width:100%; right:0;}
