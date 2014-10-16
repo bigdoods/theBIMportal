@@ -128,82 +128,42 @@
 		$this->printStyle(array(1));
 		$this->printScript(array(1));
 		?>
-        	<ul class="tickets">
-                <li>
-                	<div class="row-fluid">
-                        <!-- block -->
-                  		<div class="span12">
-                        <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
-                        	<thead>
-                       			<tr>
-                           		<td>Ticket ID</td>
-                                <td>Type</td>
-                                <td>Author</td>
-                                <td>Project</td>
-                                <td>Editor</td>
-                                <td>Comment</td>
-                                <td>Status</td>
-                                <td>Details</td>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($data as $ticket){
+        	<div class="tickets">
+            	<div class="row-fluid">
+                    <!-- block -->
+              		<div class="span12">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
+                    	<thead>
+                   			<tr>
+                       		<td data-default-sort="desc">Ticket ID</td>
+                            <td>Type</td>
+                            <td>Author</td>
+                            <td>Project</td>
+                            <td>Editor</td>
+                            <td>Comment</td>
+                            <td>Status</td>
+                            <td>Details</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($data as $ticket){
 
-                                $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
-							?><tr>
-                           		<td><?php echo $ticket['represent_id']?></td>
-                                <td><?php echo $ticket['ticket_for'] ?></td>
-                                <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
-                                <td><?php echo $ticket['pname']?></td>
-                                <td><?php echo $ticket['modified_name']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['modify_time']) ?></td>
-                                <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
-                                <td><?php echo $ticket['ticketmessage']?></td>                                       
-                                <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
-                            <?php } ?>                                   
-                        </tbody>
-                        </table>
-                        </div>  
-                    </div>
-                            
-                </li>
-
-				<li>
-	            	<div class="row-fluid">
-	                    <!-- block -->
-	              		<div class="span12">
-		                    <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
-		                    	<thead>
-		                   			<tr>
-		                       		<td>Ticket ID</td>
-		                            <td>Type</td>
-		                            <td>Author</td>
-		                            <td>Project</td>
-		                            <td>Editor</td>
-		                            <td>Comment</td>
-		                            <td>Status</td>
-		                            <td>Details</td>
-		                            </tr>
-		                    	</thead>
-		                    	<tbody>
-		                        <?php foreach($data as $ticket){
-
-		                            $short_ticket_comment = (strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."&hellip;" : $ticket['comment']);
-								?><tr>
-		                       		<td><?php echo $ticket['represent_id']?></td>
-		                            <td><?php echo $ticket['ticket_for'] ?></td>
-		                            <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
-		                            <td><?php echo $ticket['pname']?></td>
-		                            <td><?php echo $ticket['modified_name']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['modify_time']) ?></td>
-		                            <td class="qtip_comment" title="<?php echo ($short_ticket_comment != $ticket['comment'] ? $ticket['comment'] : '') ?>"><?php echo $short_ticket_comment; ?></td>
-		                            <td><?php echo $ticket['ticketmessage']?></td>                                       
-		                            <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
-		                        <?php } ?>                                   
-		                    	</tbody>
-		                    </table>
-	                    </div>  
-	                </div>
-	            </li>
-			</ul>
+                            $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
+						?><tr>
+                       		<td><?php echo $ticket['represent_id']?> <?php echo $ticket['time']?></td>
+                            <td><?php echo $ticket['ticket_for'] ?></td>
+                            <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
+                            <td><?php echo $ticket['pname']?></td>
+                            <td><?php echo $ticket['modified_name']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['modify_time']) ?></td>
+                            <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
+                            <td><?php echo $ticket['ticketmessage']?></td>                                       
+                            <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
+                        <?php } ?>                                   
+                    </tbody>
+                    </table>
+                    </div>  
+                </div>
+            </div>
               <!-- Showing  qtip-->                       
 		<?php
 	}
@@ -212,36 +172,37 @@
 	 * Like for what it is created etc the current status
 	 */
 	public function getAllRelatedTicketDetails( $ticket_id = 0){
-				$data = array();
-				$this->_me->db->select('a.*, b.ticket_for as ticket_for,b.id as ticket_for_id,b.is_file AS is_file, c.name as uname, d.name as pname,f.name as ticketmessage,f.id as ticket_status_id,comment,modify_time,g.name AS modified_name');
-				$this->_me->db->from('ticket a');
-				$this->_me->db->join('ticket_for b', 'a.ticket_for = b.id');
-				$this->_me->db->join('ticket_log e1', 'e1.ticket_id = a.id');
-				$this->_me->db->join('(SELECT MAX(id) AS id, modifier_id FROM ticket_log AS e2 GROUP BY e2.ticket_id) AS last', 'e1.id = last.id');
-				$this->_me->db->join('users c', 'a.created_by = c.id');
-				$this->_me->db->join('users g', 'last.modifier_id = g.id');
-				$this->_me->db->join('projects d', 'a.project_id = d.id');
-				$this->_me->db->join('ticket_status f', 'f.id = e1.ticket_status_id');
+		$data = array();
+		$this->_me->db->select('a.*, b.ticket_for as ticket_for,b.id as ticket_for_id,b.is_file AS is_file, c.name as uname, d.name as pname,f.name as ticketmessage,f.id as ticket_status_id,comment,modify_time,g.name AS modified_name');
+		$this->_me->db->from('ticket a');
+		$this->_me->db->join('ticket_for b', 'a.ticket_for = b.id');
+		$this->_me->db->join('ticket_log e1', 'e1.ticket_id = a.id');
+		$this->_me->db->join('(SELECT MAX(id) AS id, modifier_id FROM ticket_log AS e2 GROUP BY e2.ticket_id) AS last', 'e1.id = last.id');
+		$this->_me->db->join('users c', 'a.created_by = c.id');
+		$this->_me->db->join('users g', 'last.modifier_id = g.id');
+		$this->_me->db->join('projects d', 'a.project_id = d.id');
+		$this->_me->db->join('ticket_status f', 'f.id = e1.ticket_status_id');
 
-				$this->_me->db->where('a.project_id IN ('.implode( ',' , $this->_project_id_arr ).')');
-				if( $ticket_id ){
-					$this->_me->db->where('a.id', $ticket_id );
-				}
-				$this->_me->db->order_by('a.id DESC');
-				$q = $this->_me->db->get(  );				
-				if( $q->num_rows() ){
-					foreach( $q->result_array() as $id=>$row){
-						$data[$id] = $row;
-						$data[$id]['ticket_for_desc'] = $row['ticket_for'];
-						$data[$id]['creator_name'] = $row['uname'];
-						$data[$id]['represent_id'] = str_pad($row['id'], 6, '#00000', STR_PAD_LEFT);
-						//$data[$id]['comment'] = substr($row['comment'], 0,10).'...';
-						$data[$id]['comment'] = $row['comment'];
-						$data[$id]['comment_full'] = $row['comment'];
-						
-					}
-				}
-			return $data;		
+		$this->_me->db->where('a.project_id IN ('.implode( ',' , $this->_project_id_arr ).')');
+		if( $ticket_id ){
+			$this->_me->db->where('a.id', $ticket_id );
+		}
+		$this->_me->db->order_by('a.time DESC');
+		$q = $this->_me->db->get();				
+		if( $q->num_rows() ){
+			foreach( $q->result_array() as $id=>$row){
+				$data[$id] = $row;
+				$data[$id]['ticket_for_desc'] = $row['ticket_for'];
+				$data[$id]['creator_name'] = $row['uname'];
+				$data[$id]['represent_id'] = str_pad($row['id'], 6, '#00000', STR_PAD_LEFT);
+				//$data[$id]['comment'] = substr($row['comment'], 0,10).'...';
+				$data[$id]['comment'] = $row['comment'];
+				$data[$id]['comment_full'] = $row['comment'];
+			}
+		}
+
+		debug($data);
+		return $data;		
 	}
 	
 	
@@ -256,7 +217,7 @@
 	 * Of current user or admin
 	 */
 	function getAllRelatedTicket(){		
-		$sql = 'SELECT a.*,d.name,b.ticket_for FROM ticket a JOIN ticket_for b on a.ticket_for = b.id join ticket_log c1 ON c1.ticket_id = a.id JOIN ticket_status d ON c1.ticket_status_id = d.id JOIN (SELECT MAX(id) as id FROM ticket_log as c2 group by c2.ticket_id ) last on c1.id = last.id WHERE a.project_id IN ('.implode( ',' , $this->_project_id_arr ).')';		
+		$sql = 'SELECT a.*,d.name,b.ticket_for FROM ticket a JOIN ticket_for b on a.ticket_for = b.id join ticket_log c1 ON c1.ticket_id = a.id JOIN ticket_status d ON c1.ticket_status_id = d.id JOIN (SELECT MAX(id) as id FROM ticket_log as c2 group by c2.ticket_id ) last on c1.id = last.id WHERE a.project_id IN ('.implode( ',' , $this->_project_id_arr ).') ORDER BY time DESC';		
 		$res =$this->_me->db->query( $sql );
 		$data = array();
 		if( $res->num_rows() ){

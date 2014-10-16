@@ -19,7 +19,7 @@
 .back_container .main .right .head{width:100%; height:auto;}
 
 .back_container .main .apps_content_back .content_main{width:83.775%;}
-.back_container .main .apps_content_back .content_main ul.request_file{margin: 14px 0 0;}
+.back_container .main .apps_content_back .content_main ul.request_file{margin: 136px 0 0;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file2{width:100%; height:auto; margin:0 0 0 0;}
 
@@ -44,7 +44,7 @@
 
 .back_container .main .apps_content_back .content_main{ width:95.775%;}
 .back_container .main .apps_content_back .content_main ul.upload_file li{width: 22.288%;}
-.back_container .main .apps_content_back .content_main ul.request_file{margin: 14px 0 0;}
+.back_container .main .apps_content_back .content_main ul.request_file{margin: 136px 0 0;}
 
 .form_back_container .form_back_container{max-width:90%; height:auto; margin:0 auto; padding:20px;  background:#FFF;  border-radius:10px; box-shadow:#ccc 1px 0 10px;}
 .form_back_container .facebook_form .facebook_left{width:100%; height:auto; margin:0; padding:0; float:left;}
@@ -142,7 +142,7 @@
 .back_container .main .apps_content_back .content_main ul.project li .left_con_del p a{font-size:12px; margin:0;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file li{height: 140px;list-style: none outside none;padding: 0;width: 24.288%; margin:0 4px 4px 0;}
-.back_container .main .apps_content_back .content_main ul.upload_file li:nth-child(4n+4){margin:0 0 4px 0;}
+
 .back_container .main .apps_content_back .content_main ul.upload_file li img{ margin:20px auto 0;}
 .back_container .main .apps_content_back .content_main ul.upload_file li h2{ font-size:14px;}
 .back_container .main .apps_content_back .content_main ul.request_file{margin: 14px 0 0;}
@@ -223,7 +223,6 @@
 .back_container .main .apps_content_back .content_main ul.project li .left_con_del p a{font-size:12px; margin:0;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file li{height: 141px;list-style: none outside none;padding: 0;width:48%; margin:0 0 5px 0;}
-.back_container .main .apps_content_back .content_main ul.upload_file li:nth-child(2n+2){margin:0 0 5px 0; float:right;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file li img{ margin:20px auto 0;}
 .back_container .main .apps_content_back .content_main ul.upload_file li h2{ font-size:14px;}

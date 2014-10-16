@@ -14,6 +14,7 @@
 <link href="<?php echo base_url('css/responsive.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/common.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('css/style_v2.css').'?v='.rand() ?>" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 768px)" href="<?php echo base_url('css/768.css').'?v='.rand() ?>" />
 <link rel="stylesheet" type="text/css" media="only screen and (max-width: 1240px)" href="<?php echo base_url('css/1240.css').'?v='.rand() ?>" />
 <link rel="stylesheet" type="text/css" media="only screen and (max-width: 600px)" href="<?php echo base_url('css/600.css').'?v='.rand() ?>" />
 
