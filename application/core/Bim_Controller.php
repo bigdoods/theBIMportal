@@ -45,12 +45,10 @@ class	Bim_Controller extends CI_Controller{
 	private function checkAuth(){
 		$page = $this->uri->segment(2);
 		$controller = $this->uri->segment(1);
-		if(in_array($page,$this->admin_private_pages ) && @getCurrentUserRole() != 1 && $controller == 'admin'){
-			$this->load->view('adminUnauthorized');
-			exit;
-		}elseif(in_array($page,$this->user_private_pages ) && !in_array(@getCurrentUserRole(), array(1,2)) && $controller == 'portal'){
-			$this->load->view('userUnauthorized');
-			exit;
+		if((in_array($page,$this->admin_private_pages ) && @getCurrentUserRole() != 1 && $controller == 'admin')
+			|| (in_array($page,$this->user_private_pages ) && !in_array(@getCurrentUserRole(), array(1,2)) && $controller == 'portal')){
+			//$this->load->view('adminUnauthorized');
+			redirect(base_url());
 		}
 	}
 	
