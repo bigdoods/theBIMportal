@@ -179,14 +179,14 @@
                     <tbody>
                         <?php foreach($data as $ticket){
 
-                            $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
+                            $short_ticket_comment = (strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."&hellip;" : $ticket['comment']);
 						?><tr>
                        		<td><?php echo $ticket['represent_id']?></td>
                             <td><?php echo $ticket['ticket_for'] ?></td>
                             <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
                             <td><?php echo $ticket['pname']?></td>
                             <td><?php echo $ticket['modified_name']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['modify_time']) ?></td>
-                            <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
+                            <td class="qtip_comment" title="<?php echo ($short_ticket_comment != $ticket['comment'] ? $ticket['comment'] : '') ?>"><?php echo $short_ticket_comment; ?></td>
                             <td><?php echo $ticket['ticketmessage']?></td>                                       
                             <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
                         <?php } ?>                                   
@@ -336,7 +336,7 @@
 	                                </thead>
 	                                <tbody>
                                     <?php foreach($details as $ticket){
-                                        $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
+                                        $short_ticket_comment = (strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."&hellip;" : $ticket['comment']);
                                         
                                         if($ticket['is_file'])
 	                                        $file = array_first($this->_me->Docs->getDocDetails($ticket['itemid'])); ?>
@@ -345,7 +345,7 @@
 	                                        <td class="small"><?php echo $ticket['ticket_for']?></td>
 	                                        <td class="small"><?php echo $ticket['uname'] ?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
 	                                        <td><?php echo $ticket['pname']?></td>
-	                                        <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
+	                                        <td class="qtip_comment" title="<?php echo ($short_ticket_comment != $ticket['comment'] ? $ticket['comment'] : '') ?>"><?php echo $short_ticket_comment; ?></td>
 	                                        <?php if($ticket['is_file']){ ?>
 	                                        	<td>
 	                                        		<?php if(!empty($file)){ ?>
@@ -372,14 +372,14 @@
 											foreach($details as $ticket):
 												foreach($ticket['logdetails'] as $log):
 
-                                                    $short_log_comment = strlen($log['comment']) > 60 ? substr($log['comment'], 0, 60)."..." : $log['comment'];
+                                                    $short_log_comment = strlen($log['comment']) > 60 ? substr($log['comment'], 0, 60)."&hellip;" : $log['comment'];
 
 									?>             <li>
 													<p><?php echo $log['represent_id']?></p>
 													<p><?php echo date('H:i', $log['modify_time']).' on ';echo date('d-m-Y', $log['modify_time'])?></p>
 													<p class="small"><?php echo $log['uname']?></p>
 													<p class="small"><?php echo $log['status']?></p>
-													<p class="qtip_comment" title="<?php echo $log['comment'] ? $log['comment'] : '' ?>"><?php echo $short_log_comment;?></p>											
+													<p class="qtip_comment" title="<?php echo ($short_log_comment != $log['comment'] ? $log['comment'] : '') ?>"><?php echo $short_log_comment;?></p>											
 												  </li>
 									<?php
 												endforeach;
@@ -428,7 +428,10 @@
 	  */
 	 function getAllPossibleTicketStatus($type, $status_id){		 
 	 	$data = array();
-	 	$status = $this->_me->db->get('ticket_status');
+	 	$status = $this->_me->db
+	 		->where(array('visible' => 1))
+	 		->where_in('only_user_role', array(0, getCurrentUserRole()))
+	 		->get('ticket_status');
 		if($status->num_rows()){
 			$data = $status->result_array();
 		}
