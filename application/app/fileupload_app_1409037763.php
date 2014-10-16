@@ -355,10 +355,9 @@ class Fileupload_app extends Bim_Appmodule{
 	  * This functiohn will crate a ticket on the file uplaod system
 	  */
 	 private function createTicket( $file_id , &$res){
-		 
 		 $file_details = $this->getFileDetails( $file_id ) ;
 		 if( $file_details ){
-			$sql = sprintf( " INSERT INTO ticket ( `itemid`, `time`, `created_by`, `user_type`, `ticket_for`, `project_id`)VALUES (%s,  %s, %s, %s, %s, %s)" , $file_details['id'],  time(), getCurrentuserId(), getCurrentUserRole(), '1', getActiveProject() );
+			$sql = sprintf("INSERT INTO ticket ( `itemid`, `time`, `created_by`, `user_type`, `ticket_for`, `project_id`)VALUES (%s,  %s, %s, %s, %s, %s)" , $file_details['id'],  time(), getCurrentuserId(), getCurrentUserRole(), '1', getActiveProject() );
 			$this->_me->db->query( $sql );
 			if( !$ticket_id = $this->_me->db->insert_id()){
 				$res['error'][] = " Ticket creation failed";	
@@ -366,18 +365,13 @@ class Fileupload_app extends Bim_Appmodule{
 				/**
 				 * Insert into ticket log
 				 */
-				 $comment = $this->_me->input->get('comment');
-				 if(!$comment){
-				 	$comment = $comment;
-				 }
-				$sql = sprintf(" INSERT INTO ticket_log (`ticket_id`, `modifier_id`, `ticket_status_id`, `modifier_role`, `modify_time`, `log_status`, `comment`) VALUES (%s, %s, %s, %s, %s, %s, '%s')", $ticket_id, getCurrentuserId(), 2, getCurrentUserRole(), time(), 1, $comment);
+				$comment = 'File:'. $file_details['name'] .' '. strip_tags($this->_me->input->get('details'));
+				$sql = sprintf("INSERT INTO ticket_log (`ticket_id`, `modifier_id`, `ticket_status_id`, `modifier_role`, `modify_time`, `log_status`, `comment`) VALUES (%s, %s, %s, %s, %s, %s, '%s')", $ticket_id, getCurrentuserId(), 2, getCurrentUserRole(), time(), 1, $comment);
 				$this->_me->db->query( $sql );
 			}
 		 }else{
 			$res['error'][] = " The file details is not valid";
 		 }
-		 
-		
 	 }
 	 
 	 private function createNotification( $file_id , &$res){
