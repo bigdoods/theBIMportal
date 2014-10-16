@@ -19,7 +19,6 @@
     }
 
 ?>   
-<div class="trigger_for_480px_onwards"></div>
     <div class="header-top">
 
         <div class="main-logo">
@@ -37,6 +36,7 @@
 	<div class="header_top_bdr"></div>
     <div class="back_container">
     	<div class="main">
+            <div class="menu-trigger"></div>
         	<div class="left">
 	             <div id="content_1" class="content">
                     <?php foreach($app_hierarchy as $app_type){

@@ -1,0 +1,30 @@
+.back_container .main .left {
+    left: -220px;
+}
+
+.back_container .main .left.show {
+    left: 0px;
+}
+
+.content2 {
+    padding: 0 0 0 0;
+}
+
+.back_container .main .right .head .back-to-projects {
+    margin: 6px 0 0 56px;
+}
+
+.back_container .main .footer_back .need-help-link {
+    margin-left: 14px;
+}
+
+.menu-trigger {
+    left: 0px;
+    transition: left 0.2s;
+    -webkit-transition: left 0.2s;
+    -moz-transition: left 0.2s;
+}
+
+.menu-trigger.toggle-close {
+    left: 220px;
+}
