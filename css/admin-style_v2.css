@@ -278,6 +278,10 @@ body {
     box-shadow: none;
 }
 
+.tickets a.blue-button.create-ticket{
+    width:100px;
+    float:left;
+}
 .tickets #ticket_details_paginate a.blue-button {
     font-size: 12px;
     cursor: pointer;
