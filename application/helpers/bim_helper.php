@@ -103,6 +103,11 @@ function load_app(){
 	}	
 }
 
+/**
+ * Get app name by app ID
+ */
+
+
 function getAppName($app_id) {
 
     $CI = get_instance();
@@ -110,6 +115,38 @@ function getAppName($app_id) {
     $app_name = $CI->Apps->getAppNameById($app_id);
 
     return $app_name;
+
+}
+
+/**
+ * Display breadcrumbs
+ */
+
+
+function displayBreadcrumbs($app_id) {
+
+    $CI = get_instance();
+
+    $project_details = $CI->Projects->getAllProject(getActiveProject());
+    $project_name = $project_details[0]['name'];
+
+    if($app_id == 1) {
+        $app_name = 'Latest Activity';
+    } else {
+        $app_name = getAppName($app_id);
+    }
+
+    $arrow = '<span class="breadcrumb-arrow">&gt;</span>';
+
+    $html = '<p class="breadcrumbs">';
+
+    $html .= '<a href="'.base_url('portal/project/').'">' . $project_name . '</a>';
+
+    $html .= $arrow . '<a href="'.base_url('portal/project/'.$app_id).'">' . $app_name . '</a>';
+
+    $html .= '</p>';
+
+    return $html;
 
 }
 

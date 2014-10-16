@@ -26,7 +26,9 @@
        			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>              
 				<script>
                 $(function(){					
-					jQuery('#ticket_details').dataTable();
+					jQuery('#ticket_details').dataTable({
+                        scrollY: 300
+                    });
 					$('.qtip_comment').qtip({
 								 position: {
 										  my: 'top middle',  // Position my top left...

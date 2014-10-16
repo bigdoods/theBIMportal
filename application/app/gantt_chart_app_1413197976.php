@@ -261,7 +261,7 @@ class Gantt_chart_app extends Bim_Appmodule{
 			</script>
 			<script type="text/javascript" src="<?php echo base_url('js/gantt_chart.js?v=').filemtime('js/model_viewer.js')?>"></script>
 
-			<div class='sample_header' style="height:120px;background-color:#3D3D3D;border-bottom:5px solid #828282; overflow:hidden;">
+			<div class='sample_header' style="height: 73px;border-bottom:5px solid #828282; overflow:hidden;">
 		 		<form action="" method="GET">
 		 			<select name="revision_id" class="form-input" style="float: left;">
 		 				<?php

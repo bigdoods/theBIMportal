@@ -68,14 +68,14 @@
                 	<div class="head">                    	
                         <div class="clear"></div>
                         <a class="blue-button back-to-projects" href="<?php echo base_url('portal/dashboard');?>">&lt; Back to Projects</a>
-                        <h2 class="app-title"><?php echo getAppName($app_id); ?></h2>
+                        <?php echo displayBreadcrumbs($app_id); ?>
                         <h1 class="project-title"><?php echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
                     </div>
                     
                     <div class="clear"></div>
                     
                     <div class="apps_content_back">
-                    	<div id="content_2" class="content2<?php if($app_id == 1) { echo ' timeline'; }?>">
+                    	<div id="<?php echo $app_id == 7 ? 'ticket_app' : 'content_2' ;?>" class="content2<?php if($app_id == 1) { echo ' timeline'; }?>">
                         <?php global $app;?>
                         	<div class="<?php echo property_exists ($app , 'class_css') ? $app->class_css: 'content_main' ;?>">
                             	<?php load_app_content();

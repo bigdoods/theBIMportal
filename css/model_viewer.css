@@ -1,7 +1,9 @@
-#model-viewer,
-#model-viewer canvas{
-	width:100% !important;
-	height:100% !important;
+#model-viewer{
+	width:100%;
+	height:100%;
+	position: fixed;
+	top: 163px;
+	left: 220px;
 }
 .apps_content_back{width:100% !important;}
 .content2{padding-left:5px;margin-left:220px}
@@ -36,16 +38,16 @@
 
 #component-list{
 	display:none;
-	position:absolute;
-	top: 45px;
-	left:0;
+	position: fixed;
+	top: 160px;
+	left: 220px;
 	border-top: #dcdcdc 1px solid;
 	padding: 0;
 	max-width:25%;
 	table-layout:fixed;
-	max-height:80%;
 	overflow-y:scroll;
 	background: rgba(255, 255, 255, 0.6);
+	z-index: 20;
 }
 
 #component-list ul {
@@ -74,18 +76,18 @@
 
 #viewer-info-box{
 	display:none;
-	position:absolute;
-	top:0;
-	right:0;
+	position: fixed;
+	right: 0;
+	top: 118px;
 	border-bottom:#dcdcdc 1px solid;
 	border-left:#dcdcdc 1px solid;
 	padding: 7px 14px;
 	max-width: 25%;
 	table-layout: fixed;
-	max-height: 80%;
 	overflow-y: scroll;
 	overflow-x: scroll;
 	background: rgba(255, 255, 255, 0.6);
+	z-index: 20;
 }
 
 #viewer-info-box td{

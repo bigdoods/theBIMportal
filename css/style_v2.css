@@ -39,6 +39,34 @@ body {
     background: url('../images/top-header-bg.jpg');
 }
 
+/* BREADCRUMBS */
+
+p.breadcrumbs {
+    line-height: 39px;
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+p.breadcrumbs a {
+    color: #2c2c2c;
+    font-size: 12px;
+    text-decoration: none;
+    float: left;
+}
+
+p.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+p.breadcrumbs .breadcrumb-arrow {
+    display: block;
+    float: left;
+    text-indent: -999px;
+    width: 30px;
+    height: 41px;
+    background: url('../images/breadcrumb-arrow.png') no-repeat center;
+}
+
 /* LOGIN PAGE */
 
 .register_back_container .logo {
@@ -420,9 +448,9 @@ APP STYLES
 /* TIMELINE APP */
 
 .back_container .main .apps_content_back .content_main ul.profile {
-    width: 96%;
+    width: 90%;
     height: auto;
-    margin: 20px 0 0 1.5%;
+    margin: 20px 0 0 4%;
     padding: 0;
     float: left;
 }
@@ -531,7 +559,7 @@ APP STYLES
     position: fixed;
     right: 0;
     top: 117px;
-    width: 266px;
+    width: 290px;
     height: 100%;
     background: #FFF;
     border-left: 1px solid #dcdcdc;
@@ -539,9 +567,8 @@ APP STYLES
 }
 
 #timeline-sidebar .widget {
-    float: right;
-    width: 94%;
-    margin: 10px 3%;
+    width: 241px;
+    margin: 10px auto;
     overflow: hidden;
 }
 
@@ -1107,15 +1134,23 @@ a#collapse-list {
 
 /* REQUEST A FILE APP */
 
+.back_container .main .apps_content_back .content_main ul.upload_file {
+    width: 100%;
+    max-width: 740px;
+    height: auto;
+    margin: 20px auto 20px auto;
+    padding: 0;
+}
+
 .back_container .main .apps_content_back .content_main ul.upload_file .back-link {
     width: 60px;
     margin: 0 0 10px 0;
 }
 
 .back_container .main .apps_content_back .content_main ul.upload_file li {
-    width: 16%;
+    width: 29%;
     height: 204px;
-    margin: 0 2% 1% 0;
+    margin: 0 2% 2% 0;
     padding: 0 1%;
     float: left;
     list-style: none;
@@ -1125,10 +1160,6 @@ a#collapse-list {
 
 .back_container .main .apps_content_back .content_main ul.upload_file li:hover {
     background: #608DAC;
-}
-
-.back_container .main .apps_content_back .content_main ul.upload_file li:nth-child(6) {
-    margin: 0 0 1% 0;
 }
 
 .back_container .main .apps_content_back .content_main ul.upload_file li h2 {
@@ -1255,17 +1286,27 @@ a#collapse-list {
 /* SITE IMAGES APP */
 
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li {
-    width: 18%;
+    width: 10%;
     height: auto;
-    margin: 0 2% 20px 0;
+    margin: 0 5% 20px 0;
     padding: 0 0 0 0;
     float: left;
     list-style: none;
     cursor: pointer;
 }
 
+.back_container .main .apps_content_back .content_main ul.site_photo_graph li img {
+    width: 95.09803%;
+    height: auto;
+    max-height: 100px;
+    display: block;
+    border: 5px solid #fff;
+    border-radius: 2px;
+    box-shadow: 1px 0 8px #ccc !important;
+}
+
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li.dragdrop {
-    width: 14.5%;
+    width: 10%;
 }
 
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li.dragdrop img {
@@ -1277,7 +1318,7 @@ a#collapse-list {
     padding: 0;
     color: #333;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: capitalize;
     text-align: center;
 }
@@ -1352,6 +1393,13 @@ a#collapse-list {
     color: #000;
     border-bottom: 1px solid #CCC;
     margin-top: 0;
+}
+
+/* GANTT CHART */
+
+.gantt_hor_scroll {
+    position: fixed;
+    bottom: 50px;
 }
     
 /* QTIPS */
