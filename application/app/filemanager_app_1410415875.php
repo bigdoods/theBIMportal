@@ -190,7 +190,7 @@ class filemanager_app extends Bim_Appmodule{
                                 <td class="small">
                                 	<a href="<?php echo base_url('admin/download/'.$file['id'])?>" target="_blank" class="blue-button action">Download</a>
                                 	<?php if(in_array($file_extension, $this->previewable_file_extensions)){ ?>
-                                		<a href="<?php echo base_url('portal/project/'. $app_id .'?action=file_preview&id='.$file['id'])?>" target="_blank" class="blue-button action">Preview</a>
+                                		<a href="<?php echo base_url('portal/project/'. $app_id .'?action=file_preview&id='.$file['id'])?>" target="_blank" class="blue-button action" id="preview-button">Preview</a>
                                 	<?php } ?>
                                 </td>
                                 <td class="small"><a class="for_admin_ajax blue-button action" href="<?php echo getCurrentUserRole() == 1 ? base_url('admin/invoke/5/').'?a=ticket_app&f=ticketDetails&id='.$file['ticket_id'] : base_url('portal/project/7?f=ticketDetails&id='.$file['ticket_id'])?>">View</a></td>
