@@ -262,7 +262,7 @@ class filemanager_app extends Bim_Appmodule{
                         <div class="clear"></div>
                        	<form action="#" method="post" validate="validate">
                             <input type="text" class="form-input" placeholder="Comments" data-validation-engine="validate[required]" style="resize:none;" name="comment"/>
-                            <input type="text" name="form-input" value="" placeholder="Date on document (dd/mm/yyyy)" data-validation-engine="validate[required,custom[dateFormat]]" />
+                            <input type="text" name="form-input" value="" placeholder="Date on document (dd/mm/yyyy)" data-validation-engine="validate[required,custom[ukDateFormat]]" />
 
                             <div class="clear"></div>
                             <select class="form-input" data-validation-engine="validate[required]" name="project">

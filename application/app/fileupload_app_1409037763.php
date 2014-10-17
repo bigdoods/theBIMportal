@@ -90,7 +90,7 @@ class Fileupload_app extends Bim_Appmodule{
 		 		<h2>Upload File</h2>
 			 <form action="#" validate="validate" method="POST">
 			     <input type="text" name="details" value="" class="text_area_for_upper_ul form-input" placeholder="Please write some details, before uploading the file...">
-			     <input type="text" name="document_date" value="" class="form-input" placeholder="Date on document  dd/mm/yyyy" data-validation-engine="validate[required,custom[dateFormat]]" />
+			     <input type="text" name="document_date" value="" class="form-input" placeholder="Date on document  dd/mm/yyyy" data-validation-engine="validate[required,custom[ukDateFormat]]" />
 
 			     <ul class="upload_file2 dragdrop">
 			    	<li>
