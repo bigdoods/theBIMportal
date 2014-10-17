@@ -57,6 +57,13 @@ body {
     background-size: 100%;
 }
 
+.dashboard_back_container .main .details_back .middle_back h1 {
+    font-size: 18px;
+    text-align: center;
+    margin: 15px 0 0 0;
+    padding: 0;
+}
+
 .dashboard_back_container .main .details_back .middle_back .dash_back_details {
     width: 100%;
     height: auto;
@@ -73,8 +80,11 @@ body {
     min-width: 122px;
     margin: 0;
     padding: 1%;
-    background: #F8F8F8;
-    overflow-y: scroll;
+    background: #F3F3F3;
+    border-right: 1px solid #FFF;
+    box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .dashboard_back_container .main .details_back .middle_back .dash_back_details .right_details_tab {
@@ -86,11 +96,26 @@ body {
     background: #fff;
 }
 
+.tab_content1 {
+    width: 97%;
+    height: auto;
+    margin: 0 auto 0;
+    padding: 0;
+}
+
+.dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li {
+    list-style: none;
+    margin: 0 0 12px 0;
+    padding: 0;
+    float: left;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
 .dashboard_back_container .main .details_back .middle_back .dash_back_details .tabs li a {
     display: block;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 16px;
+    padding: 7px 16px;
     border: 1px solid #ccc;
     color: #949494;
     text-decoration: none;
@@ -270,6 +295,12 @@ body {
     margin: 5px;
 }
 
+.tab_content_detila_back .details li .blue-button,
+.tab_content_detila_back .details li .grey-button {
+    max-width: 100px;
+    margin: 0 auto;
+}
+
 /* TICKETS */
 
 .tickets #ticket_details_paginate ul {
@@ -375,6 +406,66 @@ body {
     display: none;
 }
 
+/* REQUEST A FILE */
+
+.content_main ul.request_file li .portion {
+    width: 92%;
+    height: auto;
+    float: left;
+    margin: 0;
+    padding: 20px;
+
+    border: 1px solid #d7d7d7;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+    background: #f6f6f6;
+    background: -moz-linear-gradient(top,  #f6f6f6 0%, #ededed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#ededed));
+    background: -webkit-linear-gradient(top,  #f6f6f6 0%,#ededed 100%);
+    background: -o-linear-gradient(top,  #f6f6f6 0%,#ededed 100%);
+    background: -ms-linear-gradient(top,  #f6f6f6 0%,#ededed 100%);
+    background: linear-gradient(to bottom,  #f6f6f6 0%,#ededed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#ededed',GradientType=0 );
+}
+
+.content_main ul.request_file li .portion h2 {
+    margin: 0 0 0 0;
+    padding: 0;
+    color: #535353;
+    font-weight: bold;
+    font-size: 22px;
+    text-transform: capitalize;
+    text-align: left;
+}
+
+.content_main ul.request_file li .portion p {
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-weight: 300;
+    color: #535353;
+    font-size: 14px;
+    text-align: left;
+}
+
+.content_main ul.request_file li input {
+    width:95%;
+    margin:10px 0 0 0;
+}
+
+.content_main ul.request_file li input[type=submit] {
+    float: right;
+    margin: 14px 0 0 0;
+}
+
+.thankyou {
+    color: #535353;
+}
+
 /* MESSAGING */
 
 .form_back_container .facebook_form {
@@ -422,7 +513,7 @@ body {
 .form_back_container .facebook_form .facebook_left ul.left_face li {
     width: 94%;
     margin: 0;
-    padding: 6px 10px;
+    padding: 6px 3%;
     float: left;
     cursor: pointer;
     color: #363636;
@@ -458,6 +549,10 @@ body {
     float: right;
     margin: 0;
     line-height: 50px;
+}
+
+.form_back_container .facebook_form .facebook_left ul.left_face li select {
+    width: 98%;
 }
 
 .form_back_container .facebook_form .facebook_left ul.left_face li.active {
@@ -614,6 +709,7 @@ GLOBAL STYLES
     border-width: 1px;
     border-style: solid;
     border-color: #2885d8 #019fe1 #019fe1 #019fe1;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     color: #FFF;
     cursor: pointer;
     text-decoration: none;
@@ -667,6 +763,7 @@ input.blue-button.action {
     line-height: 0;
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     padding: 0 16px;
+    margin: 5px 0;
 }
 
 .grey-button {
@@ -676,6 +773,8 @@ input.blue-button.action {
     padding: 0 16px;
     border: 1px solid #ccc;
     color: #949494;
+    cursor: pointer;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
@@ -776,6 +875,11 @@ textarea.form-input.greyed {
     border: 1px solid #EDEDED;
 }
 
+.form-input.long {
+    min-width: 300px;
+    clear: both;
+}
+
 .submitprocess {
     width:250px;
     text-align:center;
@@ -858,4 +962,13 @@ h2.app-title {
 h3.sub-heading {
     color: #535353;
     font-weight: 400;
+}
+
+h4 {
+    color: #3E3E3E;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-weight: 600;
 }

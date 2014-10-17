@@ -169,9 +169,9 @@ class issueviewer_app extends Bim_Appmodule{
                                                     <li class="big"><p><?php echo date('H:i',$issue['time']) .' on '. date('d-m-Y', $issue['time'])?></p></li>
                                                     <li class="big"  style="width:24%"><p><a class="vlightbox1 vlightbox1_new" href="<?php echo base_url($this->issue_image_original.'/'.$issue['path'])?>"><IMG src="<?php echo base_url($this->issue_image_thumb).'/'.$issue['path'];?>" /></a></p></li>
                                                     <li class="big"><p><mark>
-								<a href="<?php echo isset($issue['ticket_id']) ? base_url('admin/viewticket/5?a=issueviewer_app&f=ticketDetails&id='.$issue['ticket_id']) : 'javascript:void(0);'?>" class="for_admin_ajax">view tickets</a>
+								<a href="<?php echo isset($issue['ticket_id']) ? base_url('admin/viewticket/5?a=issueviewer_app&f=ticketDetails&id='.$issue['ticket_id']) : 'javascript:void(0);'?>" class="for_admin_ajax blue-button action">View Ticket</a>
 							</mark></p></li>
-													<li class="small"  style="width:21%"><p><a class="issue_edit_link" id="issue_edit-<?php echo $issue['id']?>" href="javascript:void(0)">Edit</a></p><p><?php echo $issue['description']?></p></li>
+													<li class="small"  style="width:21%"><p><a class="issue_edit_link grey-button" id="issue_edit-<?php echo $issue['id']?>" href="javascript:void(0)">Edit</a></p><p><?php echo $issue['description']?></p></li>
                                                 </ul>
 													
 												
@@ -184,7 +184,7 @@ class issueviewer_app extends Bim_Appmodule{
 												<?php
 													endif;
 												?>                                                
-                                                <input type="button" class="sub_it_back create_issue" value="Create"/>
+                                                <input type="button" class="blue-button action create_issue" value="Create Issue"/>
                                             </div>
                                     <div class="create_form" style="display:none">
                                          	<form name="create_issue" id="create_new_issue" validate="validate">
@@ -219,8 +219,8 @@ class issueviewer_app extends Bim_Appmodule{
                                                 <div class="clear"></div>
                                                 
                                                 <div class="clear"></div>
-                                                <input type="submit" class="sub_it_back submit_issue" value="Create"/>
-                                                <input type="button" class="sub_it_back list_issue" value="List" id="list_issue"/>
+                                                <input type="submit" class="blue-button action submit_issue" value="Create"/>
+                                                <input type="button" class="grey-button list_issue" value="List" id="list_issue"/>
                                             </div>
                                             </form>
                                          </div>
@@ -417,8 +417,8 @@ class issueviewer_app extends Bim_Appmodule{
 					
 					<div class="clear"></div>
 					<input type="hidden" name="id" value="<?php echo $issue_details['id']?>">
-					<input type="submit" class="sub_it_back submit_issue" value="Update"/>
-					<input type="button" class="sub_it_back list_issue" value="List" id="list_issue" onclick="$('li.active').click();" />
+					<input type="submit" class="blue-button action submit_issue" value="Update"/>
+					<input type="button" class="grey-button list_issue" value="List" id="list_issue" onclick="$('li.active').click();" />
 				</div>
 				</form>
 				<script type="text/javascript">

@@ -2,7 +2,7 @@
 <?php //v_dump($all_users)?>
                                      <div class="tab_content<?php echo $tabid?>">
                                         <div class="tab_content_detila_back list">
-                                        	<h1>Select two users to view the chat history</h1>
+                                        	<h1>Select two users to view their chat history</h1>
                                             
                                             <div class="form_back_container">
                                                 <div class="facebook_form">
@@ -13,7 +13,7 @@
                                                                 <li class=" active">
                                                                     <div class="user1">
                                                                             <select name="user1" class="drop_admin" id="user1">
-                                                                                <option value="">Seelct a user</option>
+                                                                                <option value="">Select a user</option>
                                                                                 <?php foreach($all_users as $user):
                                                                                     echo '<option value="'.$user['id'].'">'.$user['name'].'</option>';			
                                                                                     endforeach;
@@ -24,7 +24,7 @@
                                                                 <li>
                                                                    <div class="user1">
                                                                         <select name="user2" class="drop_admin" id="user2">
-                                                                        <option value="">Seelct a user</option>
+                                                                        <option value="">Select a user</option>
                                                                             <?php foreach($all_users as $user):
                                                                                 echo '<option value="'.$user['id'].'">'.$user['name'].'</option>';			
                                                                                 endforeach;
@@ -33,7 +33,7 @@
                                                                     </div>
                                                                 </li>
                                                                 <li>
-                                                                	<input type="button" id="view" value="View" CLASS="sub_it_back">
+                                                                	<input type="button" id="view" value="View" class="blue-button action">
                                                                 </li>
                                                                 
                                                                  

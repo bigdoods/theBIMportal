@@ -8,7 +8,7 @@
             
             <p>Name :</p>
             <div class="clear"></div>
-            <input type="text" name="name" class="text_box_inner" value="<?php echo $project_details['name']?>" data-validation-engine="validate[required]">
+            <input type="text" name="name" class="form-input long" value="<?php echo $project_details['name']?>" data-validation-engine="validate[required]">
             <div class="clear"></div>
             
             <p>Location :</p>
@@ -29,6 +29,6 @@
           
           
           <div class="clear"></div>
-          <input type="submit" class="sub_it_back" value="Update" />
-          <input type="button" class="sub_it_back show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
+          <input type="submit" class="blue-button action" value="Update" />
+          <input type="button" class="grey-button show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
      </form>

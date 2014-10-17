@@ -39,7 +39,6 @@ class Help_App extends Bim_Appmodule{
 	public function adminInit(){
 		$this->outputStart();
 		echo '<script type="text/javascript" src="'. base_url('js/ckeditor/ckeditor.js').'"></script>';
-		echo '<h1>Please edit the help page content</h1>';
 		$content = $this->getHelpPageConent();
 		if($content){
 			$is_update = 1;
@@ -56,7 +55,7 @@ class Help_App extends Bim_Appmodule{
                 	<?php echo $content?>
                 </textarea>
                 <br/>
-                <input type="submit" value="save" class="sub_it_back">
+                <input type="submit" value="save" class="blue-button action">
             </form>
         <script type="text/javascript">
         	(function($){

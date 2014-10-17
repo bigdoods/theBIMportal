@@ -6,8 +6,11 @@
   <div class="universal_form_back">
     <div class="clear"></div>
     <input type="hidden" name="app_id" value="<?php echo $appdetails['id']?>"/>
-    <input type="text" class="text_box_inner" placeholder="App Name" name="name" id="aname" data-validation-engine="validate[required]" value="<?php echo $appdetails['name']?>"/>
-    <input type="text" class="text_box_inner" placeholder="Description" name="description" id="description" data-validation-engine="validate[required]" value="<?php echo $appdetails['description']?>"/>
+    <p class="label">Name</p>
+    <input type="text" class="form-input long" placeholder="App Name" name="name" id="aname" data-validation-engine="validate[required]" value="<?php echo $appdetails['name']?>"/>
+    <p class="label">Description</p>
+    <input type="text" class="form-input long" placeholder="Description" name="description" id="description" data-validation-engine="validate[required]" value="<?php echo $appdetails['description']?>"/>
+    <p class="label">Order</p>
     <input type="text" class="text_box_inner" placeholder="Order" name="order" id="order" data-validation-engine="validate[required]" value="<?php echo $appdetails['order']?>"/>
     <div class="clear"></div>
     <p class="label">Set type</p>
@@ -50,8 +53,8 @@
     <input type="hidden" name="appiconfilepath" id="appiconfilepath" value="<?php echo $appdetails['appiconfilepath']?>">
   </div>
   <div class="clear"></div>
-  <input type="submit" class="sub_it_back" value="submit" />
-  <input type="button" class="sub_it_back show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
+  <input type="submit" class="blue-button action" value="submit" />
+  <input type="button" class="grey-button show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
 </form>
 <script>
                                              	$('#filename').html5Uploader({

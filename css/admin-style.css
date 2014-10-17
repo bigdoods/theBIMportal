@@ -70,8 +70,6 @@ img{ border:none;}
 
 .dashboard_back_container .main .details_back .middle_back .profile_pic_back{background:url(../images/profile_pic.png) no-repeat; width:74px; height:92px; margin:-22px auto 0; padding:0; display:block;}
 
-.dashboard_back_container .main .details_back .middle_back h1{ font-family:"Open Sans"; color:#fff; font-size:18px; font-weight:bold; text-align:center; text-transform:uppercase; text-shadow:#000 0 3px 5px; margin:15px 0 0 0; padding:0;}
-
 .dashboard_back_container .main .details_back .btm_back{width:100%; background:url(../images/btm_scrip.png) no-repeat; height:17px; margin:0; padding:0; float:left; background-size:100%;}
 
 .dashboard_back_container .main .shadow_back{background:url(../images/shadow.png) no-repeat; width:550px; height:95px; margin:-41px auto 0; padding:0;}
@@ -142,8 +140,6 @@ img{ border:none;}
 
 
 .universal_form_back{width:30%; height:auto; margin:0; padding:0; float:left;}
-
-h4{ font-family:"Open Sans"; color:#000; font-size:16px; text-transform:uppercase; margin:0 0 10px 0; padding:0; font-weight:normal;}
 
 .sub_it_back{ margin:0; padding:0 25px; height:35px; font-family:"Open Sans"; color:#fff; font-size:14px; text-transform:uppercase; text-align:center; border-radius:5px; border-radius:5px; cursor:pointer; border:none; outline-style:none; background: rgb(69,72,77); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
@@ -716,11 +712,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 	.form_back_container .facebook_form .facebook_left ul.left_face li .image_back{ margin:0 0 0 0; padding:0; float:left; width:50px; height:50px;}
 	
 	.form_back_container .facebook_form .facebook_left ul.left_face li .image_back img{width:100%; height:100%; display:block;}
-	
-	.form_back_container .facebook_form .facebook_left ul.left_face li:hover{ background:#72c1f3;}
-	
-	.form_back_container .facebook_form .facebook_left ul.left_face li.active{ background:#2c3e50;}
-	
+			
 	.form_back_container .facebook_form .facebook_left ul.left_face li .details_face_left{float:right; position:relative; width:75%}
 	
 	.form_back_container .facebook_form .facebook_left ul.left_face li .details_face_left h2{ font-family:Calibri; color:#fff; font-size:16px; margin:10px 0 0 0; padding:0; float:left; font-weight:normal;}

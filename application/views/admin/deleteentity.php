@@ -16,7 +16,7 @@
 		}		
 	?>
 	
-    <input type="submit" value="Delete">
+    <input type="submit" class="blue-button action" value="Delete">
     </form>
 	<?php
 	}else{

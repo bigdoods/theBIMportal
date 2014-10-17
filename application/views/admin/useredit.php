@@ -1,3 +1,4 @@
+<br>
 <h4>Edit user - <?php echo $userdetails['name'];//v_dump($assignedprojects)?></h4>
       <form name="project_assign" validate="validate" method="post">
           <div class="universal_form_back">
@@ -5,7 +6,8 @@
             <div class="clear"></div>
             Active / Inactive: <input type="checkbox" name="status" id="status" data-validation-engine="validate[required]" value="1" <?php echo $userdetails['status'] >= 3 ? 'checked="checked"' : ''?>/>
             <div class="clear"></div>
-            <span> Select the projcts:</span>
+            <br>
+            <span>Assign Projects:</span>
             <select name="project_list[]" multiple="multiple" style="width:300px;">
             	<?php
                 	if($allprojects){
@@ -57,6 +59,6 @@
           
           
           <div class="clear"></div>
-          <input type="submit" class="sub_it_back" value="Save" />
-          <input type="button" class="sub_it_back show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
+          <input type="submit" class="blue-button action" value="Save" />
+          <input type="button" class="grey-button show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
      </form>

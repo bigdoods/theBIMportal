@@ -128,7 +128,7 @@ class filemanager_app extends Bim_Appmodule{
                                 <td>Preview</td>
                                 <td>Size</td>
                                 <td>Document Date</td>
-                                <td>Date Modified</td>
+                                <td>Modified</td>
                                 <td>Details</td>
                                 <td>Download</td>
                                 <td>View Ticket</td>
@@ -260,14 +260,12 @@ class filemanager_app extends Bim_Appmodule{
         			<div class="portion">
                     	<h2>File Upload</h2>
                         <div class="clear"></div>
-                        <p>please enter details below :</p>
-                        <div class="clear"></div>
                        	<form action="#" method="post" validate="validate">
-                            <input type="text" class="text_file" placeholder="Comments" data-validation-engine="validate[required]" style="resize:none;" name="comment"/>
-                            <input type="text" name="document_date" value="" placeholder="Date on document  dd/mm/yyyy" data-validation-engine="validate[required,custom[dateFormat]]" />
+                            <input type="text" class="form-input" placeholder="Comments" data-validation-engine="validate[required]" style="resize:none;" name="comment"/>
+                            <input type="text" name="form-input" value="" placeholder="Date on document (dd/mm/yyyy)" data-validation-engine="validate[required,custom[dateFormat]]" />
 
                             <div class="clear"></div>
-                            <select class="drop" data-validation-engine="validate[required]" name="project">
+                            <select class="form-input" data-validation-engine="validate[required]" name="project">
                             	<option value=""> Select your project</option>
                                 <?php 
 								// Get all projects
@@ -285,7 +283,7 @@ class filemanager_app extends Bim_Appmodule{
                                 	$doc_details = $this->_me->Projects->getDoctypeDetails(  );
 									
 								?>
-                            <select class="drop" data-validation-engine="validate[required]"  name="documetntype">
+                            <select class="form-input" data-validation-engine="validate[required]"  name="documetntype">
                             	<option value=""> Select your file type</option>
                                 <?php
 
@@ -315,7 +313,7 @@ class filemanager_app extends Bim_Appmodule{
 								?>
                             </select>
                             <div class="clear"></div>
-                            <input type="file" style="color:#fff; margin:10px 0 0 0;" data-validation-engine="validate[required]" id="file"/>
+                            <input type="file" data-validation-engine="validate[required]" id="file"/>
                             <div class="clear"></div>
                             <!--<input type="submit" class="submit" value="submit" />-->
                         </form>
