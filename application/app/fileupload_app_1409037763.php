@@ -233,8 +233,8 @@ class Fileupload_app extends Bim_Appmodule{
 					 if(!$details){
 					 	$details = '';
 					 }
-					$doc_date = preg_replace('/[^0-9\-\/\\ ]/i', '', $this->_me->input->get('date'));
-					$doc_date = strtotime(preg_replace('@(\d{2})/(\d{2})/(\d{2,4})@i', '$2/$1/$2', $doc_date));
+					$doc_date = preg_replace('/[^0-9\-\/\\\\]/i', '', $this->_me->input->get('date'));
+					$doc_date = strtotime(preg_replace('@(\d{1,2})(?:/|\-)(\d{1,2})(?:/|\-)(\d{4})@i', '$2/$1/$3', $doc_date));
 					if($doc_date === false)
 						$doc_date = time();
 
