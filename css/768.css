@@ -1,3 +1,77 @@
 .back_container .main .apps_content_back .content_main ul.request_file li{
     width:97%;
 }
+
+table.table-grey, .table-grey thead, .table-grey tbody, .table-grey th, .table-grey td, .table-grey tr { 
+    display: block; 
+}
+
+table.table-grey thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+table.table-grey tr { 
+    background: #F6F6F6;
+    border: 1px solid #DDD;
+    border-bottom: none;
+}
+
+table.table-grey tr:nth-child(even),
+table.table-grey .even td {
+    background: #FFF;
+}
+
+table.table-grey td { 
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding: 5px 5px 5px 50%;
+    background: none;
+    line-height: 16px;
+    min-height: 16px;
+}
+
+table.table-grey td:last-child { 
+    border-bottom: none;
+}
+
+table.table-grey tbody tr:hover td {
+    background: none;
+}
+
+table.table-grey td .blue-button {
+    max-width: 140px;
+    margin: 0 auto;
+}
+
+table.table-grey td:before { 
+    position: absolute;
+    left: 6px;
+    width: 45%; 
+    padding: 0 10px 0 0; 
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.table-grey.tickets-table td:nth-of-type(1):before { content: "Ticket ID"; }
+.table-grey.tickets-table td:nth-of-type(2):before { content: "Type"; }
+.table-grey.tickets-table td:nth-of-type(3):before { content: "Author"; }
+.table-grey.tickets-table td:nth-of-type(4):before { content: "Project"; }
+.table-grey.tickets-table td:nth-of-type(5):before { content: "Editor"; }
+.table-grey.tickets-table td:nth-of-type(6):before { content: "Comment"; }
+.table-grey.tickets-table td:nth-of-type(7):before { content: "Status"; }
+.table-grey.tickets-table td:nth-of-type(8):before { content: "Details"; }
+
+.table-grey.files-table td:nth-of-type(1):before { content: "File Name"; }
+.table-grey.files-table td:nth-of-type(2):before { content: "File Extension"; }
+.table-grey.files-table td:nth-of-type(3):before { content: "Group"; }
+.table-grey.files-table td:nth-of-type(4):before { content: "Type"; }
+.table-grey.files-table td:nth-of-type(5):before { content: "Preview"; }
+.table-grey.files-table td:nth-of-type(6):before { content: "Size"; }
+.table-grey.files-table td:nth-of-type(7):before { content: "Document Date"; }
+.table-grey.files-table td:nth-of-type(8):before { content: "Modified"; }
+.table-grey.files-table td:nth-of-type(9):before { content: "Details"; }
+.table-grey.files-table td:nth-of-type(10):before { content: "Download"; }
+.table-grey.files-table td:nth-of-type(11):before { content: "View Ticket"; }

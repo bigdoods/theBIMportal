@@ -33,17 +33,21 @@
                     $('.dataTables_scrollBody').css('height', tableHeight);
                 });
 
-                $(function(){       
+                $(function(){
 
-                    jQuery('#ticket_details').dataTable({
-                        scrollY: tableHeight
-                    });
-                    $('.qtip_comment').qtip({
-                                 position: {
-                                          my: 'top middle',  // Position my top left...
-                                          at: 'bottom middle',
-                                   }
-                });
+                    if($('body').innerWidth() > 768) {       
+
+                        jQuery('#ticket_details').dataTable({
+                            scrollY: tableHeight
+                        });
+                        $('.qtip_comment').qtip({
+                            position: {
+                                my: 'top middle',  // Position my top left...
+                                at: 'bottom middle',
+                            }
+                        });
+
+                    }
 
 				/**
 				 * handle the comment submit form
@@ -132,7 +136,7 @@
             	<div class="row-fluid">
                     <!-- block -->
               		<div class="span12">
-                    <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey tickets-table" id="ticket_details">
                     	<thead>
                    			<tr>
                        		<td data-default-sort="desc">Ticket ID</td>
