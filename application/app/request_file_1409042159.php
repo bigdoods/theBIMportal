@@ -78,7 +78,9 @@
 		$type = $this->_me->input->get('type');
 		?>
         
-        <ul class="request_file"><li>
+        <ul class="request_file">
+        	<a href="<?php echo $this->_base_uri; ?>" class="blue-button action back-link">&lt; Back</a>
+        	<li>
                             			<div class="portion">
                                         	<h2>File Request</h2>
                                             <div class="clear"></div>

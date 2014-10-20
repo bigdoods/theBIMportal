@@ -150,7 +150,7 @@
 
                             $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
 						?><tr>
-                       		<td><?php echo $ticket['represent_id']?> <?php echo $ticket['time']?></td>
+                       		<td><?php echo $ticket['represent_id']?> <?php //echo $ticket['time']?></td>
                             <td><?php echo $ticket['ticket_for'] ?></td>
                             <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
                             <td><?php echo $ticket['pname']?></td>

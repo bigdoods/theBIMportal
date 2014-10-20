@@ -33,3 +33,7 @@
 .menu-trigger.toggle-close:hover {
     background: url(../images/close.png) no-repeat center center #12B2F5;
 }
+
+.back_container .main .apps_content_back .content_main ul.request_file {
+    margin: 14px 0 0;
+}
