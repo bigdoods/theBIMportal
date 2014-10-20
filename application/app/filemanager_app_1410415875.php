@@ -31,14 +31,28 @@ class filemanager_app extends Bim_Appmodule{
                 <script src="<?php echo base_url();?>/js/jquery.dataTables.min.js"></script>
        			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>              
 				<script>
-                $(function(){					
-					jQuery('#ticket_details').dataTable();
-					$('.qtip_comment').qtip({
-								 position: {
-										  my: 'top left',  // Position my top left...
-										  at: 'bottom right',
-								   }
-					});	
+                $(function(){
+
+                    var tableHeight = $(window).height() - 340;
+
+                    $(window).bind('resize', function(e) {
+                        tableHeight = $(window).height() - 340;
+                        $('.dataTables_scrollBody').css('height', tableHeight);
+                    });
+                					
+					if($('body').innerWidth() > 768) {       
+
+                        jQuery('#ticket_details').dataTable({
+                            scrollY: tableHeight
+                        });
+                        $('.qtip_comment').qtip({
+                            position: {
+                                my: 'top middle',  // Position my top left...
+                                at: 'bottom middle',
+                            }
+                        });
+
+                    }	
 				})
                 </script>               
 				<?php
@@ -118,7 +132,7 @@ class filemanager_app extends Bim_Appmodule{
                 	<div class="row-fluid">
                         <!-- block -->
                   		<div class="span12">
-                        <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
+                        <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey files-table" id="ticket_details">
                         	<thead>
                        			<tr>
                            		<td>File Name</td>

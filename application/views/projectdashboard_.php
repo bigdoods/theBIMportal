@@ -76,7 +76,7 @@
                     <div class="clear"></div>
                     
                     <div class="apps_content_back">
-                    	<div id="<?php echo $app_id == 7 ? 'ticket_app' : 'content_2' ;?>" class="content2<?php if($app_id == 1) { echo ' timeline'; }?>">
+                    	<div id="<?php echo $app_id == 7 || $app_id == 16 ? 'ticket_app' : 'content_2' ;?>" class="content2<?php if($app_id == 1) { echo ' timeline'; }?>">
                         <?php global $app;?>
                         	<div class="<?php echo property_exists ($app , 'class_css') ? $app->class_css: 'content_main' ;?>">
                             	<?php load_app_content();

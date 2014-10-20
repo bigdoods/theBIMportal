@@ -85,6 +85,7 @@ class Fileupload_app extends Bim_Appmodule{
 		 }
 	 ?>
 	 <ul id="upload-file" class="request_file">
+	 	<a href="<?php echo $this->_base_uri; ?>" class="blue-button action back-link">&lt; Back</a>
 	 	<li>
 		 	<div class="portion">
 		 		<h2>Upload File</h2>

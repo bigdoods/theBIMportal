@@ -33,17 +33,21 @@
                     $('.dataTables_scrollBody').css('height', tableHeight);
                 });
 
-                $(function(){       
+                $(function(){
 
-                    jQuery('#ticket_details').dataTable({
-                        scrollY: tableHeight
-                    });
-                    $('.qtip_comment').qtip({
-                                 position: {
-                                          my: 'top middle',  // Position my top left...
-                                          at: 'bottom middle',
-                                   }
-                });
+                    if($('body').innerWidth() > 768) {       
+
+                        jQuery('#ticket_details').dataTable({
+                            scrollY: tableHeight
+                        });
+                        $('.qtip_comment').qtip({
+                            position: {
+                                my: 'top middle',  // Position my top left...
+                                at: 'bottom middle',
+                            }
+                        });
+
+                    }
 
 				/**
 				 * handle the comment submit form
@@ -132,7 +136,7 @@
             	<div class="row-fluid">
                     <!-- block -->
               		<div class="span12">
-                    <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey" id="ticket_details">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table display table-grey tickets-table" id="ticket_details">
                     	<thead>
                    			<tr>
                        		<td data-default-sort="desc">Ticket ID</td>
@@ -150,7 +154,7 @@
 
                             $short_ticket_comment = strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."..." : $ticket['comment'];
 						?><tr>
-                       		<td><?php echo $ticket['represent_id']?> <?php echo $ticket['time']?></td>
+                       		<td><?php echo $ticket['represent_id']?> <?php //echo $ticket['time']?></td>
                             <td><?php echo $ticket['ticket_for'] ?></td>
                             <td><?php echo $ticket['uname']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['time']) ?></td>
                             <td><?php echo $ticket['pname']?></td>

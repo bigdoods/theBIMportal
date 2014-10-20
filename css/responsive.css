@@ -19,7 +19,6 @@
 .back_container .main .right .head{width:100%; height:auto;}
 
 .back_container .main .apps_content_back .content_main{width:83.775%;}
-.back_container .main .apps_content_back .content_main ul.request_file{margin: 136px 0 0;}
 
 .back_container .main .apps_content_back .content_main ul.upload_file2{width:100%; height:auto; margin:0 0 0 0;}
 
@@ -145,7 +144,6 @@
 
 .back_container .main .apps_content_back .content_main ul.upload_file li img{ margin:20px auto 0;}
 .back_container .main .apps_content_back .content_main ul.upload_file li h2{ font-size:14px;}
-.back_container .main .apps_content_back .content_main ul.request_file{margin: 14px 0 0;}
 .back_container .main .apps_content_back .content_main ul.request_file li{width: 91%;}
 
 .form_back_container .form_back_container{max-width:450px; height:auto; margin:0 auto; padding:20px;  background:#FFF;  border-radius:10px; box-shadow:#ccc 1px 0 10px;}

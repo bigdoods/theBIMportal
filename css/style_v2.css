@@ -673,7 +673,7 @@ APP STYLES
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#f8f8f8',GradientType=0 );
 }
 
-.tickets input[type=search] {
+.tickets #ticket_details_filter input {
     height: 28px;
     line-height: 28px;
     margin: auto auto auto 10px;
@@ -800,13 +800,14 @@ APP STYLES
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     color: #535353;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .dash_4_back_container .details li p.small,
 .dash_4_back_container .details li p {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     color: #535353;
+    font-size: 12px;
 }
 
 .dash_4_back_container .details li {
@@ -1183,7 +1184,9 @@ a#collapse-list {
     padding: 0;
 }
 
-.back_container .main .apps_content_back .content_main ul.upload_file .back-link {
+.back_container .main .apps_content_back .content_main ul.upload_file .back-link,
+.back_container .main .apps_content_back .content_main ul.request_file .back-link,
+.back_container .main .apps_content_back .content_main ul#upload-file .back-link {
     width: 60px;
     margin: 0 0 10px 0;
 }
@@ -1708,7 +1711,7 @@ textarea.form-input.greyed {
 table.table-grey thead .sorting {
     color: #535353;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     border-bottom: 3px solid #c4cfdb;
     line-height: 20px;
 
@@ -1725,7 +1728,7 @@ table.table-grey thead .sorting {
 table.table-grey.details thead td {
     color: #535353;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     border-bottom: 3px solid #c4cfdb;
     line-height: 20px;
 
@@ -1755,7 +1758,7 @@ table.table-grey td {
     padding: 11px 8px;
     text-align: center;
     color: #535353;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 22px;
     vertical-align: middle;
 }
