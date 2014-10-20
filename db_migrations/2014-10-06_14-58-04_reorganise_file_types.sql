@@ -18,7 +18,7 @@ INSERT INTO `doctype` VALUES (10,'Concept','Concept',1,5,1);
 INSERT INTO `doctype` VALUES (11,'General Civils','Concept',1,1,2);
 INSERT INTO `doctype` VALUES (12,'Mechanical','Concept',1,2,2);
 INSERT INTO `doctype` VALUES (13,'Miscellaneous','Concept',1,3,2);
-INSERT INTO `doctype` VALUES (14,'Permenent Way','Concept',1,4,2);
+INSERT INTO `doctype` VALUES (14,'Permanent Way','Concept',1,4,2);
 INSERT INTO `doctype` VALUES (15,'Property','Concept',1,5,2);
 INSERT INTO `doctype` VALUES (16,'Roads. Highways. Car Park','Concept',1,6,2);
 INSERT INTO `doctype` VALUES (17,'Safety','Concept',1,7,2);
@@ -31,5 +31,6 @@ INSERT INTO `doctype` VALUES (22,'Quantity Takoff','Quantity Takeoff',1,1,4);
 INSERT INTO `doctype` VALUES (23,'Other','Other',1,1,5);
 
 INSERT INTO `doctype` VALUES (24,'Plan','Plan',1,6,1);
-INSERT INTO `doctype` VALUES (25,'Electrification & Plant, Environmental','Electrification & Plant, Environmental',1,11,2);
+INSERT INTO `doctype` VALUES (25,'Electrification & Plant','Electrification & Plant',1,11,2);
+INSERT INTO `doctype` VALUES (26,'Environmental','Environmental',1,12,2);
 
