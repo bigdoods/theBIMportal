@@ -198,7 +198,7 @@ class filemanager_app extends Bim_Appmodule{
                                 <td><?php echo $file['doctypename']?></td>
                                 <td><p><img src="<?php echo base_url($file['path'])?>" alt="No preview" width="100" height="100" onError="javascript:$(this).closest('p').html('No preview')"></p></td>
                                 <td><?php echo $file_size;?></td>
-                                <td><?php echo $document_time;?></td>
+                                <td data-sort="<?php echo $file['document_date'] ?>"><?php echo $document_time;?></td>
                                 <td><?php echo $file_modifed_time;?></td>
                                 <td><?php echo $file['details']?></td>
                                 <td class="small">
