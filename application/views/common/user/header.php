@@ -79,6 +79,8 @@
 		(function($){
 			$(window).load(function(){
 				$("#content_1").mCustomScrollbar({
+					scrollInertia: 0,
+					advanced:{ updateOnContentResize: true },
 					scrollButtons:{
 						enable:true
 					}
@@ -87,6 +89,8 @@
 			
 			$(window).load(function(){
 				$("#content_2").mCustomScrollbar({
+					scrollInertia: 0,
+					advanced:{ updateOnContentResize: true },
 					scrollButtons:{
 						enable:true
 					}
@@ -100,6 +104,8 @@
 
 			$(window).load(function(){
 				$("#timeline-sidebar").mCustomScrollbar({
+					scrollInertia: 0,
+					advanced:{ updateOnContentResize: true },
 					scrollButtons:{
 						enable:true
 					}
