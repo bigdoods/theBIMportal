@@ -63,106 +63,110 @@ class QTO_App extends Bim_Appmodule{
 
 		 	<div id="qto-wrapper">
 
-		 		<form action="" method="GET">
-		 			<select name="revision_id" class="form-input" style="float: left;">
-		 				<?php
+		 		<div class="qto-left">
 
-		 				// populate revisions drop down
-		 				foreach($revisions as $revision) {
+			 		<form action="" method="GET">
+			 			<select name="revision_id" class="form-input" style="float: left;">
+			 				<?php
 
-		 					$revision_date = date('jS F Y - h:ia', $revision['date']);
+			 				// populate revisions drop down
+			 				foreach($revisions as $revision) {
 
-		 					// select current revision in drop down
-		 					if($revision_id == $revision['id']) {
-		 						$selected = ' selected';
-		 					} else {
-		 						$selected = '';
-		 					}
+			 					$revision_date = date('jS F Y - h:ia', $revision['date']);
 
-		 					echo '<option '.$selected.' value="'.$revision["id"].'">'.$revision_date.'</option>';
+			 					// select current revision in drop down
+			 					if($revision_id == $revision['id']) {
+			 						$selected = ' selected';
+			 					} else {
+			 						$selected = '';
+			 					}
 
-		 				}
+			 					echo '<option '.$selected.' value="'.$revision["id"].'">'.$revision_date.'</option>';
 
-		 				?>
-		 			</select>
-		 			<input type="submit" value="Select Revision" class="blue-button action" style="float: left; margin: 6px 0 0 6px">
-		 		</form>
+			 				}
 
-		 		<br class="clear">
+			 				?>
+			 			</select>
+			 			<input type="submit" value="Select Revision" class="blue-button action" style="float: left; margin: 6px 0 0 6px">
+			 		</form>
 
-			 	<script type="text/javascript" src="<?php echo base_url('js/FileTreeView.js'); ?>"></script>
-			 	<script type="text/javascript" src="<?php echo base_url('js/TreeListFilter.js'); ?>"></script>
-			 	<script type="text/javascript">
-				    $(function() {
-				    	$('head').append('<link rel="stylesheet" href="<?php echo base_url('css/FileTreeView.css'); ?>" />');
-				        $('#qto-list').fileTreeView('#expand-list', '#collapse-list', 'folder');
-				        $('#filter-list').treeListFilter('#qto-list', 200);
+			 		<br class="clear">
 
-				        $(document).ready(function(){
-				        	$('a#collapse-list').click();
-				        });
-				    });
-				</script>
+				 	<script type="text/javascript" src="<?php echo base_url('js/FileTreeView.js'); ?>"></script>
+				 	<script type="text/javascript" src="<?php echo base_url('js/TreeListFilter.js'); ?>"></script>
+				 	<script type="text/javascript">
+					    $(function() {
+					    	$('head').append('<link rel="stylesheet" href="<?php echo base_url('css/FileTreeView.css'); ?>" />');
+					        $('#qto-list').fileTreeView('#expand-list', '#collapse-list', 'folder');
+					        $('#filter-list').treeListFilter('#qto-list', 200);
 
-				<input type="text" id="filter-list" placeholder="Filter by keyword..." class="form-input">
+					        $(document).ready(function(){
+					        	$('a#collapse-list').click();
+					        });
+					    });
+					</script>
 
-		 		<a id="expand-list">Expand All</a> | <a id="collapse-list">Collapse All</a>
+					<input type="text" id="filter-list" placeholder="Filter by keyword..." class="form-input">
 
-		 		<ul id="qto-list">
+			 		<a id="expand-list">Expand All</a> | <a id="collapse-list">Collapse All</a>
 
-		 		<?php 
+			 		<ul id="qto-list">
 
-				// var_dump($xml);
+			 		<?php 
 
-				// Parse XML
-				foreach($xml->Catalog->ItemGroup as $first_item_group) {
-					echo '<li>'.$first_item_group->attributes()->Name.'
-					<ul>';
+					// Parse XML
+					foreach($xml->Catalog->ItemGroup as $first_item_group) {
+						echo '<li>'.$first_item_group->attributes()->Name.'
+						<ul>';
 
-						foreach($first_item_group as $second_item_group) {
-							if($second_item_group->getName() == 'ItemGroup') {
-								echo '<li class="folder">'.$second_item_group->attributes()->Name;
+							foreach($first_item_group as $second_item_group) {
+								if($second_item_group->getName() == 'ItemGroup') {
+									echo '<li class="folder">'.$second_item_group->attributes()->Name;
 
-								echo '<ul>';
+									echo '<ul>';
 
-								foreach($second_item_group as $third_item_group) {
-									if($third_item_group->getName() == 'ItemGroup') {
-										echo '<li class="folder">'.$third_item_group->attributes()->Name;
+									foreach($second_item_group as $third_item_group) {
+										if($third_item_group->getName() == 'ItemGroup') {
+											echo '<li class="folder">'.$third_item_group->attributes()->Name;
+										} else {
+											$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS.'.'.$third_item_group->attributes()->WBS;
+											echo '<li>'.$third_item_group->attributes()->Name.' ('.$wbs.')</li>';
+										}
+
+										if(count($third_item_group->Item)) {
+											echo '<ul>';
+
+												foreach($third_item_group->Item as $item) {
+													$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS.'.'.$third_item_group->attributes()->WBS.'.'.$item->attributes()->WBS;
+													echo '<li>'.$item->attributes()->Name.' ('.$wbs.')</li>';
+												}
+
+											echo '</ul>';
+										}
+
+									}
+
+									echo '</ul>';
+
 									} else {
-										$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS.'.'.$third_item_group->attributes()->WBS;
-										echo '<li>'.$third_item_group->attributes()->Name.' (WBS: '.$wbs.')</li>';
+										$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS;
+										echo '<li>'.$second_item_group->attributes()->Name.' ('.$wbs.')</li>';
 									}
 
-									if(count($third_item_group->Item)) {
-										echo '<ul>';
+								echo '</li>';
+							}
 
-											foreach($third_item_group->Item as $item) {
-												$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS.'.'.$third_item_group->attributes()->WBS.'.'.$item->attributes()->WBS;
-												echo '<li>'.$item->attributes()->Name.' (WBS: '.$wbs.')</li>';
-											}
+						echo '</ul>
+						</li>';
+					}
 
-										echo '</ul>';
-									}
+			 		?>
 
-								}
+			 		</ul>
 
-								echo '</ul>';
+		 		</div>
 
-								} else {
-									$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS;
-									echo '<li>'.$second_item_group->attributes()->Name.' (WBS: '.$wbs.')</li>';
-								}
-
-							echo '</li>';
-						}
-
-					echo '</ul>
-					</li>';
-				}
-
-		 		?>
-
-		 		</ul>
+		 		<script type="text/javascript" src="<?php echo base_url('js/qto_app.js?v=').filemtime('js/qto_app.js')?>"></script>
 
 		 	</div>
 

@@ -1102,17 +1102,31 @@ form#account_update hr {
 
 /* QUANTITY TAKEOFF APP */
 
+#qto-wrapper .qto-left {
+    position: fixed;
+    left: 234px;
+    top: 130px;
+    width: 375px;
+    overflow: scroll;
+}
+
 a#expand-list,
 a#collapse-list {
     cursor: pointer;
+    margin: 0 6px;
 }
+
+a#expand-list:hover,
+a#collapse-list:hover {
+    text-decoration: underline;
+} 
 
 ul#qto-list {
     padding: 0;
 }
 
 ul#qto-list ul {
-    padding-left: 30px;
+    padding-left: 22px;
     border-left: 1px solid #E6E6E6;
 }
 
@@ -1124,7 +1138,7 @@ ul#qto-list ul li:before {
     content: " ";
     position: absolute;
     top: 15px;
-    left: -30px;
+    left: -22px;
     width: 13px;
     height: 1px;
     background: #E6E6E6;
