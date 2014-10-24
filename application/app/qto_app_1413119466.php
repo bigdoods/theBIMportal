@@ -97,6 +97,10 @@ class QTO_App extends Bim_Appmodule{
 				    	$('head').append('<link rel="stylesheet" href="<?php echo base_url('css/FileTreeView.css'); ?>" />');
 				        $('#qto-list').fileTreeView('#expand-list', '#collapse-list', 'folder');
 				        $('#filter-list').treeListFilter('#qto-list', 200);
+
+				        $(document).ready(function(){
+				        	$('a#collapse-list').click();
+				        });
 				    });
 				</script>
 
@@ -116,20 +120,25 @@ class QTO_App extends Bim_Appmodule{
 					<ul>';
 
 						foreach($first_item_group as $second_item_group) {
-							echo '<li>'.$second_item_group->attributes()->Name.'
-							<ul>';
+							if($second_item_group->getName() == 'ItemGroup') {
+								echo '<li class="folder">'.$second_item_group->attributes()->Name;
+
+								echo '<ul>';
 
 								foreach($second_item_group as $third_item_group) {
-									echo '<li>'.$third_item_group->attributes()->Name.'</li>';
+									if($third_item_group->getName() == 'ItemGroup') {
+										echo '<li class="folder">'.$third_item_group->attributes()->Name;
+									} else {
+										$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS.'.'.$third_item_group->attributes()->WBS;
+										echo '<li>'.$third_item_group->attributes()->Name.' (WBS: '.$wbs.')</li>';
+									}
 
 									if(count($third_item_group->Item)) {
 										echo '<ul>';
 
 											foreach($third_item_group->Item as $item) {
-												echo '<li>Item Name: '.$item->attributes()->Name.'</li><ul>';
-												echo '<li>Description: '.$item->attributes()->Description.'</li>';
-												echo '<li>Transparency: '.$item->attributes()->Transparency.'</li>';
-												echo '<li>Color: '.$item->attributes()->Color.'</li></ul>';
+												$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS.'.'.$third_item_group->attributes()->WBS.'.'.$item->attributes()->WBS;
+												echo '<li>'.$item->attributes()->Name.' (WBS: '.$wbs.')</li>';
 											}
 
 										echo '</ul>';
@@ -137,8 +146,14 @@ class QTO_App extends Bim_Appmodule{
 
 								}
 
-							echo '</ul>
-							</li>';
+								echo '</ul>';
+
+								} else {
+									$wbs = $first_item_group->attributes()->WBS.'.'.$second_item_group->attributes()->WBS;
+									echo '<li>'.$second_item_group->attributes()->Name.' (WBS: '.$wbs.')</li>';
+								}
+
+							echo '</li>';
 						}
 
 					echo '</ul>

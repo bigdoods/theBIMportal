@@ -1107,6 +1107,29 @@ a#collapse-list {
     cursor: pointer;
 }
 
+ul#qto-list {
+    padding: 0;
+}
+
+ul#qto-list ul {
+    padding-left: 30px;
+    border-left: 1px solid #E6E6E6;
+}
+
+ul#qto-list ul li {
+    position: relative;
+}
+
+ul#qto-list ul li:before {
+    content: " ";
+    position: absolute;
+    top: 15px;
+    left: -30px;
+    width: 13px;
+    height: 1px;
+    background: #E6E6E6;
+}
+
 /* FEEDBACK APP */
 
 .back_container .main .apps_content_back .content_main ul.request_file li .portion {
