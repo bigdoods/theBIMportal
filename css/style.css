@@ -245,9 +245,6 @@ img{border:none;}
 
 .back_container .main .apps_content_back .content_main ul.site_photo_graph li a{ text-decoration:none;color:#333;}
 
-.back_container .main .apps_content_back .content_main ul.site_photo_graph li:nth-child(4n+4){margin:0 0 20px 0;}
-
-
 
 .back_container .main .apps_content_back .content_main ul.upload_file2{width:100%; height:auto; margin:0 0 0 0; padding:0; float:left; text-align:center;}
 
