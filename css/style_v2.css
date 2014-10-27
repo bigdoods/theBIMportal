@@ -1490,6 +1490,41 @@ ul#qto-list ul li:before {
     margin: 0 auto;
 }
 
+#help-page #contents {
+    list-style: none;
+    padding-left: 6px;
+}
+
+#help-page #contents ul {
+    padding-left: 16px;
+    list-style: none;
+    border-left: 1px solid #BDBDBD;
+}
+
+#help-page #contents ul li {
+    position: relative;
+}
+
+#help-page #contents ul li:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: -16px;
+    width: 9px;
+    height: 1px;
+    background: #BDBDBD;
+}
+
+#help-page #contents a {
+    color: #636363;
+    text-decoration: none;
+}
+
+#help-page #contents a:hover {
+    text-decoration: underline;
+}
+
 #help-page h1 {
     font-size: 28px;
 }
