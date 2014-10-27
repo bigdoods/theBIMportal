@@ -29,7 +29,7 @@ class Help_App extends Bim_Appmodule{
 	public function init(){
 		$content = $this->getHelpPageConent();
 		?>
-        	<div>
+        	<div id="help-page">
             	<?php echo $content?>
             </div>
 			

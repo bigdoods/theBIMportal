@@ -1482,6 +1482,41 @@ ul#qto-list ul li:before {
     position: fixed;
     bottom: 50px;
 }
+
+/* HELP APP */
+
+#help-page {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#help-page h1 {
+    font-size: 28px;
+}
+
+#help-page h2 {
+    font-size: 20px;
+    color: #3E3E3E;
+    line-height: 40px;
+    padding: 0 12px;
+    background: #F8F8F8;
+    border-bottom: 1px solid #CCC;
+}
+
+#help-page h3 {
+    color: #3E3E3E;
+    border-bottom: 2px solid #EEE;
+    padding-bottom: 2px;
+}
+
+#help-page p {
+    color: #636363;
+}
+
+#help-page ul {
+    padding-left: 30px;
+    list-style-type: circle;
+}
     
 /* QTIPS */
 
