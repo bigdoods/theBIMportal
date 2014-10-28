@@ -117,20 +117,20 @@ class QTO_App extends Bim_Appmodule{
 					// Parse XML
 					foreach($xml->Catalog->ItemGroup as $first_item_group) {
 						$wbs = $first_item_group->attributes()->WBS;
-						echo '<li>'.$first_item_group->attributes()->Name.' ('.$wbs.')
+						echo '<li>'.$first_item_group->attributes()->Name.' ('.$wbs.') <input type="radio" name="qto" value="'.$first_item_group->attributes()->Name.' ('.$wbs.')">
 						<ul>';
 
 							foreach($first_item_group as $second_item_group) {
 								$wbs_second = $wbs.'.'.$second_item_group->attributes()->WBS;
 								if($second_item_group->getName() == 'ItemGroup') {
-									echo '<li class="folder">'.$second_item_group->attributes()->Name.' ('.$wbs_second.')';
+									echo '<li class="folder">'.$second_item_group->attributes()->Name.' ('.$wbs_second.') <input type="radio" name="qto" value="'.$second_item_group->attributes()->Name.' ('.$wbs_second.')">';
 
 									echo '<ul>';
 
 									foreach($second_item_group as $third_item_group) {
 										$wbs_third = $wbs_second.'.'.$third_item_group->attributes()->WBS;
 										if($third_item_group->getName() == 'ItemGroup') {
-											echo '<li class="folder">'.$third_item_group->attributes()->Name.' ('.$wbs_third.')';
+											echo '<li class="folder">'.$third_item_group->attributes()->Name.' ('.$wbs_third.') <input type="radio" name="qto" value="'.$third_item_group->attributes()->Name.' ('.$wbs_third.')">';
 										} else {
 											echo '<li>'.$third_item_group->attributes()->Name.' ('.$wbs_third.')</li>';
 										}
@@ -164,6 +164,23 @@ class QTO_App extends Bim_Appmodule{
 			 		?>
 
 			 		</ul>
+
+		 		</div>
+
+		 		<div class="qto-right">
+
+		 			<p><strong>Navigate the list on the left and select a folder to request a Quantity Takeoff file.</strong></p>
+
+		 			<form action="<?php echo base_url('portal/project/8/?f=submitRequest'); ?>" method="POST" id="request-qto">
+
+		 				<p>You are requesting the following folder:</p>
+
+		 				<input type="hidden" name="description" value="">
+		 				<input type="hidden" name="extension" value="7">
+		 				<input type="hidden" name="type" value="22">
+		 				<input type="submit" class="blue-button action" value="Request Quantity Takeoff">
+
+		 			</form>
 
 		 		</div>
 
