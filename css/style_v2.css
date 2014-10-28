@@ -1130,7 +1130,7 @@ ul#qto-list ul {
     border-left: 1px solid #E6E6E6;
 }
 
-ul#qto-list ul li {
+ul#qto-list li {
     position: relative;
 }
 
@@ -1142,6 +1142,19 @@ ul#qto-list ul li:before {
     width: 13px;
     height: 1px;
     background: #E6E6E6;
+}
+
+ul#qto-list input[type=radio] {
+    display: none;
+}
+
+ul#qto-list li:hover > input[type=radio],
+ul#qto-list li input[type=radio]:checked {
+    display: inline-block;
+}
+
+#qto-wrapper .qto-right {
+    margin-left: 385px;
 }
 
 /* FEEDBACK APP */
@@ -1487,7 +1500,7 @@ ul#qto-list ul li:before {
 
 #help-page {
     max-width: 960px;
-    margin: 0 auto;
+    margin: 0 auto 200px auto;
 }
 
 #help-page #contents {

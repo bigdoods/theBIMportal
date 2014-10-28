@@ -276,10 +276,9 @@ body {
     color: #666;
     font-size: 12px;
     text-transform: capitalize;
-    margin: 5px 0;
-    padding: 0;
+    margin: 10px 0;
+    padding: 0 5px;
     text-align: center;
-    line-height: 30px;
 }
 
 .tab_content_detila_back ul.details li.big p {

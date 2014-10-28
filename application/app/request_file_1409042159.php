@@ -6,7 +6,7 @@
  class request_file extends Bim_Appmodule{
  	
 	
-	private $_allowed_extension = array('pdf', 'csv', 'xml', 'dxf', 'obj', 'dgn', 'acis');
+	private $_allowed_extension = array('pdf', 'csv', 'xml', 'dxf', 'obj', 'dgn', 'acis', 'xls');
 	private static $_request_details = NULL;
 	
 	private static $_request_id = NULL;
