@@ -1894,9 +1894,9 @@ PROCESS MAP
     position: absolute;
     top: 0;
     right: 1px;
-    font-size: 60px;
+    font-size: 30px;
     font-weight: 600;
-    line-height: 30px;
+    line-height: 15px;
     padding: 10px 12px 14px 12px;
     text-decoration: none;
     color: #FFF;
