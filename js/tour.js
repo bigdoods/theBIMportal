@@ -11,7 +11,7 @@ var tour = new Tour({
   {
     element: "#pro-map",
     title: "Navigating the ARC",
-    content: "Use this area of the portal to view the Process Maps for the Anglia Route Collaboration.",
+    content: "Use this area of the portal to view the Process Maps for the Anglian Route Collaboration.",
     placement: "bottom",
     backdrop: true,
     onShown: function() {

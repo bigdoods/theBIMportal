@@ -59,7 +59,7 @@
 
                                 <div id="pro-map">
                                     <h2>ARC - Grip Process Maps</h2>
-                                    <a id="start-tutorial" class="blue-button action" href="#">Need Help?</a>
+                                    <a id="start-tutorial" class="blue-button action" href="#"></a>
                                     <div id="pm-timeline">
                                         <a class="grip" href="#" data-grip="1">
                                             <span class="input">

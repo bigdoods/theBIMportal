@@ -1690,16 +1690,16 @@ PROCESS MAP
     top: 10px;
     right: 28px;
     display: block;
-    padding: 0 6px 0 26px;
+    width: 30px;
     background-color: #019EE0;
     background-image: url('../images/need-help-icon.png');
     background-repeat: no-repeat;
-    background-position: 6px center;
+    background-position: center;
     background-size: 16px;
 }
 
 #pm-timeline {
-    margin: 20px 0 0 0;
+    margin: 15px 0 0 0;
 }
 
 #pm-timeline a {
@@ -1716,10 +1716,10 @@ PROCESS MAP
     display: block;
     float: left;
     width: 10%;
-    height: 60px;
+    height: 50px;
     padding: 0;
     margin: 0;
-    line-height: 60px;
+    line-height: 50px;
     background: #f7f7f7;
     background: -moz-linear-gradient(top, #f7f7f7 0%, #ececec 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#ececec));
@@ -1753,7 +1753,7 @@ PROCESS MAP
     float: left;
     vertical-align: middle;
     width: 2.5%;
-    height: 62px;
+    height: 52px;
     margin: 0;
     background: url(../images/grip-arrow.png) no-repeat right center;
 }
@@ -1835,8 +1835,8 @@ PROCESS MAP
     background: linear-gradient(to bottom,  rgba(227,230,234,1) 0%,rgba(236,240,244,0) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e6ea', endColorstr='#00ecf0f4',GradientType=0 ); /* IE6-9 */
     border-top: 1px solid #CDCDCD;
-    margin: 20px auto 0;
-    padding: 9px 0;
+    margin: 15px auto 0;
+    padding: 0px 0;
     border-radius: 4px;
 }
 
