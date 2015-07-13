@@ -36,7 +36,7 @@
 <script type="text/javascript" src="<?php echo base_url('js/peerJs.js?v=').filemtime('js/peerJs.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/responsive-controller.js?v=').filemtime('js/responsive-controller.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/bootstrap-tour-standalone.min.js')?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/tour.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/tour.js?v=').filemtime('js/tour.js')?>"></script>
 
 <script type="text/javascript">
 	var base_path = '<?php echo base_url();?>';
@@ -45,7 +45,7 @@
 </script>
 <!-- User defined js-->
 <script type="text/javascript" src="<?php echo base_url('js/base.js')?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/script.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/script.js?v=').filemtime('js/script.js')?>"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.selectyze2').Selectyze({
