@@ -75,3 +75,11 @@ table.table-grey td:before {
 .table-grey.files-table td:nth-of-type(9):before { content: "Details"; }
 .table-grey.files-table td:nth-of-type(10):before { content: "Download"; }
 .table-grey.files-table td:nth-of-type(11):before { content: "View Ticket"; }
+
+#pm-timeline .grip {
+    width: 27%;
+}
+
+#pm-timeline .grip-arrow {
+    width: 5%;
+}

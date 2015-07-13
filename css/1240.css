@@ -37,3 +37,7 @@
 .back_container .main .apps_content_back .content_main ul.request_file {
     margin: 14px 0 0;
 }
+
+#pm-timeline #extra div {
+    width: 100% !important;
+}

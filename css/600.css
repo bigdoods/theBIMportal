@@ -12,3 +12,11 @@ p.breadcrumbs {
 .back_container .main .right .head .project-title {
     display: none;
 }
+
+#pm-timeline .grip {
+    width: 41%;
+}
+
+#pm-timeline .grip-arrow {
+    width: 8%;
+}
