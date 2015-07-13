@@ -1893,14 +1893,14 @@ PROCESS MAP
 #pro-map #chart-frame .close-frame {
     position: absolute;
     top: 0;
-    right: 0;
-    font-size: 90px;
+    right: 1px;
+    font-size: 60px;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 30px;
     padding: 10px 12px 14px 12px;
     text-decoration: none;
     color: #FFF;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 20;
 }
 
