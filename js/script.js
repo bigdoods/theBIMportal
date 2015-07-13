@@ -243,6 +243,73 @@
 			$.post(base_path+'portal/save_note/',{'note_body':$(this).val()});
 		});
 
+		/**
+		 Process Map	 
+		 */	
+
+		 var embedIdList = [
+		 	'9cb81feb-136d-4880-8dff-61ef0690cbc1', // GRIP 1
+		 	'ae9b000d-33ac-4a6e-aeae-25d08f79cae7', // GRIP 2
+		 	'f53d2769-f8a9-4b14-860c-5ef9a9286aa7', // GRIP 3
+		 	'd0e0d011-2255-4e23-bda1-dc8c3fe8a399', // GRIP 4
+		 	'5396c498-96b6-4f1c-865a-c7a96b548c47', // GRIP 5
+		 	'7b64da8a-543a-49be-8a1c-bf70aedd5c33', // GRIP 6
+		 	'1853e375-0134-4942-b82f-75537c0357b4', // GRIP 7
+		 	'923bfd02-b7f4-4823-bfb1-6ac88a034f1d', // GRIP 8
+		 	'64f449ef-b561-4255-90b7-9f09c89ffdcf', // VFL Tender
+		 	'27d3e04f-27a9-4675-8144-c07df596383c', // VFL Tender Docs
+		 	'a3c66785-13eb-41e4-8518-99296776ea16', // VFL Contract Award
+		 	'0338cb65-a626-4fd2-85ee-d7a0945fde2d', // Design Tender / Contract Award
+		 	'cd3f58ab-54a6-4c30-b939-1f5a573093df' // VFL Sub-Contract Placement
+		 ];
+
+		 $(document).on('click', '#pm-timeline a', function() {
+
+		 	$('#pm-timeline a.active').removeClass('active');
+		 	$(this).addClass('active');
+
+		 	if($(window).width() > 1240) {
+		 		var frameHeight = $('#content_2').height() - $('#pm-timeline').height() - 260;
+		 	} else {
+		 		var frameHeight = 600;
+		 	}
+
+		 	var embedId = embedIdList[$(this).data('grip') - 1];
+
+		 	if($('#pro-map #chart-frame iframe').length) $('#pro-map #chart-frame iframe').remove();
+		 	$('#pro-map #chart-frame').append('<iframe allowfullscreen frameborder="0" style="width:100%; height: '+frameHeight+'px;" src="https://www.lucidchart.com/documents/embeddedchart/'+embedId+'" id="X-eUPgYC8fSL"></iframe>');
+		 	$('#pro-map #chart-frame').animate({'height': frameHeight}, 200);
+
+		 });
+
+		 $(document).on('click', '#pro-map .close-frame', function() {
+
+		 	$('#pm-timeline a.active').removeClass('active');
+
+		 	$('#pro-map #chart-frame').animate({'height': 0}, 200);
+
+		 });
+
+		 $(document).on('click', '#pro-map #key h3', function() {
+
+		 	if($('#pro-map #key').hasClass('show')) {
+		 		$('#pro-map #key').removeClass('show');
+		 		$('#pro-map #key').animate({'height': 30}, 200);
+		 	} else {
+		 		$('#pro-map #key').addClass('show');
+		 		$('#pro-map #key').animate({'height': $('#pro-map #key ul').outerHeight()}, 200);
+		 	}
+
+		 });
+
+		 if($('#pm-timeline').length) {
+		 	var extraWidth = 0;
+		 	$('#pm-timeline #extra .other').each(function() {
+		 		extraWidth = extraWidth + $(this).outerWidth(true);
+		 	});
+		 	$('#pm-timeline #extra div').css('width', extraWidth + 20);
+		 }
+
 	});
 	
 })(jQuery)
