@@ -1,10 +1,10 @@
 <?php
 /**
- * The ticketing app 
+ * The ticketing app
  */
- 
+
  class ticket_app extends Bim_Appmodule{
- 	
+
 	/**
 	 * The constructor
 	 */
@@ -18,12 +18,12 @@
 	 */
 	function printScript($options_arr = array()){
 		foreach( (array)$options_arr as $option){
-			switch($option){				
+			switch($option){
 				case 1:
-				// + Script start				
-				?>  
+				// + Script start
+				?>
                 <script src="<?php echo base_url();?>/js/jquery.dataTables.min.js"></script>
-       			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>              
+       			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>
 				<script>
 
                 var tableHeight = $(window).height() - 340;
@@ -35,7 +35,7 @@
 
                 $(function(){
 
-                    if($('body').innerWidth() > 768) {       
+                    if($('body').innerWidth() > 768) {
 
                         jQuery('#ticket_details').dataTable({
                             scrollY: tableHeight
@@ -76,44 +76,44 @@
 							complete: function(){
 								dom.overlay(0,-1);
 							}
-							
+
 						});
 						return false;
-					
+
 					});
 				});
-                </script>               
+                </script>
 				<?php
 
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * This function print the required script
 	 */
 	function printStyle($options_arr = array()){
 		foreach( (array)$options_arr as $option){
 			switch( $option){
-				case 1 : 						
+				case 1 :
 					?>
                     <link href="<?php echo base_url()?>/css/bootstarp/bootstrap.min.css" rel="stylesheet" media="screen">
                     <link href="<?php echo base_url()?>/css/bootstarp/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
                     <link href="<?php echo base_url()?>/css/bootstarp/DT_bootstrap.css" rel="stylesheet" media="screen">
-                    <link href="<?php echo base_url()?>/css/bootstarp/styles.css" rel="stylesheet" media="screen">					
+                    <link href="<?php echo base_url()?>/css/bootstarp/styles.css" rel="stylesheet" media="screen">
 					<?php
 					break;
 			}
 		}
 			//break;
 	}
-	
+
 	function init(){
 		$data = $this->getAllRelatedTicketDetails();
 		$this->displayTicketsDatatable( $data );
 	}
-	
+
 	function viewAllTicket(){
 		$this->outputStart();
 		$data = $this->getAllRelatedTicketDetails();
@@ -122,9 +122,9 @@
 			$this->displayTicketsDatatable( $data );
 		}
 		$this->outputEnd();
-	}	
-	
-	
+	}
+
+
 	/**
 	 * The ticket details display
 	 */
@@ -160,15 +160,15 @@
                             <td><?php echo $ticket['pname']?></td>
                             <td><?php echo $ticket['modified_name']?><br /><?php echo date('H:i\ \o\n\ d-m-Y', $ticket['modify_time']) ?></td>
                             <td class="qtip_comment" title="<?php echo $ticket['comment_full'] ? $ticket['comment_full'] : '' ?>"><?php echo $short_ticket_comment; ?></td>
-                            <td><?php echo $ticket['ticketmessage']?></td>                                       
+                            <td><?php echo $ticket['ticketmessage']?></td>
                             <td class="small"><a href="<?php echo $this->_base_uri?>?f=ticketDetails&id=<?php echo $ticket['id']?>" class="for_admin_ajax blue-button action">View</a></td></tr>
-                        <?php } ?>                                   
+                        <?php } ?>
                     </tbody>
                     </table>
-                    </div>  
+                    </div>
                 </div>
             </div>
-              <!-- Showing  qtip-->                       
+              <!-- Showing  qtip-->
 		<?php
 	}
 	/**
@@ -192,7 +192,7 @@
 			$this->_me->db->where('a.id', $ticket_id );
 		}
 		$this->_me->db->order_by('a.time DESC');
-		$q = $this->_me->db->get();				
+		$q = $this->_me->db->get();
 		if( $q->num_rows() ){
 			foreach( $q->result_array() as $id=>$row){
 				$data[$id] = $row;
@@ -206,35 +206,35 @@
 		}
 
 		debug($data);
-		return $data;		
+		return $data;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * This function display the tickets
 	 */
-	 
-	 
+
+
 	/**
 	 * Return all the tickets of the current project
 	 * Of current user or admin
 	 */
-	function getAllRelatedTicket(){		
-		$sql = 'SELECT a.*,d.name,b.ticket_for FROM ticket a JOIN ticket_for b on a.ticket_for = b.id join ticket_log c1 ON c1.ticket_id = a.id JOIN ticket_status d ON c1.ticket_status_id = d.id JOIN (SELECT MAX(id) as id FROM ticket_log as c2 group by c2.ticket_id ) last on c1.id = last.id WHERE a.project_id IN ('.implode( ',' , $this->_project_id_arr ).') ORDER BY time DESC';		
+	function getAllRelatedTicket(){
+		$sql = 'SELECT a.*,d.name,b.ticket_for FROM ticket a JOIN ticket_for b on a.ticket_for = b.id join ticket_log c1 ON c1.ticket_id = a.id JOIN ticket_status d ON c1.ticket_status_id = d.id JOIN (SELECT MAX(id) as id FROM ticket_log as c2 group by c2.ticket_id ) last on c1.id = last.id WHERE a.project_id IN ('.implode( ',' , $this->_project_id_arr ).') ORDER BY time DESC';
 		$res =$this->_me->db->query( $sql );
 		$data = array();
 		if( $res->num_rows() ){
-			foreach( $res->result_array() as $row){				
+			foreach( $res->result_array() as $row){
 				$data[$row['id']] = $row;
-			}		
+			}
 		}
 		return $data;
 	}
 	/**
 	 * get ticket log
 	 */
-	
+
 	public function getTicketLogDetails( $ticket_id = 0 ){
 		$data = array();
 		$id = $this->_me->input->get('id') ? $this->_me->input->get('id') : $ticket_id;
@@ -262,10 +262,10 @@
 		$id = $this->_me->input->get('id') ? $this->_me->input->get('id') : $ticket_id;
 		$details = $this->getAllRelatedTicketDetails( $id );
 		if( $details ){
-			foreach($details as $index => &$ticket){				
-				$ticket['logdetails'] = $this->getTicketLogDetails( $id );			
+			foreach($details as $index => &$ticket){
+				$ticket['logdetails'] = $this->getTicketLogDetails( $id );
 			}
-				
+
 		}
 		$this->displayTicketLog( $details );
 	 }
@@ -282,11 +282,11 @@
 		<div class="dash_4_back_container">
                                 <a href="<?php echo base_url('portal/project/7');?>" class="blue-button" id="back-to-ticket-list">&lt; Back to Ticket List</a>
       						 	 <div class="clear"></div>
-       							<h3 class="sub-heading">Ticket Description</h3>
+       							<h3 class="sub-heading">Event Description</h3>
                                 <table class="details table-grey" cellspacing="0" cellpadding="0">
 	                                <thead>
                                         <tr>
-    	                               		<td class="small">Ticket ID</td>
+    	                               		<td class="small">Event ID</td>
     	                                    <td class="small">Type</td>
     	                                    <td class="small">Author</td>
     	                                    <td>Project</td>
@@ -300,7 +300,7 @@
 	                                <tbody>
                                     <?php foreach($details as $ticket){
                                         $short_ticket_comment = (strlen($ticket['comment']) > 30 ? substr($ticket['comment'], 0, 30)."&hellip;" : $ticket['comment']);
-                                        
+
                                         if($ticket['is_file'])
 	                                        $file = array_first($this->_me->Docs->getDocDetails($details[0]['itemid'])); ?>
 										<tr>
@@ -316,22 +316,22 @@
 	                                        		<?php } ?>
 	                                        	</td>
 	                                        <?php } ?>
-	                                        <td><?php echo $ticket['ticketmessage']?></td>                                       
+	                                        <td><?php echo $ticket['ticketmessage']?></td>
                                         </tr>
-                                    <?php } ?>                                   
+                                    <?php } ?>
                                 	</tbody>
                             	</table>
 					<div class="clear"></div>
-       				<h3 class="sub-heading">Ticket log</h3>
+       				<h3 class="sub-heading">Event log</h3>
                     <ul class="details log_details">
                                 <li class="log_details_header">
                                    		<h3>Log ID</h3>
                                         <h3>Last Modified</h3>
                                         <h3 class="small">Modified By</h3>
                                         <h3 class="small">Status</h3>
-                                        <h3>Comment</h3>                                        
+                                        <h3>Comment</h3>
                                        </li>
-                                    <?php 
+                                    <?php
 											foreach($details as $ticket):
 												foreach($ticket['logdetails'] as $log):
 
@@ -342,17 +342,17 @@
 													<p><?php echo date('H:i', $log['modify_time']).' on ';echo date('d-m-Y', $log['modify_time'])?></p>
 													<p class="small"><?php echo $log['uname']?></p>
 													<p class="small"><?php echo $log['status']?></p>
-													<p class="qtip_comment" title="<?php echo ($short_log_comment != $log['comment'] ? $log['comment'] : '') ?>"><?php echo $short_log_comment;?></p>											
+													<p class="qtip_comment" title="<?php echo ($short_log_comment != $log['comment'] ? $log['comment'] : '') ?>"><?php echo $short_log_comment;?></p>
 												  </li>
 									<?php
 												endforeach;
 										  endforeach;
-									?>                                   
+									?>
                                 </ul>
                     <div class="clear"></div>
                     <?php if($details[0]['created_by'] == getCurrentUserId() || getCurrentUserRole() == 1 || $details[0]['user_type'] == 1){?>
-       				<h3 class="sub-heading">Modify ticket</h3>
-                   
+       				<h3 class="sub-heading">Modify Event status</h3>
+
                     <form action="" id="ticket_modify_form">
                     	<div class="form_reupdate_back" style="width:27%;">
                         					<p>Status :</p>
@@ -363,33 +363,33 @@
 												foreach($status_all as $status_option){
 													echo '<option value="'.$status_option['id'].'" '.($status_option['id'] == $details[0]['ticket_status_id'] ? ' selected="selected"': '' ).'>'.$status_option['name'].'</option>';
 												}
-											?>	
+											?>
                                             </select>
                                             <div class="clear"></div>
                                             <p>Comment :</p>
                                             <div class="clear"></div>
                                             <textarea name="comment" class="form-input textarea"></textarea>
                                             <div class="clear"></div>
-                                            <input type="hidden" name="ticketid" value="<?php echo $details[0]['id'];?>">  
+                                            <input type="hidden" name="ticketid" value="<?php echo $details[0]['id'];?>">
                                             <input type="submit" class="blue-button action" value="submit" />
-                        
-                                        	
+
+
                                         </div>
                     </form>
-                    
+
                     <?php }?>
-                    
+
        </div>
-                       
+
 		<?php
 	 	if(isCurrentUserAdmin() == 1) // this function is called from ajax so need to call output staert
 			$this->outputEnd();
 	 }
-	 
+
 	 /**
 	  get all possible ticket status
 	  */
-	 function getAllPossibleTicketStatus($type, $status_id){		 
+	 function getAllPossibleTicketStatus($type, $status_id){
 	 	$data = array();
 	 	$status = $this->_me->db
 	 		->where(array('visible' => 1))
@@ -400,7 +400,7 @@
 		}
 		return $data;
 	 }
-	 
+
 	 /**
 	  * updateTicket
 	  */
@@ -413,7 +413,7 @@
 				'modifier_id' => getCurrentUserId(),
 				'ticket_status_id' => $p['status'],
 				'modifier_role' => getCurrentUserRole(),
-				'modify_time' => time(),				
+				'modify_time' => time(),
 			);
 			$this->_me->db->insert('ticket_log', $data);
 			if($this->_me->db->insert_id()){
@@ -425,14 +425,14 @@
 													<p>'.date('H:i', $ticket_log['modify_time']). ' on '.date('d-m-Y', $ticket_log['modify_time']).'</p>
 													<p class="small">'.$ticket_log['uname'].'</p>
 													<p class="small">'.$ticket_log['status'].'</p>
-													<p class="qtip_comment_not" title="'.($ticket_log['comment'] ? $ticket_log['comment'] : '').'">'.substr($ticket_log['comment'], 0, 50).'</p>											
+													<p class="qtip_comment_not" title="'.($ticket_log['comment'] ? $ticket_log['comment'] : '').'">'.substr($ticket_log['comment'], 0, 50).'</p>
 												  </li>';
 			echo $html;
 			exit;
 			}else{
 				echo -1;
 			}
-			
+
 		}
 	 }
  }

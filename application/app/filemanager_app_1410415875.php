@@ -24,12 +24,12 @@ class filemanager_app extends Bim_Appmodule{
 	 */
 	function printScript($options_arr = array()){
 		foreach( (array)$options_arr as $option){
-			switch($option){				
+			switch($option){
 				case 1:
-				// + Script start				
-				?>  
+				// + Script start
+				?>
                 <script src="<?php echo base_url();?>/js/jquery.dataTables.min.js"></script>
-       			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>              
+       			<script src="<?php echo base_url();?>/js/DT_bootstrap.js"></script>
 				<script>
                 $(function(){
 
@@ -39,8 +39,8 @@ class filemanager_app extends Bim_Appmodule{
                         tableHeight = $(window).height() - 340;
                         $('.dataTables_scrollBody').css('height', tableHeight);
                     });
-                					
-					if($('body').innerWidth() > 768) {       
+
+					if($('body').innerWidth() > 768) {
 
                         jQuery('#ticket_details').dataTable({
                             scrollY: tableHeight
@@ -52,9 +52,9 @@ class filemanager_app extends Bim_Appmodule{
                             }
                         });
 
-                    }	
+                    }
 				})
-                </script>               
+                </script>
 				<?php
 				break;
 				case 2:
@@ -64,11 +64,11 @@ class filemanager_app extends Bim_Appmodule{
 						var file_id = $(this).data('file_id');
 						var dom = $('.span12');
 						var t= $(this);
-						if(confirm("Are you sure you wnat to delete?")){
-							$.ajax({								
+						if(confirm("Are you sure you want to delete?")){
+							$.ajax({
 								url : base_path + 'admin/invoke?a=filemanager_app&f=delete&id='+file_id,
 								beforeSend:function(){
-									
+
 									dom.overlay("Please wait");
 								},
 								success:function(r){
@@ -79,38 +79,38 @@ class filemanager_app extends Bim_Appmodule{
 											window.location.href = base_path+'admin/dashboard/4';
 										}
 									}else{
-										dom.overlay("An error occured, please try after some time");
+										dom.overlay("An error occured, please give me a break");
 									}
 									console.log(r);
 								},
 								error:function(){},
 								complete:function(){
 									dom.overlay(0, -1);
-								}				
+								}
 							})
 						}
 						return false;
 					})
                 </script>
-				<?php 
+				<?php
 				break;
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * This function print the required script
 	 */
 	function printStyle($options_arr = array()){
 		foreach( (array)$options_arr as $option){
 			switch( $option){
-				case 1 : 						
+				case 1 :
 					?>
                     <link href="<?php echo base_url()?>/css/bootstarp/bootstrap.min.css" rel="stylesheet" media="screen">
                     <link href="<?php echo base_url()?>/css/bootstarp/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
                     <link href="<?php echo base_url()?>/css/bootstarp/DT_bootstrap.css" rel="stylesheet" media="screen">
-                    <link href="<?php echo base_url()?>/css/bootstarp/styles.css" rel="stylesheet" media="screen">					
+                    <link href="<?php echo base_url()?>/css/bootstarp/styles.css" rel="stylesheet" media="screen">
 					<?php
 					break;
 			}
@@ -152,9 +152,9 @@ class filemanager_app extends Bim_Appmodule{
 									<td>Delete</td>
 								<?php
 									endif;
-									
+
 								?>
-                               
+
                                 </tr>
                         </thead>
                         <tbody>
@@ -214,17 +214,17 @@ class filemanager_app extends Bim_Appmodule{
 									<td><a href="javascript:void(0)" class="delete_file" data-file_id="<?php echo $file['id']?>">Delete</a></td>
 								<?php
 									endif;
-									
+
 								?>
                                 </tr>
                             <?php
 									endforeach;
-							?>                                   
+							?>
                         </tbody>
                         </table>
-                        </div>  
+                        </div>
                     </div>
-                            
+
                 </li>
 
 			</ul>
@@ -251,8 +251,9 @@ class filemanager_app extends Bim_Appmodule{
 	}
 
 	/**
-	 * The funciton which will be triggered 
+	 * The function which will be triggered
 	 */
+
 	public function init(){
 	 	$view = $this->_me->input->get('action');
 
@@ -261,12 +262,12 @@ class filemanager_app extends Bim_Appmodule{
 
 	 	call_user_func(array($this, $view));
 	}
-	
+
 	/**
 	 * The admin will call this function
 	 * Admin will select project and type and upload files to the
 	 */
-	 
+
 	 public function adminInit(){?>
     	<div class="content_main">
         	<ul class="request_file">
@@ -281,7 +282,7 @@ class filemanager_app extends Bim_Appmodule{
                             <div class="clear"></div>
                             <select class="form-input" data-validation-engine="validate[required]" name="project">
                             	<option value=""> Select your project</option>
-                                <?php 
+                                <?php
 								// Get all projects
 								$projects  =$this->_me->Projects->getAllProject();
 								if($projects){
@@ -295,7 +296,7 @@ class filemanager_app extends Bim_Appmodule{
                             <div class="clear"></div>
                             <?php
                                 	$doc_details = $this->_me->Projects->getDoctypeDetails(  );
-									
+
 								?>
                             <select class="form-input" data-validation-engine="validate[required]"  name="documetntype">
                             	<option value=""> Select your file type</option>
@@ -343,7 +344,7 @@ class filemanager_app extends Bim_Appmodule{
 /*				// + prevent uploading files with out selecting project or type
 				$(document).on('click','#file', function(e){
 					var status = true;
-					var message = "";					
+					var message = "";
 					if( !$('[name=project]').val()){
 						 status = false;
 						 message += 'Please select a project first. ' ;
@@ -352,22 +353,22 @@ class filemanager_app extends Bim_Appmodule{
 						 status = false;
 						 message += 'Please select a type first. ' ;
 					}
-					
+
 					if(status === false){
 						dom.overlay(1);
 						dom.overlay(message);
-						dom.overlay(0,-1);						
+						dom.overlay(0,-1);
 					}else{
 						if(binded === false){
 							binded = true;
-							
+
 						}
-						
+
 					}
 					return status;
 				});*/
-				
-				
+
+
 				$('#file').html5Uploader({
 						name: 'foo',
 						zoo:'sd',
@@ -375,7 +376,7 @@ class filemanager_app extends Bim_Appmodule{
 
 						validate:function(){
 							return $('#file').closest('form').validationEngine('validate');
-						},						
+						},
 						onClientLoad: function(e){
 							dom.overlay(1);
 						},
@@ -384,7 +385,7 @@ class filemanager_app extends Bim_Appmodule{
 							dom.overlay(0,-1);
 						},
 						onServerError:function(){
-							dom.overlay("File upload fails,please try again");
+							dom.overlay("File upload failed,please try again");
 							dom.overlay(0,-1);
 						},
 						onServerProgress :function(e){},
@@ -401,24 +402,24 @@ class filemanager_app extends Bim_Appmodule{
 							}
 							dom.overlay(0, -1);
 							//alert(3);
-							
+
 						},
 						dynamicUrl: function(){
 							return "<?php echo $this->_base_uri;?>?a=filemanager_app&f=upload_file&type="+$('[name=documetntype]').val()+"&pid="+$('[name=project]').val()+"&details="+$('[name=comment]').val() + "&date="+ $('input[name=document_date]').val();
 						}
-						
-					 });	
-			
+
+					 });
+
 			});
         </script>
      <?php
      }
-	
+
 	/**
-	 * UPload the file with the help
-	 * Of fileupload app
+	 * Upload the file with the help
+	 * of fileupload app
 	 */
-	 
+
 	 public function upload_file(){
 	 	$type = $this->_me->input->get('type');
 		$pid = $this->_me->input->get('pid');
@@ -427,35 +428,35 @@ class filemanager_app extends Bim_Appmodule{
 		$obj = new Fileupload_app();
 		$obj->upload_file();
 	 }
-	
+
 	/**
-	 * Delete file friom file manager
+	 * Delete file from file manager
 	 */
-	 
+
 	 public function delete(){
 	 	$id  = $this->_me->input->get('id');
 		if($id && is_numeric($id)){
-			// + have to delete from 
+			// + have to delete from
 			/**
 			 * Notification
 			 * uploadedoc
 			 * Ticket
 			 */
-			 
+
 			 // + delete notification
 			 $this->_db->trans_start();
 			 $this->_db->where('case_id', 3);
-			 
+
 			 $arr = array( 'file_id' => $id);
 			 $this->_db->where('related_id', json_encode($arr));
-			 
+
 			 $this->_db->delete('notifications');
-			 
+
 			 // + delete from ticket table
 			 $this->_db->where('ticket_for', 1); //1 =file upload refference table ticket_for
 			 $this->_db->where('itemid', $id);
 			 $this->_db->delete('ticket');
-			 
+
 			 // + Delete upload doc
 			 $this->_db->where('id',  $id);
 			 $this->_db->delete('uploaddoc');

@@ -2,7 +2,7 @@
 <h4>Edit user - <?php echo $userdetails['name'];//v_dump($assignedprojects)?></h4>
       <form name="project_assign" validate="validate" method="post">
           <div class="universal_form_back">
-          	<input type="hidden" name="userid" value="<?php echo $userid ?>"> 
+          	<input type="hidden" name="userid" value="<?php echo $userid ?>">
             <div class="clear"></div>
             Active / Inactive: <input type="checkbox" name="status" id="status" data-validation-engine="validate[required]" value="1" <?php echo $userdetails['status'] >= 3 ? 'checked="checked"' : ''?>/>
             <div class="clear"></div>
@@ -16,16 +16,16 @@
 								$selected = 'selected="selected"';
 							}else{
 								$selected = '';
-							}	
+							}
 							echo '<option value="'.$project['id'].'" '.$selected.'>'.$project['name'].'</option>';
 						}
 					}
 				?>
-                
+
             </select>
             <script>
              $("select").multipleSelect({
-				placeholder: "Select the projects"
+				placeholder: "Ignore this project dropdown"
 			});
 			 /**
 	   * save user details
@@ -56,9 +56,9 @@
 		</script>
             <div class="clear"></div>
           </div>
-          
-          
+
+
           <div class="clear"></div>
           <input type="submit" class="blue-button action" value="Save" />
-          <input type="button" class="grey-button show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
+          <input type="button" class="grey-button show_list" value="Back to User List" onclick="javascript:forceLoad = true;$('li.active').click();"/>
      </form>

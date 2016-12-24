@@ -13,7 +13,7 @@
 			CURLOPT_POST => true,
 			CURLOPT_RETURNTRANSFER => true,
 
-			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
+			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'), //error: failed to open stream: permission denied
 			CURLOPT_VERBOSE        => true
 		);
 
@@ -21,7 +21,7 @@
 		curl_setopt_array($ch, real_array_merge_recursive(
 			$defaults,
 			$options
-		));
+		)); //error: supplied arguemnt is not a valid file-handler resource
 
 		$response = curl_exec($ch);
 
@@ -36,7 +36,7 @@
 			CURLOPT_POST => false,
 			CURLOPT_RETURNTRANSFER => true,
 
-			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'),
+			CURLOPT_STDERR         => fopen('/var/log/dev_console.log', 'a+'), //error: failed to open stream: permission denied
 			CURLOPT_VERBOSE        => true
 		);
 
@@ -44,7 +44,7 @@
 		curl_setopt_array($ch, real_array_merge_recursive(
 			$defaults,
 			$options
-		));
+		)); //error: supplied arguement in not a valid File-Handler resource
 
 		$response = curl_exec($ch);
 

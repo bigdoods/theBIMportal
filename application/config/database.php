@@ -58,13 +58,13 @@ if($_SERVER['SERVER_NAME'] == 'bimscript.localhost'){
 	$db['default']['password'] = '';
 	$db['default']['database'] = 'bim';
 }else{
-	$db['default']['hostname'] = 'localhost';
-	$db['default']['username'] = 'portaldbuser.por';
-	$db['default']['password'] = 'pU^ND+4Yr:U5qow';
-	$db['default']['database'] = 'portal_bimscript';
+	$db['default']['hostname'] = '';
+	$db['default']['username'] = 'root';
+	$db['default']['password'] = 'A1s2d3f4';
+	$db['default']['database'] = 'empty_portal';
 }
 
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['dbdriver'] = 'mysql'; //deprecated
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -76,6 +76,22 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+/* Debug script for when db cannot connect to application:
+
+  echo '<pre>';
+  print_r($db['default']);
+  echo '</pre>';
+  echo 'Connecting to database: ' .$db['default']['database'];
+  $dbh=mysql_connect
+  (
+    $db['default']['hostname'],
+    $db['default']['username'],
+    $db['default']['password'])
+    or die('Cannot connect to the database because: ' . mysql_error());
+    mysql_select_db ($db['default']['database']);
+    echo '<br />   Connected OK:'  ;
+    die( 'file: ' .__FILE__ . ' Line: ' .__LINE__);
+*/
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

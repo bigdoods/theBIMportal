@@ -38,7 +38,7 @@
 	 * Get the app code
 	 */
 	 $app_code = file_get_contents( APPPATH .'app/'.$appdetails['appfilepath']);
-	 $app_code = htmlentities($app_code, ENT_NOQUOTES); 
+	 $app_code = htmlentities($app_code, ENT_NOQUOTES);
 	?>
       <textarea id="app_code" disabled="disabled" rows="40" cols="90" name="project_code"><?php echo $app_code;?></textarea>
   <p class="label">App file</p>
@@ -46,7 +46,7 @@
     <input type="file" class="text_box_inner"  name="filename" id="filename" data-validation-engine="validate[required]"/><span style="margin-left:20x">Existing file name : <?php echo $appdetails['appfilepath']?></span>
     <input type="hidden" name="appfilepath" id="appfilepath" value="<?php echo $appdetails['appfilepath'].'~!~'.$appdetails['classname'];?>">
     <div class="clear"></div>
-    
+
     <p class="label">Icon</p>
     <div class="clear"></div>
     <input type="file" class="text_box_inner" name="icon" id="icon" data-validation-engine="validate[required]" /><span style="margin-left:20x">Existing file name : <?php echo $appdetails['appiconfilepath']?></span>
@@ -54,21 +54,21 @@
   </div>
   <div class="clear"></div>
   <input type="submit" class="blue-button action" value="submit" />
-  <input type="button" class="grey-button show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
+  <input type="button" class="grey-button show_list" value="Back to Apps List" onclick="javascript:forceLoad = true;$('li.active').click();"/>
 </form>
 <script>
                                              	$('#filename').html5Uploader({
 													name: 'foo',
-													
+
 													postUrl : '<?php echo base_url('admin/uplodAppfile');?>',
-													
+
 													onClientLoad: function(){
 														$('#filename').closest('form').overlay(1);
-														$('#filename').closest('form').overlay("Please wait while we uploading");
+														$('#filename').closest('form').overlay("Knock Knock...");
 													},
-													
+
 													onServerProgress :function(e){},
-													onSuccess:function(e, file, response){														
+													onSuccess:function(e, file, response){
 														$('#filename').closest('form').overlay("Upload complete");
 														var res = JSON.parse(response);
 														if(res.error.length == 0){
@@ -80,16 +80,16 @@
 														}
 														$('#filename').closest('form').overlay(0, -1);
 													}
-													
+
 												 });
 												 $('#icon').html5Uploader({
 													name: 'foo',
-													
+
 													postUrl : '<?php echo base_url('admin/uplodAppIconfile');?>',
-													
+
 													onClientLoad: function(){
 														$('#icon').closest('form').overlay(1);
-														$('#icon').closest('form').overlay("Please wait while we uploading");
+														$('#icon').closest('form').overlay("Knock Knock...");
 													},
 													onClientError: function(){
 														dom.overlay("Browser fails to read the file");
@@ -108,7 +108,7 @@
 														dom.overlay(0,-1);
 													},
 													onServerProgress :function(e){},
-													onSuccess:function(e, file, response){														
+													onSuccess:function(e, file, response){
 														$('#icon').closest('form').overlay("Upload complete");
 														var res = JSON.parse(response);
 														if(res.error.length == 0){
@@ -119,8 +119,8 @@
 														}
 														$('#icon').closest('form').overlay(0, -1);
 													}
-													
+
 												 });
-												 
+
 												// $('#app_code').ckeditor();
                                              </script>

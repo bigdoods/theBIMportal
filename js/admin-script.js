@@ -526,7 +526,7 @@ function bindHtmlUploaderIssue(){
 						
 						onClientLoad: function(){
 							$('.universal_form_back').overlay(1);
-							$('.universal_form_back').overlay("Please wait while we uploading");
+							$('.universal_form_back').overlay("Knock Knock...");
 						},
 						onClientError: function(){
 									$('.universal_form_back').overlay("Browser fails to read the file");

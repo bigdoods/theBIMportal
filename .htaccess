@@ -1,14 +1,11 @@
-#Options +FollowSymLinks
-RewriteEngine On
-# Local path
-RewriteBase /
-#server apth 
-#RewriteBase /dev123/bimportal/
+#RewriteEngine On
+#RewriteBase /
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*) index.php?/$1 
 
-
-RewriteRule ^$ index.php [L]
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteEngine on
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond $1 !^(index\.php|robots\.txt|favicon\.ico)
-
-RewriteRule ^(.*)$ index.php?/$1 [L] 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]

@@ -1,7 +1,7 @@
 <div class="register_back_container">
     	<div class="main">
             <div class="logo">
-                <img src="<?php echo base_url('images/apps_logo.png')?>" alt="VolkerFitzpatrick - Experience Excellence" />
+                <img src="<?php echo base_url('images/BIMportal1.png')?>" alt="VolkerFitzpatrick - Experience Excellence" />
             </div>
         	<div class="details_back registration" style="display:none;">
                 <h1>Register</h1>
@@ -13,8 +13,8 @@
                     <div class="form_back">
                     	<div class="details">
                             	<input type="text" placeholder="Email Address" data-validation-engine="validate[required,custom[email]]" name="email" id="email"/>
-                                <input type="password" placeholder="Password" name="password" id="password" data-validation-engine="validate[required]"/>           
-                                <input type="password" placeholder="Confirm Password" id="cpassword" data-validation-engine="validate[required,equals[password]]"/>           
+                                <input type="password" placeholder="Password" name="password" id="password" data-validation-engine="validate[required]"/>
+                                <input type="password" placeholder="Confirm Password" id="cpassword" data-validation-engine="validate[required,equals[password]]"/>
                                 <input type="text" placeholder="Name" data-validation-engine="validate[required]" name="name" id="name" />
                                 <input type="text" placeholder="Company" data-validation-engine="validate[required]" name="company" id="company" />
                                 <select name="discipline" class="select-discipline" data-validation-engine="validate[required]" id="disicipline">
@@ -57,7 +57,7 @@
                     <div class="form_back">
                     	<div class="details">
                             	<input type="text" placeholder="Email Address" data-validation-engine="validate[required,custom[email]]" name="email" id="email"/>
-                                <input type="password" placeholder="Password" name="password" id="password" data-validation-engine="validate[required]"/>                                
+                                <input type="password" placeholder="Password" name="password" id="password" data-validation-engine="validate[required]"/>
                         </div>
                         <div class="clear"></div>
                     </div>

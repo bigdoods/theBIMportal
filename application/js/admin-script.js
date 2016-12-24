@@ -1,6 +1,6 @@
 (function($){
-	
-	
+
+
 	/**
 	 * The doms are ready
 	 */
@@ -9,7 +9,7 @@
 		 * Load the first tab on page load
 		 */
 		 $('ul.tabs li.active').click();
-		 
+
 	 /**
 	  * Toggle between create project and list projects
 	  */
@@ -19,27 +19,27 @@
 			$('.project_create').fadeIn('slow');
 			$.fn.bindValidation();
 	  });
-	  
+
 	  /**
-	   * Sbmit project creaztion  through ajax
+	   * Submit project creation through ajax
 	   */
 	  $(document).on('submit', 'form[name=create_project]', function(){
 		  var frm = $(this);
-			$.ajax({			
+			$.ajax({
 				url : base_path+'admin/createProject/',
 				data: frm.serialize(),
 				'type': 'post',
 				beforeSend:function(){
 					frm.overlay(1);
 					frm.overlay("Please wait");
-				}, 
+				},
 				success: function(r){
 					if(r !== '0' ){
 						frm.overlay("Project has been successfully created");
 						forceLoad = true;
 						$('.projectlist').click();
 					}else{
-						frm.overlay("The project creation failed");	
+						frm.overlay("The project creation failed");
 					}
 				},
 				error: function(){
@@ -48,12 +48,12 @@
 				complete: function(){
 					frm.overlay(0, -1);
 				}
-	  
+
 			});
-		 
+
 	  	return false;
 	  });
-	  
+
 	  /**
 	   * Project edit form open
 	   */
@@ -78,9 +78,9 @@
 
 			});
 	  })
-	   
+
 	   /**
-	    * UPdate project details
+	    * Update project details
 		*/
 		$(document).on('submit', 'form[name=project_edit]', function(){
 			var frm = $(this);
@@ -96,15 +96,15 @@
 					frm.overlay('Successfully updated');
 					forceLoad = true;
 					$('li.active').click();
-				},	
+				},
 				error: function(){
-					frm.overlay("Internal server error, please try again latter");					
+					frm.overlay("Internal server error, please try again latter");
 				},
 				complete: function(){
 					frm.overlay(0,-1);
 				}
 			})
-			
+
 		return false;
 		});
 	  /**
@@ -133,7 +133,7 @@
 		});
 		return false;
 	   });
-	   
+
 	   /**
 	    * Open new app creation form
 		*/
@@ -166,8 +166,8 @@
 				}
 			});
 			return false;
-		});	
-		
+		});
+
 		/**
 		 * Open the app edit form
 		 */
@@ -192,16 +192,16 @@
 					dom.overlay(" Internal server error, please try after some time");
 				}
 			});
-			
+
 		});
-		
+
 		/**
 		 * edit the app details
 		 */
 		$(document).on('submit', 'form[name=edit_app]', function(){
 			var frm = dom = $(this);
-			
-			
+
+
 			$.ajax({
 				url : base_path + 'admin/editApp/',
 				data: frm.serialize(),
@@ -245,25 +245,25 @@
 			});
 			return false;
 		});
-		
+
 		/**
-		 * Adjus the admin panel li height
+		 * Adjust the admin panel li height
 		 */
 		 $('.right_details_tab').bind('DOMNodeInserted DOMNodeRemoved', function(event) {
 			if (event.type == 'DOMNodeInserted') {
 				$('ul.details').each(function(){
 					var max_height = 0;
 					$('li', $(this)).each(function(){
-						if(max_height < $(this).height()) max_height = $(this).height();							
+						if(max_height < $(this).height()) max_height = $(this).height();
 					});
 					$('li', $(this)).each(function(){
 						$(this).css('height', max_height+'px');
 					});
 				})
 			} else {
-				
+
 			}
 		 });
 	});
-	
+
 })(jQuery)

@@ -2,7 +2,7 @@
 
 /**
  * This is a helper function
- * Which make the debuging controll in just one place
+ * This makes the debugging control in just one place
  */
 function v_dump($var,$end = 0,$option = 1){
 	echo '<pre>';
@@ -56,9 +56,9 @@ function getRandomPass(){
 }
 
 /**
- * Send email freom one place
+ * Send email from one place
  */
- 
+
 function sendMail($to, $subject, $message){
 	$CI =& get_instance();
     $config =$CI->config->item('email_config');
@@ -96,11 +96,11 @@ function load_app(){
 	require_once(APPPATH .'app/'.$app_details[$app_id]['appfilepath']);
 	if( class_exists($app_details[$app_id]['classname']) ){
 		$class_name = $app_details[$app_id]['classname'];
-		$app = new $class_name;		
+		$app = new $class_name;
 	}else{
 		$app = new Bim_Appmodule;	// load the parent class
 	}
-	}	
+	}
 }
 
 /**
@@ -111,7 +111,7 @@ function load_app(){
 function getAppName($app_id) {
 
     $CI = get_instance();
-    
+
     $app_name = $CI->Apps->getAppNameById($app_id);
 
     return $app_name;
@@ -151,21 +151,21 @@ function displayBreadcrumbs($app_id) {
 }
 
 /**
- * This is a test function 
- * To test the helper is accessible from 
- */	
+ * This is a test function
+ * To test the helper is accessible from
+ */
  function hTest(){
 	 echo "I AM ACCESSIBLE HELPER" .__LINE__;
  }
- 
+
  /**
- * This function wil be called with the global appid 
+ * This function wil be called with the global appid
  */
- 
- 
+
+
 function load_app_content(){
 	global $app;
-	$CI = get_instance();	
+	$CI = get_instance();
 	$function = $CI->input->get('f');
 	if($function){
 		$app->$function();
@@ -174,10 +174,10 @@ function load_app_content(){
 	}
 }
 /**
- * This function specifically load app classes
+ * This function specifically loads the app classes
  */
  //spl_autoload_register('my_autoload');
-function __autoload( $clas_name = ''){	
+function __autoload( $clas_name = ''){
 	if(strpos( $clas_name, "CI_") !== 0){
 		$CI = &get_instance();
 		$CI->load->model('Apps');
@@ -189,16 +189,16 @@ function __autoload( $clas_name = ''){
 }
 
 /**
- *Get active project 
+ *Get active project
  * If the user is normal user
  * Then retrive the actp cookie
- * else retive the admin class private static property 
+ * else retrive the admin class private static property
  * active project
  */
- 
+
 function getActiveProject(){
 	return (int) isset($_COOKIE['actp']) ? $_COOKIE['actp'] : -1;
-	
+
 /*	switch( getCurrentUserRole() ){
 		case 1:
 			return (int) Admin::getActiveProject();
@@ -209,7 +209,7 @@ function getActiveProject(){
 	}
 */
 }
- 
+
  /**
   * Get current user role
   */
@@ -246,13 +246,13 @@ function unsetActiveProject(){
 /**
  * Get app type
  */
- 
+
  function getAppType(){
  	return array('Core Apps', 'Project Data Apps','BIM Apps', 'BIMscript Technology Apps','Others');
  }
- 
+
  /**
-  * Get current user project context  
+  * Get current user project context
   * return the array of projectid for the user
   * This funciton is prepared to putinto where clause of sql with in for checking the project context
   * @return array(),
@@ -279,7 +279,7 @@ function unsetActiveProject(){
 			}else{
 				return array();
 			}
-	
+
 	}
 */
 
@@ -291,22 +291,22 @@ function unsetActiveProject(){
 	}else{
 		return array();
 	}
+	}
 
-  }
-  
   /**
-   * Get the option for decisipline
+   * Get the options for discipline
    */
+
   function getDicisiplineOption($option = 'html', $selected=''){
-		$array = array('engineer', 'planner', 'designer', 'architect', 'other') ;
+		$array = array('Acoustic consultant', 'Architect', 'Asset management team', 'Building services design', 'Building services engineer', 'Catering consultant', 'Civil engineer', 'Client', 'Construction lead', 'Contract administrator', 'Contractor', 'Cost consultant', 'Environmental consultant', 'Fire engineering consultant', 'Health and safety adviser', 'Highways consultant', 'Landscape designer', 'Lead designer', 'Planning consultant', 'Project lead', 'Structural engineer', 'Users', 'Digital Platform Team') ;
 		if($option !== 'html')	return $array;
-		
+
 		$html = '';
-		
+
 		foreach($array as $option){
 			$html .='<option value="'.$option.'" '.($selected == $option ? 'selected="selected"' : '').'>'.ucfirst($option).'</option>';
 		}
-		
+
 		return $html;
-	
+
   }

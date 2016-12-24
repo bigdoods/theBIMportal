@@ -1,5 +1,5 @@
 <div id="tab<?php echo $tabid?>">
-  <div class="tab_content1 project-List">    
+  <div class="tab_content1 project-List">
       <div class="tab_content_detila_back">
         <ul class="head">
           <li>
@@ -13,14 +13,14 @@
           </li>
         </ul>
         <?php if($projectdetails):
-			foreach($projectdetails as $project):	
+			foreach($projectdetails as $project):
 		?>
         <ul class="details">
           <li>
             <p><?php echo ucfirst($project['name'])?></p>
           </li>
           <li class="big"  style="width:50%">
-            <p><?php			
+            <p><?php
 				if($project['embedcode'] && strpos($project['embedcode'], 'src') !== false ){
 					$doc = new DOMDocument();
 					$doc->loadHTML($project['embedcode']);
@@ -40,7 +40,7 @@
           	<p><a href="javascript:void(0)" class="blue-button action p_edit" rel="<?php echo $project['id']?>">Edit</a></p>
           </li>
         </ul>
-        <?php 
+        <?php
 			endforeach;
 			else:
 		?>
@@ -59,15 +59,15 @@
         <input type="text" class="form-input long" placeholder="Project Name" name="name" id="pname" data-validation-engine="validate[required]"/>
         <input type="text" class="form-input long" placeholder="Embed code" name="embedcode" id="embedcode" data-validation-engine="validate[required]"/>
       </div>
-      
-      
+
+
       <div class="clear"></div>
       <input type="submit" class="blue-button action" value="submit" />
-      <input type="button" class="grey-button show_list" value="Show list" onclick="javascript:forceLoad = true;$('li.active').click();"/>
+      <input type="button" class="grey-button show_list" value="Back to Project List" onclick="javascript:forceLoad = true;$('li.active').click();"/>
  </form>
 </div>
  <div class="tab_content1 project_edit" style="display:none;">
 
  </div>
-  
+
 </div>

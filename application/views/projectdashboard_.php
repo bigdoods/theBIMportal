@@ -18,11 +18,11 @@
         $app_hierarchy[$app['type']]['apps'][] = $app;
     }
 
-?>   
+?>
     <div class="header-top">
 
         <div class="main-logo"></div>
-        
+
         <a class="blue-button action logout" href="<?php echo base_url('portal/logout')?>">Logout</a>
         <?php if(isCurrentUserAdmin()){ ?>
             <a class="blue-button action admin" href="<?php echo base_url('admin/dashboard')?>">Admin</a>
@@ -43,7 +43,7 @@
                                 	<h2><?php echo $app_type['name'] ?></h2>
                                     <div class="clear"></div>
                                     <div class="details">
-                                    	 <?php 
+                                    	 <?php
             								foreach($app_type['apps'] as $app){  ?>
                                                 	<div class="app-button blue-button <?php echo ($app['id'] ==  $app_id ? 'active':'');?>">
                                                     	<a href="<?php echo base_url('portal/project/'. $app['id']);?>">
@@ -56,7 +56,7 @@
                                                         </div>
                                                         </a>
                                                     </div>
-                                        <?php 
+                                        <?php
                                             } ?>
                                     </div>
                                 </div>
@@ -64,17 +64,17 @@
                           } ?>
                  </div>
             </div>
-            
+
             <div class="right">
-                	<div class="head">                    	
+                	<div class="head">
                         <div class="clear"></div>
-                        <a class="blue-button back-to-projects" href="<?php echo base_url('portal/dashboard');?>">&lt; Back to Projects</a>
+                        <a class="blue-button back-to-projects" href="<?php echo base_url('portal/dashboard');?>">&lt; Project Selection, Newsfeed and Updates</a>
                         <?php echo displayBreadcrumbs($app_id); ?>
                         <h1 class="project-title"><?php echo $project_details[0]['name'] ? $project_details[0]['name'] : 'Project Title'?></h1>
                     </div>
-                    
+
                     <div class="clear"></div>
-                    
+
                     <div class="apps_content_back">
                     	<div id="<?php echo $app_id == 7 || $app_id == 16 || $app_id == 22 || $app_id == 19 || $app_id == 9 ? 'no_scroll' : 'content_2' ;?>" class="content2<?php if($app_id == 1) { echo ' timeline'; }?>">
                         <?php global $app;?>
@@ -100,13 +100,13 @@
                             </div>
                         <?php } ?>
                     </div>
-                    
-                    
-                    
+
+
+
                     <div class="footer_back">
-                    	<a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>                          
+                    	<a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>
                     </div>
-                    
+
             </div>
         </div>
     </div>

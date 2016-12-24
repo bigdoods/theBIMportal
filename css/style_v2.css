@@ -24,7 +24,7 @@ body {
     width: 423px;
     height: 100%;
     margin-left: 16px;
-    background: url('../images/apps_logo.png') no-repeat center;
+    background: url('../images/BIMportal1.png') no-repeat center;
 }
 
 .header-top .main-logo img {
@@ -402,7 +402,7 @@ p.breadcrumbs .breadcrumb-arrow {
 }
 
 /* -------------------------------
-APP STYLES 
+APP STYLES
 --------------------------------*/
 
 .back_container .main .right {
@@ -1120,7 +1120,7 @@ a#collapse-list {
 a#expand-list:hover,
 a#collapse-list:hover {
     text-decoration: underline;
-} 
+}
 
 ul#qto-list {
     padding: 0;
@@ -1305,7 +1305,7 @@ ul#qto-list li input[type=radio]:checked {
     margin: 0 auto;
 }
 
-.back_container .main .apps_content_back .content_main ul#upload-file ul.dragdrop p, 
+.back_container .main .apps_content_back .content_main ul#upload-file ul.dragdrop p,
 .back_container .main .apps_content_back .content_main ul#upload-file ul.dragdrop h3 {
     color: #FFF;
     text-align: center;
@@ -1566,7 +1566,7 @@ ul#qto-list li input[type=radio]:checked {
     padding-left: 30px;
     list-style-type: circle;
 }
-    
+
 /* QTIPS */
 
 .qtip {
@@ -1628,7 +1628,7 @@ ul#qto-list li input[type=radio]:checked {
     margin: 0;
     padding: 0;
     float: left;
-    border-top: 0; 
+    border-top: 0;
     background: url('../images/footer-bg.jpg');
     bottom: 0;
     position: fixed;
@@ -2000,7 +2000,7 @@ PROCESS MAP
 }
 
 /* -------------------------------
-GLOBAL STYLES 
+GLOBAL STYLES
 --------------------------------*/
 
 .blue-button {
@@ -2251,4 +2251,3 @@ h3.sub-heading {
     color: #535353;
     font-weight: 400;
 }
-

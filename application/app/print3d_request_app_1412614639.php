@@ -1,16 +1,16 @@
 <?php
 /**
- * The 3D Print app 
+ * The 3D Print app
  */
- 
+
  class print3d_request_app extends Bim_Appmodule{
-	
- 	
+
+
 	/**
 	 *@var who will receive the message
 	 */
 	private $_email = '';
-	
+
 	/**
 	 * The entry point of the app
 	 */
@@ -19,7 +19,7 @@
 		$this->_db = $this->_me->db;// this is codeigniter db
 		$this->_email = $this->_me->config->item('feedbackemail');
 	}
-	
+
 	public function init(){
 		?><ul class="request_file">
                                 	<li>
@@ -35,19 +35,19 @@
                                             </form>
                                         </div>
                                     </li>
-                                    
-                                    
-                                    
+
+
+
                                 </ul>
 		<?php
-		
+
 	}
-	
+
 	/**
 	 * Process the user submitted
 	 * Data
 	 */
-	
+
 	public function sendRequest(){
 		$p = $this->_me->input->post();
 		if($p){
@@ -66,22 +66,22 @@
 			echo "<p>There is some problem. Please try again after sometime</p>";
 		}
 	}
-	
+
 	/**
 	 * Send the email to respective authority
 	 */
-	 
+
 	 private function sendEmailToRespective( $id ){
 	 	$fb_details = $this->getFeedbackDetails( $id );
 		if($fb_details){
 			$to = $this->_email;
 			$subject = 'Feedback From '.$fb_details[0]['uname'];
 			$body = "<div>
-					<span> Dear BIMscript,</span>
+					<span> Dearest Admin Folk,</span>
 					<br/>
 					<p>
-						An user <strong>{$fb_details[0]['uname']}</strong> from the project <strong>{$fb_details[0]['pname']}</strong>
-						has requested a 3D Print. The detail as follows:--					
+						The user <strong>{$fb_details[0]['uname']}</strong> from the project <strong>{$fb_details[0]['pname']}</strong>
+						has requested a 3D Print. The detail as follows:--
 					</p>
 					<hr />
 					<p>
@@ -91,11 +91,11 @@
 			sendMail($to, $subject, $body);
 		}
 	 }
-	
+
 	/**
 	 * Save the data in the database
 	 */
-	 
+
     private function saveData($p){
 		$data = array(
 			'user_id' => $this->_userid,
@@ -104,15 +104,15 @@
 			'date' => time(),
 			'reuest_type' => '3D Print'
 		);
-		
+
 		$this->_db->insert('users_requests', $data);
 		return $this->_db->insert_id();
 	}
-	
+
 	/**
 	 * Fetch the feedback details like which user project name etc
 	 */
-	
+
 	function getFeedbackDetails( $id = 0){
 		$data  = array();
 		if($id){
@@ -122,16 +122,15 @@
 		$this->_db->from('users_feedback a');
 		$this->_db->join('users b', 'a.user_id = b.id');
 		$this->_db->join('projects c','a.project_id = c.id');
-		
+
 		$q = $this->_db->get();
 		if($q->num_rows()){
 			foreach($q->result_array() as $id=>$row){
 				$data[$id] = $row;
 			}
 		}
-		
+
 		return $data;
 	}
  }
 ?>
-

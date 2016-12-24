@@ -1,10 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Projects extends Ci_Model {
-	
+
 	/**
-	 * Get the details of 
-	 * new registered user details
+	 * Get array of all projects 
 	 */
 	function getAllProject( $project_id = 0 ){
 		$data = array();
@@ -19,21 +18,21 @@ class Projects extends Ci_Model {
 			}
 		}
 		return $data;
-		
+
 	}
 
 
 	/**
-	 * Get the projects name and id 
-	 * of the projects in which the user is assigned		
+	 * Get the projects name and id
+	 * of the projects in which the user is assigned
 	 */
-	 
+
 	public function getAssignedUsers($projectid){
 		$this->db->where('a.projectid = '. intval($projectid));
 		$this->db->select('b.*');
 		$this->db->from('user_assigned_projects a');
 		$this->db->join('users b', 'a.userid = b.id');
-		$q = $this->db->get();		
+		$q = $this->db->get();
 		$data = array();
 		if($q->num_rows()){
 			foreach($q->result_array() as $row ){
@@ -46,9 +45,9 @@ class Projects extends Ci_Model {
 	}
 
 
-	
+
 	function create(){
-		
+
 		$p = $this->input->post();
 		$p['active'] = 1;
 		$this->db->insert('projects', $p);
@@ -57,10 +56,10 @@ class Projects extends Ci_Model {
 		else{
 			return  0;
 		}
-			
-	
+
+
 	}
-	
+
 	function getDoctypeDetails( $type_id = 0){
 		if($type_id){
 			$this->db->where('id', $type_id );
@@ -69,12 +68,12 @@ class Projects extends Ci_Model {
 		$q = $this->db->get( 'doctype' );
 		if($q->num_rows()){
 			foreach( $q->result_array() as $row){
-				$data[$row['id']] = $row;	
+				$data[$row['id']] = $row;
 			}
 		}
-		return $data;		
+		return $data;
 	}
-	
+
 	function update( $project_id = 0){
 		if($project_id){
 			$this->db->where('id', $project_id );
@@ -84,11 +83,11 @@ class Projects extends Ci_Model {
 		$data['name']	 = $p['name'];
 		$data['embedcode']	 = $p['embedcode'];
 		$data['bimsync_id']	 = @$p['bimsync_id'];
-		
+
 		$this->db->where('id', $project_id);
 		$this->db->update('projects', $data);
 	}
-	
+
 	/**
 	 * Remove all assignments for these project
 	 * @param string '1,2,3' the comma seperated projectids
@@ -98,6 +97,3 @@ class Projects extends Ci_Model {
 		$this->db->delete('user_assigned_projects');
 	 }
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

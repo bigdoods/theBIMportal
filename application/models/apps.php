@@ -1,21 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Apps extends Ci_Model {	
-	
+class Apps extends Ci_Model {
+
 	public function __construct(){
 		parent:: __construct();
 	}
-	
+
 	/**
-	 * return all the apps of the system
-	 * If the active falg is on then
-	 * Only return the actives apps
+	 * return all the apps in the database.
+	 * If the active flag is on then
+	 * Only return the active apps
 	 */
-	function getAllApps( $active = 0, $app_id = 0 ){		
+	function getAllApps( $active = 0, $app_id = 0 ){
 		if( $active ){
 			$this->db->where('is_active', 1);
 		}
-		
+
 		if( $app_id ){
 			$this->db->where('id', $app_id);
 		}
@@ -29,11 +29,11 @@ class Apps extends Ci_Model {
 		}
 		return $data;
 	}
-	
+
 	/**
-	 * save the app iinto database
+	 * save the app into database
 	 */
-	 
+
 	 public function create(){
 		$p = $this->input->post();
 		$arr = array(
@@ -42,7 +42,7 @@ class Apps extends Ci_Model {
 			'order' => $p['order'],
 			'is_active' => 1
 		);
-		
+
 		/**
 		 * app file name
 		 */
@@ -56,11 +56,11 @@ class Apps extends Ci_Model {
 		$this->db->insert('apps', $arr);
 		return $this->db->insert_id();
 	 }
-	 
+
 	 /**
 	  * Update apps table data
 	  */
-	  
+
 	 public function update(){
 		$p = $this->input->post();
 		$arr = array(
@@ -70,7 +70,7 @@ class Apps extends Ci_Model {
 			'is_active' => isset($p['is_active']) ? 1 : 0,
 			'type' => $p['type']
 		);
-		
+
 		/**
 		 * app file name
 		 */
@@ -87,7 +87,7 @@ class Apps extends Ci_Model {
 		if($app_details->num_rows()){
 			$row = $app_details->row_array();
 			if($row['appiconfilepath'] !== $arr['appiconfilepath']){
-				@unlink('upload/appicon/'.$row['appiconfilepath']);				
+				@unlink('upload/appicon/'.$row['appiconfilepath']);
 			}
 			if($row['appfilepath'] !== $arr['appfilepath']){
 				@unlink('application/app/'.$row['appfilepath']);
@@ -97,35 +97,35 @@ class Apps extends Ci_Model {
 		$this->db->update('apps', $arr);
 
 	 }
-	 
+
 	 /**
 	  * Get app by class name
 	  */
-	  
+
 	  function getAppByClassname( $class_name = ''){
-		$data = array(); 
-	  	if($class_name){			
+		$data = array();
+	  	if($class_name){
 			$this->db->where('classname', $class_name);
 			$this->db->limit(1, 0);
 			$q = $this->db->get('apps');
 			if($q->num_rows()){
 				$data = $q->row_array();
 			}
-			
+
 		}
 	  	return $data;
 	  }
 
 	  function getAppNameById($app_id){
 		$data = array();
-	  	if($app_id){			
+	  	if($app_id){
 			$this->db->where('id', $app_id);
 			$this->db->limit(1, 0);
 			$q = $this->db->get('apps');
 			if($q->num_rows()){
 				$data = $q->row_array();
 			}
-			
+
 		} else {
 			$app_name = '';
 		}

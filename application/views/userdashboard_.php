@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	$this->load->view('common/user/header.php');
-?>   
+?>
 	<div class="header-top">
 
         <div class="main-logo"></div>
@@ -19,18 +19,18 @@
     	<div class="main">
             <div class="menu-trigger"></div>
         	<div class="left">
-	             <div id="content_1" class="content">                 
+	             <div id="content_1" class="content">
                  	<div class="portion">
                     	<h2>Projects</h2>
                         <div class="clear"></div>
                         <div class="details">
-                        	 <?php 
-								foreach($project_details as $project){									
+                        	 <?php
+								foreach($project_details as $project){
 							  ?>
                         	<div class="project_tile project-button blue-button" id="project-<?php echo $project['id']?>">
                             	<a href="javascript:void(0);">
                             	<div class="sub">
-                                    <img src="<?php echo base_url('/images/project_tile_icon')?>.png" alt="" />                                	
+                                    <img src="<?php echo base_url('/images/project_tile_icon')?>.png" alt="" />
                                     <div class="project-name">
                                         <div><?php echo $project['name']?></div>
                                     </div>
@@ -38,27 +38,27 @@
                                 </a>
                             </div>
                             <?php }?>
-                            
+
                         </div>
                     </div>
-                
+
                  </div>
             </div>
-            
+
             <div class="right">
-                	<div class="head">                     
+                	<div class="head">
                         <div class="clear"></div>
-                        <h1 class="project-title">Overview</h1>
+                        <h1 class="project-title">Project Newsfeed and Updates</h1>
                     </div>
-                    
+
                     <div class="clear"></div>
-                    
-                    <div class="apps_content_back">
+
+                    <!-- <div class="apps_content_back">
                     	<div id="content_2" class="content2">
                         	<div class="content_main">
 
                                 <div id="pro-map">
-                                    <h2>ARC - Grip Process Maps</h2>
+                                    <h2>ARC - Grip Process Map</h2>
                                     <a id="start-tutorial" class="blue-button action" href="#"></a>
                                     <div id="pm-timeline">
                                         <a class="grip" href="#" data-grip="1">
@@ -207,36 +207,36 @@
                                                 <li><span>PAR</span> Project Automatic Reporting</li>
                                             </ul>
                                             <ul>
-                                                <li><span>PCIP</span> Pre Construction Information Pack</li>
+                                                <li><span>PCIP</span> Pre-Construction Information Pack</li>
                                                 <li><span>PEST</span> Project Estimate</li>
                                                 <li><span>PM</span> Project Manager</li>
-                                                <li><span>PMB</span> Project Managers Basline Programme</li>
+                                                <li><span>PMB</span> Project Managers Baseline Programme</li>
                                                 <li><span>PO</span> Purchase Order</li>
                                                 <li><span>POAP</span> Project on a Page</li>
                                                 <li><span>PPS</span> Pesession Planning System</li>
                                                 <li><span>QMP</span> Quality Management Plan</li>
                                                 <li><span>RRD</span> Route Requirements Document</li>
                                                 <li><span>SLT</span> Senior Leadership Team</li>
-                                                <li><span>VFL</span> Volker Fitzpartick Limited</li>
+                                                <li><span>VFL</span> Volker Fitzpatrick Limited</li>
                                                 <li><span>VM</span> Value Management</li>
                                                 <li><span>WLC</span> Whole Life Cost</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            	
+
                                 <?php load_app_content();
-								?>       
+								?>
                             </div>
                         </div>
-                    </div>
-                    
-                    
-                    
+                    </div> -->
+
+
+
                     <div class="footer_back">
-                        <a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>                          
+                        <a class="need-help-link" href="<?php echo base_url('portal/project/9')?>">Need Help?</a>
                     </div>
-                    
+
                 </div>
         </div>
     </div>

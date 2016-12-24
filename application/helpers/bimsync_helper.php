@@ -22,7 +22,7 @@
 			CURLOPT_POSTFIELDS => (count($post_body) ==0 ? '' : json_encode($post_body))
 		)));
 
-		return $response->url;
+		return $response->url; //Error: Undefined property: stdClass::$url
 	}
 
 	function bimsync_projects(){
@@ -101,7 +101,7 @@
 
 			$page++;
 		}
-		
+
 
 		return $response_array;
 	}
@@ -184,7 +184,7 @@
 
 			$page++;
 		}
-		
+
 
 		return $response_array;
 	}

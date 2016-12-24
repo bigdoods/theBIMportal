@@ -1,7 +1,7 @@
 <?php
 
 class Modelviewer_App extends Bim_Appmodule{
-	
+
 	/**
 	 * The default constructor
 	 * any initialization can be placed here
@@ -28,7 +28,7 @@ class Modelviewer_App extends Bim_Appmodule{
 	 * This is the entry point of the app
 	 * It can produce any browser friendly output
 	 */
-	 
+
 	 public function init(){
 	 	$view = $this->_me->input->get('action');
 
@@ -37,7 +37,7 @@ class Modelviewer_App extends Bim_Appmodule{
 
 	 	call_user_func(array($this, $view));
 	 }
-	 
+
 	 public function render_viewer(){
 		/**
 		 * Setup for bimsync api interaction
@@ -49,9 +49,10 @@ class Modelviewer_App extends Bim_Appmodule{
 		// see if we have a model id parameter
 		// else default to the first one from bimsync
 		$requested_model = array();
+
 		if(strlen($this->_me->input->get('model')) >0)
 			$requested_model['model_id'] = $this->_me->input->get('model');
-		else
+		else //error: trying to get property of non-object
 			$requested_model['model_id'] = array_first($all_models)->id;
 
 		// use the revision query string parameter if present
@@ -64,7 +65,7 @@ class Modelviewer_App extends Bim_Appmodule{
 
 		// authorisation is required each time a model viewed or switched
 		$project_auth_url = bimsync_project_viewer_url($requested_model);
-		
+
 	 	?>
 
 	 	<div id="viewer-control-wrapper">
@@ -105,7 +106,7 @@ class Modelviewer_App extends Bim_Appmodule{
 	 	$info_html = array();
 	 	foreach($object_ids as $object_id){
 			$object_info_html = bimsync_project_product($object_id, 'html');
-			
+
 			// remove some html
 			$info_html[] = preg_replace('/<\!DOCTYPE html><title>.*<\/title>/i', '', $object_info_html);
 		}
@@ -124,7 +125,7 @@ class Modelviewer_App extends Bim_Appmodule{
 			$type = trim(preg_replace('/([A-Z])/', ' \1', $type));
 			if(empty($title) || $title == 'Undefined')
 				$title = $type;
-			
+
 			$html .= '<li data-object-id="'. $object->objectId .'" data-object-type="'. $object->type .'"><a href="#" title="'. $object->description .' ('. $type .')">'. $title .'</a>';
 			if(isset($tree[$object->objectId]))
 				$html .= $this->component_tree_html($tree, $tree[$object->objectId]);

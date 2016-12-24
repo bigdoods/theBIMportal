@@ -1,23 +1,23 @@
 <?php
 class Account_app extends Bim_Appmodule{
-	
+
 	private $_db = NULL;
-	
+
 	function __construct(){
 		parent::start();
 		$this->_db = $this->_me->db;// this is codeigniter db
 	}
-	
+
 	/**
-	 * Public fucntion printScript
+	 * Public function printScript
 	 */
 	function printScript(){
 		?>
 		<script>
 		try{
-		
+
 			$(function(){
-				
+
 				$(document).on('submit', '#account_update', function(){
 					var t =$(this);
 					var dom = t;
@@ -36,7 +36,7 @@ class Account_app extends Bim_Appmodule{
 							}else{
 								dom.overlay("Your profile has no new value");
 							}
-							
+
 						},
 						error: function(){
 							dom.overlay("Internal server error, please try again later");
@@ -49,19 +49,19 @@ class Account_app extends Bim_Appmodule{
 				})
 			})
 		}catch(e){
-		
+
 		}
-        	
+
         </script>
 		<?php
 	}
-	
+
 	/**
-	 * Public function 
-	 */	 
+	 * Public function
+	 */
 	 function init(){
 		 $this->printScript();
-		$this->_me->load->model('Users');		
+		$this->_me->load->model('Users');
 		$user_details = $this->_me->Users->getNewUsers($this->_userid);
 		$u_detail = $user_details[0];
 		if($u_detail['profilepic'] == '')	{
@@ -70,7 +70,7 @@ class Account_app extends Bim_Appmodule{
 		//v_dump($u_detail);
 		?>
 		<div class="portion">
-                                            
+
                                     <div class="form_reupdate_back account-update">
                                     <form name="account_update" validate="validate" id="account_update">
                                     	<div class="reupdate_left profile_back">
@@ -83,45 +83,45 @@ class Account_app extends Bim_Appmodule{
                                             <div class="clear"></div>
                                         	<input type="text" class="form-input" name="name" value="<?php echo $u_detail['name']?>" data-validation-engine="validate[required]"/>
                                             <div class="clear"></div>
-                                            
+
                                             <p>Phone</p>
                                             <div class="clear"></div>
                                         	<input type="text" class="form-input" name="phone" data-validation-engine="validate[required,custom[phone]]" value="<?php echo $u_detail['phone']?>"/>
                                             <div class="clear"></div>
-                                            
+
                                             <p>New password</p>
                                             <div class="clear"></div>
                                         	<input type="password" class="form-input" name="password" value="" id="password" data-validation-engine="validate[equals[cpass],minSize[6],maxSize[20]]"/>
                                             <div class="clear"></div>
-                                            
+
                                             <p>Confirm password</p>
                                             <div class="clear"></div>
                                         	<input type="password" class="form-input" data-validation-engine="validate[equals[password]]" id="cpass" name="cpass"/>
                                             <div class="clear"></div>
-                                            
+
                                             <hr>
-                                            
+
                                             <p>Email</p>
                                             <div class="clear"></div>
                                         	<input type="text" class="form-input greyed" readonly="readonly" disabled="disabled" value="<?php echo $u_detail['email']?>"/>
                                             <div class="clear"></div>
-                                            
+
                                             <p>Joining date</p>
                                             <div class="clear"></div>
                                         	<input type="text" class="form-input greyed" readonly="readonly" disabled="disabled" value="<?php echo date('d-m-Y', $u_detail['joiningdate']);?>"/>
                                             <div class="clear"></div>
-                                            
+
                                              <p>Activation date</p>
                                             <div class="clear"></div>
                                         	<input type="text" class="form-input greyed" readonly="readonly" disabled="disabled" value="<?php echo date('d-m-Y', $u_detail['activationdate']);?>"/>
                                             <div class="clear"></div>
-                                            
+
                                             <p>Company</p>
                                             <div class="clear"></div>
                                         	<input type="text" class="form-input greyed" readonly="readonly" disabled="disabled"  value="<?php echo $u_detail['company']?>"/>
                                             <div class="clear"></div>
-                                            
-                                           
+
+
                                             <p>Discipline</p>
                                             <div class="clear"></div>
                                         	<select class="form-input greyed" name="discipline" disabled="disabled">
@@ -133,7 +133,7 @@ class Account_app extends Bim_Appmodule{
                                             <input type="submit" class="blue-button action" value="Update Profile" />
                                         </div>
                                     </form>
-                                    </div>        
+                                    </div>
          </div>
 		<?php
 	 }
