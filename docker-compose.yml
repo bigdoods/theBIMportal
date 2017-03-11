@@ -1,0 +1,33 @@
+version: '2'
+services:
+  mysql:
+    build: mysql/.
+    environment:
+      - MYSQL_ROOT_PASSWORD=lkjhlkjh
+      - MYSQL_DATABASE=empty_portal  
+  webapp:
+    build: .
+    ports:
+      - 3000:80
+    environment:
+      - VIRTUAL_HOST
+      - VIRTUAL_PORT=8080
+    depends_on:
+      - mysql
+    networks:
+      - front
+      - back
+      - default
+
+networks:
+    front:
+        external:
+            name: "puffin_front"
+    back:
+        external:
+            name: "puffin_back"
+
+
+
+
+    

@@ -1,4 +1,5 @@
-# The BIMportal. BIM Applications Platform.
+# The BIMportal. 
+_BIM Applications collection and dashboard_
 
 ## Description
 
@@ -17,9 +18,7 @@ Login details for Admin dashboard
 Username: admin@yourcompany.com
 Password: 01234567
 
-Login details for User dashboard
-Username: user@yourcompany.com
-Password: 01234567
+(Click "PORTAL" in top right screen to enter User view.)
 
 ## Getting started
 
