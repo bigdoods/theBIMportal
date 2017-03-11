@@ -2,32 +2,35 @@ version: '2'
 services:
   mysql:
     build: mysql/.
+    image: jenca/mobius_mysql      ## Please build name of image as named jenca/<<app-name>_<service_name>>
     environment:
       - MYSQL_ROOT_PASSWORD=lkjhlkjh
-      - MYSQL_DATABASE=empty_portal  
-  webapp:
-    build: .
-    ports:
-      - 3000:80
-    environment:
-      - VIRTUAL_HOST
-      - VIRTUAL_PORT=8080
-    depends_on:
-      - mysql
+      - MYSQL_DATABASE=empty_portal
     networks:
       - front
       - back
       - default
 
-networks:
+  webapp:
+    build: .
+    image: jenca/mobius_webapp     ## Please build name of image as named jenca/<<app-name>_<service_name>>
+    ports:                         ## This section must be included
+      - 3000:80                     #
+    environment:                   ## This section must be included. Setting these environment variables help puffin control your apps runtime environment.
+      - VIRTUAL_HOST                #
+      - VIRTUAL_PORT=8080           #
+    depends_on:
+      - mysql
+
+    networks:                      ## This section must be included. ( tbc - explanation link to concept pages in docs )
+      - front                       #
+      - back                        #
+      - default                     #
+
+networks:                          ## This section must be included. ( tbc - concept explained in docs )
     front:
         external:
             name: "puffin_front"
     back:
         external:
             name: "puffin_back"
-
-
-
-
-    
