@@ -1,4 +1,4 @@
-# The BIMportal. 
+# The BIMportal.
 _BIM Applications collection and dashboard_
 
 ## Description
@@ -9,7 +9,7 @@ It is designed as a modular collection of BIM Applications built on a Linux/Apac
 
 ## Preview
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=dNUFRohKjM8
-" target="_blank"><img src="http://img.youtube.com/vi/dNUFRohKjM8/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/dNUFRohKjM8/0.jpg"
 alt="theBIMportal feature video" width="640" height="480" border="10" /></a>
 
 ## Live demo available here - www.thebimportal.com
@@ -20,7 +20,7 @@ Password: 01234567
 
 (Click "PORTAL" in top right screen to enter User view.)
 
-## Getting started
+## Getting started (Development)
 
 Install and setup requirements to run codeigniter or recommended - use the development environment [here](https://github.com/r8/vagrant-lamp).
 
@@ -45,11 +45,15 @@ Reload sql dump file. Empty found in db_dumps folder.
 
     $ SOURCE <path to .sql dump file>
 
-Exit and make sure that your hosts file allows access for vagrant as described [here](https://github.com/r8/vagrant-lamp#notes) 
+Exit and make sure that your hosts file allows access for vagrant as described [here](https://github.com/r8/vagrant-lamp#notes)
 
     $ exit
 
 Fire up the app! Open a browser at http://local.dev and check it out!
+
+## Getting started (Production)
+
+The list of commands (with comments) that are used to deploy theBIMportal to an instance on google cloud platform can be found in (this file)[https://github.com/jenca-cloud/theBIMportal/blob/master/GCP-deployment.md] 
 
 ### List of applications in the application directory currently include the following:
 
@@ -106,11 +110,11 @@ Perform administrative tasks on applications that are made available to users of
 
 ### More information and some system design considerations from authors
 
-*This belongs in a blog-post but can live here for now* 
+*This belongs in a blog-post but can live here for now*
 
 The BIMportal is an open source application framework consisting of multiple applications to increase team productivity for teams involved with BIM procurement that want minimum overhead to maintain BIM projects. The initial insentive to developing the tool was to provide a central service to support the platform where a core team would maintain and upgrade all of the BIM data with the help of a the peripheral user base. This means that there would always be a direct line of communication between all users and the operatives where data would be served on demand to the user. This significantly reduces the need for end users to embark on the learning curve required to operate software and give them a more gradual and self learning approach as they observe the functioning system from an external perspective.
 
-Key parameters incorporated into the design of the system included the following: 
+Key parameters incorporated into the design of the system included the following:
 
 * Modular and extensible framework that could accommodate new application development and deployment.
 * Accessible interface for non BIM software users.
@@ -140,6 +144,6 @@ Key parameters incorporated into the design of the system included the following
 - [Dayonemedia](https://dayonemedia.co.uk/)
 
 
-### Contributing 
+### Contributing
 
 We welcome any contributions and are here to help for any developers looking to get started.
