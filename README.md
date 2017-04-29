@@ -53,7 +53,15 @@ Fire up the app! Open a browser at http://local.dev and check it out!
 
 ## Getting started (Production)
 
-The list of commands (with comments) that are used to deploy theBIMportal to an instance on google cloud platform can be found in (this file)[https://github.com/jenca-cloud/theBIMportal/blob/master/GCP-deployment.md] 
+The list of commands (with comments) that are used to deploy theBIMportal to an instance on google cloud platform can be found in (this file)[https://github.com/jenca-cloud/theBIMportal/blob/master/GCP-deployment.md]
+
+## Docker
+
+theBIMportal can be deployed using docker-compose
+
+    $ docker-compose run --build -d
+
+This will setup the application to run on port 80
 
 ### List of applications in the application directory currently include the following:
 
