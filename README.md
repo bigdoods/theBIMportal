@@ -1,5 +1,5 @@
 # The BIMportal.
-_BIM Applications collection and dashboard_
+BIM level 2 operations and collaborations portal
 
 ## Description
 
