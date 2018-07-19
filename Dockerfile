@@ -12,7 +12,7 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
-RUN git clone https://github.com/jencahq/bimportal-php .
+RUN git clone https://github.com/jencahq/theBIMportal .
 
 # Overwrite database config
 ADD database.php /var/www/html/application/config/database.php
