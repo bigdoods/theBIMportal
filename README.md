@@ -59,7 +59,7 @@ The list of commands (with comments) that are used to deploy theBIMportal to an 
 
 theBIMportal can be deployed using docker-compose
 
-    $ docker-compose run --build -d
+    $ docker-compose up -d
 
 This will setup the application to run on port 80
 

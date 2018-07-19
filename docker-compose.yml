@@ -11,7 +11,7 @@ services:
     build: .
     image: jenca/thebimportal_webapp     ## Please build name of image as named jenca/<<app-name>_<service_name>>
     ports:                         ## This section must be included
-      - 80:80                      #
+      - 3000:80                      # Remove external port for production
     environment:                   ## This section must be included. Setting these environment variables help puffin control your apps runtime environment.
       - VIRTUAL_HOST                #
       - VIRTUAL_PORT=80           #
